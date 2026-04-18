@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { AreaChart, Area, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { motion } from 'framer-motion';
 
 const GoingConcernStressTest = ({ data }) => {
@@ -19,24 +19,23 @@ const GoingConcernStressTest = ({ data }) => {
     );
   }
 
-  // Get risk color
-  const getRiskColor = (riskColor) => {
-    const colors = {
-      'green': 'text-green-400 bg-green-950',
-      'yellow': 'text-yellow-400 bg-yellow-900',
-      'orange': 'text-orange-400 bg-orange-900',
-      'red': 'text-red-400 bg-red-950'
+  // Get risk color and badge based on risk_level
+  const getRiskColor = (riskLevel) => {
+    const colorMap = {
+      'SAFE': 'text-green-400 bg-green-950',
+      'MODERATE': 'text-yellow-400 bg-yellow-900',
+      'AT_RISK': 'text-orange-400 bg-orange-900',
+      'CRITICAL': 'text-red-400 bg-red-950'
     };
-    return colors[riskColor] || 'text-gray-400 bg-gray-900';
+    return colorMap[riskLevel] || 'text-gray-400 bg-gray-900';
   };
 
-  // Prepare scenario band data for visualization
-  const scenarioBands = [
-    { name: 'Critical', value: 5, color: '#ef4444' },
-    { name: 'Danger', value: 20, color: '#f97316' },
-    { name: 'Caution', value: 35, color: '#eab308' },
-    { name: 'Safe', value: 40, color: '#22c55e' }
-  ];
+  // Convert scenario bands to pie chart format
+  const scenarioBands = Object.entries(data.scenario_bands || {}).map(([key, band]) => ({
+    name: key.charAt(0).toUpperCase() + key.slice(1),
+    value: parseFloat(band.probability),
+    color: band.color
+  }));
 
   // Prepare distribution data
   const distributionData = [
@@ -62,7 +61,7 @@ const GoingConcernStressTest = ({ data }) => {
         </div>
         
         {/* Survival Probability Badge */}
-        <div className={`px-6 py-4 rounded-lg text-center ${getRiskColor(data.risk_color)}`}>
+        <div className={`px-6 py-4 rounded-lg text-center ${getRiskColor(data.risk_level)}`}>
           <div className="text-3xl font-bold">{data.survival_probability}%</div>
           <div className="text-sm font-semibold mt-1">Survival Probability</div>
           <div className="text-xs mt-2">{data.risk_level}</div>
@@ -89,6 +88,57 @@ const GoingConcernStressTest = ({ data }) => {
       {/* Overview Tab */}
       {activeTab === 'overview' && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          {/* Monthly Cash Flow Projection Chart */}
+          {data.chart_data && data.chart_data.length > 0 && (
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold text-white mb-4">Monthly Cash Balance Projection (Cone of Uncertainty)</h4>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={data.chart_data}>
+                  <defs>
+                    <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.05}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
+                  <XAxis dataKey="name" stroke="#9ca3af" />
+                  <YAxis stroke="#9ca3af" formatter={(value) => `₹${(value/1000).toFixed(0)}k`} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}
+                    formatter={(value) => `₹${value.toLocaleString()}`}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="p5" 
+                    fill="url(#colorGradient)" 
+                    stroke="#ef4444" 
+                    strokeWidth={1}
+                    strokeDasharray="5 5"
+                    name="P5 (Worst Case)"
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="p95" 
+                    fill="url(#colorGradient)" 
+                    stroke="#22c55e" 
+                    strokeWidth={1}
+                    strokeDasharray="5 5"
+                    name="P95 (Best Case)"
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="median" 
+                    stroke="#8b5cf6" 
+                    strokeWidth={3}
+                    dot={{ fill: '#8b5cf6', r: 4 }}
+                    activeDot={{ r: 6 }}
+                    name="Median (P50)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          )}
+
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-slate-700 p-4 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">Starting Balance</div>
@@ -134,9 +184,9 @@ const GoingConcernStressTest = ({ data }) => {
 
           {/* Scenario Details */}
           <div className="grid grid-cols-2 gap-4">
-            {Object.entries(data.scenario_bands).map(([key, band]) => (
+            {Object.entries(data.scenario_bands || {}).map(([key, band]) => (
               <div key={key} className={`p-4 rounded-lg border-2`} style={{ borderColor: band.color, backgroundColor: band.color + '20' }}>
-                <div className="font-semibold capitalize" style={{ color: band.color }}>{key.replace('_', ' ')}</div>
+                <div className="font-semibold capitalize" style={{ color: band.color }}>{key.replace(/_/g, ' ')}</div>
                 <div className="text-sm text-gray-300 mt-1">Range: {band.range}</div>
                 <div className="text-sm text-gray-300">Probability: {band.probability}</div>
               </div>

@@ -4,11 +4,10 @@ Simulates thousands of possible cash-flow futures to assess company survival pro
 """
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
 import logging
 
 logger = logging.getLogger(__name__)
-
 
 class GoingConcernAnalyzer:
     """
@@ -21,82 +20,62 @@ class GoingConcernAnalyzer:
         Initialize analyzer.
         
         Args:
-            num_simulations: Number of Monte Carlo simulations to run
+            num_simulations: Number of Monte Carlo simulations to run (default 10000)
             forecast_months: Forecast horizon (default 12 months)
         """
         self.num_simulations = num_simulations
         self.forecast_months = forecast_months
-        self.simulation_results = None
-        self.survival_probability = None
     
     def analyze_cash_flow(self, transactions_df: pd.DataFrame, 
-                         starting_balance: float = 100000,
-                         min_required_balance: float = 10000) -> dict:
+                          starting_balance: float = 100000,
+                          min_required_balance: float = 10000) -> dict:
         """
-        Perform Monte Carlo simulation on cash flows.
-        
-        Args:
-            transactions_df: DataFrame with transaction history (amount, timestamp)
-            starting_balance: Starting cash balance
-            min_required_balance: Minimum balance to avoid insolvency
-            
-        Returns:
-            Dictionary with survival probabilities and stress test results
+        Perform vectorized Monte Carlo simulation on cash flows.
         """
-        # Extract cash flow statistics from historical data
+        # 1. Prepare Data
         df = transactions_df.copy()
         df['timestamp'] = pd.to_datetime(df['timestamp'])
         df['amount'] = pd.to_numeric(df['amount'])
-        
-        # Calculate daily cash flow statistics
         df['date'] = df['timestamp'].dt.date
-        daily_flows = df.groupby('date')['amount'].agg(['sum', 'count', 'std']).reset_index()
         
-        # Statistics for simulation
-        mean_daily_flow = daily_flows['sum'].mean()
-        std_daily_flow = daily_flows['sum'].std()
-        mean_txn_size = df['amount'].mean()
-        std_txn_size = df['amount'].std()
+        # 2. Extract Cash Flow Stats (Accounting for days with $0 flow)
+        daily_sums = df.groupby('date')['amount'].sum()
+        daily_sums.index = pd.to_datetime(daily_sums.index)
         
-        logger.info(f"Cash flow stats - Mean: {mean_daily_flow:.2f}, Std: {std_daily_flow:.2f}")
+        # Fill missing days with 0 to accurately reflect burn rate
+        try:
+            daily_sums = daily_sums.asfreq('D', fill_value=0)
+        except ValueError:
+            pass # Failsafe if dataset only has 1 single day of data
+            
+        mean_daily_flow = daily_sums.mean()
+        std_daily_flow = daily_sums.std()
         
-        # Run Monte Carlo simulations
+        logger.info(f"Monte Carlo Stats - Mean Flow: {mean_daily_flow:.2f}, Std Dev: {std_daily_flow:.2f}")
+        
         num_days = self.forecast_months * 30  # Approximate days
-        survival_count = 0
-        min_balances_per_sim = []
-        end_balances = []
-        insolvent_day = []
         
-        for sim in range(self.num_simulations):
-            current_balance = starting_balance
-            daily_balances = [current_balance]
-            insolvency_day = None
-            
-            for day in range(num_days):
-                # Simulate daily cash flow with volatility
-                daily_flow = np.random.normal(mean_daily_flow, std_daily_flow)
-                current_balance += daily_flow
-                daily_balances.append(current_balance)
-                
-                # Check for insolvency
-                if current_balance < min_required_balance and insolvency_day is None:
-                    insolvency_day = day
-                
-                # Early exit if bankrupt
-                if current_balance < 0:
-                    insolvency_day = day
-                    break
-            
-            min_balance = min(daily_balances)
-            min_balances_per_sim.append(min_balance)
-            end_balances.append(current_balance)
-            insolvent_day.append(insolvency_day if insolvency_day else None)
-            
-            # Count survivals
-            if current_balance >= min_required_balance:
-                survival_count += 1
+        # 3. Vectorized Simulation (Lightning Fast)
+        # Generate a matrix of (10,000 simulations x 360 days)
+        random_flows = np.random.normal(mean_daily_flow, std_daily_flow, 
+                                        (self.num_simulations, num_days))
         
-        survival_probability = survival_count / self.num_simulations * 100
+        # Calculate cumulative cash balance across the timeline
+        balance_paths = starting_balance + np.cumsum(random_flows, axis=1)
+        
+        # 4. Extract Matrix Insights
+        min_balances_per_sim = np.min(balance_paths, axis=1)
+        end_balances = balance_paths[:, -1]
+        
+        # A company survives if its MINIMUM balance never drops below the requirement
+        survived_mask = min_balances_per_sim >= min_required_balance
+        survival_probability = (np.sum(survived_mask) / self.num_simulations) * 100
+        
+        # Track Bankruptcy Days
+        insolvent_mask = balance_paths < 0
+        actually_insolvent = np.any(insolvent_mask, axis=1)
+        first_insolvent_day = np.argmax(insolvent_mask, axis=1)[actually_insolvent]
+        avg_days_to_insolvency = np.mean(first_insolvent_day) if len(first_insolvent_day) > 0 else None
         
         # ===== PERCENTILE ANALYSIS =====
         end_balance_percentiles = np.percentile(end_balances, [5, 25, 50, 75, 95])
@@ -104,42 +83,35 @@ class GoingConcernAnalyzer:
         
         # ===== RISK CLASSIFICATION =====
         if survival_probability >= 95:
-            risk_level = 'SAFE'
-            risk_color = 'green'
+            risk_level, risk_color = 'SAFE', 'green'
         elif survival_probability >= 80:
-            risk_level = 'MODERATE'
-            risk_color = 'yellow'
+            risk_level, risk_color = 'MODERATE', 'yellow'
         elif survival_probability >= 60:
-            risk_level = 'AT_RISK'
-            risk_color = 'orange'
+            risk_level, risk_color = 'AT_RISK', 'orange'
         else:
-            risk_level = 'CRITICAL'
-            risk_color = 'red'
+            risk_level, risk_color = 'CRITICAL', 'red'
         
         # ===== SCENARIO BANDS =====
-        # P5-P25: Critical band
-        # P25-P50: Danger band
-        # P50-P75: Caution band
-        # P75-P95: Safe band
+        # Using fast numpy array comparisons instead of list comprehensions
         scenario_bands = {
             'critical': {
                 'range': f"${min_balance_percentiles[0]:,.0f} - ${min_balance_percentiles[1]:,.0f}",
-                'probability': f"{np.mean([1 for b in min_balances_per_sim if b <= min_balance_percentiles[1]]) / len(min_balances_per_sim) * 100:.1f}%",
+                'probability': f"{(np.sum(min_balances_per_sim <= min_balance_percentiles[1]) / self.num_simulations) * 100:.1f}%",
                 'color': 'red'
             },
             'danger': {
                 'range': f"${min_balance_percentiles[1]:,.0f} - ${min_balance_percentiles[2]:,.0f}",
-                'probability': f"{np.mean([1 for b in min_balances_per_sim if min_balance_percentiles[1] < b <= min_balance_percentiles[2]]) / len(min_balances_per_sim) * 100:.1f}%",
+                'probability': f"{(np.sum((min_balances_per_sim > min_balance_percentiles[1]) & (min_balances_per_sim <= min_balance_percentiles[2])) / self.num_simulations) * 100:.1f}%",
                 'color': 'orange'
             },
             'caution': {
                 'range': f"${min_balance_percentiles[2]:,.0f} - ${min_balance_percentiles[3]:,.0f}",
-                'probability': f"{np.mean([1 for b in min_balances_per_sim if min_balance_percentiles[2] < b <= min_balance_percentiles[3]]) / len(min_balances_per_sim) * 100:.1f}%",
+                'probability': f"{(np.sum((min_balances_per_sim > min_balance_percentiles[2]) & (min_balances_per_sim <= min_balance_percentiles[3])) / self.num_simulations) * 100:.1f}%",
                 'color': 'yellow'
             },
             'safe': {
                 'range': f"${min_balance_percentiles[3]:,.0f} - ${min_balance_percentiles[4]:,.0f}",
-                'probability': f"{np.mean([1 for b in min_balances_per_sim if b > min_balance_percentiles[3]]) / len(min_balances_per_sim) * 100:.1f}%",
+                'probability': f"{(np.sum(min_balances_per_sim > min_balance_percentiles[3]) / self.num_simulations) * 100:.1f}%",
                 'color': 'green'
             }
         }
@@ -177,19 +149,27 @@ class GoingConcernAnalyzer:
                 'best_case_ending': round(np.max(end_balances), 2),
                 'median_minimum_balance': round(np.median(min_balances_per_sim), 2),
                 'probability_never_insolvency': f"{survival_probability:.1f}%",
-                'avg_days_to_insolvency': round(np.nanmean([d for d in insolvent_day if d is not None]), 1) if any(d is not None for d in insolvent_day) else None
-            }
+                'avg_days_to_insolvency': round(avg_days_to_insolvency, 1) if avg_days_to_insolvency is not None else "N/A"
+            },
+            'chart_data': self._generate_chart_data(balance_paths, num_days)
         }
+    def _generate_chart_data(self, balance_paths, num_days):
+        """Generate month-by-month chart data for UI visualization."""
+        chart_data = []
+        for month in range(1, self.forecast_months + 1):
+            day_index = min((month * 30) - 1, num_days - 1)
+            month_balances = balance_paths[:, day_index]
+            chart_data.append({
+                "name": f"Month {month}",
+                "p5": round(np.percentile(month_balances, 5), 2),
+                "median": round(np.percentile(month_balances, 50), 2),
+                "p95": round(np.percentile(month_balances, 95), 2)
+            })
+        return chart_data
     
     def get_recommendation(self, analysis_result: dict) -> str:
         """
         Generate audit recommendation based on going concern analysis.
-        
-        Args:
-            analysis_result: Result from analyze_cash_flow()
-            
-        Returns:
-            Audit recommendation string
         """
         prob = analysis_result['survival_probability']
         
