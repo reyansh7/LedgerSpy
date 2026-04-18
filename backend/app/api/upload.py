@@ -13,10 +13,11 @@ router = APIRouter()
 async def upload_file(file: UploadFile = File(...)):
     """Upload CSV and run full fraud analysis pipeline."""
     try:
-        if file.filename == "":
+        filename = file.filename or ""
+        if filename == "":
             raise HTTPException(status_code=400, detail="No selected file")
 
-        if not file.filename.lower().endswith(".csv"):
+        if not filename.lower().endswith(".csv"):
             raise HTTPException(status_code=400, detail="Only CSV files are supported at /upload")
 
         raw_bytes = await file.read()
@@ -28,7 +29,7 @@ async def upload_file(file: UploadFile = File(...)):
         except Exception as exc:
             raise HTTPException(status_code=400, detail=f"Failed to parse CSV: {exc}") from exc
 
-        result = run_full_analysis(dataframe, file.filename)
+        result = run_full_analysis(dataframe, filename)
         save_result(result["file_id"], result)
 
         return {
@@ -39,5 +40,7 @@ async def upload_file(file: UploadFile = File(...)):
         }
     except AuditServiceError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

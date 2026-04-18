@@ -34,8 +34,28 @@ class AuditServiceError(RuntimeError):
 
 
 def generate_file_id(filename: str) -> str:
-    suffix = Path(filename).stem.replace(" ", "_")
-    return f"{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{suffix}_{uuid4().hex[:8]}"
+    import re
+    import unicodedata
+    
+    stem = Path(filename).stem
+    
+    # Normalize unicode (NFKD) and encode to ASCII, ignoring non-ASCII
+    normalized = unicodedata.normalize('NFKD', stem)
+    normalized = normalized.encode('ascii', 'ignore').decode('ascii')
+    
+    # Replace non-alphanumeric characters (except hyphen/underscore) with underscore
+    sanitized = re.sub(r'[^a-zA-Z0-9_-]', '_', normalized)
+    
+    # Collapse repeated underscores
+    sanitized = re.sub(r'_+', '_', sanitized)
+    
+    # Trim leading/trailing underscores
+    sanitized = sanitized.strip('_')
+    
+    # Cap to 50 chars to avoid overly long IDs
+    sanitized = sanitized[:50] if sanitized else "file"
+    
+    return f"{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{sanitized}_{uuid4().hex[:8]}"
 
 
 def normalize_vendor_name(value: Any) -> str:
@@ -98,7 +118,15 @@ def prepare_ledger_dataframe(raw_df: pd.DataFrame) -> pd.DataFrame:
     transformed = transformed[REQUIRED_OUTPUT_COLUMNS]
 
     preprocessor = LedgerPreprocessor()
-    return preprocessor.validate_and_clean(transformed)
+    clean_df = preprocessor.validate_and_clean(transformed)
+    
+    if clean_df.empty:
+        raise AuditServiceError(
+            "No valid transactions after data validation. All rows may have invalid or unparseable timestamps. "
+            "Please verify the input data has valid dates and required fields."
+        )
+    
+    return clean_df
 
 
 def _normalize_anomaly_scores(raw_scores: np.ndarray) -> np.ndarray:
