@@ -16,16 +16,34 @@ class LedgerSpyEngine:
     def run_full_audit(self, raw_data: pd.DataFrame):
         # 1. Clean and Prepare
         clean_df = self.preprocessor.validate_and_clean(raw_data)
+        
+        # Guard: check if cleaned dataframe is empty
+        if len(clean_df) == 0:
+            return {
+                "benford_results": [],
+                "anomalies": [],
+                "ghost_vendors": [],
+                "network_loops": [],
+                "risk_insights": {},
+                "_warning": "No data available after cleaning (all rows dropped due to invalid timestamps)."
+            }
+        
         features = self.preprocessor.engineer_anomaly_features(clean_df)
 
         # 2. Run All Analysis Modules
         self.anomaly_detector.train(features)
+        anomalies = self.anomaly_detector.predict(features)
+        
+        # 3. Explain Anomalies
+        anomaly_indices = pd.Index([i for i, is_anom in enumerate(anomalies) if is_anom])
+        risk_insights = self.anomaly_detector.explain_anomalies(clean_df, features, anomaly_indices) if len(anomaly_indices) > 0 else {}
         
         return {
             "benford_results": self.benford.analyze(clean_df),
-            "anomalies": self.anomaly_detector.predict(features),
+            "anomalies": anomalies,
             "ghost_vendors": self.entity_matcher.find_ghost_vendors(clean_df['destination_entity'].tolist()),
-            "network_loops": self._find_network_loops(clean_df)
+            "network_loops": self._find_network_loops(clean_df),
+            "risk_insights": risk_insights
         }
 
     def _find_network_loops(self, clean_df: pd.DataFrame):
