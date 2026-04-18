@@ -5,6 +5,8 @@ export const AppContext = createContext()
 export function AppProvider({ children }) {
   const [user, setUser] = useState(null)
   const [files, setFiles] = useState([])
+  const [uploadedFile, setUploadedFile] = useState(null)
+  const [resultsData, setResultsData] = useState(null)
   const [notifications, setNotifications] = useState([])
 
   const addNotification = (message, type = 'info') => {
@@ -20,6 +22,10 @@ export function AppProvider({ children }) {
     setUser,
     files,
     setFiles,
+    uploadedFile,
+    setUploadedFile,
+    resultsData,
+    setResultsData,
     notifications,
     addNotification,
   }

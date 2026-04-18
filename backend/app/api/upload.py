@@ -1,24 +1,43 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
-from app.utils.file_handler import process_uploaded_file
-from app.services.report_service import generate_report
+from io import BytesIO
+
+import pandas as pd
+from fastapi import APIRouter, File, HTTPException, UploadFile
+
+from app.models.schema import UploadResponse
+from app.services.audit_service import AuditServiceError, run_full_analysis
+from app.services.result_store import save_result
 
 router = APIRouter()
 
-@router.post("/upload")
+@router.post("/upload", response_model=UploadResponse)
 async def upload_file(file: UploadFile = File(...)):
-    """Upload and process a financial file"""
+    """Upload CSV and run full fraud analysis pipeline."""
     try:
         if file.filename == "":
             raise HTTPException(status_code=400, detail="No selected file")
-        
-        # Process file
-        file_data = await file.read()
-        result = await process_uploaded_file(file.filename, file_data)
-        
+
+        if not file.filename.lower().endswith(".csv"):
+            raise HTTPException(status_code=400, detail="Only CSV files are supported at /upload")
+
+        raw_bytes = await file.read()
+        if not raw_bytes:
+            raise HTTPException(status_code=400, detail="Uploaded file is empty")
+
+        try:
+            dataframe = pd.read_csv(BytesIO(raw_bytes))
+        except Exception as exc:
+            raise HTTPException(status_code=400, detail=f"Failed to parse CSV: {exc}") from exc
+
+        result = run_full_analysis(dataframe, file.filename)
+        save_result(result["file_id"], result)
+
         return {
             "status": "success",
-            "file_id": result.get("file_id"),
-            "message": "File uploaded successfully"
+            "file_id": result["file_id"],
+            "message": "File uploaded and analyzed successfully",
+            "summary": result["summary"],
         }
+    except AuditServiceError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
