@@ -1,0 +1,21 @@
+transaction_id,timestamp,amount,source_entity,destination_entity
+TXN001,2024-01-01,1200.00,HR Dept,Global Tech
+TXN002,2024-01-02,5300.00,IT Dept,XYZ Pvt Ltd
+TXN003,2024-01-03,8700.00,Finance Dept,Global Tech Ltd
+TXN004,2024-01-04,1250.00,HR Dept,Prime Supplies
+TXN005,2024-01-05,1300.00,HR Dept,Prime Supply Co.
+TXN006,2024-01-06,2200.00,Admin Dept,QuickFix Services
+TXN007,2024-01-07,5400.00,IT Dept,XYZ Private Limited
+TXN008,2024-01-08,9100.00,Finance Dept,DataSoft Inc
+TXN009,2024-01-09,8900.00,Finance Dept,Global Tech L.T.D.
+TXN010,2024-01-10,2500.00,Admin Dept,ABC Corp
+TXN011,2024-01-11,99999.00,Finance Dept,Fake Corp
+TXN012,2024-01-12,100000.00,Finance Dept,Shadow LLC
+TXN013,2024-01-13,7500.00,Finance Dept,DataSoft Incorporated
+TXN014,2024-01-14,7500.00,Finance Dept,Data Soft Inc
+TXN015,2024-01-15,3400.00,IT Dept,Reliable Services
+TXN016,2024-01-16,8100.00,Admin Dept,Prime Supplies Inc
+TXN017,2024-01-17,4500.00,IT Dept,Shadow L.L.C.
+TXN018,2024-01-18,12000.00,Finance Dept,Fake Corp
+TXN019,2024-01-19,8900.00,Finance Dept,Quick Fix Services
+TXN020,2024-01-20,3200.00,HR Dept,Consultant Services

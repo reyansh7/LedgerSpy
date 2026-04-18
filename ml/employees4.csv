@@ -1,0 +1,101 @@
+employee_id,employee_name,department,designation,access_level,manager_id
+0,Jagdish Baral,Finance,Accountant,2,13
+1,Finn Deshmukh,Procurement,Buyer,1,10
+2,Matthew Dar,Operations,Manager,3,0
+3,Aarav Sagar,Procurement,Procurement Exec,1,17
+4,Rudra Suresh,Procurement,Procurement Exec,1,14
+5,Nitesh Chaudhuri,HR,Executive,1,19
+6,Matthew Krishnan,Finance,Manager,3,6
+7,Rachita Taneja,Operations,Manager,3,16
+8,Abhimanyu Saini,Procurement,Manager,3,17
+9,Mohammed Lalla,Operations,Executive,1,14
+10,Vihaan Keer,HR,Executive,1,13
+11,Hiral Chakraborty,Finance,Manager,3,16
+12,Omya Chawla,IT,Manager,3,1
+13,Bhavini Aggarwal,IT,Executive,1,19
+14,Qushi Sankar,Procurement,Buyer,1,17
+15,Frado Deshmukh,Procurement,Procurement Exec,1,7
+16,Amrita Lata,HR,Manager,3,8
+17,Dayamai Uppal,IT,Executive,1,6
+18,Ethan Mallick,Operations,Executive,1,10
+19,Zinal Kaul,IT,Manager,3,13
+20,Arya Nigam,Operations,Executive,1,12
+21,Wridesh More,Procurement,Manager,3,12
+22,Yashawini Chada,Procurement,Procurement Exec,1,8
+23,Jeevika Goyal,Procurement,Buyer,1,2
+24,Panini Hans,HR,Manager,3,7
+25,Advaith Bail,IT,Executive,1,7
+26,Yug Nagy,HR,Manager,3,20
+27,Nimrat Mukhopadhyay,HR,Manager,3,13
+28,Nathaniel Khatri,HR,Executive,1,20
+29,Lucky Chada,Procurement,Procurement Exec,1,11
+30,Saanvi Natarajan,Finance,Senior Accountant,2,19
+31,Ayaan Dey,Operations,Executive,1,10
+32,Gauri Menon,IT,Manager,3,3
+33,Onkar Mammen,Finance,Accountant,2,7
+34,Darpan Koshy,IT,Manager,3,15
+35,Siddharth Suresh,IT,Executive,1,0
+36,Falak Chakrabarti,Operations,Manager,3,9
+37,Tanay Peri,HR,Manager,3,3
+38,Girish Baral,Operations,Executive,1,3
+39,Shaurya Anand,Procurement,Buyer,1,5
+40,Yashasvi Pingle,Procurement,Buyer,1,20
+41,Arunima Agarwal,IT,Manager,3,0
+42,Amara Bose,IT,Executive,1,17
+43,Tara Bora,HR,Executive,1,5
+44,Rachana Purohit,HR,Executive,1,5
+45,Onveer Barad,Procurement,Procurement Exec,1,3
+46,Viraj Comar,Procurement,Procurement Exec,1,14
+47,Alexander Tella,Procurement,Buyer,1,6
+48,Aradhana Saxena,IT,Manager,3,20
+49,Ati Datta,Operations,Executive,1,2
+50,Pooja Mohan,Procurement,Manager,3,11
+51,Wahab Sachar,Finance,Senior Accountant,2,15
+52,Rachit Brahmbhatt,Operations,Executive,1,2
+53,Alka Nadkarni,IT,Executive,1,8
+54,Sai Sampath,HR,Manager,3,9
+55,Henry Gara,Finance,Manager,3,15
+56,Falan Badami,IT,Executive,1,3
+57,Xalak Bhalla,Operations,Manager,3,7
+58,Yamini Subramaniam,IT,Manager,3,8
+59,Naveen Sant,Finance,Manager,3,14
+60,Ranbir Bhatia,Finance,Senior Accountant,2,19
+61,Sarthak De,HR,Executive,1,8
+62,Michael Basu,Finance,Manager,3,13
+63,Ekansh Palan,Operations,Manager,3,18
+64,Ekapad Kant,Finance,Manager,3,12
+65,Yochana Chakraborty,Finance,Accountant,2,15
+66,Qadim Sibal,IT,Executive,1,18
+67,Raksha Bhakta,Procurement,Procurement Exec,1,0
+68,Rishi Bali,Operations,Manager,3,15
+69,Hemani Roy,HR,Executive,1,4
+70,Rachana Sodhi,IT,Executive,1,1
+71,Vivaan Raval,HR,Executive,1,19
+72,Brinda Kibe,IT,Executive,1,19
+73,Lajita Gokhale,Procurement,Manager,3,4
+74,Aryan Balan,Operations,Manager,3,9
+75,Ekta Ravi,IT,Executive,1,14
+76,Dayamai Goel,IT,Manager,3,16
+77,Nitesh Dash,HR,Manager,3,6
+78,Thomas Chad,Procurement,Procurement Exec,1,9
+79,Vyanjana Raghavan,Finance,Manager,3,5
+80,Nitara Baral,HR,Executive,1,20
+81,Sanaya Mammen,IT,Manager,3,6
+82,Geetika Narayanan,HR,Executive,1,12
+83,Zehaan Chaudry,Operations,Manager,3,8
+84,Jagdish Nair,Finance,Accountant,2,18
+85,Rohan Patla,Operations,Executive,1,20
+86,Jatin Balan,IT,Executive,1,17
+87,Neha Borde,Finance,Senior Accountant,2,0
+88,Dayamai Bera,IT,Manager,3,17
+89,Megha Banerjee,IT,Manager,3,4
+90,Nathan Balay,Operations,Manager,3,19
+91,Rudra Sahni,HR,Executive,1,6
+92,Dayamai Sami,HR,Executive,1,13
+93,Samaksh Natt,Procurement,Procurement Exec,1,4
+94,Sai Murthy,HR,Executive,1,7
+95,William Kannan,Procurement,Manager,3,0
+96,Chaitaly Upadhyay,Procurement,Procurement Exec,1,13
+97,Anthony Brar,HR,Executive,1,14
+98,Vasudha Murty,IT,Manager,3,2
+99,Gavin Chowdhury,Procurement,Manager,3,0

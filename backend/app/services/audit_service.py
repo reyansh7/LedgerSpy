@@ -110,10 +110,20 @@ def prepare_ledger_dataframe(raw_df: pd.DataFrame) -> pd.DataFrame:
 
     if txn_id_col:
         transformed["transaction_id"] = df[txn_id_col].fillna("").astype(str).str.strip()
-        blank_ids = transformed["transaction_id"] == ""
-        transformed.loc[blank_ids, "transaction_id"] = [f"TXN-{idx}" for idx in transformed[blank_ids].index]
     else:
-        transformed["transaction_id"] = [f"TXN-{idx}" for idx in transformed.index]
+        transformed["transaction_id"] = ""
+    
+    # Reset index to avoid positional indexer errors after DataFrame creation
+    transformed = transformed.reset_index(drop=True)
+    
+    # Fill missing transaction IDs with generated ones
+    blank_ids = transformed["transaction_id"] == ""
+    num_blanks = blank_ids.sum()
+    if num_blanks > 0:
+        transformed.loc[blank_ids, "transaction_id"] = [f"TXN-{i:06d}" for i in range(num_blanks)]
+    
+    # Ensure all transaction IDs are unique by appending index
+    transformed["transaction_id"] = transformed["transaction_id"].astype(str) + "-" + transformed.index.astype(str)
 
     transformed = transformed[REQUIRED_OUTPUT_COLUMNS]
 
