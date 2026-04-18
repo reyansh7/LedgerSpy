@@ -10,6 +10,96 @@ class LedgerPreprocessor:
             'source_entity', 'destination_entity'
         ]
 
+    def calculate_readiness_score(self, df: pd.DataFrame) -> dict:
+        """
+        Calculate the audit readiness score for the raw DataFrame.
+        
+        Evaluates:
+        - Completeness: percentage of non-null values
+        - Data Quality: valid timestamps, positive amounts, non-empty entities
+        - Record Count: whether we have enough data to analyze
+        
+        Returns:
+            Dictionary with readiness_score (0-100), data_quality, completeness
+        """
+        if df.empty:
+            return {
+                "readiness_score": 0,
+                "data_quality": "Critical",
+                "completeness": "0%",
+                "message": "DataFrame is empty"
+            }
+
+        total_records = len(df)
+        
+        # Check column presence
+        missing_cols = [col for col in self.required_cols if col not in df.columns]
+        if missing_cols:
+            return {
+                "readiness_score": 0,
+                "data_quality": "Critical",
+                "completeness": "0%",
+                "message": f"Missing required columns: {missing_cols}"
+            }
+
+        # Calculate completeness (percentage of non-null values across required columns)
+        total_cells = len(self.required_cols) * total_records
+        non_null_cells = sum(df[col].notna().sum() for col in self.required_cols)
+        completeness_pct = (non_null_cells / total_cells * 100) if total_cells > 0 else 0
+
+        # Calculate data quality
+        quality_issues = 0
+        
+        # Check timestamp validity
+        try:
+            valid_timestamps = pd.to_datetime(df['timestamp'], errors='coerce').notna().sum()
+            timestamp_quality = (valid_timestamps / total_records * 100) if total_records > 0 else 0
+        except:
+            timestamp_quality = 0
+            quality_issues += 1
+
+        # Check amount validity (should be numeric and mostly positive)
+        try:
+            valid_amounts = pd.to_numeric(df['amount'], errors='coerce').notna().sum()
+            amount_quality = (valid_amounts / total_records * 100) if total_records > 0 else 0
+        except:
+            amount_quality = 0
+            quality_issues += 1
+
+        # Check entity fields are not empty
+        try:
+            valid_source = (df['source_entity'].astype(str).str.len() > 0).sum()
+            valid_dest = (df['destination_entity'].astype(str).str.len() > 0).sum()
+            entity_quality = ((valid_source + valid_dest) / (2 * total_records) * 100) if total_records > 0 else 0
+        except:
+            entity_quality = 0
+            quality_issues += 1
+
+        # Calculate overall readiness score
+        avg_quality = (timestamp_quality + amount_quality + entity_quality) / 3 if not quality_issues else 0
+        readiness_score = (completeness_pct * 0.5 + avg_quality * 0.5)
+        readiness_score = min(100, max(0, readiness_score))  # Clamp to 0-100
+
+        # Classify data quality
+        if readiness_score >= 80:
+            data_quality = "Excellent"
+        elif readiness_score >= 60:
+            data_quality = "Good"
+        elif readiness_score >= 40:
+            data_quality = "Fair"
+        else:
+            data_quality = "Poor"
+
+        return {
+            "readiness_score": round(readiness_score, 2),
+            "data_quality": data_quality,
+            "completeness": f"{round(completeness_pct, 1)}%",
+            "timestamp_validity": f"{round(timestamp_quality, 1)}%",
+            "amount_validity": f"{round(amount_quality, 1)}%",
+            "entity_validity": f"{round(entity_quality, 1)}%",
+            "total_records": total_records,
+        }
+
     def validate_and_clean(self, df: pd.DataFrame) -> pd.DataFrame:
         """Ensures the data meets the contract and handles missing values safely"""
         df = df.copy()
