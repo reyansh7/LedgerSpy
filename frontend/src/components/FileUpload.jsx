@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { MdCloudUpload } from 'react-icons/md'
 import { uploadFile } from '../services/api'
 import { AppContext } from '../context/AppContext'
 
@@ -47,23 +48,44 @@ export default function FileUpload() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/40"
+      className="glass-card slide-in"
     >
-      <label className="mb-2 block text-sm font-medium text-slate-200">Upload transaction CSV</label>
+      <label style={{ display: 'block', marginBottom: '0.75rem', fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-secondary)' }}>
+        Upload transaction CSV
+      </label>
       <input
         type="file"
         onChange={handleFileChange}
         accept=".csv"
         disabled={loading}
-        className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-200"
+        style={{
+          width: '100%',
+          padding: '10px 14px',
+          borderRadius: 'var(--radius-sm)',
+          border: '1px solid var(--border-light)',
+          backgroundColor: 'var(--bg-input)',
+          color: 'var(--text-primary)',
+          cursor: loading ? 'not-allowed' : 'pointer',
+          opacity: loading ? 0.6 : 1
+        }}
       />
-      {error && <p className="mt-3 text-sm text-rose-300">{error}</p>}
+      {error && (
+        <p style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: 'var(--accent-red)' }}>
+          {error}
+        </p>
+      )}
       <button
         type="submit"
         disabled={loading || !file}
-        className="mt-4 rounded-lg bg-cyan-400 px-4 py-2 font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-300"
+        className="btn-primary"
+        style={{
+          marginTop: '1.5rem',
+          width: '100%',
+          opacity: loading || !file ? 0.5 : 1,
+          cursor: loading || !file ? 'not-allowed' : 'pointer'
+        }}
       >
-        {loading ? 'Analyzing...' : 'Upload and Analyze'}
+        {loading ? '⏳ Analyzing...' : '📤 Upload and Analyze'}
       </button>
     </motion.form>
   )
