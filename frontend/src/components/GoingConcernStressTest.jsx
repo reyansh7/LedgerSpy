@@ -92,19 +92,19 @@ const GoingConcernStressTest = ({ data }) => {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-slate-700 p-4 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">Starting Balance</div>
-              <div className="text-xl font-bold text-white">${data.starting_balance?.toLocaleString() || 'N/A'}</div>
+              <div className="text-xl font-bold text-white">₹{data.starting_balance?.toLocaleString() || 'N/A'}</div>
             </div>
             <div className="bg-slate-700 p-4 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">Min Required Balance</div>
-              <div className="text-xl font-bold text-yellow-400">${data.min_required_balance?.toLocaleString() || 'N/A'}</div>
+              <div className="text-xl font-bold text-yellow-400">₹{data.min_required_balance?.toLocaleString() || 'N/A'}</div>
             </div>
             <div className="bg-slate-700 p-4 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">Median Ending Balance (P50)</div>
-              <div className="text-xl font-bold text-white">${data.ending_balance_stats.p50_median?.toLocaleString() || 'N/A'}</div>
+              <div className="text-xl font-bold text-white">₹{data.ending_balance_stats.p50_median?.toLocaleString() || 'N/A'}</div>
             </div>
             <div className="bg-slate-700 p-4 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">Worst Case (P5)</div>
-              <div className="text-xl font-bold text-red-400">${data.ending_balance_stats.p5?.toLocaleString() || 'N/A'}</div>
+              <div className="text-xl font-bold text-red-400">₹{data.ending_balance_stats.p5?.toLocaleString() || 'N/A'}</div>
             </div>
           </div>
 
@@ -155,7 +155,7 @@ const GoingConcernStressTest = ({ data }) => {
               <YAxis stroke="#9ca3af" />
               <Tooltip 
                 contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}
-                formatter={(value) => `$${value.toLocaleString()}`}
+                formatter={(value) => `₹${value.toLocaleString()}`}
               />
               <Legend />
               <Bar dataKey="ending" fill="#8b5cf6" name="Ending Balance" />
@@ -172,7 +172,7 @@ const GoingConcernStressTest = ({ data }) => {
             <div className="font-semibold text-green-400">✅ Safe Scenario (Best Case)</div>
             <div className="text-sm text-gray-300 mt-2">
               Company maintains healthy cash position above minimum required balance throughout forecast period.
-              Ending balance: <span className="font-semibold text-green-400">${data.ending_balance_stats.p95?.toLocaleString()}</span>
+              Ending balance: <span className="font-semibold text-green-400">₹{data.ending_balance_stats.p95?.toLocaleString()}</span>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ const GoingConcernStressTest = ({ data }) => {
             <div className="font-semibold text-yellow-400">⚠️ Median Scenario (Most Likely)</div>
             <div className="text-sm text-gray-300 mt-2">
               50% probability of achieving a better outcome, 50% of a worse outcome.
-              Ending balance: <span className="font-semibold text-yellow-400">${data.ending_balance_stats.p50_median?.toLocaleString()}</span>
+              Ending balance: <span className="font-semibold text-yellow-400">₹{data.ending_balance_stats.p50_median?.toLocaleString()}</span>
             </div>
           </div>
 
@@ -188,7 +188,7 @@ const GoingConcernStressTest = ({ data }) => {
             <div className="font-semibold text-red-400">🚨 Critical Scenario (Worst Case)</div>
             <div className="text-sm text-gray-300 mt-2">
               Represents 5th percentile - unlikely but possible severe stress scenario.
-              Ending balance: <span className="font-semibold text-red-400">${data.ending_balance_stats.p5?.toLocaleString()}</span>
+              Ending balance: <span className="font-semibold text-red-400">₹{data.ending_balance_stats.p5?.toLocaleString()}</span>
             </div>
           </div>
         </motion.div>
@@ -202,7 +202,7 @@ const GoingConcernStressTest = ({ data }) => {
               <div className="text-gray-400 text-sm mb-1 capitalize">{key.replace(/_/g, ' ')}</div>
               <div className="text-lg font-bold text-white">
                 {typeof value === 'number' ? 
-                  (key.includes('probability') ? `${value}%` : `$${value.toLocaleString()}`) 
+                  (key.includes('probability') ? `${value}%` : `₹${value.toLocaleString()}`) 
                   : value || 'N/A'}
               </div>
             </div>
