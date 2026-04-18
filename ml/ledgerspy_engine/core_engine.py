@@ -25,5 +25,14 @@ class LedgerSpyEngine:
             "benford_results": self.benford.analyze(clean_df),
             "anomalies": self.anomaly_detector.predict(features),
             "ghost_vendors": self.entity_matcher.find_ghost_vendors(clean_df['destination_entity'].tolist()),
-            "network_loops": self.risk_mapper.build_graph(clean_df) or self.risk_mapper.find_circular_loops()
+            "network_loops": self._find_network_loops(clean_df)
         }
+
+    def _find_network_loops(self, clean_df: pd.DataFrame):
+        self.risk_mapper.build_graph(clean_df)
+        try:
+            return self.risk_mapper.find_circular_loops()
+        except ValueError as exc:
+            if "Graph is empty" in str(exc):
+                return []
+            raise

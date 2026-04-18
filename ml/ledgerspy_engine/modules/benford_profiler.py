@@ -23,7 +23,8 @@ class BenfordProfiler:
         # Mathematical extraction: d = floor(10^(log10(x) - floor(log10(x))))
         # This is exponentially faster than converting floats to strings
         log10_vals = np.log10(clean_data)
-        first_digits = np.floor(10 ** (log10_vals - np.floor(log10_vals))).astype(int)
+        first_digits = np.floor(10 ** (log10_vals - np.floor(log10_vals)))
+        first_digits = np.clip(first_digits, 1, 9).astype(int)
         
         return first_digits
 

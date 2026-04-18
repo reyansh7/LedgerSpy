@@ -52,7 +52,8 @@ class LedgerPreprocessor:
         # Feature 4: Amount relative to the vendor's normal behavior (Z-Score)
         # This is how we catch a $50k invoice from a $500 vendor
         vendor_means = df.groupby('destination_entity')['amount'].transform('mean')
-        vendor_stds = df.groupby('destination_entity')['amount'].transform('std').fillna(1.0) # avoid div by zero
+        vendor_stds = df.groupby('destination_entity')['amount'].transform('std')
+        vendor_stds = vendor_stds.fillna(1.0).replace(0.0, 1.0)
         
         features['vendor_amount_zscore'] = (df['amount'] - vendor_means) / vendor_stds
         
