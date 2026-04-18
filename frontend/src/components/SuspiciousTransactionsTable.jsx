@@ -216,7 +216,16 @@ export default function SuspiciousTransactionsTable({ anomalies }) {
                           ₹{typeof row.amount === 'number' ? row.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 }) : row.amount}
                         </td>
                         <td style={tdStyle}>
-                          <RiskBadge score={row.risk_score} />
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start' }}>
+                            <RiskBadge score={row.risk_score} />
+                            <span style={{
+                              color: '#9CA3AF',
+                              fontSize: '0.75rem',
+                              fontWeight: 500,
+                            }}>
+                              {row.primary_reason || 'N/A'}
+                            </span>
+                          </div>
                         </td>
                         <td style={tdStyle}>
                           <StatusPill score={row.risk_score} />
