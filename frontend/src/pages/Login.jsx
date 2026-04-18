@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
+import { login } from '../services/api'
 
 export default function Login() {
   const [credentials, setCredentials] = useState({ username: '', password: '' })
@@ -47,13 +48,16 @@ export default function Login() {
     e.preventDefault()
     setLoading(true)
     setError(null)
-    
-    // Simulate login
-    setTimeout(() => {
-      localStorage.setItem('token', 'demo-token')
+
+    try {
+      const response = await login(credentials)
+      localStorage.setItem('token', response.data.access_token)
       navigate('/')
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Login failed')
+    } finally {
       setLoading(false)
-    }, 1500)
+    }
   }
 
   return (

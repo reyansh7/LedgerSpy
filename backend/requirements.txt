@@ -9,6 +9,7 @@ scikit-learn==1.3.2
 scipy==1.11.4
 Benford-Analysis==0.3.1
 fuzzywuzzy==0.18.0
+rapidfuzz==3.9.7
 python-Levenshtein==0.21.1
 pyarrow==14.0.1
 openpyxl==3.11.0

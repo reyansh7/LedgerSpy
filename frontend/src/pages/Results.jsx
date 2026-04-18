@@ -1,127 +1,185 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { gsap } from 'gsap'
-import { MdTrendingUp, MdWarning, MdCompareArrows, MdBarChart, MdVisibility } from 'react-icons/md'
-import PageTransition from '../components/ui/PageTransition'
-import StatCard from '../components/ui/StatCard'
-import TabBar from '../components/ui/TabBar'
-import DataTable from '../components/ui/DataTable'
-import StatusBadge from '../components/ui/StatusBadge'
-import Pagination from '../components/ui/Pagination'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import {
+  Bar,
+  BarChart,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 
-const anomaliesData = [
-  { id: 1, date: '13 Aug 2024', vendor: 'Global Solutions Ltd', amount: '₹9,85,000', riskScore: 97, type: 'Unusual Amount', status: 'High Risk' },
-  { id: 2, date: '11 Aug 2024', vendor: 'Prime Tech Services', amount: '₹7,43,300', riskScore: 85, type: 'Vendor Match', status: 'High Risk' },
-  { id: 3, date: '11 Aug 2024', vendor: 'Alpha Trading Co.', amount: '₹9,20,000', riskScore: 97, type: 'Benford Deviation', status: 'High Risk' },
-  { id: 4, date: '10 Aug 2024', vendor: 'Dynamic Supplies', amount: '₹3,13,600', riskScore: 67, type: 'Unusual Amount', status: 'Medium Risk' },
-  { id: 5, date: '05 Aug 2024', vendor: 'NextGen Industries', amount: '₹8,75,200', riskScore: 74, type: 'Vendor Match', status: 'Medium Risk' },
-  { id: 6, date: '07 Aug 2024', vendor: 'Pacific Retailers', amount: '₹2,43,000', riskScore: 43, type: 'Benford Deviation', status: 'Normal' },
-  { id: 7, date: '01 Aug 2024', vendor: 'Bright Enterprises', amount: '₹1,12,000', riskScore: 12, type: 'Normal', status: 'Normal' },
-]
+import ChartCard from '../components/ChartCard'
+import DataTable from '../components/DataTable'
+import Loader from '../components/Loader'
+import StatCard from '../components/StatCard'
+import { getAnalysisResults } from '../services/api'
+import { AppContext } from '../context/AppContext'
 
-const tabs = [
-  { key: 'anomalies', label: 'Anomalies' },
-  { key: 'benford', label: 'Benford Analysis' },
-  { key: 'vendor', label: 'Vendor Matches' },
-  { key: 'risk', label: 'Risk Overview' },
-]
+const PIE_COLORS = ['#22d3ee', '#fb7185', '#f59e0b', '#a78bfa', '#34d399']
 
 export default function Results() {
-  const [activeTab, setActiveTab] = useState('anomalies')
-  const [currentPage, setCurrentPage] = useState(1)
-  const pageRef = useRef(null)
+  const { resultsData, setResultsData } = useContext(AppContext)
+  const [searchParams] = useSearchParams()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.stats-grid .stat-card',
-        { opacity: 0, y: 40, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
-      )
-      gsap.fromTo('.tab-bar',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, delay: 0.3, ease: 'power2.out' }
-      )
-    }, pageRef)
-    return () => ctx.revert()
-  }, [])
+    const fileId = searchParams.get('fileId')
+    if (!fileId) {
+      setError('Missing file id. Upload a file first.')
+      setLoading(false)
+      return
+    }
 
-  const RiskScoreBar = ({ score }) => {
-    const color = score >= 80 ? '#EF4444' : score >= 50 ? '#F5860B' : '#22C55E'
+    if (resultsData?.file_id === fileId) {
+      setLoading(false)
+      return
+    }
+
+    const fetchResults = async () => {
+      try {
+        const response = await getAnalysisResults(fileId)
+        setResultsData(response.data)
+      } catch (error) {
+        setError(error.response?.data?.detail || 'Failed to fetch results')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchResults()
+  }, [resultsData, searchParams, setResultsData])
+
+  const results = resultsData
+
+  const benfordChartData = useMemo(() => {
+    const distribution = results?.benford?.digit_distribution || {}
+    return Object.entries(distribution).map(([digit, values]) => ({
+      digit,
+      expected: Number(values.expected_pct?.toFixed?.(2) ?? values.expected_pct ?? 0),
+      observed: Number(values.observed_pct?.toFixed?.(2) ?? values.observed_pct ?? 0),
+    }))
+  }, [results])
+
+  const riskDistributionData = useMemo(() => {
+    const scores = results?.risk_scores || []
+    const buckets = [
+      { name: 'Low (0-39)', value: 0 },
+      { name: 'Medium (40-69)', value: 0 },
+      { name: 'High (70-100)', value: 0 },
+    ]
+
+    scores.forEach((item) => {
+      const score = Number(item.risk_score || 0)
+      if (score >= 70) {
+        buckets[2].value += 1
+      } else if (score >= 40) {
+        buckets[1].value += 1
+      } else {
+        buckets[0].value += 1
+      }
+    })
+
+    return buckets
+  }, [results])
+
+  if (loading) {
     return (
-      <div className="risk-score-bar">
-        <div className="risk-score-bar__track">
-          <div className="risk-score-bar__fill" style={{ width: `${score}%`, background: color }} />
-        </div>
-        <span className="risk-score-bar__value" style={{ color }}>{score}</span>
+      <div className="p-6">
+        <Loader />
       </div>
     )
   }
 
-  const columns = [
-    { key: 'id', label: '#' },
-    { key: 'date', label: 'Date' },
-    { key: 'vendor', label: 'Vendor' },
-    { key: 'amount', label: 'Amount' },
-    { key: 'riskScore', label: 'Risk Score', render: (val) => <RiskScoreBar score={val} /> },
-    { key: 'type', label: 'Type', render: (val) => <StatusBadge status={val} /> },
-    { key: 'status', label: 'Status', render: (val) => <StatusBadge status={val} /> },
-    { key: 'action', label: 'Action', render: (_, row) => (
-      <button className="action-icon" title="View Details">
-        <MdVisibility />
-      </button>
-    )},
-  ]
+  if (error) {
+    return <div className="p-6 text-rose-300">{error}</div>
+  }
+
+  if (!results) {
+    return <div className="p-6 text-slate-300">No results found. Please upload a file first.</div>
+  }
 
   return (
-    <PageTransition>
-      <div className="page results-page" ref={pageRef}>
-        <div className="page__header">
-          <h1 className="page__title">Analysis Results</h1>
-          <p className="page__subtitle">Detailed breakdown of fraud detection analysis</p>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+      className="mx-auto w-full max-w-7xl space-y-6 p-6"
+    >
+      <header>
+        <h1 className="text-3xl font-bold text-slate-100">Fraud Analysis Results</h1>
+        <p className="mt-1 text-sm text-slate-400">File ID: {results.file_id}</p>
+      </header>
 
-        <div className="stats-grid">
-          <StatCard
-            label="Total Transactions"
-            value="128,420"
-            icon={<MdTrendingUp />}
-            color="purple"
-            change="(2.21%)"
-          />
-          <StatCard
-            label="High Risk"
-            value="2,843"
-            icon={<MdWarning />}
-            color="red"
-          />
-          <StatCard
-            label="Benford Deviation"
-            value="68.4%"
-            icon={<MdBarChart />}
-            color="orange"
-          />
-          <StatCard
-            label="Matches"
-            value="312"
-            icon={<MdCompareArrows />}
-            color="blue"
-          />
-        </div>
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <StatCard title="Total Records" value={results.summary?.total_records ?? 0} color="primary" />
+        <StatCard title="Flagged Records" value={results.summary?.flagged_records ?? 0} color="warning" />
+        <StatCard
+          title="Benford Risk"
+          value={`${results.summary?.benford_risk ?? 0}%`}
+          color="warning"
+        />
+        <StatCard
+          title="Vendor Match Alerts"
+          value={results.summary?.fuzzy_match_count ?? 0}
+          color="success"
+        />
+      </section>
 
-        <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
+      <section className="grid gap-5 xl:grid-cols-2">
+        <ChartCard title="Benford Digit Distribution" subtitle="Observed vs expected first-digit percentage">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={benfordChartData}>
+              <XAxis dataKey="digit" stroke="#94a3b8" />
+              <YAxis stroke="#94a3b8" />
+              <Tooltip />
+              <Bar dataKey="expected" fill="#0ea5e9" name="Expected %" />
+              <Bar dataKey="observed" fill="#14b8a6" name="Observed %" />
+            </BarChart>
+          </ResponsiveContainer>
+        </ChartCard>
 
-        <div className="results-page__table-section">
-          <DataTable
-            columns={columns}
-            data={anomaliesData}
-            footer={
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <span>Showing 1 to 7 of 127 results</span>
-                <Pagination currentPage={currentPage} totalPages={19} onPageChange={setCurrentPage} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </PageTransition>
+        <ChartCard title="Risk Score Distribution" subtitle="Low, medium, and high-risk transaction buckets">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie data={riskDistributionData} dataKey="value" nameKey="name" outerRadius={85} label>
+                {riskDistributionData.map((entry, idx) => (
+                  <Cell key={entry.name} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </ChartCard>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-slate-100">Potential Ghost Vendor Matches</h2>
+        {results.fuzzy_matches?.length ? (
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {results.fuzzy_matches.slice(0, 9).map((match, idx) => (
+              <article key={`${match.vendor_1}-${match.vendor_2}-${idx}`} className="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+                <p className="text-sm text-slate-300">{match.vendor_1}</p>
+                <p className="text-sm text-slate-300">{match.vendor_2}</p>
+                <p className="mt-2 text-xs uppercase tracking-wide text-cyan-300">Similarity: {match.risk_score}%</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm text-slate-300">
+            No suspicious vendor similarities found.
+          </p>
+        )}
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-slate-100">Transaction Risk Table</h2>
+        <DataTable rows={results.transactions || []} />
+      </section>
+    </motion.div>
   )
 }
