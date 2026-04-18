@@ -2,64 +2,85 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
+
 class LedgerPreprocessor:
     def __init__(self):
-        # The strict contract we expect from the Backend Developer
         self.required_cols = [
-            'transaction_id', 'timestamp', 'amount', 
+            'transaction_id', 'timestamp', 'amount',
             'source_entity', 'destination_entity'
         ]
+        self.scaler = None  # stored so anomaly module can inverse later
+
+    def calculate_readiness_score(self, df: pd.DataFrame) -> dict:
+        """Run this on RAW data before cleaning."""
+        total_rows = len(df)
+        if total_rows == 0:
+            return {
+                "readiness_score": 0,
+                "status": "Empty File",
+                "metrics": {"completeness": 0, "validity": 0, "uniqueness": 0},
+                "issues": ["File is empty."]
+            }
+
+        completeness = 1 - (
+            df[self.required_cols].isnull().sum().sum()
+            / (total_rows * len(self.required_cols))
+        )
+        uniqueness_ratio = df['transaction_id'].nunique() / total_rows
+        valid_amounts = pd.to_numeric(df['amount'], errors='coerce').notnull().sum()
+        validity_score = valid_amounts / total_rows
+
+        final_score = (completeness * 0.4) + (validity_score * 0.4) + (uniqueness_ratio * 0.2)
+
+        return {
+            "readiness_score": round(final_score * 100, 2),
+            "metrics": {
+                "completeness": round(completeness * 100, 2),
+                "validity": round(validity_score * 100, 2),
+                "uniqueness": round(uniqueness_ratio * 100, 2)
+            },
+            "issues": self._generate_issue_list(df)  # raw df, issues are real
+        }
 
     def validate_and_clean(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Ensures the data meets the contract and handles missing values safely"""
+        """Run this AFTER readiness score, before ML modules."""
         df = df.copy()
-        
-        # 1. Schema Validation
-        missing_cols = [col for col in self.required_cols if col not in df.columns]
-        if missing_cols:
-            raise ValueError(f"Backend Error: Missing required columns: {missing_cols}")
+        for col in ['source_entity', 'destination_entity', 'transaction_id']:
+            df[col] = df[col].fillna("UNKNOWN").astype(str).str.strip()
 
-        # 2. Safe Missing Value Handling
-        # Fill missing text with "UNKNOWN" so RapidFuzz doesn't crash on NaNs
-        text_cols = ['source_entity', 'destination_entity', 'transaction_id']
-        for col in text_cols:
-            df[col] = df[col].fillna("UNKNOWN").astype(str)
-
-        # Fill missing amounts with 0.0
         df['amount'] = pd.to_numeric(df['amount'], errors='coerce').fillna(0.0)
-
-        # 3. Standardize Timestamp
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
-        # Drop rows where the timestamp is completely unreadable
-        df = df.dropna(subset=['timestamp']) 
 
-        return df
+        dropped = df['timestamp'].isnull().sum()
+        if dropped > 0:
+            print(f"[LedgerPreprocessor] Warning: dropped {dropped} row(s) with invalid timestamps.")
+
+        return df.dropna(subset=['timestamp']).reset_index(drop=True)
+
+    def _generate_issue_list(self, df: pd.DataFrame) -> list:
+        """Expects RAW dataframe."""
+        issues = []
+        null_amounts = pd.to_numeric(df['amount'], errors='coerce').isnull().sum()
+        if null_amounts > 0:
+            issues.append(f"{null_amounts} null or invalid value(s) in Amount column.")
+        if df['transaction_id'].duplicated().any():
+            issues.append(f"{df['transaction_id'].duplicated().sum()} duplicate Transaction ID(s) detected.")
+        bad_timestamps = pd.to_datetime(df['timestamp'], errors='coerce').isnull().sum()
+        if bad_timestamps > 0:
+            issues.append(f"{bad_timestamps} row(s) have unparseable timestamps and will be dropped.")
+        return issues
 
     def engineer_anomaly_features(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Transforms raw ledger rows into the mathematical features 
-        required by the Isolation Forest.
-        """
+        """Expects CLEANED dataframe from validate_and_clean."""
         features = pd.DataFrame(index=df.index)
-        
-        # Feature 1: The Amount itself
         features['amount'] = df['amount']
-        
-        # Feature 2 & 3: Time-based risk (Fraud often happens at weird hours/days)
         features['hour_of_day'] = df['timestamp'].dt.hour
         features['day_of_week'] = df['timestamp'].dt.dayofweek
-        
-        # Feature 4: Amount relative to the vendor's normal behavior (Z-Score)
-        # This is how we catch a $50k invoice from a $500 vendor
+
         vendor_means = df.groupby('destination_entity')['amount'].transform('mean')
-        vendor_stds = df.groupby('destination_entity')['amount'].transform('std')
-        vendor_stds = vendor_stds.fillna(1.0).replace(0.0, 1.0)
-        
+        vendor_stds = df.groupby('destination_entity')['amount'].transform('std').fillna(1.0)
         features['vendor_amount_zscore'] = (df['amount'] - vendor_means) / vendor_stds
-        
-        # Scale the features so the Isolation Forest treats them equally
-        scaler = StandardScaler()
-        scaled_array = scaler.fit_transform(features.fillna(0))
-        
-        # Return as a clean DataFrame with the same column names
-        return pd.DataFrame(scaled_array, columns=features.columns, index=features.index)
+
+        self.scaler = StandardScaler()
+        scaled = self.scaler.fit_transform(features.fillna(0))
+        return pd.DataFrame(scaled, columns=features.columns, index=df.index)
