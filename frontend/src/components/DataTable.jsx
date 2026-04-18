@@ -87,6 +87,7 @@ export default function DataTable({ rows }) {
                 )}
               </button>
             </th>
+            <th className="px-5 py-4 text-left font-semibold">Primary Flag Reason</th>
             <th className="px-5 py-4 text-left font-semibold">Explanation</th>
           </tr>
         </thead>
@@ -113,6 +114,9 @@ export default function DataTable({ rows }) {
               </td>
               <td className="px-5 py-4">
                 <RiskBadge score={row.risk_score} />
+              </td>
+              <td className="px-5 py-4 text-slate-300 text-xs max-w-xs truncate group-hover:text-slate-200" title={row.primary_reason}>
+                {row.primary_reason || 'N/A'}
               </td>
               <td className="px-5 py-4 text-slate-400 text-xs max-w-md truncate group-hover:text-slate-200" title={row.explanation?.join(' ')}>
                 {row.explanation?.join(' ') || 'N/A'}
