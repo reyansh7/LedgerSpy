@@ -108,78 +108,164 @@ export default function Results() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="mx-auto w-full max-w-7xl space-y-6 p-6"
+      className="mx-auto w-full max-w-7xl space-y-8 p-6"
     >
-      <header>
-        <h1 className="text-3xl font-bold text-slate-100">Fraud Analysis Results</h1>
-        <p className="mt-1 text-sm text-slate-400">File ID: {results.file_id}</p>
-      </header>
+      {/* Header Section */}
+      <div className="space-y-2 border-b border-slate-800 pb-6">
+        <motion.h1
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl font-bold text-slate-50"
+        >
+          Fraud Analysis Results
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.15 }}
+          className="text-sm font-mono text-slate-400"
+        >
+          File ID: <span className="text-cyan-400">{results.file_id}</span>
+        </motion.p>
+      </div>
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {/* Stats Grid */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
+      >
         <StatCard title="Total Records" value={results.summary?.total_records ?? 0} color="primary" />
         <StatCard title="Flagged Records" value={results.summary?.flagged_records ?? 0} color="warning" />
         <StatCard
           title="Benford Risk"
           value={`${results.summary?.benford_risk ?? 0}%`}
-          color="warning"
+          color="danger"
         />
         <StatCard
           title="Vendor Match Alerts"
           value={results.summary?.fuzzy_match_count ?? 0}
           color="success"
         />
-      </section>
+      </motion.section>
 
-      <section className="grid gap-5 xl:grid-cols-2">
-        <ChartCard title="Benford Digit Distribution" subtitle="Observed vs expected first-digit percentage">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={benfordChartData}>
-              <XAxis dataKey="digit" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
-              <Tooltip />
-              <Bar dataKey="expected" fill="#0ea5e9" name="Expected %" />
-              <Bar dataKey="observed" fill="#14b8a6" name="Observed %" />
-            </BarChart>
-          </ResponsiveContainer>
-        </ChartCard>
+      {/* Charts Grid */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="grid gap-6 xl:grid-cols-2"
+      >
+        <div className="glass-card rounded-2xl border border-slate-800/50 bg-gradient-to-br from-slate-900/50 to-slate-800/20 p-6 backdrop-blur-xl transition-all hover:border-slate-700/80">
+          <header className="mb-6 space-y-1">
+            <h3 className="text-lg font-semibold tracking-tight text-slate-50">Benford Digit Distribution</h3>
+            <p className="text-sm text-slate-400">Observed vs expected first-digit percentage</p>
+          </header>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={benfordChartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                <XAxis dataKey="digit" stroke="#64748b" />
+                <YAxis stroke="#64748b" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#1e293b',
+                    border: '1px solid #475569',
+                    borderRadius: '8px',
+                  }}
+                />
+                <Bar dataKey="expected" fill="#0ea5e9" name="Expected %" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="observed" fill="#14b8a6" name="Observed %" radius={[8, 8, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-        <ChartCard title="Risk Score Distribution" subtitle="Low, medium, and high-risk transaction buckets">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie data={riskDistributionData} dataKey="value" nameKey="name" outerRadius={85} label>
-                {riskDistributionData.map((entry, idx) => (
-                  <Cell key={entry.name} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </ChartCard>
-      </section>
+        <div className="glass-card rounded-2xl border border-slate-800/50 bg-gradient-to-br from-slate-900/50 to-slate-800/20 p-6 backdrop-blur-xl transition-all hover:border-slate-700/80">
+          <header className="mb-6 space-y-1">
+            <h3 className="text-lg font-semibold tracking-tight text-slate-50">Risk Score Distribution</h3>
+            <p className="text-sm text-slate-400">Low, medium, and high-risk transaction buckets</p>
+          </header>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={riskDistributionData} dataKey="value" nameKey="name" outerRadius={100} label={{ fill: '#94a3b8', fontSize: 12 }}>
+                  {riskDistributionData.map((entry, idx) => (
+                    <Cell key={entry.name} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#1e293b',
+                    border: '1px solid #475569',
+                    borderRadius: '8px',
+                  }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </motion.section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-slate-100">Potential Ghost Vendor Matches</h2>
+      {/* Ghost Vendor Matches */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="space-y-4"
+      >
+        <div className="space-y-1 border-b border-slate-800 pb-4">
+          <h2 className="text-2xl font-bold text-slate-50">Potential Ghost Vendor Matches</h2>
+          <p className="text-sm text-slate-400">Vendors with high similarity scores detected</p>
+        </div>
         {results.fuzzy_matches?.length ? (
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {results.fuzzy_matches.slice(0, 9).map((match, idx) => (
-              <article key={`${match.vendor_1}-${match.vendor_2}-${idx}`} className="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
-                <p className="text-sm text-slate-300">{match.vendor_1}</p>
-                <p className="text-sm text-slate-300">{match.vendor_2}</p>
-                <p className="mt-2 text-xs uppercase tracking-wide text-cyan-300">Similarity: {match.risk_score}%</p>
-              </article>
+              <motion.article
+                key={`${match.vendor_1}-${match.vendor_2}-${idx}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + idx * 0.05 }}
+                className="group rounded-xl border border-slate-800/50 bg-gradient-to-br from-slate-900/40 to-slate-800/20 p-5 transition-all hover:border-cyan-500/30 hover:bg-slate-900/60"
+              >
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Vendor 1</p>
+                    <p className="mt-1 text-sm font-medium text-slate-100 line-clamp-2">{match.vendor_1}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Vendor 2</p>
+                    <p className="mt-1 text-sm font-medium text-slate-100 line-clamp-2">{match.vendor_2}</p>
+                  </div>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-800/30 px-3 py-2">
+                    <span className="text-xs text-slate-400">Similarity</span>
+                    <span className="font-semibold text-cyan-400">{match.risk_score}%</span>
+                  </div>
+                </div>
+              </motion.article>
             ))}
           </div>
         ) : (
-          <p className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm text-slate-300">
-            No suspicious vendor similarities found.
-          </p>
+          <div className="rounded-xl border border-slate-800/50 bg-gradient-to-br from-slate-900/40 to-slate-800/20 p-6 text-center">
+            <p className="text-sm text-slate-400">✓ No suspicious vendor similarities found.</p>
+          </div>
         )}
-      </section>
+      </motion.section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-slate-100">Transaction Risk Table</h2>
+      {/* Transaction Risk Table */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="space-y-4"
+      >
+        <div className="space-y-1 border-b border-slate-800 pb-4">
+          <h2 className="text-2xl font-bold text-slate-50">Transaction Risk Analysis</h2>
+          <p className="text-sm text-slate-400">Detailed breakdown of all transactions</p>
+        </div>
         <DataTable rows={results.transactions || []} />
-      </section>
+      </motion.section>
     </motion.div>
   )
 }
