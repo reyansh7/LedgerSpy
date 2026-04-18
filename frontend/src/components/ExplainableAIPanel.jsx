@@ -160,7 +160,7 @@ export default function ExplainableAIPanel({ anomalies }) {
             overflowY: 'auto',
             paddingRight: '4px',
           }}>
-            {anomalies.slice(0, 10).map((item, idx) => {
+            {anomalies.map((item, idx) => {
               const isActive = selectedIdx === idx
               const riskColor = item.risk_score >= 80 ? '#ef4444' : item.risk_score >= 60 ? '#f59e0b' : '#3b82f6'
               return (
@@ -347,6 +347,38 @@ export default function ExplainableAIPanel({ anomalies }) {
                     </div>
                   )
                 })()}
+
+                {/* Primary Reason for Flagging */}
+                {selected.primary_reason && (
+                  <div style={{
+                    padding: '14px 16px',
+                    borderRadius: '12px',
+                    background: 'rgba(139, 92, 246, 0.06)',
+                    border: '1px solid rgba(139, 92, 246, 0.15)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                  }}>
+                    <p style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      color: '#a78bfa',
+                      margin: 0,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                    }}>
+                      📊 Primary Flagging Reason
+                    </p>
+                    <p style={{
+                      fontSize: '0.85rem',
+                      color: '#d1d5db',
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}>
+                      {selected.primary_reason}
+                    </p>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
