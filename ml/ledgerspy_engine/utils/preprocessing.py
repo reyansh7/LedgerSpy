@@ -1,18 +1,100 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# Column name mappings - Accept common variations
+COLUMN_MAPPINGS = {
+    'transaction_id': [
+        'transaction_id', 'txn_id', 'tx_id', 'id', 'transaction', 'ref', 'reference',
+        'Transaction ID', 'TXN ID', 'Txn_Id', 'Transaction_ID'
+    ],
+    'timestamp': [
+        'timestamp', 'date', 'created_at', 'transaction_date', 'txn_date', 'date_time',
+        'posted_date', 'posting_date', 'entry_date', 'Date', 'Timestamp', 'Created_At',
+        'Transaction_Date', 'Posted_Date', 'datetime', 'DateTime'
+    ],
+    'amount': [
+        'amount', 'value', 'transaction_amount', 'txn_amount', 'sum', 'total',
+        'price', 'qty', 'quantity_amount', 'Amount', 'Value', 'Transaction_Amount'
+    ],
+    'source_entity': [
+        'source_entity', 'source', 'from_entity', 'from', 'sender', 'payer',
+        'from_account', 'account', 'Source', 'Source_Entity', 'From', 'Sender'
+    ],
+    'destination_entity': [
+        'destination_entity', 'destination', 'vendor', 'payee', 'to_entity', 'to',
+        'recipient', 'to_account', 'counterparty', 'party', 'company', 'business',
+        'Destination', 'Vendor', 'Payee', 'To', 'Recipient', 'Destination_Entity'
+    ]
+}
+
+
+def normalize_column_names(df: pd.DataFrame, mapping: dict = None) -> pd.DataFrame:
+    """
+    Normalize DataFrame column names to standard format.
+    Accepts common variations (case-insensitive, underscores, hyphens, etc.)
+    
+    Args:
+        df: DataFrame with potentially non-standard column names
+        mapping: Optional custom mapping dict
+        
+    Returns:
+        DataFrame with normalized column names
+    """
+    if mapping is None:
+        mapping = COLUMN_MAPPINGS
+    
+    df = df.copy()
+    df_cols_lower = {col.lower(): col for col in df.columns}  # Original name lookup
+    
+    renamed_cols = {}
+    for standard_name, aliases in mapping.items():
+        # Try to find a match in the DataFrame
+        for alias in aliases:
+            alias_lower = alias.lower().replace('_', '').replace('-', '')
+            
+            # Check exact match (case-insensitive)
+            for col_lower, col_original in df_cols_lower.items():
+                col_normalized = col_lower.replace('_', '').replace('-', '')
+                
+                if col_normalized == alias_lower:
+                    renamed_cols[col_original] = standard_name
+                    logger.info(f"Mapped '{col_original}' → '{standard_name}'")
+                    break
+            
+            if standard_name in renamed_cols.values():
+                break
+    
+    # Apply renaming
+    if renamed_cols:
+        df = df.rename(columns=renamed_cols)
+    
+    return df
+
 
 class LedgerPreprocessor:
-    def __init__(self):
-        # The strict contract we expect from the Backend Developer
+    def __init__(self, auto_normalize=True):
+        """
+        Initialize preprocessor.
+        
+        Args:
+            auto_normalize: If True, automatically normalize column names
+        """
         self.required_cols = [
             'transaction_id', 'timestamp', 'amount', 
             'source_entity', 'destination_entity'
         ]
+        self.auto_normalize = auto_normalize
+        self.column_mapping_report = {}
 
     def calculate_readiness_score(self, df: pd.DataFrame) -> dict:
         """
         Calculate the audit readiness score for the raw DataFrame.
+        Auto-normalizes column names if enabled.
         
         Evaluates:
         - Completeness: percentage of non-null values
@@ -30,16 +112,24 @@ class LedgerPreprocessor:
                 "message": "DataFrame is empty"
             }
 
+        # Auto-normalize column names if enabled
+        if self.auto_normalize:
+            df = normalize_column_names(df)
+            self.column_mapping_report = {col: col for col in df.columns}
+
         total_records = len(df)
         
         # Check column presence
         missing_cols = [col for col in self.required_cols if col not in df.columns]
         if missing_cols:
+            available_cols = list(df.columns)
             return {
                 "readiness_score": 0,
                 "data_quality": "Critical",
                 "completeness": "0%",
-                "message": f"Missing required columns: {missing_cols}"
+                "message": f"Missing required columns: {missing_cols}",
+                "available_columns": available_cols,
+                "hint": "Try renaming your columns to match: " + ", ".join(self.required_cols)
             }
 
         # Calculate completeness (percentage of non-null values across required columns)
@@ -101,15 +191,27 @@ class LedgerPreprocessor:
         }
 
     def validate_and_clean(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Ensures the data meets the contract and handles missing values safely"""
+        """
+        Ensures the data meets the contract and handles missing values safely.
+        Auto-normalizes column names if enabled.
+        """
         df = df.copy()
         
-        # 1. Schema Validation
+        # 1. Auto-normalize column names if enabled
+        if self.auto_normalize:
+            df = normalize_column_names(df)
+        
+        # 2. Schema Validation
         missing_cols = [col for col in self.required_cols if col not in df.columns]
         if missing_cols:
-            raise ValueError(f"Backend Error: Missing required columns: {missing_cols}")
+            available = list(df.columns)
+            raise ValueError(
+                f"Missing required columns: {missing_cols}. "
+                f"Available columns: {available}. "
+                f"Expected: {self.required_cols}"
+            )
 
-        # 2. Safe Missing Value Handling
+        # 3. Safe Missing Value Handling
         # Fill missing text with "UNKNOWN" so RapidFuzz doesn't crash on NaNs
         text_cols = ['source_entity', 'destination_entity', 'transaction_id']
         for col in text_cols:
@@ -118,7 +220,7 @@ class LedgerPreprocessor:
         # Fill missing amounts with 0.0
         df['amount'] = pd.to_numeric(df['amount'], errors='coerce').fillna(0.0)
 
-        # 3. Standardize Timestamp
+        # 4. Standardize Timestamp
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
         # Drop rows where the timestamp is completely unreadable
         df = df.dropna(subset=['timestamp']) 
