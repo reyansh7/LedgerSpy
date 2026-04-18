@@ -28,10 +28,15 @@ class BenfordProfiler:
         
         return first_digits
 
-    def analyze(self, df: pd.DataFrame, amount_column: str = 'amount'):
+    def analyze(self, df: pd.DataFrame, amount_column: str = 'amount', weighted: bool = True):
         """
         Analyzes a dataset against Benford's Law.
-        Expects a Pandas DataFrame.
+        Can weight by transaction amount (more realistic for fraud detection).
+        
+        Args:
+            df: Pandas DataFrame with transaction data
+            amount_column: Column to analyze
+            weighted: If True, weight distribution by transaction amount
         """
         if amount_column not in df.columns:
             raise ValueError(f"Column '{amount_column}' not found in dataframe.")
@@ -41,36 +46,125 @@ class BenfordProfiler:
         if len(first_digits) == 0:
             return {"error": "No valid numerical data to analyze."}
 
-        # Calculate observed frequencies
         total_count = len(first_digits)
+        
+        # ===== WEIGHTED ANALYSIS =====
+        if weighted:
+            # Get the amounts corresponding to each first digit
+            first_digit_series = pd.Series(first_digits)
+            amounts_series = df[amount_column].iloc[first_digit_series.index]
+            
+            # Create weighted distribution
+            weighted_amount_by_digit = {}
+            for digit in range(1, 10):
+                mask = first_digit_series == digit
+                if mask.sum() > 0:
+                    weighted_amount_by_digit[digit] = amounts_series[mask].sum()
+                else:
+                    weighted_amount_by_digit[digit] = 0
+            
+            total_weighted = sum(weighted_amount_by_digit.values())
+            observed_counts_weighted = {
+                digit: weighted_amount_by_digit[digit] / total_weighted if total_weighted > 0 else 0
+                for digit in range(1, 10)
+            }
+        
+        # ===== UNWEIGHTED ANALYSIS =====
         observed_counts = first_digits.value_counts().to_dict()
         
         chi_square = 0
         distribution_comparison = {}
+        anomaly_patterns = []
 
         # Calculate Chi-Square and build comparison payload for the frontend
         for digit in range(1, 10):
             expected_pct = self.expected_dist[digit]
             expected_count = expected_pct * total_count
-            observed_count = observed_counts.get(digit, 0)
             
-            # Prevent division by zero if dataset is bizarrely small
-            if expected_count > 0:
-                chi_square += ((observed_count - expected_count) ** 2) / expected_count
+            if weighted:
+                observed_pct = observed_counts_weighted.get(digit, 0)
+            else:
+                observed_count = observed_counts.get(digit, 0)
+                observed_pct = (observed_count / total_count) * 100 if total_count > 0 else 0
+                observed_count_for_chi = observed_count
+            
+            if not weighted:
+                # Prevent division by zero if dataset is bizarrely small
+                if expected_count > 0:
+                    chi_square += ((observed_count_for_chi - expected_count) ** 2) / expected_count
+            else:
+                observed_pct_for_chi = observed_pct * 100
+                if expected_pct > 0:
+                    chi_square += ((observed_pct_for_chi - (expected_pct * 100)) ** 2) / (expected_pct * 100)
+            
+            expected_pct_display = expected_pct * 100
+            observed_pct_display = observed_pct * 100 if weighted else (
+                (observed_counts.get(digit, 0) / total_count * 100) if total_count > 0 else 0
+            )
             
             distribution_comparison[digit] = {
-                "expected_pct": expected_pct * 100,
-                "observed_pct": (observed_count / total_count) * 100 if total_count > 0 else 0
+                "expected_pct": expected_pct_display,
+                "observed_pct": observed_pct_display,
+                "deviation": abs(observed_pct_display - expected_pct_display)
             }
+            
+            # ===== PATTERN DETECTION =====
+            # Flag suspiciously LOW or HIGH first digits
+            if observed_pct_display < expected_pct_display * 0.5:  # Significantly under-represented
+                anomaly_patterns.append({
+                    'digit': digit,
+                    'pattern': 'UNDER_REPRESENTED',
+                    'reason': f'Digit {digit} appears {observed_pct_display:.1f}% vs expected {expected_pct_display:.1f}%',
+                    'fraud_risk': 'HIGH'  # Under-representation suggests artificial data
+                })
+            elif observed_pct_display > expected_pct_display * 1.5:  # Over-represented
+                anomaly_patterns.append({
+                    'digit': digit,
+                    'pattern': 'OVER_REPRESENTED',
+                    'reason': f'Digit {digit} appears {observed_pct_display:.1f}% vs expected {expected_pct_display:.1f}%',
+                    'fraud_risk': 'MEDIUM'  # Could indicate rounding
+                })
 
         # Calculate p-value
         p_value = 1 - chi2.cdf(chi_square, 8)
         
         # Return a clean JSON-ready dictionary for the API/Frontend
-        return {
+        result = {
             "is_compliant": bool(chi_square < self.threshold),
             "chi_square_stat": float(chi_square),
             "p_value": float(p_value),
             "total_analyzed": int(total_count),
-            "digit_distribution": distribution_comparison
+            "digit_distribution": distribution_comparison,
+            "anomaly_patterns": anomaly_patterns,
+            "weighted_analysis": weighted,
+            "compliance_confidence": float(max(0, min(100, 100 * (1 - p_value))))  # 0-100% confidence
         }
+        
+        return result
+    
+    def analyze_multiple_fields(self, df: pd.DataFrame, amount_fields: list = None):
+        """
+        Analyze Benford's Law across multiple numerical fields.
+        Useful for comprehensive fraud detection.
+        
+        Args:
+            df: Pandas DataFrame
+            amount_fields: List of column names to analyze (or None for all numeric columns)
+        
+        Returns:
+            Dictionary mapping field names to analysis results
+        """
+        if amount_fields is None:
+            amount_fields = df.select_dtypes(include=[np.number]).columns.tolist()
+            # Remove obvious non-amount fields
+            amount_fields = [f for f in amount_fields if f not in ['id', 'count', 'index']]
+        
+        results = {}
+        for field in amount_fields:
+            if field in df.columns:
+                try:
+                    results[field] = self.analyze(df, field, weighted=True)
+                except Exception as e:
+                    results[field] = {"error": str(e)}
+        
+        return results

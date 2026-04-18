@@ -127,29 +127,87 @@ class LedgerPreprocessor:
 
     def engineer_anomaly_features(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Transforms raw ledger rows into the mathematical features 
-        required by the Isolation Forest.
+        Transforms raw ledger rows into enhanced features for anomaly detection.
+        Includes temporal, statistical, behavioral, and velocity-based features.
         """
         features = pd.DataFrame(index=df.index)
         
-        # Feature 1: The Amount itself
-        features['amount'] = df['amount']
+        # ===== BASIC FEATURES =====
+        # Feature 1: The Amount itself (log-transformed to reduce skew)
+        features['log_amount'] = np.log1p(df['amount'])
+        features['amount_raw'] = df['amount']
         
-        # Feature 2 & 3: Time-based risk (Fraud often happens at weird hours/days)
+        # ===== TEMPORAL FEATURES =====
+        # Feature 2-5: Time-based risk (Fraud often happens at odd times)
         features['hour_of_day'] = df['timestamp'].dt.hour
         features['day_of_week'] = df['timestamp'].dt.dayofweek
+        features['day_of_month'] = df['timestamp'].dt.day
+        features['is_weekend'] = df['timestamp'].dt.dayofweek.isin([5, 6]).astype(int)
         
-        # Feature 4: Amount relative to the vendor's normal behavior (Z-Score)
-        # This is how we catch a $50k invoice from a $500 vendor
+        # ===== VENDOR BEHAVIORAL FEATURES =====
+        # Feature 6: Amount relative to vendor's normal behavior (Z-Score)
+        # This catches a $50k invoice from a $500 vendor
         vendor_means = df.groupby('destination_entity')['amount'].transform('mean')
         vendor_stds = df.groupby('destination_entity')['amount'].transform('std')
         vendor_stds = vendor_stds.fillna(1.0).replace(0.0, 1.0)
-        
         features['vendor_amount_zscore'] = (df['amount'] - vendor_means) / vendor_stds
         
-        # Scale the features so the Isolation Forest treats them equally
+        # Feature 7: Vendor transaction frequency (how often do we use this vendor?)
+        vendor_txn_count = df.groupby('destination_entity').size()
+        features['vendor_frequency'] = df['destination_entity'].map(vendor_txn_count).fillna(1)
+        
+        # Feature 8: Deviation from vendor's typical hourly pattern
+        vendor_hour_pattern = df.groupby(['destination_entity', df['timestamp'].dt.hour]).size()
+        hourly_avg = df.groupby(df['timestamp'].dt.hour).size().mean()
+        features['vendor_hour_deviation'] = df.apply(
+            lambda row: 1.0 if row['destination_entity'] not in vendor_means.index 
+            else min(vendor_hour_pattern.get((row['destination_entity'], row['timestamp'].hour), 0) / max(hourly_avg, 1), 10),
+            axis=1
+        )
+        
+        # ===== VELOCITY FEATURES =====
+        # Feature 9: Transaction velocity (how many txns from this source in last 1 hour?)
+        df_sorted = df.sort_values('timestamp').copy()
+        velocity_list = []
+        for idx, row in df_sorted.iterrows():
+            recent_txns = df_sorted[
+                (df_sorted['source_entity'] == row['source_entity']) &
+                (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(1, 'h')) &
+                (df_sorted['timestamp'] <= row['timestamp'])
+            ]
+            velocity_list.append(len(recent_txns))
+        features['source_velocity_1h'] = velocity_list
+        
+        # Feature 10: Amount velocity (total $ from source in last 24h)
+        amount_velocity_list = []
+        for idx, row in df_sorted.iterrows():
+            recent_amount = df_sorted[
+                (df_sorted['source_entity'] == row['source_entity']) &
+                (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(24, 'h')) &
+                (df_sorted['timestamp'] <= row['timestamp'])
+            ]['amount'].sum()
+            amount_velocity_list.append(recent_amount)
+        features['amount_velocity_24h'] = amount_velocity_list
+        
+        # ===== STATISTICAL FEATURES =====
+        # Feature 11: Percentile of this amount within vendor's distribution
+        def amount_percentile(row):
+            vendor_amounts = df[df['destination_entity'] == row['destination_entity']]['amount']
+            if len(vendor_amounts) > 0:
+                return (vendor_amounts <= row['amount']).sum() / len(vendor_amounts) * 100
+            return 50
+        features['amount_percentile'] = df.apply(amount_percentile, axis=1)
+        
+        # Feature 12: Unusual entity pair (Source->Destination combo frequency)
+        entity_pair_count = df.groupby(['source_entity', 'destination_entity']).size()
+        features['entity_pair_frequency'] = df.apply(
+            lambda row: entity_pair_count.get((row['source_entity'], row['destination_entity']), 1),
+            axis=1
+        )
+        
+        # ===== NORMALIZE =====
+        # Scale features so Isolation Forest treats them equally
         scaler = StandardScaler()
         scaled_array = scaler.fit_transform(features.fillna(0))
         
-        # Return as a clean DataFrame with the same column names
         return pd.DataFrame(scaled_array, columns=features.columns, index=features.index)
