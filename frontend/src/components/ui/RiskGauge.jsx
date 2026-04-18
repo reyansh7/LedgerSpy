@@ -10,16 +10,14 @@ export default function RiskGauge({ score = 0, size = 160, strokeWidth = 10 }) {
   const dashOffset = circumference - fillAmount
 
   const getColor = (score) => {
-    if (score >= 80) return '#EF4444'
-    if (score >= 60) return '#F5860B'
-    if (score >= 40) return '#EAB308'
+    if (score >= 70) return '#EF4444'
+    if (score >= 40) return '#F5860B'
     return '#22C55E'
   }
 
   const getLabel = (score) => {
-    if (score >= 80) return 'High Risk'
-    if (score >= 60) return 'Medium Risk'
-    if (score >= 40) return 'Moderate'
+    if (score >= 70) return 'High Risk'
+    if (score >= 40) return 'Medium Risk'
     return 'Low Risk'
   }
 

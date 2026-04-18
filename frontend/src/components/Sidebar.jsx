@@ -1,14 +1,40 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { MdDashboard, MdCloudUpload, MdAssignment, MdLogout } from 'react-icons/md'
 
 export default function Sidebar() {
+  const location = useLocation()
+  
+  const navItems = [
+    { path: '/', label: 'Dashboard', icon: MdDashboard },
+    { path: '/upload', label: 'Upload File', icon: MdCloudUpload },
+    { path: '/results', label: 'Results', icon: MdAssignment }
+  ]
+  
   return (
-    <aside className="hidden w-64 border-r border-slate-800 bg-slate-950/60 p-4 lg:block">
-      <nav className="flex flex-col gap-2">
-        <Link to="/" className="rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-slate-100">Dashboard</Link>
-        <Link to="/upload" className="rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-slate-100">Upload File</Link>
-        <Link to="/results" className="rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-slate-100">Results</Link>
+    <aside className="sidebar">
+      <div className="sidebar__brand">
+        <div className="sidebar__logo">LS</div>
+        <span className="sidebar__brand-text">LedgerSpy</span>
+      </div>
+      <nav className="sidebar__nav">
+        {navItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`sidebar__link ${location.pathname === item.path ? 'sidebar__link--active' : ''}`}
+          >
+            <item.icon className="sidebar__link-icon" />
+            <span className="sidebar__link-label">{item.label}</span>
+          </Link>
+        ))}
       </nav>
+      <div className="sidebar__footer">
+        <button className="sidebar__link">
+          <MdLogout className="sidebar__link-icon" />
+          <span className="sidebar__link-label">Logout</span>
+        </button>
+      </div>
     </aside>
   )
 }
