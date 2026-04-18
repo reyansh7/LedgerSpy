@@ -269,27 +269,31 @@ class LedgerPreprocessor:
         
         # ===== VELOCITY FEATURES =====
         # Feature 9: Transaction velocity (how many txns from this source in last 1 hour?)
-        df_sorted = df.sort_values('timestamp').copy()
-        velocity_list = []
-        for idx, row in df_sorted.iterrows():
+        # Sort by timestamp while preserving original indices for correct assignment
+        df_sorted_idx = df.sort_values('timestamp').index
+        df_sorted = df.loc[df_sorted_idx]
+        velocity_dict = {}
+        for orig_idx, row in df_sorted.iterrows():
             recent_txns = df_sorted[
                 (df_sorted['source_entity'] == row['source_entity']) &
                 (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(1, 'h')) &
                 (df_sorted['timestamp'] <= row['timestamp'])
             ]
-            velocity_list.append(len(recent_txns))
-        features['source_velocity_1h'] = velocity_list
+            velocity_dict[orig_idx] = len(recent_txns)
+        # Map velocities back to original df order
+        features['source_velocity_1h'] = [velocity_dict.get(i, 0) for i in df.index]
         
         # Feature 10: Amount velocity (total $ from source in last 24h)
-        amount_velocity_list = []
-        for idx, row in df_sorted.iterrows():
+        amount_velocity_dict = {}
+        for orig_idx, row in df_sorted.iterrows():
             recent_amount = df_sorted[
                 (df_sorted['source_entity'] == row['source_entity']) &
                 (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(24, 'h')) &
                 (df_sorted['timestamp'] <= row['timestamp'])
             ]['amount'].sum()
-            amount_velocity_list.append(recent_amount)
-        features['amount_velocity_24h'] = amount_velocity_list
+            amount_velocity_dict[orig_idx] = recent_amount
+        # Map velocities back to original df order
+        features['amount_velocity_24h'] = [amount_velocity_dict.get(i, 0) for i in df.index]
         
         # ===== STATISTICAL FEATURES =====
         # Feature 11: Percentile of this amount within vendor's distribution

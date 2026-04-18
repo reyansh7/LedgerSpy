@@ -15,18 +15,23 @@ class BenfordProfiler:
         """
         Fast, vectorized extraction of the first non-zero digit.
         Handles decimals correctly (e.g., 0.045 -> 4)
+        Returns a Series with preserved indices for proper alignment.
         """
         # Drop zeros and NaNs, take absolute value
         clean_data = series.dropna().abs()
         clean_data = clean_data[clean_data > 0]
         
+        if len(clean_data) == 0:
+            return pd.Series(dtype=int)
+        
         # Mathematical extraction: d = floor(10^(log10(x) - floor(log10(x))))
         # This is exponentially faster than converting floats to strings
-        log10_vals = np.log10(clean_data)
-        first_digits = np.floor(10 ** (log10_vals - np.floor(log10_vals)))
-        first_digits = np.clip(first_digits, 1, 9).astype(int)
+        log10_vals = np.log10(clean_data.values)
+        first_digits_vals = np.floor(10 ** (log10_vals - np.floor(log10_vals)))
+        first_digits_vals = np.clip(first_digits_vals, 1, 9).astype(int)
         
-        return first_digits
+        # Return as Series with original indices preserved
+        return pd.Series(first_digits_vals, index=clean_data.index)
 
     def analyze(self, df: pd.DataFrame, amount_column: str = 'amount', weighted: bool = True):
         """
@@ -50,16 +55,15 @@ class BenfordProfiler:
         
         # ===== WEIGHTED ANALYSIS =====
         if weighted:
-            # Get the amounts corresponding to each first digit
-            first_digit_series = pd.Series(first_digits)
-            amounts_series = df[amount_column].iloc[first_digit_series.index]
+            # Get the amounts corresponding to each first digit (using preserved indices)
+            amounts_for_digits = df[amount_column].loc[first_digits.index]
             
             # Create weighted distribution
             weighted_amount_by_digit = {}
             for digit in range(1, 10):
-                mask = first_digit_series == digit
+                mask = first_digits == digit
                 if mask.sum() > 0:
-                    weighted_amount_by_digit[digit] = amounts_series[mask].sum()
+                    weighted_amount_by_digit[digit] = amounts_for_digits[mask].sum()
                 else:
                     weighted_amount_by_digit[digit] = 0
             

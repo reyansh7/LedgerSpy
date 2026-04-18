@@ -167,7 +167,7 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
     anomaly_risk_scores = _normalize_anomaly_scores(np.asarray(anomaly_scores, dtype=float))
 
     benford_profiler = BenfordProfiler()
-    benford_result = benford_profiler.analyze(clean_df)
+    benford_result = benford_profiler.analyze(clean_df, weighted=False)
     chi_square = float(benford_result.get("chi_square_stat", 0.0))
     benford_risk = min((chi_square / benford_profiler.threshold) * 100.0, 100.0)
 
