@@ -1,0 +1,101 @@
+transaction_id,timestamp,amount,source_entity,destination_entity
+,INVALID,-100.0,Company A,Vendor_0
+TXN1,2026-01-02,1.0,,Vendor_1
+TXN2,2026-01-03,2.0,Company A,Vendor_2
+TXN3,2026-01-04,,,Vendor_3
+TXN4,INVALID,4.0,Company A,Vendor_4
+,2026-01-06,5.0,,Vendor_5
+TXN6,2026-01-07,,Company A,Vendor_6
+TXN7,2026-01-08,7.0,,Vendor_7
+TXN8,INVALID,8.0,Company A,Vendor_8
+TXN9,2026-01-10,,,Vendor_9
+,2026-01-11,10.0,Company A,Vendor_10
+TXN11,2026-01-12,11.0,,Vendor_11
+TXN12,INVALID,,Company A,Vendor_12
+TXN13,2026-01-14,13.0,,Vendor_13
+TXN14,2026-01-15,14.0,Company A,Vendor_14
+,2026-01-16,,,Vendor_15
+TXN16,INVALID,16.0,Company A,Vendor_16
+TXN17,2026-01-18,17.0,,Vendor_17
+TXN18,2026-01-19,,Company A,Vendor_18
+TXN19,2026-01-20,19.0,,Vendor_19
+,INVALID,-20.0,Company A,Vendor_20
+TXN21,2026-01-22,,,Vendor_21
+TXN22,2026-01-23,22.0,Company A,Vendor_22
+TXN23,2026-01-24,23.0,,Vendor_23
+TXN24,INVALID,,Company A,Vendor_24
+,2026-01-26,25.0,,Vendor_25
+TXN26,2026-01-27,26.0,Company A,Vendor_26
+TXN27,2026-01-28,,,Vendor_27
+TXN28,INVALID,28.0,Company A,Vendor_28
+TXN29,2026-01-02,29.0,,Vendor_29
+,2026-01-03,,Company A,Vendor_30
+TXN31,2026-01-04,31.0,,Vendor_31
+TXN32,INVALID,32.0,Company A,Vendor_32
+TXN33,2026-01-06,,,Vendor_33
+TXN34,2026-01-07,34.0,Company A,Vendor_34
+,2026-01-08,35.0,,Vendor_35
+TXN36,INVALID,,Company A,Vendor_36
+TXN37,2026-01-10,37.0,,Vendor_37
+TXN38,2026-01-11,38.0,Company A,Vendor_38
+TXN39,2026-01-12,,,Vendor_39
+,INVALID,-40.0,Company A,Vendor_40
+TXN41,2026-01-14,41.0,,Vendor_41
+TXN42,2026-01-15,,Company A,Vendor_42
+TXN43,2026-01-16,43.0,,Vendor_43
+TXN44,INVALID,44.0,Company A,Vendor_44
+,2026-01-18,,,Vendor_45
+TXN46,2026-01-19,46.0,Company A,Vendor_46
+TXN47,2026-01-20,47.0,,Vendor_47
+TXN48,INVALID,,Company A,Vendor_48
+TXN49,2026-01-22,49.0,,Vendor_49
+,2026-01-23,50.0,Company A,Vendor_50
+TXN51,2026-01-24,,,Vendor_51
+TXN52,INVALID,52.0,Company A,Vendor_52
+TXN53,2026-01-26,53.0,,Vendor_53
+TXN54,2026-01-27,,Company A,Vendor_54
+,2026-01-28,55.0,,Vendor_55
+TXN56,INVALID,56.0,Company A,Vendor_56
+TXN57,2026-01-02,,,Vendor_57
+TXN58,2026-01-03,58.0,Company A,Vendor_58
+TXN59,2026-01-04,59.0,,Vendor_59
+,INVALID,-100.0,Company A,Vendor_60
+TXN61,2026-01-06,61.0,,Vendor_61
+TXN62,2026-01-07,62.0,Company A,Vendor_62
+TXN63,2026-01-08,,,Vendor_63
+TXN64,INVALID,64.0,Company A,Vendor_64
+,2026-01-10,65.0,,Vendor_65
+TXN66,2026-01-11,,Company A,Vendor_66
+TXN67,2026-01-12,67.0,,Vendor_67
+TXN68,INVALID,68.0,Company A,Vendor_68
+TXN69,2026-01-14,,,Vendor_69
+,2026-01-15,70.0,Company A,Vendor_70
+TXN71,2026-01-16,71.0,,Vendor_71
+TXN72,INVALID,,Company A,Vendor_72
+TXN73,2026-01-18,73.0,,Vendor_73
+TXN74,2026-01-19,74.0,Company A,Vendor_74
+,2026-01-20,,,Vendor_75
+TXN76,INVALID,76.0,Company A,Vendor_76
+TXN77,2026-01-22,77.0,,Vendor_77
+TXN78,2026-01-23,,Company A,Vendor_78
+TXN79,2026-01-24,79.0,,Vendor_79
+,INVALID,-80.0,Company A,Vendor_80
+TXN81,2026-01-26,,,Vendor_81
+TXN82,2026-01-27,82.0,Company A,Vendor_82
+TXN83,2026-01-28,83.0,,Vendor_83
+TXN84,INVALID,,Company A,Vendor_84
+,2026-01-02,85.0,,Vendor_85
+TXN86,2026-01-03,86.0,Company A,Vendor_86
+TXN87,2026-01-04,,,Vendor_87
+TXN88,INVALID,88.0,Company A,Vendor_88
+TXN89,2026-01-06,89.0,,Vendor_89
+,2026-01-07,,Company A,Vendor_90
+TXN91,2026-01-08,91.0,,Vendor_91
+TXN92,INVALID,92.0,Company A,Vendor_92
+TXN93,2026-01-10,,,Vendor_93
+TXN94,2026-01-11,94.0,Company A,Vendor_94
+,2026-01-12,95.0,,Vendor_95
+TXN96,INVALID,,Company A,Vendor_96
+TXN97,2026-01-14,97.0,,Vendor_97
+TXN98,2026-01-15,98.0,Company A,Vendor_98
+TXN99,2026-01-16,,,Vendor_99

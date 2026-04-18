@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(routes.router, prefix="/api", tags=["general"])
+app.include_router(routes.router, prefix="/api", tags=["audit"])
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 
 # Try to include advanced audit routes (optional)
@@ -37,6 +37,22 @@ except Exception as e:
     import logging
     logging.warning(f"Could not load advanced audit routes: {e}")
 
+# Include reconciliation routes
+try:
+    from app.api import reconciliation
+    app.include_router(reconciliation.router, tags=["reconciliation"])
+except Exception as e:
+    import logging
+    logging.warning(f"Could not load reconciliation routes: {e}")
+
+# Include risk explanation routes (Ollama integration)
+try:
+    from app.api import risk_explanations
+    app.include_router(risk_explanations.router, tags=["risk-explanations"])
+except Exception as e:
+    import logging
+    logging.warning(f"Could not load risk explanation routes: {e}")
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
@@ -44,3 +60,4 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+

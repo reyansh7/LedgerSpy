@@ -147,8 +147,10 @@ export default function DataIntegrityDashboard({ readinessReport, totalRecords }
   ]
 
   const qualityChecks = [
-    { label: 'Timestamps', value: readinessReport?.timestamp_validity || 'N/A', pass: readinessReport?.timestamp_validity !== 'N/A' },
-    { label: 'Amounts', value: readinessReport?.amount_validity || 'N/A', pass: readinessReport?.amount_validity !== 'N/A' },
+    { label: 'Completeness', value: `${readinessReport?.completeness || 0}%`, pass: (readinessReport?.completeness || 0) >= 95 },
+    { label: 'Format Validity', value: `${readinessReport?.format_validity || 0}%`, pass: (readinessReport?.format_validity || 0) >= 90 },
+    { label: 'Consistency', value: `${readinessReport?.consistency || 0}%`, pass: (readinessReport?.consistency || 0) >= 80 },
+    { label: 'Statistical', value: `${readinessReport?.statistical_health || 0}%`, pass: (readinessReport?.statistical_health || 0) >= 70 },
   ]
 
   return (
@@ -354,6 +356,63 @@ export default function DataIntegrityDashboard({ readinessReport, totalRecords }
           </p>
         </div>
       </motion.div>
+
+      {/* Issues and Recommendations - Show if quality is not excellent */}
+      {readinessScore < 90 && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '14px',
+            marginTop: '16px',
+          }}
+        >
+          {/* Issues */}
+          {readinessReport?.issues?.length > 0 && (
+            <div style={{
+              padding: '14px 16px',
+              borderRadius: '12px',
+              background: 'rgba(239, 68, 68, 0.06)',
+              border: '1px solid rgba(239, 68, 68, 0.15)',
+            }}>
+              <p style={{ fontSize: '0.75rem', color: '#f87171', fontWeight: 700, textTransform: 'uppercase', margin: '0 0 8px 0' }}>
+                Issues Detected
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {readinessReport.issues.slice(0, 3).map((issue, idx) => (
+                  <p key={idx} style={{ fontSize: '0.7rem', color: '#fca5a5', margin: 0 }}>
+                    • {issue}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recommendations */}
+          {readinessReport?.recommendations?.length > 0 && (
+            <div style={{
+              padding: '14px 16px',
+              borderRadius: '12px',
+              background: 'rgba(34, 197, 94, 0.06)',
+              border: '1px solid rgba(34, 197, 94, 0.15)',
+            }}>
+              <p style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 700, textTransform: 'uppercase', margin: '0 0 8px 0' }}>
+                Recommendations
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {readinessReport.recommendations.slice(0, 3).map((rec, idx) => (
+                  <p key={idx} style={{ fontSize: '0.7rem', color: '#86efac', margin: 0 }}>
+                    • {rec}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+        </motion.div>
+      )}
 
       {/* Responsive override */}
       <style>{`

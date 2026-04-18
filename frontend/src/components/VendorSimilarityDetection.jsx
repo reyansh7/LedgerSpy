@@ -198,6 +198,7 @@ export default function VendorSimilarityDetection({ fuzzyMatches }) {
           </div>
           <p style={{ fontSize: '0.78rem', color: '#6B7280', margin: '0 0 0 48px' }}>
             Detected <strong style={{ color: '#f87171' }}>{fuzzyMatches.length}</strong> suspicious vendor pairs
+            <span style={{ fontSize: '0.7rem', color: '#4B5563', marginLeft: '4px' }}>(Showing first 10)</span>
           </p>
         </div>
         <div style={{
@@ -209,13 +210,13 @@ export default function VendorSimilarityDetection({ fuzzyMatches }) {
           fontWeight: 700,
           color: '#f87171',
         }}>
-          {fuzzyMatches.length} Alerts
+          {Math.min(fuzzyMatches.length, 10)} / {fuzzyMatches.length}
         </div>
       </div>
 
       {/* Vendor Pairs */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {fuzzyMatches.map((match, idx) => (
+        {fuzzyMatches.slice(0, 10).map((match, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, x: -12 }}

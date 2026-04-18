@@ -18,6 +18,7 @@ from ledgerspy_engine.modules.anomaly_detector import AnomalyModel
 from ledgerspy_engine.modules.benford_profiler import BenfordProfiler
 from ledgerspy_engine.modules.entity_matcher import EntityMatcher
 from ledgerspy_engine.utils.preprocessing import LedgerPreprocessor
+from ledgerspy_engine.data_integrity import DataIntegrityScorer
 
 
 REQUIRED_OUTPUT_COLUMNS = [
@@ -157,6 +158,10 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
     file_id = generate_file_id(filename)
     clean_df = prepare_ledger_dataframe(raw_df)
 
+    # Calculate data integrity & readiness score first
+    integrity_scorer = DataIntegrityScorer()
+    readiness_report = integrity_scorer.calculate_overall_readiness(raw_df)
+
     preprocessor = LedgerPreprocessor()
     features = preprocessor.engineer_anomaly_features(clean_df)
 
@@ -244,6 +249,7 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
     return {
         "file_id": file_id,
         "status": "completed",
+        "readiness_report": readiness_report,
         "summary": {
             "total_records": int(len(clean_df)),
             "flagged_records": int(len(anomalies)),

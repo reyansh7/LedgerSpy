@@ -10,12 +10,14 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-# Add ml module to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "ml"))
+# Add services to path
+sys.path.insert(0, str(Path(__file__).parent))
 
-from ledgerspy_engine.core_engine import LedgerSpyEngine
 from database import engine, get_db, SessionLocal
 from models import Base, AuditResult, Transaction
+from app.services.audit_service import run_full_analysis
+from app.services.result_cache import cache_result
+from app.api.routes import router as audit_router
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -33,8 +35,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize LedgerSpy engine as singleton
-spy_engine = LedgerSpyEngine()
+# Include routes
+app.include_router(audit_router, prefix="/api/audit", tags=["audit"])
 
 
 @app.on_event("startup")
@@ -77,53 +79,39 @@ async def audit_upload(file: UploadFile = File(...), db: Session = Depends(get_d
         raise HTTPException(status_code=400, detail=f"Failed to parse CSV: {str(exc)}")
 
     try:
-        # Run full audit
-        audit_result = spy_engine.run_full_audit(df)
+        # Run full audit analysis
+        audit_result = run_full_analysis(df, file.filename)
+        file_id = audit_result.get("file_id")
+        
+        # Cache the result for later retrieval
+        cache_result(file_id, audit_result)
         
         # Extract results
-        readiness_report = audit_result["readiness_report"]
+        readiness_report = audit_result.get("readiness_report", {})
         readiness_score = readiness_report.get("readiness_score", 0)
-        anomaly_count = audit_result["anomaly_count"]
-        loop_count = audit_result["loop_count"]
-        fuzzy_match_count = audit_result["fuzzy_match_count"]
-        memo_text = audit_result["memo"]
+        anomalies = audit_result.get("anomalies", [])
+        fuzzy_matches = audit_result.get("fuzzy_matches", [])
         
         # Save to database
         db_audit = AuditResult(
             readiness_score=readiness_score,
-            anomaly_count=anomaly_count,
-            loop_count=loop_count,
-            fuzzy_match_count=fuzzy_match_count,
-            memo_text=memo_text,
+            anomaly_count=len(anomalies),
+            loop_count=0,  # Placeholder
+            fuzzy_match_count=len(fuzzy_matches),
+            memo_text="Audit completed",
         )
         db.add(db_audit)
-        db.flush()  # Get the ID without committing
-        
-        # (Optional) Save transactions to database
-        # This would populate the Transaction table linked to db_audit.id
-        for _, row in df.iterrows():
-            db_transaction = Transaction(
-                transaction_id=str(row.get("transaction_id", "")),
-                timestamp=pd.to_datetime(row.get("timestamp"), errors="coerce"),
-                amount=float(row.get("amount", 0)),
-                source_entity=str(row.get("source_entity", "UNKNOWN")),
-                destination_entity=str(row.get("destination_entity", "UNKNOWN")),
-                audit_id=db_audit.id,
-            )
-            db.add(db_transaction)
-        
+        db.flush()
         db.commit()
         db.refresh(db_audit)
         
         return {
             "audit_id": db_audit.id,
-            "memo": memo_text,
-            "readiness_score": readiness_score,
-            "metrics": {
-                "anomaly_count": anomaly_count,
-                "loop_count": loop_count,
-                "fuzzy_match_count": fuzzy_match_count,
-            }
+            "file_id": file_id,
+            "readiness_report": readiness_report,
+            "summary": audit_result.get("summary", {}),
+            "anomalies": anomalies[:10],
+            "fuzzy_matches": fuzzy_matches[:10],
         }
         
     except Exception as exc:

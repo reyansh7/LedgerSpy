@@ -29,6 +29,7 @@ import AuditReportGenerator from '../components/AuditReportGenerator'
 import BankReconciliation from '../components/BankReconciliation'
 import GoingConcernStressTest from '../components/GoingConcernStressTest'
 import IndustryBenchmarkComparison from '../components/IndustryBenchmarkComparison'
+import RelationalRiskMapping from '../components/RelationalRiskMapping'
 import { getAnalysisResults } from '../services/api'
 import { AppContext } from '../context/AppContext'
 
@@ -154,9 +155,16 @@ export default function Results() {
   const fetchAdvancedAnalytics = async (fileId) => {
     try {
       // Fetch going concern data
-      const gcResponse = await fetch('/api/audit/going-concern/sample')
+      const gcResponse = await fetch(`/api/going-concern/${fileId}`)
+      console.log('Going Concern API response status:', gcResponse.status)
       if (gcResponse.ok) {
-        setGoingConcernData(await gcResponse.json())
+        const gcData = await gcResponse.json()
+        console.log('Going Concern data received:', gcData)
+        setGoingConcernData(gcData)
+      } else {
+        console.error('Going Concern API error:', gcResponse.status, gcResponse.statusText)
+        const errorText = await gcResponse.text()
+        console.error('Error details:', errorText)
       }
 
       // Fetch industry benchmark data
@@ -522,94 +530,9 @@ export default function Results() {
       </motion.section>
 
       {/* ===== GHOST VENDOR MATCHES ===== */}
-      <motion.section
-        custom={3}
-        variants={sectionVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ marginBottom: '32px' }}
-      >
-        <SectionHeader
-          icon="👻"
-          title="Potential Ghost Vendor Matches"
-          subtitle="Vendors with high similarity scores indicating possible duplicates"
-        />
-        {results.fuzzy_matches?.length ? (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '14px',
-          }}>
-            {results.fuzzy_matches.slice(0, 9).map((match, idx) => (
-              <motion.div
-                key={`${match.vendor_1}-${match.vendor_2}-${idx}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + idx * 0.04 }}
-                style={{
-                  borderRadius: '14px',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  background: 'linear-gradient(135deg, rgba(18, 22, 38, 0.6), rgba(27, 27, 47, 0.3))',
-                  padding: '18px',
-                  transition: 'all 250ms ease',
-                  cursor: 'default',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.3)'
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
-                  e.currentTarget.style.transform = 'none'
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <VendorLabel prefix="A" name={match.vendor_1} />
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0 4px' }}>
-                    <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.06)' }} />
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#6B7280" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                    </svg>
-                    <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.06)' }} />
-                  </div>
-                  <VendorLabel prefix="B" name={match.vendor_2} />
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginTop: '6px',
-                    padding: '8px 12px',
-                    borderRadius: '10px',
-                    background: 'rgba(6, 182, 212, 0.08)',
-                    border: '1px solid rgba(6, 182, 212, 0.15)',
-                  }}>
-                    <span style={{ fontSize: '0.7rem', color: '#6B7280', fontWeight: 500 }}>Similarity</span>
-                    <span style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: '0.95rem',
-                      fontWeight: 700,
-                      color: '#22d3ee',
-                    }}>
-                      {match.risk_score}%
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        ) : (
-          <GlassCard style={{ textAlign: 'center', padding: '40px' }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>✅</div>
-            <p style={{ color: '#4ade80', fontSize: '0.9rem', fontWeight: 500, margin: 0 }}>No suspicious vendor similarities found</p>
-          </GlassCard>
-        )}
-      </motion.section>
-
       {/* ===== SUSPICIOUS TRANSACTIONS ===== */}
       <motion.section
-        custom={4}
+        custom={3}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -625,7 +548,7 @@ export default function Results() {
 
       {/* ===== DATA INTEGRITY ===== */}
       <motion.section
-        custom={5}
+        custom={4}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -639,7 +562,7 @@ export default function Results() {
 
       {/* ===== VENDOR SIMILARITY ===== */}
       <motion.section
-        custom={6}
+        custom={5}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -650,7 +573,7 @@ export default function Results() {
 
       {/* ===== EXPLAINABLE AI ===== */}
       <motion.section
-        custom={7}
+        custom={6}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -661,7 +584,7 @@ export default function Results() {
 
       {/* ===== RISK BREAKDOWN ===== */}
       <motion.section
-        custom={8}
+        custom={7}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -676,7 +599,7 @@ export default function Results() {
 
       {/* ===== BANK RECONCILIATION ===== */}
       <motion.section
-        custom={9}
+        custom={8}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -690,13 +613,24 @@ export default function Results() {
 
       {/* ===== GOING CONCERN STRESS TEST ===== */}
       <motion.section
-        custom={10}
+        custom={9}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
         style={{ marginBottom: '32px' }}
       >
         <GoingConcernStressTest data={goingConcernData} />
+      </motion.section>
+
+      {/* ===== RELATIONAL RISK MAPPING ===== */}
+      <motion.section
+        custom={10}
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ marginBottom: '32px' }}
+      >
+        <RelationalRiskMapping graphData={buildGraphData(results)} />
       </motion.section>
 
       {/* ===== INDUSTRY BENCHMARKING ===== */}
@@ -761,6 +695,116 @@ export default function Results() {
       `}</style>
     </motion.div>
   )
+}
+
+// Build graph data from analysis results for relational risk mapping
+function buildGraphData(results) {
+  if (!results) {
+    return { nodes: [], links: [] };
+  }
+
+  const nodes = [];
+  const links = [];
+  const vendorMap = new Map();
+  const entityMap = new Map();
+
+  try {
+    // Use the transactions array and anomalies data from backend
+    const transactions = results.transactions || [];
+    const anomalies = results.anomalies || [];
+    const riskScores = results.risk_scores || [];
+    
+    console.log('📊 Graph Data Debug:');
+    console.log(`  Total transactions: ${transactions.length}`);
+    console.log(`  Total anomalies: ${anomalies.length}`);
+    console.log(`  Total risk scores: ${riskScores.length}`);
+
+    // Create a map of transaction_id -> risk_score for quick lookup
+    const riskScoreMap = new Map();
+    riskScores.forEach(rs => {
+      riskScoreMap.set(String(rs.transaction_id), rs.risk_score);
+    });
+
+    // Process ALL transactions to get complete vendor/entity mapping with risk scores
+    transactions.forEach((tx, idx) => {
+      if (!tx) return;
+
+      // Use destination_entity as the vendor (or source for bidirectional)
+      const destEntity = String(tx.destination_entity || `Entity_${idx}`).substring(0, 50).trim();
+      const srcEntity = String(tx.source_entity || `Entity_${idx}`).substring(0, 50).trim();
+      const txId = String(tx.transaction_id);
+      const amount = parseFloat(tx.amount) || 0;
+      
+      // Get risk score from risk_scores array or use tx.risk_score
+      let riskScore = riskScoreMap.get(txId) || tx.risk_score || 0;
+      riskScore = Math.min(100, Math.max(0, riskScore));
+
+      // Add destination entity (vendor receiving money - main focus)
+      if (!vendorMap.has(destEntity)) {
+        vendorMap.set(destEntity, {
+          id: destEntity,
+          name: destEntity,
+          riskScore: riskScore,
+          group: 'vendor',
+          transactionCount: 1,
+        });
+      } else {
+        // Update max risk for this vendor
+        const existing = vendorMap.get(destEntity);
+        existing.riskScore = Math.max(existing.riskScore, riskScore);
+        existing.transactionCount = (existing.transactionCount || 1) + 1;
+      }
+
+      // Add source entity (employee/department sending money)
+      if (!entityMap.has(srcEntity)) {
+        entityMap.set(srcEntity, {
+          id: srcEntity,
+          name: srcEntity,
+          riskScore: Math.min(100, Math.max(20, riskScore * 0.7)), // Entities inherit reduced risk
+          group: 'employee',
+          transactionCount: 1,
+        });
+      } else {
+        const existing = entityMap.get(srcEntity);
+        existing.transactionCount = (existing.transactionCount || 1) + 1;
+      }
+
+      // Create link
+      if (amount > 0) {
+        links.push({
+          source: destEntity,
+          target: srcEntity,
+          amount: amount,
+          riskScore: riskScore,
+        });
+      }
+    });
+
+    // Combine all nodes
+    const allNodes = [
+      ...Array.from(vendorMap.values()),
+      ...Array.from(entityMap.values()),
+    ];
+
+    console.log(`✅ Graph nodes created: ${allNodes.length}`);
+    console.log(`  Critical (>80): ${allNodes.filter(n => n.riskScore > 80).length}`);
+    console.log(`  High (50-80): ${allNodes.filter(n => n.riskScore >= 50 && n.riskScore <= 80).length}`);
+    console.log(`  Low (<50): ${allNodes.filter(n => n.riskScore < 50).length}`);
+    console.log(`✅ Graph links created: ${links.length}`);
+    
+    // Debug: show top 5 high-risk nodes
+    const topRisk = allNodes.sort((a, b) => b.riskScore - a.riskScore).slice(0, 5);
+    console.log('🔴 Top 5 High-Risk Nodes:');
+    topRisk.forEach(n => {
+      console.log(`  ${n.name}: ${n.riskScore.toFixed(1)}% (${n.transactionCount} transactions)`);
+    });
+
+    return { nodes: allNodes, links };
+  } catch (e) {
+    console.error('❌ Error building graph data:', e);
+    console.error(e.stack);
+    return { nodes: [], links: [] };
+  }
 }
 
 function VendorLabel({ prefix, name }) {
