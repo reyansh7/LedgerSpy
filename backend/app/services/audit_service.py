@@ -194,12 +194,32 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
         total_risk = round(min(total_risk, 100.0), 2)
 
         explanations = []
-        if anomaly_flags[row_idx]:
+        primary_reason = "No strong fraud indicators"
+        
+        # Determine primary reason based on strongest component
+        if anomaly_component >= fuzzy_component and anomaly_component >= benford_risk:
+            if anomaly_flags[row_idx]:
+                explanations.append("Isolation Forest marked this transaction as anomalous.")
+                primary_reason = f"Anomaly Detection ({anomaly_component:.1f}%)"
+        
+        if fuzzy_component >= anomaly_component and fuzzy_component >= benford_risk:
+            if fuzzy_component >= 85:
+                explanations.append("Destination vendor has high similarity with another vendor record.")
+                primary_reason = f"Vendor Similarity Match ({fuzzy_component:.1f}%)"
+        
+        if benford_risk >= anomaly_component and benford_risk >= fuzzy_component:
+            if benford_risk >= 60:
+                explanations.append("Ledger-wide digit distribution deviates from Benford expectations.")
+                primary_reason = f"Benford Violation ({benford_risk:.1f}%)"
+        
+        # Add secondary explanations
+        if anomaly_flags[row_idx] and primary_reason != f"Anomaly Detection ({anomaly_component:.1f}%)":
             explanations.append("Isolation Forest marked this transaction as anomalous.")
-        if fuzzy_component >= 85:
+        if fuzzy_component >= 85 and primary_reason != f"Vendor Similarity Match ({fuzzy_component:.1f}%)":
             explanations.append("Destination vendor has high similarity with another vendor record.")
-        if benford_risk >= 60:
+        if benford_risk >= 60 and primary_reason != f"Benford Violation ({benford_risk:.1f}%)":
             explanations.append("Ledger-wide digit distribution deviates from Benford expectations.")
+        
         if not explanations:
             explanations.append("No strong fraud indicators triggered for this transaction.")
 
@@ -212,6 +232,7 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
             "risk_score": total_risk,
             "is_anomaly": bool(anomaly_flags[row_idx]),
             "explanation": explanations,
+            "primary_reason": primary_reason,
         }
 
         transactions.append(tx_payload)
