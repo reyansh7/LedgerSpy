@@ -4,70 +4,318 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============ Root & Base ============ */
 html,
 body,
 #root {
   min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background:
-    radial-gradient(circle at 8% 6%, rgba(34, 211, 238, 0.16), transparent 35%),
+  background: radial-gradient(circle at 8% 6%, rgba(34, 211, 238, 0.16), transparent 35%),
     radial-gradient(circle at 92% 90%, rgba(251, 113, 133, 0.14), transparent 35%),
     #020617;
   color: #e2e8f0;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
 }
 
+/* ============ App Layout ============ */
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-container {
   display: flex;
   min-height: calc(100vh - 73px);
+  gap: 0;
 }
 
-.dashboard {
-  width: 100%;
-  padding: 1.5rem;
+/* ============ Navbar ============ */
+.navbar {
+  border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+  background: rgba(2, 6, 23, 0.8) / 80%;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.stats-grid,
-.charts-grid {
-  display: grid;
-  gap: 1rem;
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: #f1f5f9;
 }
 
-.stats-grid {
-  margin-top: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.charts-grid {
-  margin-top: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.chart {
-  border: 1px solid rgba(51, 65, 85, 0.8);
-  background: rgba(15, 23, 42, 0.75);
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
-.chart-title {
-  margin-bottom: 0.75rem;
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
   font-size: 0.95rem;
   color: #cbd5e1;
 }
 
-.chart-placeholder {
-  color: #94a3b8;
+.navbar-menu a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 1024px) {
+.navbar-menu a:hover {
+  color: #f1f5f9;
+}
+
+/* ============ Sidebar ============ */
+.sidebar {
+  width: 240px;
+  background: rgba(15, 23, 42, 0.5);
+  border-right: 1px solid rgba(30, 41, 59, 0.8);
+  padding: 1.5rem 0;
+  min-height: calc(100vh - 73px);
+  overflow-y: auto;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-link {
+  padding: 0.75rem 1.5rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  display: block;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  color: #f1f5f9;
+  background: rgba(34, 211, 238, 0.1);
+  border-left-color: #22d3ee;
+}
+
+/* ============ Dashboard ============ */
+.dashboard {
+  width: 100%;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #f1f5f9;
+}
+
+.dashboard > p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+/* ============ Stats Grid ============ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.stat-card__label {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__change {
+  font-size: 0.875rem;
+  color: #22c55e;
+}
+
+.stat-card__change.negative {
+  color: #ef4444;
+}
+
+/* ============ Charts ============ */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.chart-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #f1f5f9;
+}
+
+.chart {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-placeholder {
+  color: #94a3b8;
+  text-align: center;
+}
+
+/* ============ Tables ============ */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background: rgba(30, 41, 59, 0.5);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  color: #cbd5e1;
+}
+
+.table tbody tr:hover {
+  background: rgba(34, 211, 238, 0.05);
+}
+
+/* ============ Buttons & UI ============ */
+button {
+  background: #022d4e;
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #22d3ee;
+  color: #020617;
+}
+
+input,
+select,
+textarea {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  color: #f1f5f9;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #22d3ee;
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* ============ Scrollbar ============ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.9);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
   .app-container {
     flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .stats-grid,
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard h1 {
+    font-size: 1.5rem;
   }
 }

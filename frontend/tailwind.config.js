@@ -1,10 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./public/index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Space Grotesk', 'ui-sans-serif', 'system-ui'],
+      },
+      colors: {
+        slate: {
+          950: '#020617',
+          900: '#0f172a',
+          800: '#1e293b',
+          700: '#334155',
+          600: '#475569',
+          300: '#cbd5e1',
+          100: '#f1f5f9',
+        },
       },
     },
   },
