@@ -16,6 +16,18 @@ class LedgerSpyEngine:
     def run_full_audit(self, raw_data: pd.DataFrame):
         # 1. Clean and Prepare
         clean_df = self.preprocessor.validate_and_clean(raw_data)
+        
+        # Guard: check if cleaned dataframe is empty
+        if len(clean_df) == 0:
+            return {
+                "benford_results": [],
+                "anomalies": [],
+                "ghost_vendors": [],
+                "network_loops": [],
+                "risk_insights": {},
+                "_warning": "No data available after cleaning (all rows dropped due to invalid timestamps)."
+            }
+        
         features = self.preprocessor.engineer_anomaly_features(clean_df)
 
         # 2. Run All Analysis Modules

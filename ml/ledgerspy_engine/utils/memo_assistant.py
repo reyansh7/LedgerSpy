@@ -52,7 +52,8 @@ RISK LEVEL  : {risk_level}
    - Benford's Law distribution: {"NON-COMPLIANT" if not benfords_compliant else "COMPLIANT"}.
 """
         if anomaly_count > 0 and risk_insights:
-            top_anomaly = list(risk_insights.keys())[0]
+            # Select the anomaly with the highest risk score (max feature contribution)
+            top_anomaly = max(risk_insights, key=lambda a: max(risk_insights[a].values()))
             top_feature = max(risk_insights[top_anomaly], key=risk_insights[top_anomaly].get)
             top_pct = risk_insights[top_anomaly][top_feature]
             memo += f"   - Primary driver for top anomalies: {top_pct:.0f}% due to {top_feature.replace('_', ' ')}.\n"

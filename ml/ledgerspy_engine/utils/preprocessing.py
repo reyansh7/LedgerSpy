@@ -22,13 +22,26 @@ class LedgerPreprocessor:
                 "issues": ["File is empty."]
             }
 
+        # Validate required columns exist before accessing
+        missing_cols = set(self.required_cols) - set(df.columns)
+        if missing_cols:
+            return {
+                "readiness_score": 0,
+                "status": "Missing Required Columns",
+                "metrics": {"completeness": 0, "validity": 0, "uniqueness": 0},
+                "issues": [f"Missing required columns: {', '.join(sorted(missing_cols))}."]
+            }
+
         completeness = 1 - (
             df[self.required_cols].isnull().sum().sum()
             / (total_rows * len(self.required_cols))
         )
         uniqueness_ratio = df['transaction_id'].nunique() / total_rows
+        
+        # Validate both amounts and timestamps for validity
         valid_amounts = pd.to_numeric(df['amount'], errors='coerce').notnull().sum()
-        validity_score = valid_amounts / total_rows
+        valid_timestamps = pd.to_datetime(df['timestamp'], errors='coerce').notnull().sum()
+        validity_score = min(valid_amounts, valid_timestamps) / total_rows
 
         final_score = (completeness * 0.4) + (validity_score * 0.4) + (uniqueness_ratio * 0.2)
 
@@ -55,7 +68,13 @@ class LedgerPreprocessor:
         if dropped > 0:
             print(f"[LedgerPreprocessor] Warning: dropped {dropped} row(s) with invalid timestamps.")
 
-        return df.dropna(subset=['timestamp']).reset_index(drop=True)
+        cleaned = df.dropna(subset=['timestamp']).reset_index(drop=True)
+        
+        # Guard: warn if cleaned dataframe is empty
+        if len(cleaned) == 0:
+            print("[LedgerPreprocessor] Warning: cleaned dataframe is empty (all rows dropped due to invalid timestamps).")
+        
+        return cleaned
 
     def _generate_issue_list(self, df: pd.DataFrame) -> list:
         """Expects RAW dataframe."""

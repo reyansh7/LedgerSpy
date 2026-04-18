@@ -101,16 +101,23 @@ class AnomalyModel:
                 "If loading a saved model, verify the model file includes training_mean data."
             )
         
+        # Validate and align features to match training schema
+        df_features = self._validate_and_align_features(df_features)
+        
         explanations = {}
         for idx in anomaly_indices:
             row = df_features.loc[idx]
-            deviations = np.abs(row - self.training_mean)
+            # Compute deviations as a Series keyed by column name
+            deviations = (row - self.training_mean).abs()
             total_deviation = deviations.sum()
+            
             if total_deviation == 0:
                 # If no deviation, distribute equally (unlikely)
                 percentages = {col: 100.0 / len(self.feature_columns) for col in self.feature_columns}
             else:
-                percentages = {col: (dev / total_deviation) * 100 for col, dev in zip(self.feature_columns, deviations)}
+                # Iterate by column name to map name -> (dev / total_deviation) * 100
+                percentages = {col: (deviations[col] / total_deviation) * 100 for col in self.feature_columns}
+            
             transaction_id = df_original.loc[idx, 'transaction_id']
             explanations[transaction_id] = percentages
         return explanations
