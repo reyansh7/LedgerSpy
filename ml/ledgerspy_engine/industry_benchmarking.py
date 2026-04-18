@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 # Sources: ACFE Occupational Fraud Report 2023 + LedgerSpy Real Audit Data
 
 # Calculate benchmarks from ledger4.csv
-import os as _os
+import os
 _ledger_path = os.path.join(os.path.dirname(__file__), '../../ledger4.csv')
 _ledger_data = None
 _actual_fraud_rate = 3.2  # From ledger4.csv: 19 fraud cases out of 589 transactions
@@ -315,7 +315,9 @@ class IndustryBenchmarker:
     def _generate_interpretation(self, comparison: Dict, industry: str) -> str:
         """Generate textual interpretation of results"""
         anomaly = comparison['anomaly_rate']['assessment']
-        risk = comparison['overall_risk']['level']
+        # Calculate risk from comparison metrics
+        risk_score = self._calculate_overall_risk(comparison)
+        risk = self._risk_level(risk_score)
         
         return (
             f"Compared to {industry} industry benchmarks, your company's error rates are {anomaly.lower()}. "

@@ -24,7 +24,7 @@ import SuspiciousTransactionsTable from '../components/SuspiciousTransactionsTab
 import DataIntegrityDashboard from '../components/DataIntegrityDashboard'
 import VendorSimilarityDetection from '../components/VendorSimilarityDetection'
 import ExplainableAIPanel from '../components/ExplainableAIPanel'
-import RiskBreakdown from '../components/RiskBreakdown'
+import ExplainableRiskBreakdown from '../components/ExplainableRiskBreakdown'
 import AuditReportGenerator from '../components/AuditReportGenerator'
 import BankReconciliation from '../components/BankReconciliation'
 import GoingConcernStressTest from '../components/GoingConcernStressTest'
@@ -389,16 +389,16 @@ export default function Results() {
           marginBottom: '32px',
         }}
       >
-        <StatCard title="Total Records" value={(results.summary?.total_records ?? 0).toLocaleString()} color="primary" />
-        <StatCard title="Flagged Records" value={(results.summary?.flagged_records ?? 0).toLocaleString()} color="warning" />
+        <StatCard title="Total Records" value={(results.summary?.total_records ?? 0).toLocaleString('en-IN')} color="primary" />
+        <StatCard title="Flagged Records" value={(results.summary?.flagged_records ?? 0).toLocaleString('en-IN')} color="warning" />
         <StatCard
           title="Benford Risk"
-          value={`${results.summary?.benford_risk ?? 0}%`}
+          value={`${(results.summary?.benford_risk ?? 0).toFixed(1)}%`}
           color="danger"
         />
         <StatCard
           title="Vendor Match Alerts"
-          value={results.summary?.fuzzy_match_count ?? 0}
+          value={(results.summary?.fuzzy_match_count ?? 0).toLocaleString('en-IN')}
           color="success"
         />
       </motion.section>
@@ -582,7 +582,7 @@ export default function Results() {
         <ExplainableAIPanel anomalies={results.anomalies || []} />
       </motion.section>
 
-      {/* ===== RISK BREAKDOWN ===== */}
+      {/* ===== RISK BREAKDOWN WITH AI EXPLANATIONS ===== */}
       <motion.section
         custom={7}
         variants={sectionVariants}
@@ -590,11 +590,31 @@ export default function Results() {
         animate="visible"
         style={{ marginBottom: '32px' }}
       >
-        <RiskBreakdown 
-          anomalies={results.anomalies || []}
-          benfordRisk={results.summary?.benford_risk || 0}
-          fuzzyMatchCount={results.summary?.fuzzy_match_count || 0}
-        />
+        {(() => {
+          // Calculate risk scores using consistent methodology
+          // Use risk_scores from API for anomaly detection
+          const riskScores = results.risk_scores || [];
+          const anomalyRiskMean = riskScores.length 
+            ? (riskScores.reduce((sum, rs) => sum + (rs.risk_score || 0), 0) / riskScores.length)
+            : 50; // Default anomaly score
+          
+          // Use summary data for vendor and benford
+          const benfordRisk = Math.min(results.summary?.benford_risk || 0, 100);
+          const fuzzyMatchCount = results.summary?.fuzzy_match_count || 0;
+          const totalRecords = results.summary?.total_records || 1;
+          
+          // Vendor score: percentage of records with fuzzy matches
+          const vendorRiskPercentage = (fuzzyMatchCount / Math.max(totalRecords, 1)) * 100;
+          
+          return (
+            <ExplainableRiskBreakdown 
+              anomalyScore={Math.round(anomalyRiskMean)}
+              vendorScore={Math.round(vendorRiskPercentage)}
+              benfordScore={Math.round(benfordRisk)}
+              useAIExplanations={true}
+            />
+          );
+        })()}
       </motion.section>
 
       {/* ===== BANK RECONCILIATION ===== */}

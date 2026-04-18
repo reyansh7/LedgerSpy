@@ -195,7 +195,8 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
     for row_idx, row in clean_df.reset_index(drop=True).iterrows():
         anomaly_component = float(anomaly_risk_scores[row_idx])
         fuzzy_component = float(vendor_match_risk.get(row["destination_entity"], 0.0))
-        total_risk = (0.5 * anomaly_component) + (0.3 * benford_risk) + (0.2 * fuzzy_component)
+        # ✅ FIXED: Correct weights - 50% anomaly, 30% vendor, 20% benford
+        total_risk = (0.5 * anomaly_component) + (0.3 * fuzzy_component) + (0.2 * benford_risk)
         total_risk = round(min(total_risk, 100.0), 2)
 
         explanations = []

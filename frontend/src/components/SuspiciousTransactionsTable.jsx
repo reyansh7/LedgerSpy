@@ -213,7 +213,7 @@ export default function SuspiciousTransactionsTable({ anomalies }) {
                           </div>
                         </td>
                         <td style={{ ...tdStyle, fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontWeight: 600, color: '#E5E7EB' }}>
-                          ₹{typeof row.amount === 'number' ? row.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 }) : row.amount}
+                          ₹{typeof row.amount === 'number' ? row.amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : row.amount}
                         </td>
                         <td style={tdStyle}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start' }}>

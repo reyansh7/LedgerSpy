@@ -45,6 +45,14 @@ except Exception as e:
     import logging
     logging.warning(f"Could not load reconciliation routes: {e}")
 
+# Include advanced bank reconciliation routes (with fraud detection)
+try:
+    from app.api import bank_reconciliation
+    app.include_router(bank_reconciliation.router, tags=["bank-reconciliation"])
+except Exception as e:
+    import logging
+    logging.warning(f"Could not load bank reconciliation routes: {e}")
+
 # Include risk explanation routes (Ollama integration)
 try:
     from app.api import risk_explanations

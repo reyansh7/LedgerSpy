@@ -27,10 +27,18 @@ const GlassCard = ({ children, style }) => (
   </div>
 )
 
-export default function RiskBreakdown({ anomalies, benfordRisk, fuzzyMatchCount }) {
-  const avgAnomalyScore = anomalies?.length ? (anomalies.reduce((sum, a) => sum + (a.is_anomaly ? 50 : 0), 0) / anomalies.length) : 0
-  const vendorScore = (fuzzyMatchCount / Math.max(anomalies?.length || 1, 1)) * 30
-  const benfordScore = Math.min((benfordRisk || 0), 100) * 0.2
+export default function RiskBreakdown({ anomalies, benfordRisk, fuzzyMatchCount, totalRecords = 1 }) {
+  // ✅ FIXED: Use correct calculation formulas
+  // Anomaly score: average risk_score from all transactions
+  const avgAnomalyScore = anomalies?.length 
+    ? (anomalies.reduce((sum, a) => sum + (a.risk_score || 0), 0) / anomalies.length)
+    : 50
+  
+  // Vendor score: percentage of transactions with fuzzy matches
+  const vendorScore = (fuzzyMatchCount / Math.max(totalRecords, 1)) * 100
+  
+  // Benford score: already 0-100 scale, use directly
+  const benfordScore = Math.min((benfordRisk || 0), 100)
 
   const components = [
     {

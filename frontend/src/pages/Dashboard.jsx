@@ -7,6 +7,7 @@ import DataTable from '../components/ui/DataTable'
 import ProgressBar from '../components/ui/ProgressBar'
 import LineChart from '../components/charts/LineChart'
 import DonutChart from '../components/charts/DonutChart'
+import BankReconciliationInline from '../components/BankReconciliationInline'
 
 const recentAnalyses = [
   { file: 'Q3_Ledger_August.csv', date: '13 Aug 2024', transactions: '45,231', highRisk: 1023, status: 'Completed' },
@@ -129,6 +130,9 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
+        {/* Bank Reconciliation Section */}
+        <BankReconciliationInline />
 
         <div className="dashboard__bottom-row">
           <div className="chart-card">

@@ -392,10 +392,10 @@ const ReconciliationPage = () => {
                           {txn.transaction_id || txn.bank_txn_id || 'N/A'}
                         </td>
                         <td className="px-4 py-3 text-right text-slate-300">
-                          ${txn.ledger_amount?.toFixed(2) || 'N/A'}
+                          ₹{txn.ledger_amount?.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 'N/A'}
                         </td>
                         <td className="px-4 py-3 text-right text-slate-300">
-                          ${txn.bank_amount?.toFixed(2) || 'N/A'}
+                          ₹{txn.bank_amount?.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 'N/A'}
                         </td>
                         <td className="px-4 py-3 text-right text-slate-300">
                           {txn.amount_diff_pct !== null

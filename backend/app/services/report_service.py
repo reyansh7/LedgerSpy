@@ -33,27 +33,27 @@ def generate_report(file_id, analysis_results):
 def calculate_risk_score(analysis_results):
     """
     Calculate overall risk score (0-100)
+    ✅ FIXED: Use consistent formula with audit_service.py
+    
+    Formula: (50% × anomaly_rate) + (30% × vendor_rate) + (20% × benford_risk)
     """
-    score = 0
+    total_records = max(analysis_results.get('total_records', 1), 1)
     
-    # Benford's Law contribution (40%)
-    benford = analysis_results.get('benford', {})
-    if benford.get('chi_square'):
-        score += min(benford['chi_square'] / 10, 40)
+    # Calculate percentage rates
+    anomaly_count = len(analysis_results.get('anomalies', []))
+    anomaly_rate = (anomaly_count / total_records) * 100  # Convert to 0-100 scale
     
-    # Anomalies contribution (40%)
-    anomaly_ratio = len(analysis_results.get('anomalies', [])) / max(
-        analysis_results.get('total_records', 1), 1
-    )
-    score += min(anomaly_ratio * 100, 40)
+    fuzzy_count = len(analysis_results.get('fuzzy_matches', []))
+    vendor_rate = (fuzzy_count / total_records) * 100  # Convert to 0-100 scale
     
-    # Fuzzy matches contribution (20%)
-    match_ratio = len(analysis_results.get('fuzzy_matches', [])) / max(
-        analysis_results.get('total_records', 1), 1
-    )
-    score += min(match_ratio * 100, 20)
+    # Benford risk is already 0-100 scale
+    benford_risk = analysis_results.get('benford', {}).get('chi_square', 0)
+    benford_risk = min(benford_risk, 100)  # Ensure 0-100 range
     
-    return round(score, 2)
+    # Weighted calculation: 50% anomaly + 30% vendor + 20% benford
+    score = (anomaly_rate * 0.50) + (vendor_rate * 0.30) + (benford_risk * 0.20)
+    
+    return round(min(score, 100), 2)
 
 def generate_recommendations(analysis_results):
     """

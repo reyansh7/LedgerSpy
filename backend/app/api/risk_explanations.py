@@ -114,7 +114,7 @@ async def generate_explainable_breakdown(
     vendor_score: float,
     benford_score: float,
     base_url: str = Query(default="http://localhost:11434"),
-    model: str = Query(default="mistral"),
+    model: str = Query(default="neural-chat"),  # Lightweight & fast
     use_ai_explanations: bool = Query(default=True),
     anomaly_details: Optional[Dict] = None,
     vendor_details: Optional[Dict] = None,
@@ -179,7 +179,7 @@ async def get_quick_explanation(
     component: str,
     risk_score: float,
     base_url: str = Query(default="http://localhost:11434"),
-    model: str = Query(default="mistral"),
+    model: str = Query(default="neural-chat"),  # Lightweight & fast
 ):
     """
     Get quick AI explanation for a single risk component.

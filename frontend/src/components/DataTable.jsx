@@ -110,7 +110,7 @@ export default function DataTable({ rows }) {
                 {row.destination_entity}
               </td>
               <td className="px-5 py-4 text-slate-300 font-mono">
-                ${typeof row.amount === 'number' ? row.amount.toLocaleString('en-US', { minimumFractionDigits: 2 }) : row.amount}
+                ₹{typeof row.amount === 'number' ? row.amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : row.amount}
               </td>
               <td className="px-5 py-4">
                 <RiskBadge score={row.risk_score} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import html2pdf from 'html2pdf.js'
 
 const GlassCard = ({ children, style }) => (
   <div
@@ -101,13 +102,154 @@ Report End
   }
 
   const downloadReport = () => {
-    const element = document.createElement('a')
-    const file = new Blob([report], { type: 'text/plain' })
-    element.href = URL.createObjectURL(file)
-    element.download = `audit-report-${results?.file_id || 'export'}.txt`
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    const element = document.createElement('div')
+    const currentDate = new Date()
+    
+    element.innerHTML = `
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 50px; background: white; color: #1e293b;">
+        
+        <!-- Header Section -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 4px solid #8b5cf6; padding-bottom: 30px;">
+          <div>
+            <h1 style="margin: 0; color: #8b5cf6; font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">FRAUD DETECTION AUDIT REPORT</h1>
+            <p style="margin: 8px 0 0 0; color: #64748b; font-size: 14px;">LedgerSpy Financial Audit System</p>
+            <p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 12px; font-weight: 500;">Comprehensive Risk Analysis & Detection Report</p>
+          </div>
+          <div style="text-align: right; font-size: 13px; color: #475569; background: #f8fafc; padding: 20px; border-radius: 8px;">
+            <p style="margin: 0; font-weight: 600;">Report Date</p>
+            <p style="margin: 4px 0 0 0; font-size: 14px; font-weight: 700;">${currentDate.toLocaleDateString('en-US', { 
+              weekday: 'long', 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}</p>
+            <p style="margin: 4px 0 0 0;">Time: ${currentDate.toLocaleTimeString()}</p>
+            <p style="margin: 8px 0 0 0; border-top: 1px solid #cbd5e1; padding-top: 8px; font-size: 12px;">File ID: ${results?.file_id || 'N/A'}</p>
+          </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div style="margin-bottom: 40px;">
+          <h2 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 4px; height: 24px; background: #8b5cf6; border-radius: 2px;"></span>
+            EXECUTIVE SUMMARY
+          </h2>
+          <p style="margin: 0 0 12px 0; color: #475569; line-height: 1.6; font-size: 14px;">
+            This comprehensive fraud detection audit report analyzes ${totalRecords.toLocaleString('en-US')} financial transactions using advanced anomaly detection, Benford's Law analysis, and vendor similarity matching algorithms.
+          </p>
+          <p style="margin: 0; color: #475569; line-height: 1.6; font-size: 14px;">
+            <strong>${flaggedRecords} transactions (${flaggedPct}%) have been flagged as high-risk</strong> based on multiple detection methodologies. This report provides detailed insights into these suspicious activities and recommendations for further investigation.
+          </p>
+        </div>
+
+        <!-- Key Metrics Grid -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;">
+          <div style="padding: 20px; background: #f0f9ff; border-left: 5px solid #0284c7; border-radius: 6px;">
+            <p style="margin: 0; font-size: 12px; color: #0c4a6e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Total Records</p>
+            <p style="margin: 8px 0 0 0; font-size: 32px; font-weight: 800; color: #0284c7;">${totalRecords.toLocaleString('en-US')}</p>
+          </div>
+          <div style="padding: 20px; background: #fef2f2; border-left: 5px solid #dc2626; border-radius: 6px;">
+            <p style="margin: 0; font-size: 12px; color: #7f1d1d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Flagged Transactions</p>
+            <p style="margin: 8px 0 0 0; font-size: 32px; font-weight: 800; color: #dc2626;">${flaggedRecords}</p>
+            <p style="margin: 4px 0 0 0; font-size: 12px; color: #991b1b;">${flaggedPct}% of total</p>
+          </div>
+          <div style="padding: 20px; background: #fef3c7; border-left: 5px solid #d97706; border-radius: 6px;">
+            <p style="margin: 0; font-size: 12px; color: #78350f; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Benford Risk</p>
+            <p style="margin: 8px 0 0 0; font-size: 32px; font-weight: 800; color: #d97706;">${benfordRisk}%</p>
+          </div>
+          <div style="padding: 20px; background: #faf5ff; border-left: 5px solid #a855f7; border-radius: 6px;">
+            <p style="margin: 0; font-size: 12px; color: #6b21a8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Vendor Alerts</p>
+            <p style="margin: 8px 0 0 0; font-size: 32px; font-weight: 800; color: #a855f7;">${fuzzyMatches}</p>
+          </div>
+        </div>
+
+        <!-- Detailed Findings -->
+        <div style="margin-bottom: 40px;">
+          <h2 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 4px; height: 24px; background: #8b5cf6; border-radius: 2px;"></span>
+            DETAILED FINDINGS
+          </h2>
+          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <h3 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #1e293b;">Detection Methodology</h3>
+            <p style="margin: 0 0 8px 0; color: #475569; font-size: 12px;">
+              <strong style="color: #1e293b;">1. Anomaly Detection:</strong> Machine learning algorithms identify transactions that deviate from normal spending patterns.
+            </p>
+            <p style="margin: 0 0 8px 0; color: #475569; font-size: 12px;">
+              <strong style="color: #1e293b;">2. Benford's Law Analysis:</strong> Validates first digit distribution of transaction amounts against expected probability distributions.
+            </p>
+            <p style="margin: 0; color: #475569; font-size: 12px;">
+              <strong style="color: #1e293b;">3. Vendor Similarity Matching:</strong> Detects suspicious vendor name variations and duplicate vendors using fuzzy matching algorithms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Risk Breakdown -->
+        <div style="margin-bottom: 40px;">
+          <h2 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 4px; height: 24px; background: #8b5cf6; border-radius: 2px;"></span>
+            RISK CLASSIFICATION
+          </h2>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+              <tr style="background: #1e293b; color: white;">
+                <th style="padding: 12px; text-align: left; font-weight: 700;">Risk Category</th>
+                <th style="padding: 12px; text-align: center; font-weight: 700;">Count</th>
+                <th style="padding: 12px; text-align: right; font-weight: 700;">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; color: #1e293b;"><strong>High Risk Transactions</strong></td>
+                <td style="padding: 12px; text-align: center; color: #dc2626; font-weight: 700;">${flaggedRecords}</td>
+                <td style="padding: 12px; text-align: right; color: #dc2626; font-weight: 700;">${flaggedPct}%</td>
+              </tr>
+              <tr style="background: white; border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; color: #1e293b;"><strong>Normal Transactions</strong></td>
+                <td style="padding: 12px; text-align: center; color: #22c55e; font-weight: 700;">${(totalRecords - flaggedRecords).toLocaleString('en-US')}</td>
+                <td style="padding: 12px; text-align: right; color: #22c55e; font-weight: 700;">${(100 - flaggedPct).toFixed(2)}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Recommendations -->
+        <div style="margin-bottom: 40px;">
+          <h2 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 4px; height: 24px; background: #8b5cf6; border-radius: 2px;"></span>
+            RECOMMENDATIONS
+          </h2>
+          <div style="background: #eff6ff; padding: 20px; border-radius: 8px; border-left: 4px solid #0284c7;">
+            <ul style="margin: 0; padding-left: 20px; color: #1e293b; font-size: 12px; line-height: 1.8;">
+              <li>Immediately investigate all <strong>${flaggedRecords} high-risk transactions</strong> with dedicated audit teams.</li>
+              <li>Review vendor master data for <strong>${fuzzyMatches} duplicate vendor alerts</strong> to prevent fraud.</li>
+              <li>Conduct deeper analysis on transactions with <strong>Benford's Law deviation (${benfordRisk}%)</strong> risk level.</li>
+              <li>Implement additional controls for transactions exceeding statistical norms.</li>
+              <li>Schedule follow-up audit within 30 days to track remediation progress.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="border-top: 2px solid #e2e8f0; padding-top: 20px; margin-top: 30px; text-align: center;">
+          <p style="margin: 0 0 8px 0; font-size: 12px; color: #64748b;">
+            This report is confidential and intended for authorized personnel only.
+          </p>
+          <p style="margin: 0; font-size: 11px; color: #94a3b8;">
+            Generated by LedgerSpy Fraud Detection System • © ${currentDate.getFullYear()} • All Rights Reserved
+          </p>
+        </div>
+      </div>
+    `
+
+    const opt = {
+      margin: 15,
+      filename: `Audit-Report-${results?.file_id || 'export'}-${currentDate.getTime()}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' },
+    }
+
+    html2pdf().set(opt).from(element).save()
   }
 
   const summaryMetrics = [
@@ -222,7 +364,7 @@ Report End
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download .txt
+            Download PDF
           </motion.button>
         </div>
       </div>

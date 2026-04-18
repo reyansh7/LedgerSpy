@@ -30,7 +30,7 @@ class OllamaConfig:
     """Ollama configuration and connectivity"""
     
     DEFAULT_BASE_URL = "http://localhost:11434"
-    DEFAULT_MODEL = "mistral"  # Best for 6GB RAM
+    DEFAULT_MODEL = "neural-chat"  # Lightweight & fast (4GB)
     DEFAULT_TIMEOUT = 60
     
     def __init__(
