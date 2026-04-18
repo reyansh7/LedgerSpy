@@ -21,7 +21,8 @@ class AnomalyModel:
         # 0.1 (10%) is usually too noisy for real audits.
         self.model = IsolationForest(contamination=contamination, random_state=42)
         self.is_trained = False
-        self.feature_columns = [] 
+        self.feature_columns = []
+        self.training_mean = None 
 
     def _validate_and_align_features(self, df_features: pd.DataFrame) -> pd.DataFrame:
         expected = list(self.feature_columns)
@@ -57,6 +58,7 @@ class AnomalyModel:
         """
         self.feature_columns = df_features.columns.tolist()
         self.model.fit(df_features.values)
+        self.training_mean = df_features.mean()
         self.is_trained = True
     
     def predict(self, df_features: pd.DataFrame):
@@ -86,9 +88,47 @@ class AnomalyModel:
 
         return self.model.score_samples(df_features.values)
     
+    def explain_anomalies(self, df_original: pd.DataFrame, df_features: pd.DataFrame, anomaly_indices: pd.Index):
+        """
+        Provide explainable risk insights for flagged anomalies.
+        Returns a dictionary mapping transaction_id to feature contribution percentages.
+        """
+        if not self.is_trained:
+            raise ValueError("Model must be trained before explaining anomalies.")
+        if self.training_mean is None:
+            raise ValueError(
+                "Training mean is missing. Ensure the model was trained via train() before explaining anomalies. "
+                "If loading a saved model, verify the model file includes training_mean data."
+            )
+        
+        # Validate and align features to match training schema
+        df_features = self._validate_and_align_features(df_features)
+        
+        explanations = {}
+        for idx in anomaly_indices:
+            row = df_features.loc[idx]
+            # Compute deviations as a Series keyed by column name
+            deviations = (row - self.training_mean).abs()
+            total_deviation = deviations.sum()
+            
+            if total_deviation == 0:
+                # If no deviation, distribute equally (unlikely)
+                percentages = {col: 100.0 / len(self.feature_columns) for col in self.feature_columns}
+            else:
+                # Iterate by column name to map name -> (dev / total_deviation) * 100
+                percentages = {col: (deviations[col] / total_deviation) * 100 for col in self.feature_columns}
+            
+            transaction_id = df_original.loc[idx, 'transaction_id']
+            explanations[transaction_id] = percentages
+        return explanations
+    
     def save(self, filepath):
         """Save model to file for the offline desktop app"""
-        payload = pickle.dumps({'model': self.model, 'features': self.feature_columns})
+        payload = pickle.dumps({
+            'model': self.model,
+            'features': self.feature_columns,
+            'training_mean': self.training_mean
+        })
         signature = self._sign_payload(payload)
         with open(filepath, 'wb') as f:
             f.write(signature.encode("ascii") + b"\n" + payload)
@@ -122,6 +162,12 @@ class AnomalyModel:
 
             self.model = data['model']
             self.feature_columns = features
+            self.training_mean = data.get('training_mean')
+            if self.training_mean is None:
+                raise ValueError(
+                    "Invalid model format: 'training_mean' is missing from saved state. "
+                    "Re-train the model and save it again."
+                )
             self.is_trained = True
         except (pickle.UnpicklingError, OSError, ValueError, KeyError, ModelLoadError) as exc:
             logger.exception("Failed to load anomaly model from %s", filepath)
