@@ -1,15 +1,17 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../Navbar'
+import Topbar from '../Topbar'
 import Sidebar from '../Sidebar'
 
 export default function AppLayout() {
   return (
-    <div className="app">
-      <Navbar />
-      <div className="app-container">
-        <Sidebar />
-        <Outlet />
+    <div className="app-layout">
+      <Sidebar />
+      <div className="app-layout__main">
+        <Topbar />
+        <div className="app-layout__content">
+          <Outlet />
+        </div>
       </div>
     </div>
   )
