@@ -27,6 +27,8 @@ import ExplainableAIPanel from '../components/ExplainableAIPanel'
 import RiskBreakdown from '../components/RiskBreakdown'
 import AuditReportGenerator from '../components/AuditReportGenerator'
 import BankReconciliation from '../components/BankReconciliation'
+import GoingConcernStressTest from '../components/GoingConcernStressTest'
+import IndustryBenchmarkComparison from '../components/IndustryBenchmarkComparison'
 import { getAnalysisResults } from '../services/api'
 import { AppContext } from '../context/AppContext'
 
@@ -115,6 +117,9 @@ export default function Results() {
   const [searchParams] = useSearchParams()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [goingConcernData, setGoingConcernData] = useState(null)
+  const [industryBenchmarkData, setIndustryBenchmarkData] = useState(null)
+  const [selectedIndustry, setSelectedIndustry] = useState('technology')
 
   useEffect(() => {
     const fileId = searchParams.get('fileId')
@@ -126,6 +131,8 @@ export default function Results() {
 
     if (resultsData?.file_id === fileId) {
       setLoading(false)
+      // Fetch going concern and benchmark data
+      fetchAdvancedAnalytics(fileId)
       return
     }
 
@@ -133,6 +140,8 @@ export default function Results() {
       try {
         const response = await getAnalysisResults(fileId)
         setResultsData(response.data)
+        // Fetch advanced analytics
+        fetchAdvancedAnalytics(fileId)
       } catch (error) {
         setError(error.response?.data?.detail || 'Failed to fetch results')
       } finally {
@@ -141,6 +150,24 @@ export default function Results() {
     }
     fetchResults()
   }, [resultsData, searchParams, setResultsData])
+
+  const fetchAdvancedAnalytics = async (fileId) => {
+    try {
+      // Fetch going concern data
+      const gcResponse = await fetch('/api/audit/going-concern/sample')
+      if (gcResponse.ok) {
+        setGoingConcernData(await gcResponse.json())
+      }
+
+      // Fetch industry benchmark data
+      const ibResponse = await fetch(`/api/audit/industry-benchmark/sample?industry=${selectedIndustry}`)
+      if (ibResponse.ok) {
+        setIndustryBenchmarkData(await ibResponse.json())
+      }
+    } catch (error) {
+      console.error('Failed to fetch advanced analytics:', error)
+    }
+  }
 
   const results = resultsData
 
@@ -661,9 +688,57 @@ export default function Results() {
         />
       </motion.section>
 
-      {/* ===== AUDIT REPORT ===== */}
+      {/* ===== GOING CONCERN STRESS TEST ===== */}
       <motion.section
         custom={10}
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ marginBottom: '32px' }}
+      >
+        <GoingConcernStressTest data={goingConcernData} />
+      </motion.section>
+
+      {/* ===== INDUSTRY BENCHMARKING ===== */}
+      <motion.section
+        custom={11}
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ marginBottom: '32px' }}
+      >
+        <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <label style={{ color: '#9CA3AF', fontSize: '0.9rem', fontWeight: 600 }}>Select Industry Sector:</label>
+          <select 
+            value={selectedIndustry}
+            onChange={(e) => {
+              setSelectedIndustry(e.target.value)
+              fetchAdvancedAnalytics(results.file_id)
+            }}
+            style={{
+              padding: '8px 12px',
+              borderRadius: '8px',
+              backgroundColor: 'rgba(30, 41, 59, 0.5)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              color: '#fff',
+              cursor: 'pointer',
+              fontSize: '0.9rem'
+            }}
+          >
+            <option value="technology">Technology</option>
+            <option value="finance">Finance & Banking</option>
+            <option value="retail">Retail & E-commerce</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="government">Government & Public</option>
+          </select>
+        </div>
+        <IndustryBenchmarkComparison data={industryBenchmarkData} />
+      </motion.section>
+
+      {/* ===== AUDIT REPORT ===== */}
+      <motion.section
+        custom={12}
         variants={sectionVariants}
         initial="hidden"
         animate="visible"

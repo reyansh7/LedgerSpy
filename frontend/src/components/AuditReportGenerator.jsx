@@ -1,13 +1,41 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
+const GlassCard = ({ children, style }) => (
+  <div
+    style={{
+      background: 'linear-gradient(135deg, rgba(18, 22, 38, 0.7), rgba(27, 27, 47, 0.4))',
+      border: '1px solid rgba(255,255,255,0.06)',
+      borderRadius: '20px',
+      padding: '28px',
+      backdropFilter: 'blur(16px)',
+      transition: 'all 300ms ease',
+      position: 'relative',
+      overflow: 'hidden',
+      ...style,
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'
+      e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)'
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+      e.currentTarget.style.boxShadow = 'none'
+    }}
+  >
+    {children}
+  </div>
+)
+
 export default function AuditReportGenerator({ results }) {
   const [copied, setCopied] = useState(false)
+  const [showPreview, setShowPreview] = useState(false)
 
   const totalRecords = results?.summary?.total_records || 0
   const flaggedRecords = results?.summary?.flagged_records || 0
   const benfordRisk = results?.summary?.benford_risk || 0
   const fuzzyMatches = results?.summary?.fuzzy_match_count || 0
+  const flaggedPct = totalRecords ? ((flaggedRecords / totalRecords) * 100).toFixed(2) : 0
 
   const report = `
 FRAUD DETECTION AUDIT REPORT
@@ -25,7 +53,7 @@ File ID: ${results?.file_id || 'N/A'}
 EXECUTIVE SUMMARY
 ${'─'.repeat(60)}
 Total Transactions Analyzed: ${totalRecords.toLocaleString('en-IN')}
-Suspicious Transactions: ${flaggedRecords} (${((flaggedRecords / totalRecords) * 100).toFixed(2)}%)
+Suspicious Transactions: ${flaggedRecords} (${flaggedPct}%)
 Benford's Law Risk: ${benfordRisk}%
 Duplicate Vendor Alerts: ${fuzzyMatches}
 
@@ -35,7 +63,7 @@ ${'─'.repeat(60)}
 1. ANOMALY DETECTION
    • ${flaggedRecords} transactions flagged by Isolation Forest algorithm
    • Analysis identifies unusual patterns and statistical outliers
-   • Represents ${((flaggedRecords / totalRecords) * 100).toFixed(2)}% of total transaction volume
+   • Represents ${flaggedPct}% of total transaction volume
 
 2. VENDOR ANALYSIS
    • ${fuzzyMatches} suspicious vendor pairs detected
@@ -62,23 +90,6 @@ ${'─'.repeat(60)}
 5. Update vendor master database
 6. Consider implementing transaction monitoring rules
 
-TECHNICAL DETAILS
-${'─'.repeat(60)}
-Detection Methods:
-- Isolation Forest (Anomaly Detection)
-- Fuzzy String Matching (Vendor Similarity)
-- Benford's Law Analysis (Digital Distribution)
-- Statistical Profiling (Risk Scoring)
-
-Confidence Level: High (Multi-factor analysis)
-
-NEXT STEPS
-${'─'.repeat(60)}
-1. Internal audit team review
-2. Management approval for follow-up
-3. Document findings and corrective actions
-4. Archive report for compliance records
-
 ${'═'.repeat(60)}
 Report End
 `.trim()
@@ -99,63 +110,224 @@ Report End
     document.body.removeChild(element)
   }
 
+  const summaryMetrics = [
+    { label: 'Total Records', value: totalRecords.toLocaleString('en-IN'), color: '#22d3ee', icon: '📄' },
+    { label: 'Flagged', value: flaggedRecords, color: '#f87171', icon: '🚨' },
+    { label: 'Benford Risk', value: `${benfordRisk}%`, color: '#fbbf24', icon: '📊' },
+    { label: 'Vendor Alerts', value: fuzzyMatches, color: '#a78bfa', icon: '👥' },
+  ]
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-slate-800/50 bg-gradient-to-br from-slate-900/40 to-slate-800/20 p-6"
-    >
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-slate-50">📝 Automated Audit Report</h3>
-        <div className="flex gap-2">
+    <GlassCard>
+      {/* Top accent line */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '3px',
+        background: 'linear-gradient(90deg, #8b5cf6, #22d3ee)',
+        borderRadius: '20px 20px 0 0',
+      }} />
+
+      {/* Header */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: '24px',
+        flexWrap: 'wrap',
+        gap: '12px',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '10px',
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.1))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1rem',
+          }}>
+            📝
+          </div>
+          <div>
+            <h3 style={{
+              fontSize: '1.15rem',
+              fontWeight: 700,
+              margin: 0,
+              background: 'linear-gradient(135deg, #fff, #94a3b8)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              Automated Audit Report
+            </h3>
+            <p style={{ fontSize: '0.78rem', color: '#6B7280', margin: 0 }}>
+              Generated on {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: '8px' }}>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={copyToClipboard}
-            className="px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-sm font-medium hover:bg-cyan-500/30 transition-all"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              borderRadius: '10px',
+              border: `1px solid ${copied ? 'rgba(34, 197, 94, 0.4)' : 'rgba(6, 182, 212, 0.3)'}`,
+              background: copied ? 'rgba(34, 197, 94, 0.1)' : 'rgba(6, 182, 212, 0.08)',
+              color: copied ? '#4ade80' : '#22d3ee',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 200ms ease',
+            }}
           >
-            {copied ? '✓ Copied' : '📋 Copy'}
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {copied ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              )}
+            </svg>
+            {copied ? 'Copied!' : 'Copy'}
           </motion.button>
+
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={downloadReport}
-            className="px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-medium hover:bg-emerald-500/30 transition-all"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              borderRadius: '10px',
+              border: '1px solid rgba(34, 197, 94, 0.3)',
+              background: 'rgba(34, 197, 94, 0.08)',
+              color: '#4ade80',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 200ms ease',
+            }}
           >
-            📥 Download
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download .txt
           </motion.button>
         </div>
       </div>
 
-      {/* Preview */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="bg-slate-950/50 border border-slate-800/50 rounded-lg p-6 font-mono text-xs text-slate-300 overflow-x-auto max-h-96 overflow-y-auto"
-      >
-        <pre className="whitespace-pre-wrap break-words">{report}</pre>
-      </motion.div>
-
-      {/* Key Metrics */}
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="p-3 rounded-lg bg-slate-800/30 border border-slate-700/50">
-          <p className="text-xs text-slate-400">Total Records</p>
-          <p className="text-xl font-bold text-slate-100 mt-1">{totalRecords.toLocaleString('en-IN')}</p>
-        </div>
-        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30">
-          <p className="text-xs text-red-300">Flagged</p>
-          <p className="text-xl font-bold text-red-300 mt-1">{flaggedRecords}</p>
-        </div>
-        <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
-          <p className="text-xs text-amber-300">Benford Risk</p>
-          <p className="text-xl font-bold text-amber-300 mt-1">{benfordRisk}%</p>
-        </div>
-        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30">
-          <p className="text-xs text-red-300">Vendor Alerts</p>
-          <p className="text-xl font-bold text-red-300 mt-1">{fuzzyMatches}</p>
-        </div>
+      {/* Summary Metrics */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '20px' }}>
+        {summaryMetrics.map((metric, idx) => (
+          <motion.div
+            key={metric.label}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.06 }}
+            style={{
+              padding: '14px 16px',
+              borderRadius: '12px',
+              background: `${metric.color}08`,
+              border: `1px solid ${metric.color}20`,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+            }}
+          >
+            <span style={{ fontSize: '1.2rem' }}>{metric.icon}</span>
+            <div>
+              <p style={{ fontSize: '0.62rem', color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600, margin: 0 }}>
+                {metric.label}
+              </p>
+              <p style={{
+                fontSize: '1.1rem',
+                fontWeight: 800,
+                fontFamily: "'Poppins', sans-serif",
+                color: metric.color,
+                margin: '2px 0 0 0',
+              }}>
+                {metric.value}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
+
+      {/* Report Preview Toggle */}
+      <div style={{
+        borderRadius: '14px',
+        border: '1px solid rgba(255,255,255,0.05)',
+        overflow: 'hidden',
+      }}>
+        <button
+          onClick={() => setShowPreview(!showPreview)}
+          style={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '14px 20px',
+            background: 'rgba(0,0,0,0.2)',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#E5E7EB',
+            fontSize: '0.82rem',
+            fontWeight: 600,
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#6B7280" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Report Preview
+          </div>
+          <motion.svg
+            width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#6B7280" strokeWidth={2}
+            animate={{ rotate: showPreview ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </motion.svg>
+        </button>
+
+        {showPreview && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            style={{
+              background: 'rgba(0,0,0,0.3)',
+              borderTop: '1px solid rgba(255,255,255,0.04)',
+            }}
+          >
+            <pre style={{
+              padding: '20px 24px',
+              fontFamily: "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace",
+              fontSize: '0.72rem',
+              color: '#9CA3AF',
+              lineHeight: 1.6,
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+              maxHeight: '400px',
+              overflowY: 'auto',
+              margin: 0,
+            }}>
+              {report}
+            </pre>
+          </motion.div>
+        )}
+      </div>
+    </GlassCard>
   )
 }
