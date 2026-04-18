@@ -1,63 +1,100 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# Column name mappings - Accept common variations
+COLUMN_MAPPINGS = {
+    'transaction_id': [
+        'transaction_id', 'txn_id', 'tx_id', 'id', 'transaction', 'ref', 'reference',
+        'Transaction ID', 'TXN ID', 'Txn_Id', 'Transaction_ID'
+    ],
+    'timestamp': [
+        'timestamp', 'date', 'created_at', 'transaction_date', 'txn_date', 'date_time',
+        'posted_date', 'posting_date', 'entry_date', 'Date', 'Timestamp', 'Created_At',
+        'Transaction_Date', 'Posted_Date', 'datetime', 'DateTime'
+    ],
+    'amount': [
+        'amount', 'value', 'transaction_amount', 'txn_amount', 'sum', 'total',
+        'price', 'qty', 'quantity_amount', 'Amount', 'Value', 'Transaction_Amount'
+    ],
+    'source_entity': [
+        'source_entity', 'source', 'from_entity', 'from', 'sender', 'payer',
+        'from_account', 'account', 'Source', 'Source_Entity', 'From', 'Sender'
+    ],
+    'destination_entity': [
+        'destination_entity', 'destination', 'vendor', 'payee', 'to_entity', 'to',
+        'recipient', 'to_account', 'counterparty', 'party', 'company', 'business',
+        'Destination', 'Vendor', 'Payee', 'To', 'Recipient', 'Destination_Entity'
+    ]
+}
+
+
+def normalize_column_names(df: pd.DataFrame, mapping: dict = None) -> pd.DataFrame:
+    """
+    Normalize DataFrame column names to standard format.
+    Accepts common variations (case-insensitive, underscores, hyphens, etc.)
+    
+    Args:
+        df: DataFrame with potentially non-standard column names
+        mapping: Optional custom mapping dict
+        
+    Returns:
+        DataFrame with normalized column names
+    """
+    if mapping is None:
+        mapping = COLUMN_MAPPINGS
+    
+    df = df.copy()
+    df_cols_lower = {col.lower(): col for col in df.columns}  # Original name lookup
+    
+    renamed_cols = {}
+    for standard_name, aliases in mapping.items():
+        # Try to find a match in the DataFrame
+        for alias in aliases:
+            alias_lower = alias.lower().replace('_', '').replace('-', '')
+            
+            # Check exact match (case-insensitive)
+            for col_lower, col_original in df_cols_lower.items():
+                col_normalized = col_lower.replace('_', '').replace('-', '')
+                
+                if col_normalized == alias_lower:
+                    renamed_cols[col_original] = standard_name
+                    logger.info(f"Mapped '{col_original}' → '{standard_name}'")
+                    break
+            
+            if standard_name in renamed_cols.values():
+                break
+    
+    # Apply renaming
+    if renamed_cols:
+        df = df.rename(columns=renamed_cols)
+    
+    return df
 
 
 class LedgerPreprocessor:
-    def __init__(self):
+    def __init__(self, auto_normalize=True):
+        """
+        Initialize preprocessor.
+        
+        Args:
+            auto_normalize: If True, automatically normalize column names
+        """
         self.required_cols = [
-            'transaction_id', 'timestamp', 'amount',
+            'transaction_id', 'timestamp', 'amount', 
             'source_entity', 'destination_entity'
         ]
-        self.scaler = None  # stored so anomaly module can inverse later
-
-    def calculate_readiness_score(self, df: pd.DataFrame) -> dict:
-        """Run this on RAW data before cleaning."""
-        total_rows = len(df)
-        if total_rows == 0:
-            return {
-                "readiness_score": 0,
-                "status": "Empty File",
-                "metrics": {"completeness": 0, "validity": 0, "uniqueness": 0},
-                "issues": ["File is empty."]
-            }
-
-        # Validate required columns exist before accessing
-        missing_cols = set(self.required_cols) - set(df.columns)
-        if missing_cols:
-            return {
-                "readiness_score": 0,
-                "status": "Missing Required Columns",
-                "metrics": {"completeness": 0, "validity": 0, "uniqueness": 0},
-                "issues": [f"Missing required columns: {', '.join(sorted(missing_cols))}."]
-            }
-
-        completeness = 1 - (
-            df[self.required_cols].isnull().sum().sum()
-            / (total_rows * len(self.required_cols))
-        )
-        uniqueness_ratio = df['transaction_id'].nunique() / total_rows
-        
-        # Validate both amounts and timestamps for validity
-        valid_amounts = pd.to_numeric(df['amount'], errors='coerce').notnull().sum()
-        valid_timestamps = pd.to_datetime(df['timestamp'], errors='coerce').notnull().sum()
-        validity_score = min(valid_amounts, valid_timestamps) / total_rows
-
-        final_score = (completeness * 0.4) + (validity_score * 0.4) + (uniqueness_ratio * 0.2)
-
-        return {
-            "readiness_score": round(final_score * 100, 2),
-            "metrics": {
-                "completeness": round(completeness * 100, 2),
-                "validity": round(validity_score * 100, 2),
-                "uniqueness": round(uniqueness_ratio * 100, 2)
-            },
-            "issues": self._generate_issue_list(df)  # raw df, issues are real
-        }
+        self.auto_normalize = auto_normalize
+        self.column_mapping_report = {}
 
     def calculate_readiness_score(self, df: pd.DataFrame) -> dict:
         """
         Calculate the audit readiness score for the raw DataFrame.
+        Auto-normalizes column names if enabled.
         
         Evaluates:
         - Completeness: percentage of non-null values
@@ -75,16 +112,24 @@ class LedgerPreprocessor:
                 "message": "DataFrame is empty"
             }
 
+        # Auto-normalize column names if enabled
+        if self.auto_normalize:
+            df = normalize_column_names(df)
+            self.column_mapping_report = {col: col for col in df.columns}
+
         total_records = len(df)
         
         # Check column presence
         missing_cols = [col for col in self.required_cols if col not in df.columns]
         if missing_cols:
+            available_cols = list(df.columns)
             return {
                 "readiness_score": 0,
                 "data_quality": "Critical",
                 "completeness": "0%",
-                "message": f"Missing required columns: {missing_cols}"
+                "message": f"Missing required columns: {missing_cols}",
+                "available_columns": available_cols,
+                "hint": "Try renaming your columns to match: " + ", ".join(self.required_cols)
             }
 
         # Calculate completeness (percentage of non-null values across required columns)
@@ -146,50 +191,125 @@ class LedgerPreprocessor:
         }
 
     def validate_and_clean(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Run this AFTER readiness score, before ML modules."""
+        """
+        Ensures the data meets the contract and handles missing values safely.
+        Auto-normalizes column names if enabled.
+        """
         df = df.copy()
-        for col in ['source_entity', 'destination_entity', 'transaction_id']:
-            df[col] = df[col].fillna("UNKNOWN").astype(str).str.strip()
+        
+        # 1. Auto-normalize column names if enabled
+        if self.auto_normalize:
+            df = normalize_column_names(df)
+        
+        # 2. Schema Validation
+        missing_cols = [col for col in self.required_cols if col not in df.columns]
+        if missing_cols:
+            available = list(df.columns)
+            raise ValueError(
+                f"Missing required columns: {missing_cols}. "
+                f"Available columns: {available}. "
+                f"Expected: {self.required_cols}"
+            )
 
+        # 3. Safe Missing Value Handling
+        # Fill missing text with "UNKNOWN" so RapidFuzz doesn't crash on NaNs
+        text_cols = ['source_entity', 'destination_entity', 'transaction_id']
+        for col in text_cols:
+            df[col] = df[col].fillna("UNKNOWN").astype(str)
+
+        # Fill missing amounts with 0.0
         df['amount'] = pd.to_numeric(df['amount'], errors='coerce').fillna(0.0)
+
+        # 4. Standardize Timestamp
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+        # Drop rows where the timestamp is completely unreadable
+        df = df.dropna(subset=['timestamp']) 
 
-        dropped = df['timestamp'].isnull().sum()
-        if dropped > 0:
-            print(f"[LedgerPreprocessor] Warning: dropped {dropped} row(s) with invalid timestamps.")
-
-        cleaned = df.dropna(subset=['timestamp']).reset_index(drop=True)
-        
-        # Guard: warn if cleaned dataframe is empty
-        if len(cleaned) == 0:
-            print("[LedgerPreprocessor] Warning: cleaned dataframe is empty (all rows dropped due to invalid timestamps).")
-        
-        return cleaned
-
-    def _generate_issue_list(self, df: pd.DataFrame) -> list:
-        """Expects RAW dataframe."""
-        issues = []
-        null_amounts = pd.to_numeric(df['amount'], errors='coerce').isnull().sum()
-        if null_amounts > 0:
-            issues.append(f"{null_amounts} null or invalid value(s) in Amount column.")
-        if df['transaction_id'].duplicated().any():
-            issues.append(f"{df['transaction_id'].duplicated().sum()} duplicate Transaction ID(s) detected.")
-        bad_timestamps = pd.to_datetime(df['timestamp'], errors='coerce').isnull().sum()
-        if bad_timestamps > 0:
-            issues.append(f"{bad_timestamps} row(s) have unparseable timestamps and will be dropped.")
-        return issues
+        return df
 
     def engineer_anomaly_features(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Expects CLEANED dataframe from validate_and_clean."""
+        """
+        Transforms raw ledger rows into enhanced features for anomaly detection.
+        Includes temporal, statistical, behavioral, and velocity-based features.
+        """
         features = pd.DataFrame(index=df.index)
-        features['amount'] = df['amount']
+        
+        # ===== BASIC FEATURES =====
+        # Feature 1: The Amount itself (log-transformed to reduce skew)
+        features['log_amount'] = np.log1p(df['amount'])
+        features['amount_raw'] = df['amount']
+        
+        # ===== TEMPORAL FEATURES =====
+        # Feature 2-5: Time-based risk (Fraud often happens at odd times)
         features['hour_of_day'] = df['timestamp'].dt.hour
         features['day_of_week'] = df['timestamp'].dt.dayofweek
-
+        features['day_of_month'] = df['timestamp'].dt.day
+        features['is_weekend'] = df['timestamp'].dt.dayofweek.isin([5, 6]).astype(int)
+        
+        # ===== VENDOR BEHAVIORAL FEATURES =====
+        # Feature 6: Amount relative to vendor's normal behavior (Z-Score)
+        # This catches a $50k invoice from a $500 vendor
         vendor_means = df.groupby('destination_entity')['amount'].transform('mean')
-        vendor_stds = df.groupby('destination_entity')['amount'].transform('std').fillna(1.0)
+        vendor_stds = df.groupby('destination_entity')['amount'].transform('std')
+        vendor_stds = vendor_stds.fillna(1.0).replace(0.0, 1.0)
         features['vendor_amount_zscore'] = (df['amount'] - vendor_means) / vendor_stds
-
-        self.scaler = StandardScaler()
-        scaled = self.scaler.fit_transform(features.fillna(0))
-        return pd.DataFrame(scaled, columns=features.columns, index=df.index)
+        
+        # Feature 7: Vendor transaction frequency (how often do we use this vendor?)
+        vendor_txn_count = df.groupby('destination_entity').size()
+        features['vendor_frequency'] = df['destination_entity'].map(vendor_txn_count).fillna(1)
+        
+        # Feature 8: Deviation from vendor's typical hourly pattern
+        vendor_hour_pattern = df.groupby(['destination_entity', df['timestamp'].dt.hour]).size()
+        hourly_avg = df.groupby(df['timestamp'].dt.hour).size().mean()
+        features['vendor_hour_deviation'] = df.apply(
+            lambda row: 1.0 if row['destination_entity'] not in vendor_means.index 
+            else min(vendor_hour_pattern.get((row['destination_entity'], row['timestamp'].hour), 0) / max(hourly_avg, 1), 10),
+            axis=1
+        )
+        
+        # ===== VELOCITY FEATURES =====
+        # Feature 9: Transaction velocity (how many txns from this source in last 1 hour?)
+        df_sorted = df.sort_values('timestamp').copy()
+        velocity_list = []
+        for idx, row in df_sorted.iterrows():
+            recent_txns = df_sorted[
+                (df_sorted['source_entity'] == row['source_entity']) &
+                (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(1, 'h')) &
+                (df_sorted['timestamp'] <= row['timestamp'])
+            ]
+            velocity_list.append(len(recent_txns))
+        features['source_velocity_1h'] = velocity_list
+        
+        # Feature 10: Amount velocity (total $ from source in last 24h)
+        amount_velocity_list = []
+        for idx, row in df_sorted.iterrows():
+            recent_amount = df_sorted[
+                (df_sorted['source_entity'] == row['source_entity']) &
+                (df_sorted['timestamp'] >= row['timestamp'] - np.timedelta64(24, 'h')) &
+                (df_sorted['timestamp'] <= row['timestamp'])
+            ]['amount'].sum()
+            amount_velocity_list.append(recent_amount)
+        features['amount_velocity_24h'] = amount_velocity_list
+        
+        # ===== STATISTICAL FEATURES =====
+        # Feature 11: Percentile of this amount within vendor's distribution
+        def amount_percentile(row):
+            vendor_amounts = df[df['destination_entity'] == row['destination_entity']]['amount']
+            if len(vendor_amounts) > 0:
+                return (vendor_amounts <= row['amount']).sum() / len(vendor_amounts) * 100
+            return 50
+        features['amount_percentile'] = df.apply(amount_percentile, axis=1)
+        
+        # Feature 12: Unusual entity pair (Source->Destination combo frequency)
+        entity_pair_count = df.groupby(['source_entity', 'destination_entity']).size()
+        features['entity_pair_frequency'] = df.apply(
+            lambda row: entity_pair_count.get((row['source_entity'], row['destination_entity']), 1),
+            axis=1
+        )
+        
+        # ===== NORMALIZE =====
+        # Scale features so Isolation Forest treats them equally
+        scaler = StandardScaler()
+        scaled_array = scaler.fit_transform(features.fillna(0))
+        
+        return pd.DataFrame(scaled_array, columns=features.columns, index=features.index)
