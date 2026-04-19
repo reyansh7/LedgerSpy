@@ -106,7 +106,8 @@ class RiskExplainer:
         Returns:
             Generated explanation text
         """
-        prompt = f"""Provide a brief, technical explanation for this fraud anomaly detection result (1-2 sentences):
+        try:
+            prompt = f"""Provide a brief, technical explanation for this fraud anomaly detection result (1-2 sentences):
 
 Risk Score: {anomaly_score:.1f}%
 Model: Isolation Forest with Ensemble Voting
@@ -115,8 +116,11 @@ Flagged Transactions: {flagged_transactions}
 Contamination Rate: 5%
 
 Generate a short, clear explanation suitable for financial auditors. Focus on what the score means."""
-        
-        return self._query_ollama(prompt)
+            
+            return self._query_ollama(prompt)
+        except Exception as e:
+            logger.error(f"Error generating anomaly explanation: {e}")
+            return f"Risk score of {anomaly_score:.1f}% indicates {('significant' if anomaly_score > 50 else 'moderate' if anomaly_score > 25 else 'minimal')} anomaly detection risk based on Isolation Forest analysis."
     
     def generate_vendor_explanation(
         self,
@@ -135,7 +139,8 @@ Generate a short, clear explanation suitable for financial auditors. Focus on wh
         Returns:
             Generated explanation text
         """
-        prompt = f"""Provide a brief technical explanation for this vendor matching result (1-2 sentences):
+        try:
+            prompt = f"""Provide a brief technical explanation for this vendor matching result (1-2 sentences):
 
 Risk Score: {vendor_score:.1f}%
 Method: Fuzzy String Matching (Levenshtein Distance)
@@ -143,8 +148,11 @@ Suspicious Matches: {fuzzy_matches}
 Ghost Vendors Detected: {ghost_vendors}
 
 Generate a clear explanation of what this score indicates about vendor risk. Keep it concise."""
-        
-        return self._query_ollama(prompt)
+            
+            return self._query_ollama(prompt)
+        except Exception as e:
+            logger.error(f"Error generating vendor explanation: {e}")
+            return f"Risk score of {vendor_score:.1f}% indicates {('high' if vendor_score > 60 else 'moderate' if vendor_score > 30 else 'low')} vendor duplication risk. {ghost_vendors} potential ghost vendors detected from {fuzzy_matches} fuzzy matches."
     
     def generate_benford_explanation(
         self,
@@ -165,7 +173,8 @@ Generate a clear explanation of what this score indicates about vendor risk. Kee
         Returns:
             Generated explanation text
         """
-        prompt = f"""Provide a brief technical explanation for this Benford's Law analysis (1-2 sentences):
+        try:
+            prompt = f"""Provide a brief technical explanation for this Benford's Law analysis (1-2 sentences):
 
 Risk Score: {benford_score:.1f}%
 Chi-Square Statistic: {chi_square:.2f}
@@ -174,8 +183,12 @@ MAD (Mean Absolute Deviation): {mad:.6f}
 Threshold: 15.507
 
 Explain what this indicates about first-digit distribution anomalies and data manipulation risk. Be concise."""
-        
-        return self._query_ollama(prompt)
+            
+            return self._query_ollama(prompt)
+        except Exception as e:
+            logger.error(f"Error generating benford explanation: {e}")
+            compliant = "does" if benford_score < 30 else "does not"
+            return f"Risk score of {benford_score:.1f}% indicates the first-digit distribution {compliant} follow Benford's Law, suggesting {'minimal' if benford_score < 30 else 'potential'} data manipulation risk."
     
     def generate_risk_summary(
         self,
@@ -198,9 +211,10 @@ Explain what this indicates about first-digit distribution anomalies and data ma
         Returns:
             Generated summary text
         """
-        findings_text = "\n".join([f"- {f}" for f in key_findings[:3]])
-        
-        prompt = f"""Generate a brief executive summary for fraud risk assessment (2-3 sentences):
+        try:
+            findings_text = "\n".join([f"- {f}" for f in key_findings[:3]])
+            
+            prompt = f"""Generate a brief executive summary for fraud risk assessment (2-3 sentences):
 
 Total Risk Score: {total_risk:.1f}%
 Components:
@@ -212,8 +226,12 @@ Key Findings:
 {findings_text}
 
 Provide a clear, actionable summary for financial auditors. Focus on overall risk level and next steps."""
-        
-        return self._query_ollama(prompt)
+            
+            return self._query_ollama(prompt)
+        except Exception as e:
+            logger.error(f"Error generating risk summary: {e}")
+            risk_level = "CRITICAL" if total_risk > 70 else "HIGH" if total_risk > 50 else "MEDIUM" if total_risk > 30 else "LOW"
+            return f"Overall fraud risk assessment: {risk_level} (Score: {total_risk:.1f}%). Analysis is based on anomaly detection, vendor matching, and Benford's Law compliance checks."
     
     def generate_audit_recommendation(
         self,
@@ -234,7 +252,8 @@ Provide a clear, actionable summary for financial auditors. Focus on overall ris
         Returns:
             Generated recommendations
         """
-        prompt = f"""Provide audit recommendations for this fraud risk scenario (2-3 action items):
+        try:
+            prompt = f"""Provide audit recommendations for this fraud risk scenario (2-3 action items):
 
 Overall Risk Level: {total_risk:.1f}%
 High-Risk Anomalies Found: {top_anomalies}
@@ -242,8 +261,18 @@ Suspicious Vendors: {suspicious_vendors}
 Data Manipulation Risk: {data_manipulation_risk:.1f}%
 
 Generate 2-3 specific, actionable recommendations for auditors. Focus on high-impact areas."""
-        
-        return self._query_ollama(prompt)
+            
+            return self._query_ollama(prompt)
+        except Exception as e:
+            logger.error(f"Error generating audit recommendation: {e}")
+            recommendations = []
+            if top_anomalies > 0:
+                recommendations.append(f"1. Review {top_anomalies} flagged anomalies for validity")
+            if suspicious_vendors > 0:
+                recommendations.append(f"2. Investigate {suspicious_vendors} duplicate vendor entries")
+            if data_manipulation_risk > 50:
+                recommendations.append("3. Perform detailed data integrity audit for potential manipulation")
+            return "\n".join(recommendations) if recommendations else "Conduct full forensic audit of financial records"
     
     def _query_ollama(self, prompt: str) -> str:
         """
@@ -255,11 +284,11 @@ Generate 2-3 specific, actionable recommendations for auditors. Focus on high-im
         Returns:
             Generated response text
         """
-        if not self.config.is_available():
-            return "⚠️ Ollama service not available. Ensure Ollama is running at " \
-                   f"{self.config.base_url} with model {self.config.model}"
-        
         try:
+            if not self.config.is_available():
+                return "Ollama service not available. Ensure Ollama is running at " \
+                       f"{self.config.base_url} with model {self.config.model}"
+            
             payload = {
                 "model": self.config.model,
                 "prompt": prompt,
@@ -284,10 +313,10 @@ Generate 2-3 specific, actionable recommendations for auditors. Focus on high-im
         
         except requests.Timeout:
             logger.error("Ollama request timeout")
-            return "⚠️ Ollama response timeout. Model may be slow or system overloaded."
+            return "Ollama response timeout. Model may be slow or system overloaded."
         except Exception as e:
             logger.error(f"Ollama error: {e}")
-            return f"⚠️ Error generating explanation: {str(e)}"
+            return f"Error generating explanation: {str(e)}"
 
 
 class RiskBreakdownGenerator:
@@ -324,6 +353,11 @@ class RiskBreakdownGenerator:
             Complete breakdown dict
         """
         # Calculate total risk (50% anomaly, 30% vendor, 20% benford)
+        # Each component has a raw risk score (0-100) and a weight in the final calculation
+        # - anomaly_score: raw detection risk (0-100)
+        # - vendor_score: raw matching risk (0-100)
+        # - benford_score: raw distribution anomaly risk (0-100)
+        # Weighted calculation gives more importance to anomaly detection (50%) than Benford (20%)
         total_risk = (
             anomaly_score * 0.50 +
             vendor_score * 0.30 +

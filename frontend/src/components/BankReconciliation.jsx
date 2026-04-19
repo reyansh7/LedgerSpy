@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import BankReconciliationSideBySide from './BankReconciliationSideBySide'
 
 const GlassCard = ({ children, style }) => (
   <div
@@ -31,6 +32,7 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
   const [filter, setFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('id')
+  const [viewTab, setViewTab] = useState('side-by-side') // 'side-by-side' or 'table'
   
   // If reconciliation results are provided, use those; otherwise use defaults
   let matchedCount, missingCount, partialCount, matchPercentage, ledgerTotal, bankTotal
@@ -480,10 +482,62 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
             overflow: 'hidden',
           }}
         >
+          {/* View Tabs */}
+          <div style={{
+            padding: '12px 20px 0 20px',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+            display: 'flex',
+            gap: '8px',
+            marginBottom: '12px',
+          }}>
+            {[
+              { id: 'side-by-side', label: '👁️ Side-by-Side', icon: '👁️' },
+              { id: 'table', label: '📋 Table View', icon: '📋' },
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setViewTab(tab.id)}
+                style={{
+                  padding: '8px 14px',
+                  borderRadius: '8px 8px 0 0',
+                  border: viewTab === tab.id 
+                    ? '1px solid rgba(255,255,255,0.15)' 
+                    : '1px solid rgba(255,255,255,0.05)',
+                  borderBottom: viewTab === tab.id 
+                    ? 'none'
+                    : '1px solid rgba(255,255,255,0.05)',
+                  background: viewTab === tab.id
+                    ? 'rgba(59, 130, 246, 0.15)'
+                    : 'rgba(255,255,255,0.02)',
+                  color: viewTab === tab.id ? '#3b82f6' : '#9CA3AF',
+                  cursor: 'pointer',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  transition: 'all 200ms ease',
+                  letterSpacing: '0.3px',
+                }}
+                onMouseEnter={(e) => {
+                  if (viewTab !== tab.id) {
+                    e.target.style.background = 'rgba(255,255,255,0.04)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (viewTab !== tab.id) {
+                    e.target.style.background = 'rgba(255,255,255,0.02)'
+                  }
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
           {/* Table Header */}
           <div style={{
             padding: '16px 20px',
             borderBottom: '1px solid rgba(255,255,255,0.05)',
+            display: viewTab === 'table' ? 'block' : 'none',
           }}>
             <p style={{
               fontSize: '0.85rem',
@@ -588,7 +642,13 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
             </p>
           </div>
 
+          {/* Side-by-Side View */}
+          {viewTab === 'side-by-side' && (
+            <BankReconciliationSideBySide reconciliationResults={reconciliationResults} />
+          )}
+
           {/* Scrollable Table */}
+          {viewTab === 'table' && (
           <div style={{
             overflowX: 'auto',
             maxHeight: '600px',
@@ -657,6 +717,7 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
               </tbody>
             </table>
           </div>
+          )}
         </motion.div>
       )}
 

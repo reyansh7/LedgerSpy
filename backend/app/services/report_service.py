@@ -46,9 +46,9 @@ def calculate_risk_score(analysis_results):
     fuzzy_count = len(analysis_results.get('fuzzy_matches', []))
     vendor_rate = (fuzzy_count / total_records) * 100  # Convert to 0-100 scale
     
-    # Benford risk is already 0-100 scale
-    benford_risk = analysis_results.get('benford', {}).get('chi_square', 0)
-    benford_risk = min(benford_risk, 100)  # Ensure 0-100 range
+    # Benford risk is already 0-100 scale (from summary, calculated using p-value)
+    benford_risk = analysis_results.get('summary', {}).get('benford_risk', 0)
+    benford_risk = max(0, min(benford_risk, 100))  # Ensure 0-100 range
     
     # Weighted calculation: 50% anomaly + 30% vendor + 20% benford
     score = (anomaly_rate * 0.50) + (vendor_rate * 0.30) + (benford_risk * 0.20)

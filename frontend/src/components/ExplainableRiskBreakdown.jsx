@@ -530,24 +530,40 @@ const ExplainableRiskBreakdown = ({
 
         {/* Risk Calculation Breakdown */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          display: 'flex',
+          flexDirection: 'column',
           gap: '12px',
           marginTop: '24px',
         }}>
-          {[
-            { label: 'Anomaly', value: (anomalyScoreNormalized * 0.5).toFixed(1), color: '#3b82f6' },
-            { label: 'Vendor', value: (vendorScoreNormalized * 0.3).toFixed(1), color: '#ef4444' },
-            { label: 'Benford', value: (benfordScoreNormalized * 0.2).toFixed(1), color: '#f59e0b' },
-          ].map(({ label, value, color }) => (
-            <div
-              key={label}
-              style={{
-                padding: '12px',
-                borderRadius: '12px',
-                background: 'rgba(0,0,0,0.2)',
-                border: '1px solid rgba(255,255,255,0.04)',
-                textAlign: 'center',
+          <p style={{
+            fontSize: '0.72rem',
+            color: 'rgba(255,255,255,0.5)',
+            margin: 0,
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+          }}>
+            Component Scores (Raw Risk) • Contribution to Total
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '12px',
+          }}>
+            {[
+              { label: 'Anomaly', rawScore: anomalyScoreNormalized, weight: 0.5, contribution: (anomalyScoreNormalized * 0.5).toFixed(1), color: '#3b82f6' },
+              { label: 'Vendor', rawScore: vendorScoreNormalized, weight: 0.3, contribution: (vendorScoreNormalized * 0.3).toFixed(1), color: '#ef4444' },
+              { label: 'Benford', rawScore: benfordScoreNormalized, weight: 0.2, contribution: (benfordScoreNormalized * 0.2).toFixed(1), color: '#f59e0b' },
+            ].map(({ label, rawScore, weight, contribution, color }) => (
+              <div
+                key={label}
+                title={`Raw Risk: ${rawScore.toFixed(1)} • Weight: ${(weight * 100).toFixed(0)}% • Contribution: ${contribution}`}
+                style={{
+                  padding: '12px',
+                  borderRadius: '12px',
+                  background: 'rgba(0,0,0,0.2)',
+                  border: '1px solid rgba(255,255,255,0.04)',
+                  textAlign: 'center',
+                  cursor: 'help',
               }}
             >
               <div style={{
@@ -561,15 +577,30 @@ const ExplainableRiskBreakdown = ({
                 {label}
               </div>
               <div style={{
-                fontSize: '1.1rem',
-                fontWeight: 800,
-                color: color,
-                fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
               }}>
-                {value}%
+                <div style={{
+                  fontSize: '1.1rem',
+                  fontWeight: 800,
+                  color: color,
+                  fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                }}>
+                  {rawScore.toFixed(1)}%
+                </div>
+                <div style={{
+                  fontSize: '0.7rem',
+                  color: 'rgba(255,255,255,0.4)',
+                  fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                }}>
+                  ({contribution})
+                </div>
               </div>
             </div>
-          ))}
+            ))}
+          </div>
         </div>
       </GlassCard>
 

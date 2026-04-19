@@ -211,7 +211,8 @@ async def get_going_concern_analysis(file_id: str):
         if 'destination_entity' not in df.columns:
             df['destination_entity'] = 'Unknown_Destination'
         
-        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        # Parse timestamps with ISO8601 format to handle milliseconds and microseconds
+        df['timestamp'] = pd.to_datetime(df['timestamp'], format='ISO8601', errors='coerce')
         df['amount'] = pd.to_numeric(df['amount'], errors='coerce')
         
         # Identify company entities for expense ratio calculation

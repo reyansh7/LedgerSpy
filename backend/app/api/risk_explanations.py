@@ -110,9 +110,9 @@ async def get_available_models(base_url: str = Query(default="http://localhost:1
 
 @router.post("/explainable-breakdown")
 async def generate_explainable_breakdown(
-    anomaly_score: float,
-    vendor_score: float,
-    benford_score: float,
+    anomaly_score: float = Query(...),
+    vendor_score: float = Query(...),
+    benford_score: float = Query(...),
     base_url: str = Query(default="http://localhost:11434"),
     model: str = Query(default="neural-chat"),  # Lightweight & fast
     use_ai_explanations: bool = Query(default=True),
@@ -166,10 +166,12 @@ async def generate_explainable_breakdown(
             "breakdown": breakdown,
         }
     
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"Error generating breakdown: {e}")
+        logger.error(f"Error generating breakdown: {str(e)}", exc_info=True)
         raise HTTPException(
-            status_code=400,
+            status_code=500,
             detail=f"Error generating risk breakdown: {str(e)}"
         )
 

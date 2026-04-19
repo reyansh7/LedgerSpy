@@ -1,0 +1,1501 @@
+transaction_id,timestamp,amount,source_entity,destination_entity
+TXN61044,2024-07-16,969.65,Finance Dept,Shell Ventures Ltd
+TXN60364,2024-03-07,100,Finance Dept,Summit Advisary
+TXN61145,2024-11-21,927.96,Procurement,Shell Ventures LLC
+TXN61256,2024-10-29,1145.02,Exec Office,Shell Venture
+TXN60257,2024-03-10,100,Exec Office,Orion Tech Inc
+TXN61027,2024-06-21,5443.52,Exec Office,Exec Office
+TXN61378,2024-08-11,933.12,Operations,Shell Ventures
+TXN60945,2024-02-03,10000.0,Procurement,Shell Venture Co
+TXN60344,2024-03-13,849.78,Admin Dept,Pacific-Trade
+TXN60508,2024-10-04,7093.08,Admin Dept,Alpha Consult
+TXN60618,2024-07-30,9998.88,Exec Office,Nexus Holdings Inc
+TXN61047,2024-07-16,1155.18,Procurement,Shell Ventures Ltd
+TXN60307,2024-10-29,976.21,Operations,Pacific Trade Co
+TXN60670,2024-12-14,24998.29,Exec Office,Summit Advisory LLC
+TXN60368,2024-01-19,178.13,Admin Dept,Shell Ventures
+TXN60343,2024-03-27,100,Procurement,NEXUS HOLDINGS
+TXN60766,2024-07-21,4998.48,Admin Dept,Nexus Holdings
+GHOST61473,2024-08-04,47988.48,Unknown,Ghost Vendor 03
+TXN60278,2024-10-25,9999,Admin Dept,Alpha Consulting
+TXN60808,2024-05-24,500.0,Admin Dept,OrionTech
+TXN61202,2024-02-25,985.33,Finance Dept,Shell Ventures LLC
+TXN60445,2024-04-01,7804.9,Operations,Metro Supply
+TXN61391,2024-09-17,981.54,Exec Office,Shell Venture
+TXN60504,2024-12-19,100,Admin Dept,NEXUS HOLDINGS
+TXN61059,2024-05-07,1188.2,Exec Office,Shell Ventures LLC
+TXN61113,2024-07-10,964.67,Admin Dept,Shell Ventures
+TXN60246,2024-12-13,100,Operations,Pacific Trade
+TXN60588,2024-05-03,100,Exec Office,Summit Advisory LLC
+TXN60803,2024-06-16,2000.0,Admin Dept,Shell Ventures
+TXN60259,2024-05-06,100,Finance Dept,Alpha Consult
+TXN60175,2024-06-14,9155.64,Operations,Nexus Holdings
+TXN60347,2024-08-09,8141.91,Finance Dept,Metro Supplies Co
+TXN60440,2024-11-01,100,Operations,MetroSupplies
+TXN60254,2024-12-09,789.03,Admin Dept,Metro Supplies
+TXN60117,2024-01-14,100,Admin Dept,Summit Advisors
+TXN60973,2024-04-25,25242.28,Finance Dept,Finance Dept
+TXN60879,2024-12-09,2000.0,Operations,Shell Venture
+TXN60406,2024-11-06,100,Exec Office,Shell Ventures
+TXN60691,2024-04-17,998.66,Exec Office,Nexus Holdings Inc
+TXN60353,2024-09-21,100,Admin Dept,Alpha Consulting
+TXN61329,2024-06-11,1152.44,Exec Office,Shell Ventures
+TXN61012,2024-07-11,10599.32,Finance Dept,Finance Dept
+TXN60250,2024-03-11,7580.97,Procurement,Alpha Consult
+TXN60018,2024-11-24,911.8,Finance Dept,Orion Tech Inc
+TXN60813,2024-11-16,7500.0,Admin Dept,Metro Supplies Co
+GHOST61499,2024-07-12,41162.54,Unknown,Ghost Vendor 13
+TXN60190,2024-07-20,8480.54,Admin Dept,Pacific-Trade
+GHOST61474,2024-02-11,54906.23,Unknown,Ghost Vendor 18
+TXN61323,2024-01-12,1080.87,Finance Dept,Shell Ventures
+TXN61371,2024-07-07,962.03,Operations,Shell Ventures LLC
+TXN60219,2024-06-30,7159.93,Exec Office,Alpha Consulting
+TXN60283,2024-05-28,100,Finance Dept,NEXUS HOLDINGS
+TXN60899,2024-12-16,10000.0,Admin Dept,NEXUS HOLDINGS
+TXN60038,2024-06-11,894.22,Finance Dept,Nexus Holdings
+TXN60984,2024-11-05,42634.6,Finance Dept,Finance Dept
+TXN61227,2024-08-30,1039.05,Procurement,Shell Ventures
+TXN61131,2024-04-09,903.32,Finance Dept,Shell Ventures LLC
+TXN60954,2024-12-25,18515.44,Exec Office,Exec Office
+TXN61013,2024-01-02,49274.04,Procurement,Procurement
+TXN60752,2024-08-18,2499.01,Operations,Alpha Consulting
+TXN60303,2024-02-28,100,Procurement,Orion Tech
+TXN60157,2024-03-18,103.05,Operations,Shell Ventures
+TXN60807,2024-05-31,2000.0,Exec Office,Alpha Consulting LLC
+TXN60802,2024-08-30,1500.0,Operations,Shell Ventures Ltd
+TXN61350,2024-04-06,987.81,Admin Dept,Shell Ventures Ltd
+TXN60633,2024-04-29,9999.37,Operations,Summit Advisary
+TXN60388,2024-08-29,100,Operations,Pacific Trade Co
+TXN60726,2024-07-01,999.33,Finance Dept,Summit Advisory
+TXN60235,2024-07-01,100,Admin Dept,AlphaConsulting
+TXN60605,2024-06-21,4998.28,Procurement,SummitAdvisory
+TXN60166,2024-11-20,100,Procurement,Alpha Consult
+TXN60607,2024-09-16,999.77,Exec Office,Pacific Trade Ltd
+TXN60669,2024-09-17,4998.06,Finance Dept,MetroSupplies
+TXN61206,2024-02-19,1018.02,Operations,Shell Ventures Ltd
+TXN60556,2024-07-25,100,Admin Dept,Pacific Trade Ltd
+TXN61180,2024-06-09,1181.28,Finance Dept,Shell Ventures
+TXN60779,2024-01-13,9999.68,Procurement,Metro Supply
+TXN60846,2024-07-17,10000.0,Operations,OrionTech
+TXN60647,2024-06-05,24999.96,Operations,Summit Advisors
+TXN61381,2024-03-13,919.59,Procurement,Shell Ventures LLC
+TXN60324,2024-04-20,917.93,Exec Office,SummitAdvisory
+TXN61272,2024-03-27,1024.67,Procurement,Shell Ventures LLC
+TXN60277,2024-04-13,100,Operations,NEXUS HOLDINGS
+TXN61166,2024-09-26,990.17,Procurement,Shell Venture
+TXN60661,2024-04-11,2499.42,Admin Dept,Metro Supplies Co
+GHOST61484,2024-06-09,54784.23,Unknown,Ghost Vendor 12
+TXN61464,2024-11-28,1172.4,Exec Office,Shell Venture Co
+TXN60418,2024-12-14,100,Admin Dept,Pacific Trade Ltd
+TXN61277,2024-02-09,1155.91,Finance Dept,Shell Venture
+TXN61078,2024-08-19,949.99,Finance Dept,Shell Venture
+TXN60442,2024-01-01,100,Operations,OrionTech
+TXN60425,2024-09-21,100,Finance Dept,Alpha Consulting LLC
+TXN60688,2024-07-17,9999.77,Admin Dept,Shell Ventures LLC
+TXN61451,2024-10-29,1027.47,Exec Office,Shell Venture Co
+TXN61163,2024-09-26,967.86,Finance Dept,Shell Venture
+TXN61340,2024-05-15,955.54,Exec Office,Shell Venture
+TXN60883,2024-02-15,500.0,Operations,Summit Advisory LLC
+TXN61014,2024-05-10,13501.76,Exec Office,Exec Office
+TXN60955,2024-01-31,5503.71,Finance Dept,Finance Dept
+TXN61162,2024-09-26,1141.86,Admin Dept,Shell Venture
+TXN61382,2024-03-13,1004.35,Admin Dept,Shell Ventures LLC
+TXN61418,2024-10-27,1166.94,Admin Dept,Shell Ventures Ltd
+TXN61001,2024-12-17,13548.47,Finance Dept,Finance Dept
+TXN60408,2024-09-08,100,Exec Office,Orion Tech
+TXN60421,2024-02-17,100,Procurement,Pacific Trade Co
+TXN61189,2024-10-30,945.01,Procurement,Shell Ventures Ltd
+TXN60743,2024-06-12,24998.18,Finance Dept,Orion Tech Inc
+TXN60489,2024-05-15,827.75,Procurement,Nexus Holdingz
+TXN61213,2024-09-17,972.2,Admin Dept,Shell Ventures LLC
+TXN61036,2024-01-09,1193.6,Operations,Shell Venture
+TXN61246,2024-05-20,959.0,Finance Dept,Shell Venture Co
+TXN60206,2024-02-23,100,Finance Dept,Alpha-Consulting
+TXN60263,2024-07-07,100,Finance Dept,Orion Tech Inc
+TXN60248,2024-12-15,7541.2,Exec Office,Alpha-Consulting
+TXN60131,2024-07-01,2328.94,Operations,Shell Ventures
+TXN60763,2024-04-11,2498.97,Finance Dept,Nexus Hold.
+TXN60599,2024-12-23,100,Operations,Orion Tech
+TXN60288,2024-09-09,927.58,Finance Dept,Pacific Trade
+TXN60665,2024-09-27,9998.01,Operations,Shell Ventures Ltd
+TXN60494,2024-11-07,992.94,Admin Dept,AlphaConsulting
+TXN61462,2024-11-28,1061.71,Admin Dept,Shell Venture Co
+TXN61146,2024-11-21,982.73,Admin Dept,Shell Ventures LLC
+TXN60708,2024-05-11,4998.72,Admin Dept,Summit Advisors
+TXN60076,2024-12-26,100,Admin Dept,Nexus Holdings Inc
+TXN60305,2024-01-23,8289.73,Procurement,Metro Supplies Co
+TXN60486,2024-07-22,100,Finance Dept,Pacific Trd
+TXN60322,2024-05-30,754.47,Operations,Orion Tech Ltd
+TXN61221,2024-08-10,1118.81,Operations,Shell Ventures Ltd
+TXN60709,2024-06-02,2499.25,Finance Dept,MetroSupplies
+TXN60004,2024-06-07,100,Finance Dept,Summit Advisory
+TXN60497,2024-06-09,100,Exec Office,OrionTech
+TXN61339,2024-05-15,924.6,Admin Dept,Shell Venture
+TXN60609,2024-02-16,24998.6,Admin Dept,Alpha Consulting
+TXN61124,2024-04-14,988.63,Finance Dept,Shell Ventures Ltd
+TXN60024,2024-03-06,100,Finance Dept,Shell Ventures LLC
+TXN60730,2024-07-31,24999.67,Admin Dept,Nexus Holdings
+TXN60797,2024-10-15,24998.77,Admin Dept,Orion Tech Inc
+TXN60174,2024-03-01,8873.85,Admin Dept,OrionTech
+TXN60026,2024-06-02,833.73,Finance Dept,Pacific Trade
+TXN60365,2024-12-26,100,Procurement,Alpha Consulting
+TXN60674,2024-01-03,9999.58,Finance Dept,Pacific Trd
+TXN60232,2024-06-20,100,Finance Dept,Pacific Trade Ltd
+TXN60638,2024-01-16,2498.03,Admin Dept,Nexus Hold.
+TXN60010,2024-02-19,918.34,Exec Office,Metro Supplies
+TXN60477,2024-04-06,100,Procurement,Metro Supply
+TXN60676,2024-03-20,2499.25,Procurement,Shell Ventures LLC
+TXN61212,2024-09-17,1099.88,Admin Dept,Shell Ventures LLC
+TXN61409,2024-04-26,1069.55,Admin Dept,Shell Ventures Ltd
+TXN60727,2024-02-03,2498.5,Admin Dept,Pacific Trade Ltd
+TXN61216,2024-12-26,932.3,Procurement,Shell Venture
+TXN60466,2024-08-24,100,Procurement,AlphaConsulting
+TXN60549,2024-05-10,100,Operations,Orion Tech Ltd
+TXN61327,2024-06-11,1140.11,Admin Dept,Shell Ventures
+TXN60877,2024-12-02,1500.0,Finance Dept,Shell Ventures LLC
+TXN61440,2024-07-06,951.41,Finance Dept,Shell Ventures LLC
+TXN61306,2024-01-04,925.57,Finance Dept,Shell Ventures LLC
+TXN60198,2024-11-07,784.43,Finance Dept,Pacific-Trade
+TXN60715,2024-12-03,2498.56,Exec Office,Nexus Holdings Inc
+TXN61342,2024-05-15,1089.25,Finance Dept,Shell Venture
+TXN60993,2024-10-31,44363.82,Finance Dept,Finance Dept
+TXN60045,2024-01-06,100,Operations,Orion Tech Inc
+TXN60615,2024-04-25,2498.32,Admin Dept,Pacific Trade
+TXN60885,2024-12-03,10000.0,Admin Dept,Summit Advisory LLC
+TXN61028,2024-05-25,37380.74,Procurement,Procurement
+TXN60470,2024-05-25,100,Procurement,Shell Venture
+TXN60320,2024-10-19,7086.21,Admin Dept,Summit Advisory
+TXN60350,2024-02-21,100,Finance Dept,MetroSupplies
+TXN61434,2024-04-01,1038.26,Procurement,Shell Venture
+TXN61217,2024-03-05,984.74,Operations,Shell Venture
+TXN60664,2024-06-05,4998.87,Exec Office,Summit Advisors
+GHOST61475,2024-08-23,56117.36,Unknown,Ghost Vendor 11
+TXN60998,2024-12-08,31899.22,Finance Dept,Finance Dept
+TXN60914,2024-06-04,5000.0,Operations,Nexus Holdingz
+TXN60791,2024-12-18,2498.93,Operations,Summit Advisory LLC
+TXN60861,2024-01-01,2000.0,Finance Dept,Alpha Consult
+TXN61137,2024-07-09,997.96,Operations,Shell Ventures
+TXN61048,2024-01-12,961.54,Procurement,Shell Venture Co
+TXN61261,2024-08-08,1140.72,Operations,Shell Ventures
+TXN60544,2024-04-13,100,Admin Dept,Nexus Holdingz
+TXN60309,2024-08-05,9999,Operations,Orion Tech
+TXN60720,2024-08-14,9998.12,Procurement,Nexus Hold.
+TXN61088,2024-02-04,1060.1,Admin Dept,Shell Ventures
+TXN60875,2024-01-20,20000.0,Procurement,Shell Venture
+TXN60064,2024-05-06,9417.61,Finance Dept,MetroSupplies
+TXN60261,2024-11-09,8625.54,Exec Office,Pacific Trade Co
+TXN60074,2024-05-01,1002.6,Exec Office,Summit Advisory LLC
+TXN60824,2024-09-18,2500.0,Operations,Shell Ventures LLC
+TXN60976,2024-11-21,34071.84,Finance Dept,Finance Dept
+TXN60966,2024-02-07,28102.31,Finance Dept,Finance Dept
+TXN60967,2024-11-16,12412.97,Procurement,Procurement
+TXN60818,2024-01-09,15000.0,Admin Dept,Summit Advisory
+TXN60162,2024-07-30,830.3,Procurement,Orion Tech
+TXN60338,2024-02-12,102.54,Exec Office,OrionTech
+TXN60666,2024-10-27,999.61,Finance Dept,Pacific Trade Ltd
+TXN61375,2024-08-11,947.58,Finance Dept,Shell Ventures
+TXN60948,2024-02-14,1000.0,Finance Dept,Nexus Holdings
+TXN60088,2024-03-09,925.33,Exec Office,Pacific Trade Co
+TXN61442,2024-07-06,932.56,Admin Dept,Shell Ventures LLC
+TXN60711,2024-07-26,2498.31,Operations,Nexus Holdingz
+TXN61022,2024-02-05,6846.56,Exec Office,Exec Office
+TXN60345,2024-01-04,100,Exec Office,Nexus Holdings Inc
+TXN61407,2024-12-08,1059.75,Procurement,Shell Venture Co
+TXN60794,2024-05-23,2498.17,Operations,Orion Tech Ltd
+TXN61041,2024-02-18,932.22,Admin Dept,Shell Venture
+TXN61101,2024-02-04,1103.26,Procurement,Shell Ventures Ltd
+TXN60649,2024-04-03,2499.61,Exec Office,Orion Tech Inc
+TXN60152,2024-11-21,100,Operations,Pacific Trade Co
+TXN60265,2024-01-18,782.18,Finance Dept,Pacific Trade Ltd
+TXN60941,2024-08-12,1500.0,Admin Dept,Shell Venture
+TXN61396,2024-12-08,901.01,Finance Dept,Shell Venture Co
+TXN60212,2024-12-03,825.59,Operations,Pacific Trade
+TXN60185,2024-11-10,100,Operations,Orion Tech Ltd
+GHOST61492,2024-06-09,47759.16,Unknown,Ghost Vendor 02
+TXN60218,2024-05-16,100,Procurement,Nexus Hold.
+TXN60534,2024-01-17,100,Finance Dept,MetroSupplies
+TXN60724,2024-12-12,4998.77,Exec Office,Shell Ventures LLC
+TXN60685,2024-02-25,24999.42,Exec Office,Pacific Trade Co
+TXN60016,2024-12-20,8023.81,Admin Dept,Summit Advisors
+TXN60429,2024-10-30,100,Exec Office,Orion Tech
+TXN60464,2024-02-02,724.66,Operations,NEXUS HOLDINGS
+TXN60478,2024-01-12,100,Finance Dept,Metro Supply
+TXN60323,2024-02-24,100,Admin Dept,Shell Venture
+TXN60796,2024-12-28,4998.43,Exec Office,NEXUS HOLDINGS
+TXN60962,2024-11-20,22453.59,Exec Office,Exec Office
+TXN60950,2024-10-12,20000.0,Exec Office,Summit Advisory LLC
+TXN60317,2024-08-13,100,Admin Dept,OrionTech
+TXN60395,2024-09-24,100,Finance Dept,Alpha-Consulting
+TXN60693,2024-04-12,4998.15,Operations,Orion Tech
+TXN61262,2024-08-08,1060.58,Exec Office,Shell Ventures
+TXN60548,2024-06-11,100,Procurement,SummitAdvisory
+TXN60738,2024-12-12,999.64,Exec Office,Pacific Trade Ltd
+TXN61406,2024-12-08,1007.06,Admin Dept,Shell Venture Co
+TXN61338,2024-05-17,1021.8,Finance Dept,Shell Ventures
+TXN60863,2024-08-15,2500.0,Finance Dept,Pacific Trade Ltd
+TXN60915,2024-11-21,5000.0,Exec Office,Orion Tech Ltd
+TXN60965,2024-02-04,43753.35,Exec Office,Exec Office
+TXN60841,2024-04-16,2000.0,Exec Office,Shell Ventures LLC
+TXN61393,2024-06-07,972.37,Operations,Shell Ventures Ltd
+TXN60410,2024-02-19,100,Finance Dept,Summit Advisory
+TXN60217,2024-03-16,100,Operations,Alpha Consult
+TXN60551,2024-12-25,879.7,Operations,NEXUS HOLDINGS
+TXN60413,2024-04-08,7945.47,Finance Dept,Shell Venture Co
+TXN60237,2024-11-16,100,Finance Dept,Pacific-Trade
+TXN60321,2024-01-13,8456.89,Operations,AlphaConsulting
+TXN60079,2024-07-06,943.57,Exec Office,SummitAdvisory
+TXN61096,2024-03-08,952.54,Finance Dept,Shell Venture
+TXN60996,2024-06-20,13633.09,Finance Dept,Finance Dept
+TXN60564,2024-05-07,100,Exec Office,Alpha Consult
+TXN60377,2024-08-16,9999,Procurement,NEXUS HOLDINGS
+TXN60710,2024-07-24,2499.9,Procurement,NEXUS HOLDINGS
+TXN60613,2024-10-07,2499.1,Finance Dept,Pacific Trade
+TXN60624,2024-02-19,2498.4,Exec Office,Alpha-Consulting
+GHOST61471,2024-12-23,60806.64,Unknown,Ghost Vendor 08
+TXN60786,2024-02-24,2499.02,Finance Dept,SummitAdvisory
+TXN61161,2024-02-28,1089.46,Operations,Shell Ventures
+TXN60073,2024-07-03,100,Admin Dept,Summit Advisary
+TXN60689,2024-08-11,2499.82,Finance Dept,Pacific Trade
+TXN60233,2024-07-05,851.18,Procurement,Pacific Trade Co
+TXN60118,2024-09-01,9961.84,Exec Office,Shell Venture Co
+TXN60050,2024-07-13,100,Procurement,Orion Tech Inc
+TXN61156,2024-02-28,1143.51,Operations,Shell Ventures
+TXN61359,2024-07-26,935.99,Admin Dept,Shell Venture Co
+TXN60566,2024-11-19,796.21,Finance Dept,Summit Advisors
+TXN60898,2024-05-10,1000.0,Exec Office,Shell Ventures
+TXN60895,2024-04-15,20000.0,Admin Dept,Alpha-Consulting
+TXN60933,2024-01-21,7500.0,Operations,Nexus Holdings
+TXN60561,2024-06-14,100,Operations,Alpha-Consulting
+TXN60622,2024-10-03,4998.19,Admin Dept,Summit Advisory
+TXN60581,2024-03-22,100,Admin Dept,Metro Supplies
+TXN60188,2024-05-20,100,Admin Dept,Pacific-Trade
+TXN60753,2024-02-28,998.38,Operations,OrionTech
+TXN60913,2024-06-24,5000.0,Finance Dept,Pacific Trade Ltd
+TXN60971,2024-01-15,40128.44,Finance Dept,Finance Dept
+TXN60193,2024-03-26,786.91,Finance Dept,Metro Supplies Co
+TXN60600,2024-07-24,228.39,Exec Office,Summit Advisory
+TXN61357,2024-07-26,1124.04,Admin Dept,Shell Venture Co
+TXN60751,2024-10-09,4999.73,Operations,Pacific Trade Co
+TXN60450,2024-01-04,9587.16,Finance Dept,AlphaConsulting
+TXN61067,2024-05-13,950.56,Exec Office,Shell Ventures Ltd
+TXN61129,2024-06-28,1180.19,Procurement,Shell Ventures Ltd
+TXN61307,2024-01-04,1078.39,Exec Office,Shell Ventures LLC
+TXN60979,2024-08-01,31991.98,Finance Dept,Finance Dept
+TXN60203,2024-07-31,100,Procurement,Alpha Consult
+TXN60431,2024-02-25,8503.65,Admin Dept,OrionTech
+TXN61098,2024-03-08,1092.04,Finance Dept,Shell Venture
+TXN61068,2024-05-13,1093.5,Exec Office,Shell Ventures Ltd
+TXN60052,2024-04-21,700.28,Exec Office,Metro Supplies
+TXN60772,2024-10-28,9999.97,Finance Dept,Summit Advisory
+TXN60145,2024-03-20,100,Admin Dept,Shell Ventures
+TXN60371,2024-02-09,9217.07,Operations,Alpha Consulting
+TXN60319,2024-02-25,906.89,Admin Dept,SummitAdvisory
+TXN60568,2024-11-17,100,Operations,Nexus Holdings Inc
+TXN61055,2024-11-06,950.51,Procurement,Shell Venture
+TXN60234,2024-02-27,843.41,Exec Office,Orion Tech Ltd
+TXN60092,2024-08-16,775.81,Procurement,AlphaConsulting
+TXN60619,2024-11-17,2498.29,Exec Office,Metro Supplies
+TXN60893,2024-06-24,10000.0,Admin Dept,Shell Ventures LLC
+TXN60823,2024-11-25,3000.0,Exec Office,Shell Ventures LLC
+TXN61102,2024-02-04,1065.09,Procurement,Shell Ventures Ltd
+TXN60838,2024-09-18,5000.0,Procurement,Shell Venture
+TXN60833,2024-05-02,1000.0,Operations,NEXUS HOLDINGS
+TXN61082,2024-11-13,970.87,Admin Dept,Shell Ventures
+TXN60683,2024-04-03,999.76,Procurement,Shell Venture Co
+TXN60151,2024-04-19,8858.94,Procurement,Orion Tech Ltd
+TXN60019,2024-05-20,100,Exec Office,Orion Tech Ltd
+TXN61452,2024-08-15,978.07,Admin Dept,Shell Ventures LLC
+TXN61454,2024-08-15,958.88,Operations,Shell Ventures LLC
+TXN61218,2024-03-05,1106.32,Exec Office,Shell Venture
+TXN61233,2024-12-29,1186.29,Procurement,Shell Ventures LLC
+TXN60271,2024-03-07,100,Exec Office,Pacific Trade Co
+TXN60531,2024-04-04,970.67,Procurement,Nexus Holdingz
+TXN61030,2024-05-16,32164.76,Procurement,Procurement
+TXN60480,2024-07-07,9999,Admin Dept,Orion Tech
+TXN60762,2024-08-14,2499.05,Exec Office,Shell Ventures Ltd
+TXN60725,2024-01-05,998.42,Finance Dept,Shell Venture
+TXN61170,2024-01-27,1164.22,Admin Dept,Shell Venture Co
+TXN61038,2024-02-18,966.29,Procurement,Shell Venture
+TXN60646,2024-01-01,998.62,Finance Dept,Nexus Holdings
+TXN60924,2024-07-13,20000.0,Finance Dept,Orion Tech
+TXN60207,2024-12-18,2107.92,Operations,Shell Ventures
+TXN60196,2024-06-12,806.92,Finance Dept,Shell Ventures
+TXN60455,2024-03-15,9104.92,Finance Dept,Alpha-Consulting
+TXN60358,2024-02-29,763.46,Admin Dept,MetroSupplies
+TXN60046,2024-09-11,3563.1,Admin Dept,Orion Tech Ltd
+TXN61310,2024-01-04,1066.08,Exec Office,Shell Ventures LLC
+TXN60918,2024-12-24,3000.0,Finance Dept,Pacific Trade Co
+TXN60757,2024-12-06,999.68,Procurement,Summit Advisary
+TXN61395,2024-12-08,1088.26,Exec Office,Shell Venture Co
+GHOST61490,2024-03-18,68538.26,Unknown,Ghost Vendor 03
+TXN61105,2024-09-25,1125.49,Exec Office,Shell Ventures Ltd
+TXN60380,2024-06-21,100,Procurement,Pacific Trade Ltd
+TXN60781,2024-10-30,4999.96,Admin Dept,AlphaConsulting
+TXN61420,2024-11-09,1141.62,Exec Office,Shell Ventures
+GHOST61470,2024-03-12,38316.6,Unknown,Ghost Vendor 07
+TXN61191,2024-09-09,1041.36,Finance Dept,Shell Ventures
+TXN61168,2024-01-27,931.95,Admin Dept,Shell Venture Co
+TXN61060,2024-05-07,973.22,Finance Dept,Shell Ventures LLC
+TXN60652,2024-11-14,2498.98,Procurement,Shell Venture
+TXN60582,2024-04-25,8395.44,Operations,Shell Venture Co
+TXN60939,2024-04-27,20000.0,Exec Office,Orion Tech Inc
+GHOST61478,2024-01-16,58821.91,Unknown,Ghost Vendor 01
+TXN60059,2024-08-03,100,Admin Dept,Metro Supplies
+TXN60675,2024-07-18,2498.67,Operations,Nexus Hold.
+TXN60942,2024-01-11,7500.0,Operations,MetroSupplies
+TXN61439,2024-07-06,1042.12,Finance Dept,Shell Ventures LLC
+TXN60304,2024-01-31,100,Operations,Alpha Consulting
+TXN60617,2024-08-12,4999.5,Finance Dept,Orion Tech Ltd
+TXN60043,2024-11-21,8092.12,Admin Dept,Pacific Trade Ltd
+TXN60717,2024-02-25,4999.56,Admin Dept,Orion Tech Ltd
+TXN60213,2024-04-18,100,Procurement,Shell Ventures Ltd
+TXN60456,2024-09-25,8653.41,Procurement,Pacific Trade
+TXN61263,2024-08-08,1181.98,Finance Dept,Shell Ventures
+TXN61141,2024-09-20,1199.59,Admin Dept,Shell Ventures
+TXN60974,2024-09-02,45837.86,Procurement,Procurement
+TXN61335,2024-05-17,920.62,Exec Office,Shell Ventures
+GHOST61486,2024-05-13,49483.71,Unknown,Ghost Vendor 10
+TXN60262,2024-12-02,100,Admin Dept,AlphaConsulting
+TXN60616,2024-01-07,9998.69,Admin Dept,AlphaConsulting
+TXN61086,2024-02-04,1066.03,Operations,Shell Ventures
+TXN60245,2024-08-09,100,Admin Dept,Nexus Holdings Inc
+TXN60102,2024-08-06,8041.41,Finance Dept,NEXUS HOLDINGS
+TXN60156,2024-02-09,9022.08,Exec Office,Nexus Holdings Inc
+TXN60760,2024-06-13,2499.57,Finance Dept,Summit Advisors
+TXN60013,2024-08-06,100,Admin Dept,Summit Advisors
+TXN60910,2024-12-14,1000.0,Admin Dept,Nexus Hold.
+TXN60411,2024-06-19,938.5,Exec Office,Shell Venture
+TXN61002,2024-10-10,37067.95,Finance Dept,Finance Dept
+TXN60086,2024-05-18,100,Operations,Alpha-Consulting
+TXN60491,2024-10-31,7599.15,Operations,Pacific-Trade
+TXN61198,2024-01-21,1136.86,Procurement,Shell Venture Co
+TXN61336,2024-05-17,901.2,Procurement,Shell Ventures
+TXN60012,2024-11-29,7186.94,Admin Dept,Nexus Holdings Inc
+TXN61349,2024-04-06,957.74,Exec Office,Shell Ventures Ltd
+TXN61029,2024-04-22,15830.61,Finance Dept,Finance Dept
+TXN61006,2024-11-02,16116.22,Procurement,Procurement
+TXN60932,2024-03-30,1000.0,Exec Office,Orion Tech Inc
+TXN61365,2024-10-21,1024.01,Operations,Shell Ventures
+TXN60887,2024-03-30,20000.0,Operations,Metro Supply
+TXN61219,2024-03-05,971.78,Procurement,Shell Venture
+TXN60660,2024-10-06,998.66,Operations,Metro Supplies
+TXN60057,2024-02-25,921.71,Exec Office,Pacific-Trade
+TXN61389,2024-09-17,980.3,Operations,Shell Venture
+TXN61465,2024-11-06,972.45,Exec Office,Shell Venture Co
+TXN60294,2024-04-28,846.37,Finance Dept,Pacific Trade
+TXN60042,2024-05-26,9166.65,Procurement,OrionTech
+TXN60953,2024-04-13,6789.01,Procurement,Procurement
+GHOST61488,2024-10-03,46225.08,Unknown,Ghost Vendor 19
+TXN60121,2024-02-26,893.09,Finance Dept,Pacific Trd
+TXN60155,2024-12-22,793.48,Exec Office,Nexus Holdings
+TXN60143,2024-07-06,920.03,Admin Dept,Metro Supplies Co
+TXN60594,2024-10-24,100,Admin Dept,Summit Advisory LLC
+TXN60530,2024-02-04,827.18,Finance Dept,Alpha-Consulting
+TXN60021,2024-07-26,100,Exec Office,Nexus Hold.
+TXN60385,2024-03-12,7935.92,Exec Office,Orion Tech Inc
+TXN61084,2024-02-04,1145.19,Admin Dept,Shell Ventures
+TXN60880,2024-12-19,2500.0,Admin Dept,Pacific Trade
+TXN61373,2024-07-07,1046.97,Operations,Shell Ventures LLC
+TXN61058,2024-05-07,1013.83,Procurement,Shell Ventures LLC
+TXN60982,2024-05-23,17482.52,Finance Dept,Finance Dept
+TXN60597,2024-05-29,100,Operations,Alpha Consult
+TXN61031,2024-10-09,945.51,Exec Office,Shell Ventures LLC
+GHOST61497,2024-02-15,27865.36,Unknown,Ghost Vendor 11
+TXN61438,2024-07-06,1150.09,Admin Dept,Shell Ventures LLC
+TXN60610,2024-03-15,24998.16,Procurement,Pacific Trade Co
+TXN60361,2024-07-29,8818.68,Operations,Summit Advisory
+TXN60719,2024-12-03,2499.56,Exec Office,Nexus Holdings
+TXN60821,2024-11-17,5000.0,Exec Office,Shell Venture
+TXN60355,2024-11-22,8034.95,Exec Office,Pacific Trade
+TXN60108,2024-06-12,100,Admin Dept,AlphaConsulting
+TXN60896,2024-02-27,5000.0,Finance Dept,Metro Supply
+TXN60179,2024-12-03,100,Procurement,Pacific Trade Co
+TXN60474,2024-10-01,808.25,Operations,OrionTech
+TXN61224,2024-08-30,1003.53,Finance Dept,Shell Ventures
+TXN61033,2024-10-09,951.55,Procurement,Shell Ventures LLC
+TXN60892,2024-08-18,3000.0,Operations,Orion Tech
+TXN60446,2024-01-07,100,Finance Dept,Metro Supplies
+GHOST61498,2024-05-20,29025.61,Unknown,Ghost Vendor 17
+TXN61295,2024-09-24,931.07,Exec Office,Shell Venture Co
+TXN60570,2024-04-05,885.14,Operations,Summit Advisary
+TXN60526,2024-05-23,9999,Procurement,Pacific Trade
+TXN61441,2024-07-06,1059.91,Procurement,Shell Ventures LLC
+TXN61324,2024-01-12,1008.76,Finance Dept,Shell Ventures
+TXN60975,2024-09-17,47722.46,Procurement,Procurement
+TXN61244,2024-05-20,1166.88,Exec Office,Shell Venture Co
+TXN60023,2024-11-02,100,Finance Dept,Nexus Hold.
+TXN60020,2024-06-01,100,Procurement,MetroSupplies
+TXN60777,2024-08-26,2499.9,Operations,Metro Supply
+TXN60097,2024-01-07,100,Finance Dept,Alpha Consulting LLC
+TXN61207,2024-02-19,1099.5,Procurement,Shell Ventures Ltd
+TXN60028,2024-05-01,781.98,Finance Dept,Shell Ventures LLC
+TXN61073,2024-07-05,915.02,Finance Dept,Shell Ventures
+TXN60405,2024-10-27,100,Admin Dept,Shell Ventures
+TXN61106,2024-09-25,1181.06,Admin Dept,Shell Ventures Ltd
+TXN60732,2024-12-19,24998.89,Procurement,Pacific-Trade
+TXN60536,2024-09-19,100,Finance Dept,Nexus Holdings
+TXN61379,2024-03-13,953.12,Finance Dept,Shell Ventures LLC
+TXN60069,2024-08-06,100,Finance Dept,OrionTech
+TXN60051,2024-05-28,100,Exec Office,Alpha Consulting LLC
+TXN60386,2024-12-12,9415.16,Procurement,Pacific Trd
+TXN61023,2024-10-01,9835.77,Finance Dept,Finance Dept
+TXN60783,2024-09-11,2499.45,Admin Dept,Shell Venture
+TXN60015,2024-01-18,854.46,Procurement,Pacific Trade
+TXN61091,2024-05-05,1050.27,Finance Dept,Shell Ventures
+TXN60067,2024-04-08,100,Finance Dept,Pacific-Trade
+TXN60731,2024-03-22,998.93,Exec Office,Metro Supply
+TXN60266,2024-08-22,8945.69,Admin Dept,Orion Tech
+TXN60286,2024-01-17,100,Operations,Shell Venture
+TXN60297,2024-03-07,788.41,Admin Dept,Pacific Trd
+TXN61414,2024-04-14,966.22,Admin Dept,Shell Ventures Ltd
+TXN60168,2024-08-25,100,Finance Dept,SummitAdvisory
+TXN60419,2024-07-13,100,Operations,Shell Ventures Ltd
+TXN60970,2024-01-22,38856.69,Exec Office,Exec Office
+TXN60252,2024-08-03,8904.34,Exec Office,Shell Venture
+TXN60764,2024-12-24,4999.7,Exec Office,Nexus Holdings Inc
+TXN60058,2024-07-02,2410.93,Procurement,Shell Ventures
+TXN60369,2024-05-24,100,Finance Dept,Nexus Holdings
+TXN61426,2024-02-21,1177.44,Operations,Shell Ventures
+TXN61042,2024-02-18,1101.35,Procurement,Shell Venture
+TXN60563,2024-12-03,100,Admin Dept,NEXUS HOLDINGS
+TXN61254,2024-01-23,1071.57,Operations,Shell Ventures LLC
+TXN60696,2024-05-05,9999.94,Procurement,Shell Venture Co
+TXN60462,2024-12-13,906.87,Procurement,Nexus Hold.
+TXN60782,2024-08-29,2499.56,Finance Dept,Metro Supplies
+TXN60499,2024-06-07,8960.41,Operations,NEXUS HOLDINGS
+TXN60580,2024-01-31,788.64,Exec Office,Shell Venture Co
+TXN61111,2024-03-05,1014.77,Operations,Shell Ventures
+TXN60919,2024-08-04,7500.0,Procurement,Alpha Consult
+TXN61429,2024-02-21,1066.89,Admin Dept,Shell Ventures
+TXN60226,2024-01-02,100,Exec Office,Pacific Trd
+TXN60576,2024-10-03,100,Finance Dept,Summit Advisory LLC
+TXN61130,2024-06-28,920.33,Operations,Shell Ventures Ltd
+TXN60096,2024-09-26,100,Procurement,Alpha Consult
+TXN60002,2024-07-21,100,Admin Dept,Alpha Consult
+TXN60225,2024-04-15,100,Operations,Orion Tech Inc
+TXN61286,2024-06-29,1141.98,Exec Office,Shell Venture
+TXN60441,2024-04-23,100,Exec Office,Shell Venture
+TXN61431,2024-01-14,951.62,Admin Dept,Shell Ventures
+TXN60423,2024-11-26,1657.17,Procurement,SummitAdvisory
+TXN60310,2024-01-08,844.32,Admin Dept,Alpha-Consulting
+TXN60827,2024-02-17,10000.0,Admin Dept,Pacific Trade
+TXN60458,2024-07-24,100,Operations,MetroSupplies
+TXN60990,2024-06-24,27035.4,Procurement,Procurement
+TXN60705,2024-11-09,24999.22,Admin Dept,Orion Tech Inc
+TXN60511,2024-09-20,926.34,Exec Office,Orion Tech Ltd
+TXN60367,2024-03-23,100,Admin Dept,Pacific Trd
+TXN61003,2024-08-24,14200.9,Finance Dept,Finance Dept
+TXN60256,2024-10-26,908.07,Finance Dept,Alpha Consulting LLC
+TXN61104,2024-09-25,1115.51,Procurement,Shell Ventures Ltd
+TXN60756,2024-11-12,999.97,Finance Dept,Summit Advisary
+TXN61186,2024-07-21,947.76,Operations,Shell Venture Co
+TXN60296,2024-04-02,100,Admin Dept,Metro Supplies Co
+TXN60602,2024-06-11,4999.29,Exec Office,NEXUS HOLDINGS
+TXN61292,2024-09-24,1043.61,Operations,Shell Venture Co
+TXN60134,2024-05-28,100,Procurement,Shell Ventures LLC
+TXN60522,2024-04-16,100,Finance Dept,Nexus Holdings Inc
+TXN61456,2024-08-15,1039.46,Finance Dept,Shell Ventures LLC
+TXN61445,2024-04-18,979.84,Exec Office,Shell Ventures
+TXN60579,2024-01-01,1885.86,Admin Dept,Pacific Trade Ltd
+TXN60127,2024-11-04,9129.49,Finance Dept,Summit Advisory LLC
+TXN61045,2024-07-16,1022.56,Procurement,Shell Ventures Ltd
+TXN61287,2024-06-29,1183.48,Finance Dept,Shell Venture
+TXN60578,2024-07-18,8517.15,Procurement,Pacific Trd
+TXN61450,2024-10-29,964.68,Procurement,Shell Venture Co
+TXN61255,2024-10-29,979.41,Finance Dept,Shell Venture
+TXN60876,2024-07-30,7500.0,Procurement,Orion Tech
+TXN61308,2024-01-04,1129.84,Exec Office,Shell Ventures LLC
+TXN60381,2024-05-17,100,Procurement,Shell Ventures
+TXN60789,2024-06-22,9999.96,Operations,Nexus Holdings
+TXN60658,2024-07-25,2498.07,Procurement,Nexus Holdings Inc
+TXN61110,2024-03-05,1081.32,Procurement,Shell Ventures
+TXN60585,2024-03-19,7539.93,Finance Dept,Orion Tech
+TXN60501,2024-04-13,100,Exec Office,NEXUS HOLDINGS
+TXN61076,2024-08-19,983.55,Admin Dept,Shell Venture
+TXN60428,2024-06-05,920.67,Admin Dept,SummitAdvisory
+TXN60274,2024-02-02,100,Procurement,Metro Supply
+GHOST61482,2024-11-27,59422.78,Unknown,Ghost Vendor 18
+TXN61460,2024-10-24,1068.02,Procurement,Shell Ventures
+TXN61410,2024-04-26,969.39,Finance Dept,Shell Ventures Ltd
+TXN61253,2024-01-23,1178.71,Exec Office,Shell Ventures LLC
+TXN60682,2024-11-22,9999.73,Admin Dept,Shell Venture Co
+TXN60704,2024-12-17,9998.12,Procurement,Pacific Trd
+TXN60171,2024-06-20,1027.1,Operations,Summit Advisory
+TXN60656,2024-12-08,24998.33,Procurement,Alpha Consulting LLC
+TXN60628,2024-03-28,9999.0,Procurement,Shell Venture Co
+TXN60849,2024-01-15,1000.0,Operations,Metro Supplies Co
+TXN61271,2024-04-30,929.84,Operations,Shell Ventures Ltd
+TXN61252,2024-01-23,1042.36,Procurement,Shell Ventures LLC
+TXN61428,2024-02-21,1180.4,Procurement,Shell Ventures
+TXN60438,2024-08-29,860.47,Procurement,Nexus Holdingz
+TXN61401,2024-01-01,975.35,Operations,Shell Ventures Ltd
+TXN60840,2024-01-21,5000.0,Exec Office,Shell Venture Co
+TXN60422,2024-01-19,886.55,Procurement,Nexus Holdings
+TXN60871,2024-04-30,500.0,Finance Dept,Alpha Consulting
+TXN60562,2024-09-09,1030.74,Finance Dept,Orion Tech Ltd
+TXN61057,2024-11-06,1005.98,Operations,Shell Venture
+TXN61039,2024-02-18,1082.88,Admin Dept,Shell Venture
+TXN61397,2024-12-08,998.21,Exec Office,Shell Venture Co
+TXN60030,2024-05-13,100,Exec Office,Pacific Trade Co
+TXN60959,2024-09-02,46432.92,Finance Dept,Finance Dept
+TXN61175,2024-02-20,948.73,Procurement,Shell Venture Co
+TXN60454,2024-07-01,7330.31,Finance Dept,Alpha Consulting LLC
+TXN60785,2024-08-10,2499.02,Procurement,MetroSupplies
+TXN60221,2024-05-30,100,Procurement,Nexus Holdings Inc
+TXN61005,2024-05-29,37523.41,Procurement,Procurement
+TXN60684,2024-05-25,24999.34,Operations,Metro Supplies
+TXN60180,2024-02-26,100,Exec Office,Alpha Consult
+TXN60481,2024-03-08,101.01,Admin Dept,Summit Advisory
+TXN60124,2024-03-05,9524.77,Finance Dept,Summit Advisors
+TXN60451,2024-01-25,797.33,Procurement,MetroSupplies
+TXN60640,2024-07-14,9998.84,Procurement,Metro Supply
+TXN60055,2024-03-19,100,Finance Dept,OrionTech
+TXN61427,2024-02-21,900.03,Operations,Shell Ventures
+TXN61355,2024-07-26,1094.5,Procurement,Shell Venture Co
+TXN61280,2024-04-01,1001.26,Exec Office,Shell Ventures
+TXN60392,2024-06-25,7106.43,Exec Office,NEXUS HOLDINGS
+TXN61331,2024-10-04,930.13,Procurement,Shell Ventures
+TXN60524,2024-02-24,100,Procurement,Pacific-Trade
+TXN61411,2024-04-14,1060.49,Finance Dept,Shell Ventures Ltd
+TXN60146,2024-07-17,978.42,Finance Dept,NEXUS HOLDINGS
+TXN61089,2024-05-05,1156.62,Operations,Shell Ventures
+TXN61035,2024-01-09,1071.37,Exec Office,Shell Venture
+TXN60159,2024-01-19,9999,Procurement,Alpha Consult
+TXN60389,2024-09-25,938.71,Admin Dept,Nexus Holdings
+TXN60139,2024-09-12,8016.4,Operations,Alpha Consulting
+TXN60983,2024-06-23,34257.51,Finance Dept,Finance Dept
+TXN60745,2024-05-19,9998.0,Operations,Shell Ventures LLC
+TXN60372,2024-02-18,7757.6,Exec Office,AlphaConsulting
+TXN61341,2024-05-15,1110.21,Finance Dept,Shell Venture
+TXN61020,2024-03-02,22409.81,Finance Dept,Finance Dept
+TXN61184,2024-07-21,985.94,Exec Office,Shell Venture Co
+TXN60492,2024-10-15,100,Admin Dept,Summit Advisory LLC
+TXN61363,2024-04-28,982.96,Finance Dept,Shell Venture
+TXN60186,2024-11-06,100,Finance Dept,Nexus Holdings Inc
+TXN60952,2024-02-29,31195.42,Exec Office,Exec Office
+TXN60467,2024-07-25,9844.55,Procurement,Pacific Trade Co
+TXN60739,2024-11-20,9998.16,Finance Dept,Nexus Holdings Inc
+TXN61122,2024-04-14,973.61,Admin Dept,Shell Ventures Ltd
+TXN60839,2024-12-08,2500.0,Procurement,Shell Venture
+TXN60483,2024-03-22,9166.7,Exec Office,Summit Advisary
+TXN60170,2024-01-03,817.99,Procurement,Pacific Trade
+TXN60850,2024-07-26,7500.0,Exec Office,OrionTech
+TXN60025,2024-03-04,100,Finance Dept,Alpha Consulting
+TXN60354,2024-12-29,100,Exec Office,Nexus Holdingz
+TXN61094,2024-03-08,1072.16,Operations,Shell Venture
+TXN61154,2024-01-01,965.73,Admin Dept,Shell Ventures
+TXN61347,2024-04-06,917.81,Admin Dept,Shell Ventures Ltd
+TXN60164,2024-07-14,870.0,Exec Office,MetroSupplies
+TXN61276,2024-03-27,1107.47,Finance Dept,Shell Ventures LLC
+TXN60269,2024-12-03,1025.28,Admin Dept,Pacific-Trade
+TXN60854,2024-01-28,2500.0,Operations,Orion Tech
+TXN60251,2024-06-30,903.0,Operations,Orion Tech
+TXN61422,2024-11-09,913.25,Operations,Shell Ventures
+TXN60093,2024-04-02,8234.41,Finance Dept,Orion Tech Inc
+TXN60009,2024-02-06,9660.98,Procurement,Metro Supplies
+TXN60387,2024-05-28,760.0,Admin Dept,AlphaConsulting
+TXN61267,2024-04-30,953.17,Admin Dept,Shell Ventures Ltd
+TXN61432,2024-01-14,970.27,Finance Dept,Shell Ventures
+TXN60313,2024-01-09,855.55,Procurement,Orion Tech
+TXN60831,2024-10-07,5000.0,Procurement,AlphaConsulting
+TXN60147,2024-02-25,100,Exec Office,Orion Tech
+GHOST61476,2024-06-21,14853.69,Unknown,Ghost Vendor 09
+TXN60130,2024-10-15,100,Exec Office,Shell Ventures LLC
+TXN60065,2024-12-07,100,Operations,Pacific Trade
+TXN60195,2024-05-05,100,Admin Dept,SummitAdvisory
+GHOST61496,2024-07-12,21812.54,Unknown,Ghost Vendor 08
+TXN61453,2024-08-15,1177.86,Finance Dept,Shell Ventures LLC
+TXN61269,2024-04-30,923.9,Admin Dept,Shell Ventures Ltd
+TXN60761,2024-11-05,24999.6,Admin Dept,Orion Tech Inc
+TXN60224,2024-07-19,100,Exec Office,Metro Supplies
+TXN61413,2024-04-14,1032.38,Admin Dept,Shell Ventures Ltd
+TXN60072,2024-06-20,100,Procurement,Summit Advisory LLC
+TXN61051,2024-01-12,1049.71,Exec Office,Shell Venture Co
+TXN60679,2024-07-30,4999.17,Finance Dept,Metro Supply
+GHOST61500,2024-07-30,43536.11,Unknown,Ghost Vendor 08
+TXN60695,2024-12-02,999.54,Admin Dept,Summit Advisary
+TXN60528,2024-07-30,814.92,Finance Dept,Summit Advisory
+TXN61466,2024-11-06,925.07,Exec Office,Shell Venture Co
+TXN60718,2024-01-27,24998.69,Operations,Metro Supply
+TXN60667,2024-09-30,24998.9,Operations,Shell Ventures Ltd
+TXN60744,2024-05-14,2499.89,Admin Dept,Pacific Trade Ltd
+TXN60424,2024-02-16,984.46,Exec Office,Pacific-Trade
+TXN60300,2024-12-23,945.62,Operations,Summit Advisory
+TXN60997,2024-05-22,35424.51,Procurement,Procurement
+TXN60460,2024-12-21,1022.74,Exec Office,Pacific Trade
+TXN60434,2024-06-07,103.11,Finance Dept,Alpha Consulting
+TXN61037,2024-01-09,1142.87,Finance Dept,Shell Venture
+TXN60512,2024-12-13,767.27,Operations,Pacific-Trade
+TXN60148,2024-07-24,100,Procurement,Nexus Holdings Inc
+TXN60503,2024-05-05,100,Exec Office,Pacific Trade
+TXN60742,2024-05-23,4998.29,Admin Dept,OrionTech
+TXN61229,2024-12-29,1123.58,Procurement,Shell Ventures LLC
+TXN60734,2024-07-13,999.72,Procurement,Orion Tech Ltd
+TXN60632,2024-04-20,24999.01,Admin Dept,Metro Supplies
+TXN61019,2024-08-31,31787.23,Finance Dept,Finance Dept
+TXN60533,2024-09-06,100,Procurement,Metro Supplies
+TXN61316,2024-01-20,1108.77,Procurement,Shell Ventures
+TXN60311,2024-06-21,727.13,Exec Office,Pacific Trd
+TXN60882,2024-04-28,5000.0,Exec Office,Orion Tech Inc
+TXN60103,2024-09-08,837.38,Procurement,Alpha Consulting LLC
+TXN60891,2024-03-11,5000.0,Finance Dept,Pacific Trade Co
+TXN60569,2024-10-06,9311.87,Exec Office,Pacific Trade Co
+GHOST61477,2024-01-14,5157.13,Unknown,Ghost Vendor 01
+TXN61123,2024-04-14,1169.11,Finance Dept,Shell Ventures Ltd
+TXN61299,2024-07-25,1150.35,Procurement,Shell Venture
+TXN61220,2024-08-10,1178.96,Exec Office,Shell Ventures Ltd
+TXN60790,2024-11-02,4998.62,Procurement,Alpha Consulting LLC
+TXN60859,2024-09-08,5000.0,Exec Office,Nexus Holdings
+TXN60332,2024-11-19,100,Admin Dept,Orion Tech Inc
+TXN60006,2024-03-19,9999,Finance Dept,Summit Advisary
+TXN60214,2024-06-23,100,Procurement,Alpha Consult
+TXN60071,2024-05-26,100,Operations,Nexus Holdingz
+TXN60681,2024-12-22,24999.97,Procurement,Shell Ventures LLC
+TXN61325,2024-01-12,1192.39,Operations,Shell Ventures
+TXN60119,2024-02-09,100,Finance Dept,Pacific Trade
+TXN60723,2024-09-06,9999.36,Admin Dept,Alpha-Consulting
+TXN60243,2024-01-03,722.52,Procurement,Pacific Trade Ltd
+TXN60075,2024-11-18,100,Finance Dept,Alpha-Consulting
+TXN61449,2024-10-29,1059.85,Exec Office,Shell Venture Co
+TXN61238,2024-02-17,1025.36,Finance Dept,Shell Ventures Ltd
+TXN61092,2024-05-05,1018.14,Admin Dept,Shell Ventures
+TXN60655,2024-08-20,9999.6,Admin Dept,Summit Advisary
+TXN60382,2024-08-24,9483.62,Admin Dept,Summit Advisory
+TXN60773,2024-10-18,4998.59,Exec Office,Shell Venture Co
+TXN60160,2024-04-20,100,Admin Dept,Summit Advisors
+TXN61369,2024-07-07,1104.09,Procurement,Shell Ventures LLC
+TXN60041,2024-12-13,876.37,Operations,Pacific Trade
+TXN60721,2024-05-19,998.6,Procurement,Nexus Hold.
+TXN60140,2024-10-22,734.57,Finance Dept,Pacific-Trade
+TXN60819,2024-10-09,1000.0,Finance Dept,Summit Advisory
+TXN60341,2024-01-22,7493.52,Admin Dept,AlphaConsulting
+TXN61152,2024-01-01,1157.65,Operations,Shell Ventures
+TXN60085,2024-03-28,828.71,Operations,Alpha Consulting LLC
+TXN60122,2024-07-21,100,Admin Dept,Shell Ventures
+TXN60630,2024-12-15,9998.25,Admin Dept,Shell Venture Co
+TXN60312,2024-03-04,100,Operations,Shell Ventures
+TXN60132,2024-03-07,9471.62,Procurement,SummitAdvisory
+TXN60515,2024-02-25,1921.96,Admin Dept,Nexus Holdings Inc
+TXN60845,2024-05-16,10000.0,Finance Dept,Pacific Trd
+TXN60804,2024-10-14,3000.0,Exec Office,Orion Tech Ltd
+TXN61201,2024-02-25,921.5,Exec Office,Shell Ventures LLC
+TXN60749,2024-06-20,998.6,Operations,Summit Advisors
+TXN60776,2024-10-27,24997.99,Admin Dept,NEXUS HOLDINGS
+TXN60433,2024-10-17,882.02,Exec Office,Nexus Holdings Inc
+TXN61135,2024-07-09,1021.02,Exec Office,Shell Ventures
+TXN60348,2024-02-10,100,Finance Dept,SummitAdvisory
+TXN60648,2024-02-05,998.39,Exec Office,Summit Advisory LLC
+TXN60900,2024-06-15,3000.0,Procurement,Alpha Consulting LLC
+TXN60805,2024-09-05,1500.0,Operations,Summit Advisory
+TXN61247,2024-05-20,1036.49,Exec Office,Shell Venture Co
+TXN60795,2024-03-06,24999.31,Operations,Nexus Holdings Inc
+TXN61405,2024-12-08,997.41,Operations,Shell Venture Co
+TXN60848,2024-07-20,2000.0,Operations,Pacific Trade Co
+TXN60963,2024-02-06,29363.13,Procurement,Procurement
+TXN60142,2024-01-21,2231.69,Finance Dept,Orion Tech Inc
+TXN60842,2024-01-04,2000.0,Exec Office,Orion Tech Inc
+TXN61274,2024-03-27,1008.43,Operations,Shell Ventures LLC
+TXN60901,2024-09-24,3000.0,Exec Office,Metro Supplies
+TXN60453,2024-04-01,996.21,Finance Dept,Pacific-Trade
+TXN60552,2024-01-24,7029.72,Operations,Summit Advisory
+TXN60461,2024-12-18,933.85,Procurement,Pacific-Trade
+TXN60426,2024-10-15,100,Operations,Summit Advisory LLC
+TXN60519,2024-06-04,8479.23,Operations,Orion Tech Ltd
+TXN61026,2024-10-17,45109.02,Exec Office,Exec Office
+TXN60927,2024-01-06,15000.0,Procurement,Alpha Consult
+TXN61087,2024-02-04,1116.96,Admin Dept,Shell Ventures
+TXN60427,2024-03-22,100,Operations,Shell Ventures
+TXN60439,2024-03-06,9999,Finance Dept,Summit Advisors
+TXN60571,2024-09-22,7808.24,Finance Dept,Summit Advisary
+TXN60339,2024-06-13,100,Procurement,Summit Advisors
+TXN60141,2024-08-30,100,Procurement,Pacific Trade Co
+TXN61249,2024-05-20,1199.04,Procurement,Shell Venture Co
+TXN60989,2024-02-16,26119.76,Exec Office,Exec Office
+TXN61134,2024-04-09,1052.85,Exec Office,Shell Ventures LLC
+TXN61240,2024-11-19,1001.15,Finance Dept,Shell Ventures LLC
+TXN61195,2024-12-07,999.04,Finance Dept,Shell Venture Co
+TXN60527,2024-10-02,2059.44,Operations,Pacific-Trade
+TXN60992,2024-05-17,16321.68,Exec Office,Exec Office
+TXN60947,2024-03-11,5000.0,Exec Office,Pacific Trade
+TXN60916,2024-12-13,15000.0,Exec Office,Shell Ventures LLC
+TXN60279,2024-07-27,100,Finance Dept,Summit Advisory LLC
+TXN61457,2024-10-24,1170.25,Admin Dept,Shell Ventures
+TXN61004,2024-03-01,28405.07,Procurement,Procurement
+TXN60135,2024-12-14,7675.2,Admin Dept,Nexus Holdingz
+TXN60620,2024-12-27,24998.21,Procurement,Pacific Trade Co
+TXN61311,2024-01-04,1117.77,Operations,Shell Ventures LLC
+TXN60575,2024-06-30,100,Finance Dept,Nexus Holdings Inc
+TXN61436,2024-04-01,909.45,Admin Dept,Shell Venture
+TXN61260,2024-10-29,971.69,Finance Dept,Shell Venture
+TXN61383,2024-03-13,1034.8,Operations,Shell Ventures LLC
+TXN60923,2024-05-05,10000.0,Finance Dept,Alpha Consulting
+TXN60125,2024-12-20,9354.28,Admin Dept,Shell Venture Co
+TXN61142,2024-09-20,1179.88,Procurement,Shell Ventures
+TXN60978,2024-02-08,27371.01,Finance Dept,Finance Dept
+TXN60393,2024-07-07,100,Procurement,Pacific Trade Ltd
+TXN61228,2024-12-29,939.87,Operations,Shell Ventures LLC
+GHOST61485,2024-09-15,30291.24,Unknown,Ghost Vendor 04
+TXN61090,2024-05-05,1053.97,Finance Dept,Shell Ventures
+TXN61000,2024-12-18,41101.0,Exec Office,Exec Office
+TXN60090,2024-12-18,1014.31,Exec Office,Alpha Consult
+TXN61011,2024-02-06,16462.66,Exec Office,Exec Office
+TXN61235,2024-02-17,972.01,Exec Office,Shell Ventures Ltd
+TXN60931,2024-10-26,20000.0,Finance Dept,Pacific Trade Co
+TXN60714,2024-05-05,9999.72,Exec Office,Nexus Holdingz
+TXN60960,2024-08-31,13490.02,Exec Office,Exec Office
+TXN60273,2024-06-14,100,Procurement,Orion Tech Ltd
+TXN60636,2024-02-06,24999.88,Operations,Alpha Consulting LLC
+TXN61446,2024-04-18,1114.12,Exec Office,Shell Ventures
+TXN61284,2024-04-01,983.49,Finance Dept,Shell Ventures
+TXN61034,2024-10-09,960.94,Exec Office,Shell Ventures LLC
+TXN60988,2024-10-20,31970.38,Procurement,Procurement
+TXN60437,2024-01-03,9266.78,Exec Office,Summit Advisory LLC
+TXN61126,2024-06-28,923.44,Operations,Shell Ventures Ltd
+TXN60100,2024-05-04,7557.8,Procurement,AlphaConsulting
+TXN60538,2024-02-07,930.31,Admin Dept,Summit Advisary
+TXN60912,2024-12-04,1000.0,Procurement,SummitAdvisory
+TXN61159,2024-02-28,1073.11,Exec Office,Shell Ventures
+TXN60430,2024-07-10,8819.39,Admin Dept,Pacific Trade Co
+TXN60220,2024-08-13,100,Operations,Shell Ventures Ltd
+TXN60911,2024-08-19,1000.0,Finance Dept,Pacific Trade Co
+TXN60820,2024-06-10,7500.0,Operations,AlphaConsulting
+TXN60178,2024-04-09,877.41,Admin Dept,Pacific Trade Ltd
+TXN60747,2024-06-03,24999.97,Exec Office,Shell Venture
+TXN61153,2024-01-01,1118.17,Finance Dept,Shell Ventures
+TXN61425,2024-10-04,1138.72,Operations,Shell Venture
+TXN60208,2024-02-08,908.11,Finance Dept,Pacific Trade Ltd
+TXN60852,2024-04-12,5000.0,Finance Dept,Nexus Holdingz
+TXN61376,2024-08-11,1124.5,Exec Office,Shell Ventures
+TXN60111,2024-03-11,8987.02,Procurement,Summit Advisary
+TXN60465,2024-08-31,9007.59,Operations,Summit Advisors
+TXN61384,2024-09-01,948.14,Admin Dept,Shell Ventures Ltd
+TXN60334,2024-01-13,8220.2,Finance Dept,MetroSupplies
+TXN60091,2024-08-14,918.56,Exec Office,Nexus Holdingz
+TXN60315,2024-08-13,100,Operations,Shell Venture Co
+TXN60886,2024-06-13,3000.0,Exec Office,AlphaConsulting
+TXN60216,2024-04-13,100,Procurement,OrionTech
+TXN61408,2024-04-26,1106.92,Finance Dept,Shell Ventures Ltd
+TXN61133,2024-04-09,980.88,Finance Dept,Shell Ventures LLC
+TXN60039,2024-09-01,1951.58,Exec Office,Metro Supplies
+TXN60869,2024-03-02,2500.0,Procurement,Nexus Holdingz
+TXN61317,2024-01-20,1199.78,Operations,Shell Ventures
+TXN60596,2024-12-08,9822.19,Procurement,MetroSupplies
+TXN60342,2024-02-20,100,Exec Office,Summit Advisory
+TXN60722,2024-03-18,24998.45,Procurement,Nexus Holdings Inc
+TXN61103,2024-09-25,1135.92,Exec Office,Shell Ventures Ltd
+TXN60204,2024-09-09,945.54,Finance Dept,Summit Advisory
+TXN60049,2024-03-30,100,Exec Office,NEXUS HOLDINGS
+TXN60857,2024-04-15,2000.0,Admin Dept,Summit Advisary
+TXN61448,2024-10-29,1148.63,Exec Office,Shell Venture Co
+TXN60614,2024-09-10,2498.65,Operations,Shell Venture
+TXN61455,2024-08-15,1012.66,Exec Office,Shell Ventures LLC
+TXN60116,2024-04-17,100,Procurement,Pacific Trade
+TXN60077,2024-08-30,100,Operations,Pacific Trade Ltd
+TXN60944,2024-08-11,7500.0,Finance Dept,Pacific-Trade
+TXN61192,2024-09-09,940.04,Operations,Shell Ventures
+TXN60692,2024-06-23,4999.9,Finance Dept,AlphaConsulting
+TXN60123,2024-06-05,9999,Exec Office,OrionTech
+TXN61354,2024-07-26,1112.07,Operations,Shell Venture Co
+TXN61181,2024-06-09,992.4,Procurement,Shell Ventures
+TXN60314,2024-07-28,8371.98,Exec Office,Nexus Holdingz
+TXN60199,2024-06-12,100,Procurement,Summit Advisory
+TXN60008,2024-10-07,9999,Admin Dept,Shell Venture
+TXN60230,2024-09-07,100,Exec Office,Shell Ventures
+TXN60268,2024-12-01,1263.93,Admin Dept,SummitAdvisory
+TXN61332,2024-10-04,1125.69,Finance Dept,Shell Ventures
+TXN60853,2024-10-30,15000.0,Operations,Nexus Holdingz
+GHOST61483,2024-01-14,29750.84,Unknown,Ghost Vendor 20
+TXN61326,2024-06-11,1072.92,Exec Office,Shell Ventures
+TXN61297,2024-07-25,1132.04,Finance Dept,Shell Venture
+TXN60329,2024-07-04,9479.23,Exec Office,Shell Venture Co
+TXN61018,2024-11-17,49170.99,Exec Office,Exec Office
+TXN60017,2024-11-19,100,Procurement,Pacific-Trade
+TXN61214,2024-12-26,923.84,Exec Office,Shell Venture
+TXN60573,2024-06-26,7220.02,Operations,Alpha-Consulting
+TXN61248,2024-05-20,1064.14,Exec Office,Shell Venture Co
+TXN60270,2024-08-29,7896.52,Procurement,Summit Advisors
+TXN60532,2024-11-05,100,Operations,Pacific Trade Co
+TXN60502,2024-02-04,100,Operations,OrionTech
+TXN61139,2024-07-09,1075.69,Procurement,Shell Ventures
+TXN61077,2024-08-19,968.73,Operations,Shell Venture
+TXN60375,2024-09-04,8120.14,Procurement,Pacific-Trade
+TXN60829,2024-09-09,5000.0,Operations,Shell Venture Co
+TXN61398,2024-12-08,1025.92,Operations,Shell Venture Co
+TXN60728,2024-08-31,4998.74,Operations,Metro Supplies Co
+TXN61222,2024-08-10,1181.23,Admin Dept,Shell Ventures Ltd
+TXN61300,2024-10-12,996.66,Operations,Shell Ventures Ltd
+TXN60517,2024-07-21,100,Admin Dept,Nexus Holdings Inc
+TXN60229,2024-12-13,899.46,Finance Dept,Nexus Holdings
+TXN60105,2024-11-05,100,Finance Dept,Shell Ventures LLC
+TXN61360,2024-07-26,939.73,Finance Dept,Shell Venture Co
+TXN60909,2024-05-31,500.0,Finance Dept,Shell Venture
+TXN61215,2024-12-26,1162.54,Admin Dept,Shell Venture
+TXN61447,2024-10-29,1165.92,Admin Dept,Shell Venture Co
+TXN61050,2024-01-12,1002.69,Finance Dept,Shell Venture Co
+TXN61209,2024-09-17,1096.05,Procurement,Shell Ventures LLC
+TXN60864,2024-02-19,5000.0,Exec Office,Nexus Holdings
+TXN60999,2024-11-09,13475.88,Procurement,Procurement
+TXN60227,2024-06-10,8482.06,Admin Dept,Nexus Holdings
+TXN60604,2024-04-13,24999.0,Admin Dept,Summit Advisors
+TXN61251,2024-01-23,1088.11,Finance Dept,Shell Ventures LLC
+TXN60176,2024-01-15,100,Exec Office,AlphaConsulting
+TXN61459,2024-10-24,1184.87,Finance Dept,Shell Ventures
+TXN60902,2024-10-22,20000.0,Procurement,NEXUS HOLDINGS
+TXN61364,2024-10-21,1115.17,Finance Dept,Shell Ventures
+TXN61100,2024-02-04,1058.67,Procurement,Shell Ventures Ltd
+TXN61183,2024-07-21,1021.6,Admin Dept,Shell Venture Co
+TXN60495,2024-03-16,7286.5,Admin Dept,Pacific Trade Ltd
+GHOST61489,2024-09-24,37328.04,Unknown,Ghost Vendor 16
+TXN61021,2024-07-04,13149.71,Exec Office,Exec Office
+TXN60780,2024-07-23,2498.41,Procurement,AlphaConsulting
+TXN60872,2024-05-18,7500.0,Exec Office,Pacific-Trade
+TXN60981,2024-01-21,39781.31,Exec Office,Exec Office
+TXN60336,2024-01-24,100,Operations,Alpha Consult
+TXN61107,2024-09-25,1050.95,Procurement,Shell Ventures Ltd
+TXN60701,2024-07-14,2498.19,Admin Dept,Shell Ventures
+TXN60082,2024-03-25,7795.79,Exec Office,Shell Venture Co
+TXN61368,2024-07-07,1013.62,Exec Office,Shell Ventures LLC
+TXN60169,2024-05-25,8377.49,Admin Dept,OrionTech
+TXN61178,2024-06-09,946.21,Procurement,Shell Ventures
+TXN61114,2024-07-10,1034.98,Exec Office,Shell Ventures
+TXN60106,2024-12-07,7917.38,Procurement,AlphaConsulting
+TXN60587,2024-04-25,7240.13,Procurement,Pacific Trd
+TXN60560,2024-03-09,100,Procurement,Metro Supplies Co
+TXN60200,2024-03-02,100,Operations,Metro Supply
+TXN60228,2024-12-07,100.68,Admin Dept,Shell Ventures
+TXN60851,2024-01-22,2000.0,Admin Dept,Alpha Consulting LLC
+TXN60401,2024-11-20,835.16,Admin Dept,Nexus Holdings
+TXN60809,2024-12-24,2000.0,Procurement,MetroSupplies
+TXN60922,2024-05-09,7500.0,Finance Dept,Orion Tech Ltd
+TXN60868,2024-03-13,500.0,Finance Dept,Pacific Trade Ltd
+TXN60590,2024-06-17,834.88,Operations,OrionTech
+TXN60758,2024-04-12,998.76,Finance Dept,Alpha-Consulting
+TXN60546,2024-04-16,8064.61,Finance Dept,Metro Supplies Co
+TXN61344,2024-08-28,971.58,Procurement,Shell Venture
+TXN61196,2024-12-07,1198.89,Finance Dept,Shell Venture Co
+TXN60650,2024-12-15,24999.55,Operations,Alpha Consult
+TXN60253,2024-07-10,100,Admin Dept,OrionTech
+TXN60654,2024-02-21,999.29,Admin Dept,Nexus Holdings
+TXN61185,2024-07-21,1141.36,Operations,Shell Venture Co
+TXN61309,2024-01-04,940.73,Procurement,Shell Ventures LLC
+TXN60627,2024-11-12,4998.84,Finance Dept,Orion Tech
+TXN61318,2024-06-23,1192.54,Operations,Shell Ventures Ltd
+TXN60847,2024-06-20,1500.0,Admin Dept,Pacific Trade Co
+TXN60362,2024-09-05,8371.44,Finance Dept,Pacific-Trade
+TXN60144,2024-05-14,893.69,Exec Office,Metro Supplies Co
+TXN60943,2024-08-02,10000.0,Operations,Alpha Consult
+TXN60404,2024-07-10,7679.35,Admin Dept,Summit Advisors
+TXN61144,2024-11-21,942.66,Admin Dept,Shell Ventures LLC
+TXN60472,2024-04-01,100,Finance Dept,Pacific Trd
+TXN60403,2024-12-09,7293.98,Operations,Orion Tech
+GHOST61480,2024-12-18,45180.52,Unknown,Ghost Vendor 03
+TXN60187,2024-02-28,100,Admin Dept,Summit Advisory LLC
+TXN60258,2024-11-15,100,Finance Dept,Orion Tech Inc
+TXN60275,2024-07-10,794.36,Finance Dept,Metro Supplies Co
+TXN60384,2024-02-28,100,Admin Dept,Metro Supplies Co
+TXN61120,2024-07-21,1113.87,Operations,Shell Venture
+TXN61063,2024-07-18,1047.29,Procurement,Shell Venture Co
+TXN60765,2024-04-05,998.58,Finance Dept,Nexus Holdings Inc
+TXN61257,2024-10-29,976.24,Operations,Shell Venture
+TXN60181,2024-02-09,100,Admin Dept,Alpha Consulting
+TXN60961,2024-02-20,26543.05,Finance Dept,Finance Dept
+TXN61211,2024-09-17,1138.28,Operations,Shell Ventures LLC
+TXN60172,2024-01-27,8208.68,Admin Dept,Metro Supplies
+TXN60128,2024-02-03,929.01,Exec Office,Alpha Consult
+TXN61281,2024-04-01,1129.8,Exec Office,Shell Ventures
+TXN61231,2024-12-29,1160.44,Admin Dept,Shell Ventures LLC
+TXN60940,2024-03-25,7500.0,Finance Dept,Alpha Consult
+TXN60583,2024-04-15,245.78,Exec Office,AlphaConsulting
+TXN61333,2024-10-04,993.57,Procurement,Shell Ventures
+TXN60703,2024-11-28,998.86,Finance Dept,Shell Venture
+GHOST61481,2024-08-12,16710.39,Unknown,Ghost Vendor 04
+TXN61423,2024-10-04,1177.87,Procurement,Shell Venture
+TXN60746,2024-03-07,9998.67,Operations,Shell Ventures LLC
+TXN60391,2024-06-18,100,Finance Dept,Orion Tech
+TXN61289,2024-06-29,1141.31,Finance Dept,Shell Venture
+TXN60774,2024-07-02,4998.54,Operations,Metro Supplies Co
+TXN61071,2024-07-05,926.99,Admin Dept,Shell Ventures
+TXN60889,2024-12-10,3000.0,Operations,AlphaConsulting
+TXN60991,2024-11-19,28264.89,Procurement,Procurement
+TXN60968,2024-07-04,42789.69,Finance Dept,Finance Dept
+TXN61054,2024-11-06,1080.29,Procurement,Shell Venture
+TXN60905,2024-02-25,2000.0,Finance Dept,OrionTech
+TXN60276,2024-03-09,100,Procurement,Summit Advisors
+TXN60713,2024-12-06,9999.06,Operations,Summit Advisory
+TXN60054,2024-04-05,7470.05,Finance Dept,SummitAdvisory
+TXN60378,2024-10-14,100,Finance Dept,Alpha Consult
+TXN61079,2024-08-19,969.54,Finance Dept,Shell Venture
+TXN60812,2024-07-07,20000.0,Procurement,Alpha Consulting
+TXN60641,2024-02-19,9999.71,Operations,Nexus Hold.
+TXN60699,2024-11-12,999.17,Exec Office,Shell Venture
+TXN60191,2024-08-16,723.99,Procurement,MetroSupplies
+TXN60956,2024-02-27,40463.92,Procurement,Procurement
+TXN60409,2024-03-08,100,Admin Dept,Nexus Hold.
+TXN61164,2024-09-26,1030.16,Operations,Shell Venture
+TXN60537,2024-12-16,100,Admin Dept,Shell Venture Co
+GHOST61472,2024-03-16,48809.96,Unknown,Ghost Vendor 17
+TXN60326,2024-11-06,8186.52,Exec Office,Shell Ventures Ltd
+TXN61121,2024-04-14,1024.74,Finance Dept,Shell Ventures Ltd
+TXN61236,2024-02-17,1048.61,Operations,Shell Ventures Ltd
+TXN60810,2024-04-14,500.0,Operations,Pacific Trade Co
+TXN61205,2024-02-19,1106.71,Finance Dept,Shell Ventures Ltd
+TXN60768,2024-05-03,4999.55,Operations,SummitAdvisory
+TXN60506,2024-04-16,100,Operations,Shell Ventures Ltd
+TXN60985,2024-08-28,46369.71,Finance Dept,Finance Dept
+TXN60591,2024-05-04,816.47,Finance Dept,Orion Tech Inc
+TXN60529,2024-08-12,100,Exec Office,Alpha Consulting
+TXN60328,2024-08-15,738.74,Finance Dept,Pacific Trade
+TXN61412,2024-04-14,930.78,Exec Office,Shell Ventures Ltd
+TXN60855,2024-04-21,20000.0,Admin Dept,Pacific Trade Co
+TXN60858,2024-08-22,7500.0,Procurement,Summit Advisory
+TXN60158,2024-09-23,100,Procurement,Pacific Trade Co
+TXN60866,2024-02-08,2000.0,Procurement,Summit Advisory LLC
+TXN60736,2024-09-08,24998.85,Procurement,Shell Venture
+TXN60510,2024-05-08,100.08,Procurement,Shell Ventures
+TXN60518,2024-11-30,100,Exec Office,Orion Tech Ltd
+TXN61148,2024-01-07,1025.51,Admin Dept,Shell Venture
+TXN60938,2024-06-23,2500.0,Admin Dept,NEXUS HOLDINGS
+TXN60589,2024-11-22,9999,Procurement,Shell Ventures Ltd
+TXN60639,2024-02-18,9998.53,Operations,Alpha Consulting
+TXN61242,2024-11-19,960.51,Admin Dept,Shell Ventures LLC
+TXN61112,2024-07-10,1046.17,Finance Dept,Shell Ventures
+TXN60555,2024-12-08,100,Exec Office,AlphaConsulting
+TXN61399,2024-01-01,956.21,Operations,Shell Ventures Ltd
+TXN60505,2024-02-16,100,Exec Office,Pacific-Trade
+TXN61302,2024-10-12,910.91,Admin Dept,Shell Ventures Ltd
+TXN60626,2024-08-26,24999.53,Operations,NEXUS HOLDINGS
+TXN60507,2024-11-20,7785.97,Finance Dept,Summit Advisory
+TXN60473,2024-11-02,9545.47,Admin Dept,Metro Supply
+TXN60680,2024-05-09,9999.43,Admin Dept,Orion Tech Inc
+TXN61461,2024-11-28,915.85,Admin Dept,Shell Venture Co
+TXN60737,2024-07-08,24999.3,Operations,Alpha Consulting
+TXN60066,2024-11-08,101.53,Finance Dept,OrionTech
+TXN61348,2024-04-06,1083.98,Procurement,Shell Ventures Ltd
+TXN60080,2024-01-12,100,Procurement,OrionTech
+TXN60799,2024-02-11,9998.49,Exec Office,Summit Advisory
+TXN61149,2024-01-07,1025.28,Admin Dept,Shell Venture
+TXN60282,2024-02-21,9066.08,Admin Dept,Pacific Trade Ltd
+TXN61009,2024-05-18,22623.36,Exec Office,Exec Office
+TXN60631,2024-01-15,4999.86,Operations,Pacific Trade Co
+TXN61298,2024-07-25,1192.84,Admin Dept,Shell Venture
+TXN60027,2024-12-21,773.79,Exec Office,Orion Tech Inc
+TXN61301,2024-10-12,959.73,Finance Dept,Shell Ventures Ltd
+TXN60673,2024-01-24,2498.85,Exec Office,Shell Ventures
+TXN61200,2024-02-25,1084.63,Exec Office,Shell Ventures LLC
+TXN60553,2024-03-12,100,Exec Office,AlphaConsulting
+TXN60201,2024-05-25,100,Admin Dept,Shell Venture
+TXN60490,2024-06-24,100,Admin Dept,Pacific Trade Co
+TXN61188,2024-10-30,1138.86,Finance Dept,Shell Ventures Ltd
+TXN61061,2024-05-07,1035.67,Finance Dept,Shell Ventures LLC
+TXN60412,2024-09-21,932.1,Exec Office,Summit Advisory LLC
+TXN60558,2024-10-03,100,Procurement,Shell Ventures LLC
+TXN61115,2024-07-10,1137.16,Admin Dept,Shell Ventures
+TXN60241,2024-09-24,100,Procurement,AlphaConsulting
+TXN61387,2024-09-01,1093.57,Procurement,Shell Ventures Ltd
+TXN60946,2024-08-31,1000.0,Operations,SummitAdvisory
+TXN60366,2024-07-04,797.65,Finance Dept,Nexus Holdingz
+TXN60094,2024-01-11,100,Admin Dept,Pacific Trd
+TXN61223,2024-08-30,946.96,Admin Dept,Shell Ventures
+TXN61270,2024-04-30,1183.97,Finance Dept,Shell Ventures Ltd
+TXN60712,2024-08-15,9998.22,Procurement,Metro Supplies Co
+TXN61419,2024-10-27,928.04,Admin Dept,Shell Ventures Ltd
+TXN61386,2024-09-01,905.14,Admin Dept,Shell Ventures Ltd
+TXN61394,2024-06-07,975.63,Admin Dept,Shell Ventures Ltd
+TXN61049,2024-01-12,1031.0,Exec Office,Shell Venture Co
+TXN60986,2024-12-18,26950.44,Procurement,Procurement
+TXN61085,2024-02-04,1060.19,Procurement,Shell Ventures
+TXN60520,2024-06-06,847.19,Operations,Metro Supplies Co
+TXN60559,2024-08-02,100,Admin Dept,Alpha Consulting
+TXN60642,2024-09-12,4999.28,Procurement,Pacific Trade Co
+TXN60463,2024-05-20,100,Procurement,Alpha-Consulting
+TXN60356,2024-09-07,100,Operations,Orion Tech Inc
+TXN61118,2024-07-21,1171.1,Operations,Shell Venture
+GHOST61494,2024-01-23,34297.67,Unknown,Ghost Vendor 01
+TXN60663,2024-02-23,9999.83,Finance Dept,Orion Tech Inc
+TXN60068,2024-07-27,1203.17,Finance Dept,Summit Advisors
+TXN60645,2024-10-12,998.94,Finance Dept,Shell Ventures Ltd
+TXN60567,2024-03-23,100,Finance Dept,Pacific Trade
+TXN60525,2024-01-24,100,Exec Office,Orion Tech Ltd
+TXN60625,2024-02-23,24998.57,Exec Office,Summit Advisory
+TXN60754,2024-02-08,998.37,Finance Dept,Pacific Trade
+TXN60867,2024-06-01,2500.0,Procurement,Shell Venture
+TXN61140,2024-07-09,1127.55,Procurement,Shell Ventures
+TXN60621,2024-07-08,4998.38,Operations,MetroSupplies
+TXN60904,2024-12-21,20000.0,Procurement,AlphaConsulting
+TXN60611,2024-07-16,4998.92,Procurement,Alpha-Consulting
+TXN61208,2024-02-19,1143.08,Operations,Shell Ventures Ltd
+TXN60598,2024-12-15,100,Operations,SummitAdvisory
+TXN60514,2024-02-18,7267.35,Procurement,Pacific Trade Ltd
+TXN60888,2024-08-27,15000.0,Procurement,Summit Advisory LLC
+TXN60471,2024-07-12,8746.32,Exec Office,Alpha-Consulting
+TXN60070,2024-05-06,840.35,Operations,Metro Supply
+TXN60678,2024-11-30,24998.57,Operations,Nexus Holdingz
+TXN60078,2024-08-02,100,Admin Dept,Nexus Holdings Inc
+TXN60260,2024-03-03,7518.26,Procurement,Shell Ventures Ltd
+TXN60325,2024-04-24,100,Finance Dept,Shell Venture Co
+TXN60034,2024-02-03,100,Finance Dept,Metro Supply
+TXN60592,2024-10-14,100,Finance Dept,Orion Tech Inc
+TXN61356,2024-07-26,900.44,Finance Dept,Shell Venture Co
+TXN60482,2024-05-03,100,Admin Dept,Metro Supplies Co
+TXN60550,2024-02-21,8386.16,Procurement,Metro Supplies
+TXN60081,2024-12-21,721.87,Finance Dept,Shell Ventures Ltd
+TXN60936,2024-01-03,7500.0,Procurement,Pacific Trade
+GHOST61487,2024-03-16,14467.76,Unknown,Ghost Vendor 18
+TXN60671,2024-04-05,998.17,Finance Dept,Orion Tech
+TXN60285,2024-07-23,100,Exec Office,Pacific Trade Ltd
+GHOST61479,2024-11-22,9021.63,Unknown,Ghost Vendor 06
+TXN61337,2024-05-17,912.76,Operations,Shell Ventures
+TXN61237,2024-02-17,1172.19,Admin Dept,Shell Ventures Ltd
+TXN60308,2024-01-30,100,Procurement,MetroSupplies
+TXN61072,2024-07-05,927.71,Exec Office,Shell Ventures
+TXN60543,2024-03-06,100,Exec Office,Shell Ventures LLC
+TXN60215,2024-09-15,754.87,Procurement,AlphaConsulting
+TXN61353,2024-07-26,1156.84,Finance Dept,Shell Venture Co
+TXN60687,2024-08-28,9999.59,Exec Office,Shell Ventures LLC
+TXN61294,2024-09-24,1137.8,Procurement,Shell Venture Co
+TXN61380,2024-03-13,1041.97,Exec Office,Shell Ventures LLC
+TXN60806,2024-11-26,3000.0,Exec Office,Nexus Holdings Inc
+TXN60177,2024-11-20,100,Admin Dept,Orion Tech
+TXN60327,2024-05-04,8256.77,Exec Office,Pacific Trd
+TXN60672,2024-09-10,2498.57,Finance Dept,Nexus Holdingz
+TXN60716,2024-07-10,24999.26,Procurement,Metro Supply
+TXN61264,2024-09-13,1048.99,Exec Office,Shell Ventures LLC
+TXN60370,2024-03-04,100,Finance Dept,Pacific-Trade
+TXN61179,2024-06-09,1193.51,Operations,Shell Ventures
+TXN60173,2024-06-11,9718.19,Admin Dept,Metro Supplies
+TXN61226,2024-08-30,1016.87,Procurement,Shell Ventures
+TXN61290,2024-06-29,1197.64,Admin Dept,Shell Venture
+TXN60005,2024-11-19,100,Exec Office,Orion Tech Ltd
+TXN60748,2024-07-17,9999.59,Procurement,Summit Advisors
+TXN60032,2024-10-15,100,Admin Dept,Summit Advisory LLC
+TXN61304,2024-10-12,905.14,Operations,Shell Ventures Ltd
+TXN61062,2024-07-18,1007.86,Finance Dept,Shell Venture Co
+TXN60830,2024-09-25,5000.0,Exec Office,Shell Ventures Ltd
+TXN60484,2024-07-16,100,Procurement,Orion Tech Ltd
+TXN61017,2024-05-16,23922.19,Procurement,Procurement
+TXN61080,2024-11-13,986.47,Procurement,Shell Ventures
+TXN60126,2024-01-28,866.92,Procurement,Nexus Holdings
+TXN61265,2024-09-13,964.02,Exec Office,Shell Ventures LLC
+TXN61328,2024-06-11,914.72,Operations,Shell Ventures
+TXN60244,2024-12-06,100,Operations,OrionTech
+TXN60825,2024-02-02,500.0,Admin Dept,Orion Tech Inc
+TXN60878,2024-09-02,1000.0,Operations,Pacific Trd
+TXN61010,2024-06-23,25658.57,Procurement,Procurement
+TXN61404,2024-12-08,1087.39,Admin Dept,Shell Venture Co
+TXN60921,2024-01-20,7500.0,Finance Dept,Summit Advisors
+TXN60469,2024-01-16,997.89,Procurement,Orion Tech
+TXN60694,2024-09-15,999.21,Admin Dept,Pacific Trd
+TXN60060,2024-03-01,100,Procurement,Pacific-Trade
+TXN60837,2024-06-14,1500.0,Exec Office,Summit Advisory
+TXN60653,2024-05-29,998.12,Finance Dept,Pacific Trade Ltd
+TXN61232,2024-12-29,902.23,Admin Dept,Shell Ventures LLC
+TXN61056,2024-11-06,962.14,Operations,Shell Venture
+TXN60236,2024-04-15,100,Procurement,Summit Advisory LLC
+TXN60498,2024-03-30,8904.76,Admin Dept,Orion Tech Ltd
+TXN60475,2024-08-18,100,Procurement,Pacific Trd
+TXN61288,2024-06-29,1173.28,Exec Office,Shell Venture
+TXN61430,2024-01-14,1100.19,Admin Dept,Shell Ventures
+TXN60897,2024-09-23,10000.0,Exec Office,Shell Ventures LLC
+TXN61108,2024-03-05,922.03,Operations,Shell Ventures
+TXN60697,2024-03-14,24998.93,Exec Office,Nexus Holdings
+TXN60352,2024-08-28,7412.07,Admin Dept,Pacific Trade Co
+TXN60860,2024-12-07,7500.0,Exec Office,Pacific Trd
+TXN61064,2024-07-18,1172.76,Finance Dept,Shell Venture Co
+TXN60535,2024-11-20,288.04,Exec Office,Summit Advisary
+TXN60397,2024-02-16,9003.23,Admin Dept,Nexus Holdingz
+TXN61424,2024-10-04,1145.12,Admin Dept,Shell Venture
+TXN60374,2024-12-01,100,Finance Dept,Pacific Trade Co
+TXN61099,2024-02-04,900.17,Procurement,Shell Ventures Ltd
+TXN61007,2024-04-03,42367.52,Procurement,Procurement
+TXN61203,2024-02-25,1038.7,Operations,Shell Ventures LLC
+TXN60331,2024-05-26,8114.34,Exec Office,Pacific Trade Co
+TXN60029,2024-10-29,100,Admin Dept,Nexus Holdingz
+TXN61314,2024-03-02,1146.65,Operations,Shell Venture Co
+TXN60383,2024-03-06,100,Finance Dept,Summit Advisors
+TXN60349,2024-05-21,100,Exec Office,Summit Advisary
+TXN61197,2024-01-21,1146.43,Admin Dept,Shell Venture Co
+TXN61024,2024-02-19,10734.0,Finance Dept,Finance Dept
+TXN60949,2024-08-16,15000.0,Admin Dept,Nexus Holdings Inc
+TXN60291,2024-01-29,743.42,Admin Dept,Shell Venture
+TXN61361,2024-04-28,1119.38,Procurement,Shell Venture
+TXN61095,2024-03-08,1038.72,Procurement,Shell Venture
+TXN60964,2024-09-18,35018.71,Exec Office,Exec Office
+TXN61345,2024-08-28,901.59,Exec Office,Shell Venture
+TXN61366,2024-10-21,961.9,Admin Dept,Shell Ventures
+TXN60513,2024-01-04,818.12,Admin Dept,Orion Tech Inc
+TXN61169,2024-01-27,1066.5,Admin Dept,Shell Venture Co
+TXN60926,2024-04-20,3000.0,Operations,Metro Supplies Co
+TXN60485,2024-11-06,8728.39,Exec Office,Alpha Consulting LLC
+TXN60109,2024-02-27,8351.63,Procurement,Shell Venture Co
+TXN61321,2024-01-12,998.33,Finance Dept,Shell Ventures
+TXN60565,2024-03-08,100,Procurement,Pacific-Trade
+TXN60884,2024-08-29,15000.0,Operations,Orion Tech
+TXN60194,2024-07-22,946.55,Exec Office,SummitAdvisory
+TXN60089,2024-04-22,807.58,Finance Dept,SummitAdvisory
+TXN61046,2024-07-16,1032.76,Procurement,Shell Ventures Ltd
+TXN61358,2024-07-26,1072.98,Exec Office,Shell Venture Co
+TXN60811,2024-01-15,1500.0,Operations,Shell Venture
+TXN60289,2024-10-09,100,Procurement,Alpha Consulting
+TXN61199,2024-01-21,1147.26,Procurement,Shell Venture Co
+TXN60662,2024-08-10,4998.1,Procurement,Metro Supplies
+TXN60346,2024-08-15,100,Exec Office,MetroSupplies
+TXN60101,2024-10-05,720.02,Finance Dept,Alpha Consult
+TXN60542,2024-04-06,1035.28,Exec Office,AlphaConsulting
+TXN60629,2024-06-26,998.87,Exec Office,Shell Ventures Ltd
+TXN61392,2024-06-07,918.89,Finance Dept,Shell Ventures Ltd
+TXN61117,2024-07-21,904.91,Admin Dept,Shell Venture
+TXN60153,2024-08-02,100,Operations,Metro Supplies Co
+TXN61443,2024-04-18,1024.52,Procurement,Shell Ventures
+TXN60447,2024-09-05,100,Procurement,Shell Ventures
+TXN61285,2024-04-01,1006.88,Finance Dept,Shell Ventures
+TXN60249,2024-02-13,962.94,Operations,Pacific Trade Ltd
+TXN60771,2024-12-11,24998.48,Procurement,Alpha Consulting
+TXN61177,2024-06-09,1021.78,Procurement,Shell Ventures
+TXN61119,2024-07-21,1046.03,Procurement,Shell Venture
+TXN61016,2024-09-18,41952.12,Procurement,Procurement
+TXN60958,2024-03-11,5398.59,Procurement,Procurement
+TXN61182,2024-06-09,1163.73,Procurement,Shell Ventures
+TXN60651,2024-08-13,2498.79,Exec Office,Nexus Hold.
+TXN61052,2024-01-12,1016.37,Procurement,Shell Venture Co
+TXN60488,2024-03-27,100,Exec Office,Alpha Consulting LLC
+TXN60865,2024-11-26,500.0,Operations,Nexus Holdingz
+TXN60449,2024-02-27,8172.72,Operations,Summit Advisory LLC
+TXN60231,2024-04-26,9908.42,Exec Office,Pacific Trd
+TXN60778,2024-08-25,9999.34,Procurement,Orion Tech
+TXN60001,2024-12-13,100,Operations,Summit Advisory LLC
+TXN60335,2024-06-30,100,Procurement,MetroSupplies
+TXN60161,2024-07-05,100,Finance Dept,Summit Advisory LLC
+TXN60209,2024-03-02,7216.27,Admin Dept,Orion Tech
+TXN61266,2024-09-13,986.27,Finance Dept,Shell Ventures LLC
+TXN60420,2024-04-06,100,Procurement,NEXUS HOLDINGS
+TXN60022,2024-02-02,100,Exec Office,Orion Tech Inc
+TXN60951,2024-12-02,26504.59,Finance Dept,Finance Dept
+TXN60163,2024-03-31,877.82,Operations,Alpha Consulting LLC
+TXN61377,2024-08-11,986.72,Procurement,Shell Ventures
+TXN60957,2024-10-26,34966.0,Procurement,Procurement
+TXN61463,2024-11-28,1139.68,Admin Dept,Shell Venture Co
+TXN60822,2024-04-01,5000.0,Operations,Metro Supplies
+TXN60707,2024-03-14,9998.92,Operations,NEXUS HOLDINGS
+TXN60415,2024-05-20,8875.88,Finance Dept,Pacific Trade Ltd
+TXN60351,2024-05-05,166.43,Finance Dept,Shell Ventures
+TXN60733,2024-02-19,2498.04,Admin Dept,Metro Supplies Co
+TXN60644,2024-08-19,4998.02,Finance Dept,Summit Advisary
+TXN60272,2024-01-16,1031.45,Finance Dept,Shell Ventures LLC
+TXN60183,2024-06-09,8149.44,Procurement,Summit Advisors
+TXN60476,2024-12-01,100,Operations,Orion Tech
+TXN60930,2024-10-01,7500.0,Operations,Summit Advisors
+TXN60416,2024-02-15,100,Finance Dept,Orion Tech
+TXN60407,2024-11-16,765.36,Operations,Pacific-Trade
+TXN60400,2024-06-30,100,Procurement,Orion Tech Ltd
+TXN60138,2024-03-19,9999,Exec Office,Shell Venture Co
+TXN60539,2024-07-24,813.54,Procurement,Shell Venture
+TXN61093,2024-05-05,914.5,Admin Dept,Shell Ventures
+TXN61074,2024-07-05,1057.58,Operations,Shell Ventures
+TXN60814,2024-10-31,5000.0,Exec Office,Nexus Holdings
+TXN60047,2024-12-25,100,Finance Dept,MetroSupplies
+TXN60540,2024-06-14,100,Finance Dept,NEXUS HOLDINGS
+TXN60137,2024-12-30,980.46,Procurement,Shell Ventures LLC
+TXN61372,2024-07-07,956.4,Admin Dept,Shell Ventures LLC
+TXN60330,2024-10-02,100,Exec Office,Alpha-Consulting
+TXN61417,2024-10-27,1197.39,Exec Office,Shell Ventures Ltd
+TXN60788,2024-08-01,2498.95,Procurement,Nexus Holdingz
+TXN60972,2024-07-10,35224.52,Exec Office,Exec Office
+TXN61008,2024-07-10,41430.99,Procurement,Procurement
+TXN60189,2024-09-10,100,Operations,Orion Tech
+TXN61138,2024-07-09,915.27,Exec Office,Shell Ventures
+TXN60040,2024-03-14,851.84,Admin Dept,Alpha-Consulting
+TXN61296,2024-07-25,957.04,Procurement,Shell Venture
+TXN60281,2024-02-04,9534.85,Exec Office,Alpha-Consulting
+TXN60267,2024-06-27,100,Exec Office,Nexus Holdingz
+TXN60844,2024-03-18,1500.0,Procurement,Nexus Holdingz
+TXN61402,2024-01-01,1075.86,Procurement,Shell Ventures Ltd
+TXN60287,2024-04-14,806.59,Finance Dept,Alpha-Consulting
+TXN60920,2024-12-16,15000.0,Exec Office,SummitAdvisory
+TXN60120,2024-08-28,7209.71,Admin Dept,Pacific Trade Ltd
+TXN60333,2024-03-02,106.64,Finance Dept,Nexus Holdings
+TXN61258,2024-10-29,901.29,Admin Dept,Shell Venture
+TXN60577,2024-03-18,100,Admin Dept,NEXUS HOLDINGS
+TXN60907,2024-06-04,2500.0,Admin Dept,Metro Supplies
+TXN60903,2024-04-25,3000.0,Procurement,Alpha Consult
+TXN61015,2024-10-08,25464.23,Finance Dept,Finance Dept
+TXN60035,2024-04-25,100,Operations,AlphaConsulting
+TXN60554,2024-11-12,100,Operations,Summit Advisory LLC
+TXN60574,2024-07-22,8458.88,Exec Office,Nexus Hold.
+TXN61330,2024-10-04,1171.9,Operations,Shell Ventures
+TXN61415,2024-04-14,965.54,Finance Dept,Shell Ventures Ltd
+TXN60104,2024-02-09,100,Operations,SummitAdvisory
+TXN60295,2024-01-08,100,Exec Office,Shell Ventures LLC
+TXN60843,2024-09-17,3000.0,Finance Dept,Summit Advisory LLC
+TXN60908,2024-04-07,2000.0,Exec Office,Alpha Consult
+TXN61193,2024-09-09,1103.62,Operations,Shell Ventures
+TXN60402,2024-12-16,100.31,Procurement,Pacific Trade Co
+TXN61069,2024-05-13,1059.28,Admin Dept,Shell Ventures Ltd
+TXN60363,2024-04-23,907.46,Procurement,Metro Supply
+TXN61351,2024-07-26,1173.22,Operations,Shell Venture Co
+TXN60929,2024-04-02,7500.0,Finance Dept,OrionTech
+TXN60112,2024-09-29,100,Exec Office,Orion Tech Inc
+TXN60659,2024-09-23,999.27,Procurement,Alpha Consult
+TXN61293,2024-09-24,908.94,Procurement,Shell Venture Co
+TXN60601,2024-02-15,4998.43,Admin Dept,Orion Tech Inc
+TXN60165,2024-02-23,8146.85,Finance Dept,Alpha Consulting
+TXN60572,2024-02-18,703.62,Exec Office,Alpha-Consulting
+TXN60115,2024-03-12,100,Operations,Summit Advisory LLC
+TXN61444,2024-04-18,968.78,Admin Dept,Shell Ventures
+TXN60769,2024-03-23,24999.98,Operations,Pacific Trd
+TXN60136,2024-08-17,100,Exec Office,Summit Advisary
+TXN60099,2024-04-13,100,Operations,Alpha Consulting
+TXN60053,2024-07-01,100,Procurement,Shell Ventures Ltd
+TXN60686,2024-10-11,999.2,Admin Dept,Alpha Consulting
+GHOST61493,2024-09-16,30320.06,Unknown,Ghost Vendor 02
+TXN60167,2024-08-20,100,Admin Dept,NEXUS HOLDINGS
+TXN60154,2024-06-01,806.36,Procurement,Summit Advisary
+TXN60414,2024-05-21,100,Procurement,Shell Ventures LLC
+TXN61032,2024-10-09,1075.24,Admin Dept,Shell Ventures LLC
+TXN60793,2024-06-16,9999.25,Admin Dept,Nexus Holdingz
+TXN60240,2024-05-27,722.54,Procurement,SummitAdvisory
+TXN61352,2024-07-26,980.81,Exec Office,Shell Venture Co
+TXN60129,2024-11-22,100,Exec Office,Nexus Holdings Inc
+TXN60798,2024-02-18,9998.21,Operations,OrionTech
+TXN60801,2024-05-21,7500.0,Procurement,Nexus Holdings Inc
+TXN61388,2024-09-01,965.66,Exec Office,Shell Ventures Ltd
+TXN61303,2024-10-12,901.12,Operations,Shell Ventures Ltd
+TXN61053,2024-11-06,943.35,Finance Dept,Shell Venture
+TXN60014,2024-01-27,100,Procurement,Nexus Hold.
+TXN60003,2024-09-12,8073.73,Operations,NEXUS HOLDINGS
+TXN60459,2024-02-29,827.81,Finance Dept,MetroSupplies
+TXN60980,2024-12-26,30275.9,Exec Office,Exec Office
+TXN60337,2024-05-28,877.49,Procurement,MetroSupplies
+TXN60061,2024-09-13,9285.08,Operations,Metro Supplies
+TXN60084,2024-08-21,100,Finance Dept,OrionTech
+TXN60557,2024-01-15,804.62,Finance Dept,Summit Advisary
+GHOST61468,2024-03-10,21802.09,Unknown,Ghost Vendor 18
+TXN60637,2024-04-09,24999.86,Procurement,Nexus Holdings
+TXN61204,2024-02-25,947.22,Exec Office,Shell Ventures LLC
+TXN60493,2024-08-31,893.51,Exec Office,Pacific Trade Ltd
+TXN60306,2024-01-17,7510.51,Finance Dept,Pacific Trade Ltd
+TXN61109,2024-03-05,1152.58,Finance Dept,Shell Ventures
+TXN60817,2024-03-24,15000.0,Procurement,Pacific Trd
+TXN60547,2024-02-17,8285.66,Procurement,Alpha Consulting LLC
+TXN60394,2024-10-30,9084.84,Admin Dept,Shell Venture Co
+TXN60516,2024-02-22,100,Exec Office,Orion Tech Ltd
+TXN60247,2024-11-01,9264.67,Operations,Pacific Trade Ltd
+TXN60690,2024-11-01,24999.25,Admin Dept,Metro Supplies Co
+TXN61171,2024-01-27,1039.3,Admin Dept,Shell Venture Co
+TXN60643,2024-04-26,999.62,Procurement,Nexus Holdings Inc
+TXN61435,2024-04-01,967.69,Admin Dept,Shell Venture
+TXN61362,2024-04-28,939.89,Admin Dept,Shell Venture
+TXN60299,2024-07-06,862.88,Procurement,Pacific Trade Ltd
+TXN60202,2024-09-30,100,Procurement,Shell Ventures LLC
+TXN60873,2024-02-02,500.0,Exec Office,Orion Tech Ltd
+TXN60987,2024-12-15,36286.23,Procurement,Procurement
+TXN61334,2024-10-04,927.89,Operations,Shell Ventures
+TXN60031,2024-12-21,100,Operations,MetroSupplies
+TXN60444,2024-03-18,748.73,Admin Dept,MetroSupplies
+TXN60150,2024-06-12,100,Admin Dept,Nexus Holdingz
+TXN61291,2024-06-29,943.74,Admin Dept,Shell Venture
+TXN60834,2024-01-27,500.0,Exec Office,Shell Venture
+TXN61319,2024-06-23,922.53,Operations,Shell Ventures Ltd
+TXN60775,2024-06-09,9999.25,Operations,Orion Tech Inc
+TXN61400,2024-01-01,1116.26,Procurement,Shell Ventures Ltd
+TXN60784,2024-04-26,9999.67,Exec Office,Pacific-Trade
+TXN61128,2024-06-28,1065.48,Finance Dept,Shell Ventures Ltd
+TXN60192,2024-08-07,913.06,Exec Office,Summit Advisors
+TXN60545,2024-01-14,7463.63,Admin Dept,SummitAdvisory
+TXN61313,2024-03-02,973.81,Exec Office,Shell Venture Co
+TXN61374,2024-08-11,900.92,Procurement,Shell Ventures
+TXN61116,2024-07-10,1094.72,Operations,Shell Ventures
+TXN60735,2024-08-13,9999.65,Finance Dept,Summit Advisory LLC
+TXN61210,2024-09-17,1025.39,Admin Dept,Shell Ventures LLC
+TXN60832,2024-03-22,1000.0,Admin Dept,Metro Supplies Co
+TXN60302,2024-03-03,100,Operations,Nexus Holdingz
+TXN61125,2024-06-28,1166.11,Procurement,Shell Ventures Ltd
+TXN60062,2024-03-20,9999,Finance Dept,Alpha-Consulting
+TXN60700,2024-01-20,2498.54,Operations,Summit Advisory LLC
+TXN60890,2024-07-03,7500.0,Exec Office,Metro Supply
+TXN61250,2024-01-23,905.37,Exec Office,Shell Ventures LLC
+TXN61160,2024-02-28,1166.75,Operations,Shell Ventures
+TXN60292,2024-01-27,100,Finance Dept,Orion Tech Ltd
+TXN61343,2024-08-28,950.81,Exec Office,Shell Venture
+TXN61433,2024-04-01,959.29,Operations,Shell Venture
+TXN60706,2024-03-19,4999.3,Procurement,Orion Tech Ltd
+TXN60007,2024-04-01,107.26,Admin Dept,Shell Ventures Ltd
+TXN60584,2024-09-25,801.9,Finance Dept,Pacific Trade Ltd
+TXN60036,2024-03-04,100,Procurement,Alpha Consult
+TXN61458,2024-10-24,1121.1,Exec Office,Shell Ventures
+TXN60284,2024-02-08,149.75,Admin Dept,Pacific Trd
+GHOST61491,2024-09-13,15652.2,Unknown,Ghost Vendor 10
+TXN60500,2024-07-01,100,Finance Dept,Nexus Holdings Inc
+TXN60741,2024-03-27,9999.96,Exec Office,Metro Supply
+TXN61234,2024-02-17,944.45,Admin Dept,Shell Ventures Ltd
+TXN60668,2024-04-06,999.9,Operations,Summit Advisors
+TXN60452,2024-11-02,100,Operations,Shell Ventures Ltd
+TXN61243,2024-11-19,999.76,Exec Office,Shell Ventures LLC
+TXN61065,2024-07-18,1031.21,Operations,Shell Venture Co
+TXN60468,2024-04-16,100,Operations,Alpha Consulting
+TXN61151,2024-01-07,976.54,Admin Dept,Shell Venture
+TXN60634,2024-03-14,24998.39,Exec Office,Metro Supply
+TXN60443,2024-04-06,9235.42,Admin Dept,Orion Tech Inc
+TXN60357,2024-04-22,9867.96,Operations,Alpha Consult
+TXN60906,2024-12-21,7500.0,Admin Dept,Shell Venture Co
+TXN61390,2024-09-17,1056.61,Finance Dept,Shell Venture
+TXN60063,2024-11-01,100,Operations,MetroSupplies
+TXN60856,2024-01-07,10000.0,Finance Dept,Pacific Trade Ltd
+TXN60937,2024-01-23,5000.0,Admin Dept,Summit Advisors
+TXN60242,2024-08-20,100,Operations,Shell Ventures
+TXN61312,2024-03-02,1135.84,Operations,Shell Venture Co
+TXN60816,2024-12-27,7500.0,Operations,Nexus Holdings Inc
+TXN60318,2024-01-09,100,Operations,Pacific Trade Co
+TXN60969,2024-07-27,42258.9,Exec Office,Exec Office
+TXN61143,2024-09-20,999.05,Procurement,Shell Ventures
+TXN60048,2024-11-06,891.93,Exec Office,Shell Ventures LLC
+TXN61275,2024-03-27,992.85,Exec Office,Shell Ventures LLC
+TXN60836,2024-03-19,500.0,Admin Dept,NEXUS HOLDINGS
+TXN60113,2024-12-25,100,Procurement,NEXUS HOLDINGS
+TXN61147,2024-11-21,912.57,Operations,Shell Ventures LLC
+TXN61155,2024-01-01,1177.45,Procurement,Shell Ventures
+TXN60828,2024-02-11,3000.0,Operations,Summit Advisary
+GHOST61469,2024-08-06,62623.93,Unknown,Ghost Vendor 02
+TXN60290,2024-09-16,100,Finance Dept,Orion Tech Inc
+TXN61370,2024-07-07,1098.94,Admin Dept,Shell Ventures LLC
+TXN60457,2024-07-14,100,Admin Dept,Alpha Consult
+TXN60379,2024-09-24,7133.62,Procurement,Orion Tech Ltd
+TXN60222,2024-02-25,100,Procurement,MetroSupplies
+TXN60390,2024-02-04,9420.39,Admin Dept,Orion Tech Ltd
+TXN60359,2024-09-04,757.7,Procurement,Alpha-Consulting
+TXN60399,2024-06-16,100,Procurement,Orion Tech Ltd
+TXN61268,2024-04-30,904.26,Procurement,Shell Ventures Ltd
+TXN61167,2024-01-27,1140.5,Operations,Shell Venture Co
+TXN60635,2024-01-04,24998.03,Exec Office,Summit Advisory
+TXN61025,2024-04-14,35902.59,Procurement,Procurement
+TXN60044,2024-02-09,943.97,Finance Dept,Alpha Consulting
+TXN60603,2024-06-09,4999.79,Finance Dept,Metro Supplies
+TXN60211,2024-09-04,100,Operations,Summit Advisory
+TXN61158,2024-02-28,1155.18,Operations,Shell Ventures
+TXN60677,2024-08-04,2498.79,Exec Office,Pacific Trade Co
+TXN60301,2024-05-23,100,Exec Office,Orion Tech Inc
+TXN60509,2024-08-14,8012.48,Procurement,Alpha Consulting LLC
+TXN61165,2024-09-26,998.45,Exec Office,Shell Venture
+TXN61305,2024-10-12,1094.62,Procurement,Shell Ventures Ltd
+TXN60787,2024-03-13,998.08,Procurement,Pacific Trd
+TXN61187,2024-10-30,930.2,Finance Dept,Shell Ventures Ltd
+TXN60750,2024-12-28,4998.38,Procurement,Metro Supply
+TXN61097,2024-03-08,1114.03,Admin Dept,Shell Venture
+TXN60298,2024-10-05,9087.92,Finance Dept,Pacific Trade Co
+TXN60606,2024-06-14,9998.2,Admin Dept,Nexus Holdings
+TXN61070,2024-05-13,1153.77,Procurement,Shell Ventures Ltd
+TXN60184,2024-12-03,8325.04,Finance Dept,Nexus Hold.
+TXN60935,2024-04-11,1000.0,Admin Dept,Shell Venture Co
+TXN61385,2024-09-01,1031.44,Admin Dept,Shell Ventures Ltd
+TXN61230,2024-12-29,1097.52,Exec Office,Shell Ventures LLC
+TXN61239,2024-11-19,1140.06,Operations,Shell Ventures LLC
+TXN61315,2024-01-20,1181.71,Admin Dept,Shell Ventures
+TXN61132,2024-04-09,943.78,Exec Office,Shell Ventures LLC
+TXN60608,2024-07-22,24999.4,Exec Office,Nexus Hold.
+TXN61346,2024-08-28,1162.52,Exec Office,Shell Venture
+TXN60770,2024-01-31,999.87,Procurement,SummitAdvisory
+TXN61173,2024-02-20,1025.79,Operations,Shell Venture Co
+TXN61279,2024-02-09,1133.6,Operations,Shell Venture
+TXN60862,2024-01-06,500.0,Exec Office,Shell Ventures Ltd
+TXN61282,2024-04-01,1039.59,Finance Dept,Shell Ventures
+TXN61278,2024-02-09,1186.08,Finance Dept,Shell Venture
+TXN61174,2024-02-20,989.73,Admin Dept,Shell Venture Co
+TXN61225,2024-08-30,909.41,Operations,Shell Ventures
+TXN60826,2024-02-22,1000.0,Admin Dept,AlphaConsulting
+TXN60340,2024-06-23,818.84,Operations,Orion Tech Inc
+TXN61194,2024-12-07,912.13,Operations,Shell Venture Co
+TXN60523,2024-07-14,948.35,Operations,MetroSupplies
+TXN60928,2024-09-16,20000.0,Admin Dept,Shell Venture
+TXN60033,2024-01-14,100,Procurement,Summit Advisors
+TXN60373,2024-08-05,9723.25,Operations,Summit Advisory
+TXN61176,2024-02-20,1184.55,Finance Dept,Shell Venture Co
+TXN60586,2024-05-10,877.97,Finance Dept,Summit Advisors
+TXN60593,2024-11-04,9397.87,Procurement,Shell Ventures LLC
+TXN60133,2024-09-14,100,Exec Office,Alpha Consult
+TXN61190,2024-09-09,1197.55,Finance Dept,Shell Ventures
+TXN61157,2024-02-28,1085.04,Operations,Shell Ventures
+TXN60755,2024-02-14,2499.24,Admin Dept,Pacific Trade
+TXN61040,2024-02-18,1175.29,Operations,Shell Venture
+TXN60098,2024-11-17,100,Operations,AlphaConsulting
+TXN61241,2024-11-19,1044.84,Exec Office,Shell Ventures LLC
+GHOST61495,2024-12-04,46143.24,Unknown,Ghost Vendor 01
+TXN61416,2024-04-14,910.98,Finance Dept,Shell Ventures Ltd
+TXN60925,2024-01-18,3000.0,Admin Dept,Orion Tech Ltd
+TXN60759,2024-08-09,999.62,Finance Dept,Shell Ventures
+TXN61437,2024-07-06,946.18,Finance Dept,Shell Ventures LLC
+TXN60210,2024-12-08,100,Procurement,Metro Supplies Co
+TXN60110,2024-07-16,836.97,Admin Dept,Nexus Hold.
+TXN60255,2024-06-19,7155.63,Operations,Alpha Consult
+TXN61259,2024-10-29,912.16,Procurement,Shell Venture
+TXN60767,2024-11-23,24999.4,Procurement,OrionTech
+TXN61322,2024-01-12,1160.85,Exec Office,Shell Ventures
+TXN60479,2024-01-12,100,Finance Dept,Summit Advisory LLC
+TXN60435,2024-01-01,100,Admin Dept,Orion Tech
+TXN60095,2024-03-14,100,Admin Dept,Shell Venture Co
+TXN60835,2024-01-22,20000.0,Admin Dept,Orion Tech Ltd
+TXN60280,2024-04-07,100,Exec Office,Orion Tech Inc
+TXN61083,2024-11-13,1080.79,Finance Dept,Shell Ventures
+TXN61467,2024-11-06,1061.27,Operations,Shell Venture Co
+TXN61367,2024-10-21,944.1,Finance Dept,Shell Ventures
+TXN60977,2024-09-23,15860.33,Exec Office,Exec Office
+TXN60487,2024-08-07,100,Exec Office,Metro Supplies Co
+TXN60612,2024-06-14,998.3,Operations,Alpha Consulting
+TXN60702,2024-04-24,998.86,Procurement,Alpha Consulting LLC
+TXN60398,2024-02-09,100,Finance Dept,Summit Advisory
+TXN60917,2024-06-12,7500.0,Finance Dept,Orion Tech Inc
+TXN61081,2024-11-13,1182.6,Admin Dept,Shell Ventures
+TXN60011,2024-10-22,100,Procurement,Nexus Holdings
+TXN61136,2024-07-09,1038.09,Exec Office,Shell Ventures
+TXN60623,2024-12-25,4999.84,Admin Dept,Summit Advisory
+TXN60496,2024-09-01,869.36,Exec Office,Metro Supplies
+TXN60238,2024-12-13,9999,Admin Dept,Pacific Trade Co
+TXN60083,2024-04-15,8609.54,Exec Office,Pacific-Trade
+TXN60595,2024-11-27,9999,Finance Dept,SummitAdvisory
+TXN60541,2024-11-30,908.39,Operations,Orion Tech
+TXN61075,2024-08-19,942.49,Procurement,Shell Venture
+TXN60432,2024-09-19,878.27,Finance Dept,Nexus Holdings
+TXN61273,2024-03-27,961.23,Admin Dept,Shell Ventures LLC
+TXN60293,2024-02-29,8728.26,Procurement,Alpha-Consulting
+TXN61320,2024-06-23,1121.59,Procurement,Shell Ventures Ltd
+TXN61150,2024-01-07,1028.07,Exec Office,Shell Venture
+TXN60870,2024-03-30,20000.0,Finance Dept,Orion Tech Ltd
+TXN60994,2024-06-14,15252.9,Procurement,Procurement
+TXN61283,2024-04-01,1044.37,Exec Office,Shell Ventures
+TXN60995,2024-06-27,30470.67,Exec Office,Exec Office
+TXN60223,2024-10-21,100,Finance Dept,Shell Ventures LLC
+TXN61172,2024-02-20,1023.79,Procurement,Shell Venture Co
+TXN60894,2024-10-03,10000.0,Admin Dept,Summit Advisary
+TXN60376,2024-10-06,100,Procurement,Summit Advisory LLC
+TXN61127,2024-06-28,1006.43,Exec Office,Shell Ventures Ltd
+TXN61043,2024-02-18,1073.89,Exec Office,Shell Venture
+TXN60881,2024-10-15,7500.0,Finance Dept,Shell Ventures LLC
+TXN60107,2024-05-15,914.01,Procurement,Summit Advisory LLC
+TXN60729,2024-02-21,4998.58,Operations,Pacific Trade Ltd
+TXN60698,2024-12-16,24998.06,Finance Dept,Alpha Consulting LLC
+TXN60521,2024-07-28,8009.99,Procurement,Shell Ventures Ltd
+TXN60448,2024-11-20,9077.52,Procurement,Pacific Trade Co
+TXN60360,2024-05-17,9999,Finance Dept,Pacific Trd
+TXN60205,2024-07-10,9277.33,Procurement,Alpha Consulting LLC
+TXN60436,2024-04-30,100,Finance Dept,Nexus Hold.
+TXN60657,2024-03-13,24999.86,Admin Dept,Summit Advisory LLC
+TXN60149,2024-02-28,781.11,Admin Dept,Orion Tech Ltd
+TXN60934,2024-08-06,2500.0,Exec Office,Summit Advisary
+TXN61403,2024-12-08,928.83,Procurement,Shell Venture Co
+TXN60316,2024-03-16,762.33,Admin Dept,Nexus Hold.
+TXN60792,2024-01-10,2499.25,Procurement,Shell Venture Co
+TXN60056,2024-08-28,8774.76,Operations,NEXUS HOLDINGS
+TXN60182,2024-01-12,839.76,Finance Dept,Orion Tech Inc
+TXN61245,2024-05-20,1083.74,Exec Office,Shell Venture Co
+TXN60815,2024-05-20,7500.0,Operations,Alpha Consult
+TXN60800,2024-02-04,24999.01,Exec Office,Pacific-Trade
+TXN60740,2024-11-04,4999.41,Finance Dept,SummitAdvisory
+TXN60417,2024-03-27,100,Operations,Shell Venture
+TXN61066,2024-07-18,968.57,Operations,Shell Venture Co
+TXN60114,2024-10-12,799.68,Finance Dept,Summit Advisory LLC
+TXN60396,2024-11-11,9026.6,Exec Office,Pacific-Trade
+TXN60087,2024-01-01,100,Admin Dept,Alpha Consulting LLC
+TXN60037,2024-12-24,828.14,Finance Dept,SummitAdvisory
+TXN60874,2024-07-22,1500.0,Admin Dept,Shell Venture Co
+TXN60264,2024-08-05,9999,Procurement,Metro Supply
+TXN60239,2024-04-07,758.03,Operations,Pacific Trade Ltd
+TXN60197,2024-10-14,968.87,Operations,NEXUS HOLDINGS
+TXN61421,2024-11-09,1061.07,Admin Dept,Shell Ventures

@@ -1,0 +1,1501 @@
+transaction_id,timestamp,amount,source_entity,destination_entity
+TXN11161,2024-09-17,112992.52,IT Dept,ABC Corp.
+TXN10019,2024-11-24,200,IT Dept,BlueWave Media
+TXN10506,2024-03-13,805.96,Procurement,Delta Systems
+TXN10201,2024-10-30,200,Procurement,Apex Hold.
+TXN10611,2024-02-19,3716.66,Operations,ABC Corp Ltd
+TXN11201,2024-07-07,74693.75,IT Dept,TechNova Inc
+TXN11334,2024-01-16,1363.21,Procurement,TechNova
+TXN10384,2024-07-27,200,Admin Dept,Global Supply Co.
+TXN10157,2024-01-26,8000,Procurement,BlueWave Media
+TXN10418,2024-11-13,3288.83,Legal Dept,QuickFixIT
+TXN10770,2024-04-29,200,HR Dept,Global Supplies
+TXN11093,2024-03-17,468.69,HR Dept,ABC Corp Ltd
+TXN10855,2024-06-02,1749.33,Finance Dept,A.B.C. Corp
+TXN11358,2024-12-15,199.99,IT Dept,Northern Trade Co
+TXN11056,2024-07-27,368.7,HR Dept,Global Supplies Ltd
+TXN10112,2024-09-02,8000.0,IT Dept,Global Supplies
+TXN10982,2024-07-29,200,HR Dept,A.B.C. Corp
+TXN11376,2024-11-10,201.0,Legal Dept,A.B.C. Corp
+TXN11050,2024-01-03,200,Legal Dept,Global Supplies Ltd
+TXN10429,2024-05-16,200,IT Dept,GlobalSupplies
+TXN11100,2024-06-17,200,Legal Dept,QuickFix IT
+TXN10190,2024-03-07,200,Procurement,Quick Fix IT
+TXN11256,2024-02-24,9.64,Legal Dept,ABC Corp Ltd
+TXN10050,2024-01-02,200,IT Dept,ABC Corporation
+TXN10701,2024-02-16,200,Finance Dept,Summit Group
+TXN10554,2024-01-05,200,HR Dept,Apex Holdings
+TXN10436,2024-05-25,2824.85,IT Dept,Orion Consulting
+TXN10520,2024-10-31,200,Finance Dept,QuickFix IT
+TXN10620,2024-05-07,3418.66,Procurement,BlueWave Media
+TXN10328,2024-05-06,5757.35,Legal Dept,TechNova Ltd
+TXN10135,2024-09-12,200,Legal Dept,ABC Corp.
+TXN11176,2024-08-06,89306.31,IT Dept,ABC Corp
+TXN10186,2024-11-05,5994.63,Operations,Global Supply Co.
+TXN10103,2024-05-21,200,Procurement,Northern Trade Co
+TXN10952,2024-04-07,748.65,Operations,Zenith Logistics
+TXN10219,2024-01-21,298.24,Procurement,TechNova
+TXN11323,2024-07-04,199.99,IT Dept,ABC Corp
+TXN10772,2024-10-13,200.0,Procurement,QuickFixIT
+TXN10404,2024-07-31,200.0,Finance Dept,TechNova Inc
+TXN10865,2024-06-14,479.02,Admin Dept,Global Supplies Ltd
+TXN10489,2024-10-25,1372.24,Procurement,A.B.C. Corp
+TXN10119,2024-04-28,1450.5,IT Dept,ABC Corporation
+TXN19096,2024-11-04,100,HR Dept,Zenith Logistics
+TXN10415,2024-02-29,200,HR Dept,TechNova Inc
+TXN10565,2024-10-13,200,Procurement,Summit Group
+TXN10736,2024-11-10,2774.74,Finance Dept,QuickFix I.T.
+TXN10492,2024-06-30,2496.13,Operations,TechNova
+TXN10585,2024-03-11,200,Admin Dept,Apex Holdings Ltd
+TXN10927,2024-07-23,200,HR Dept,QuickFixIT
+TXN10381,2024-02-07,200,HR Dept,Apex Holdings Ltd
+TXN10641,2024-11-24,200,HR Dept,Northern Trade Co
+TXN10449,2024-05-06,3351.54,Legal Dept,ABC Corp.
+TXN10318,2024-08-20,200,IT Dept,TechNova Inc
+TXN10181,2024-02-25,200,Admin Dept,GlobalSupplies
+TXN11243,2024-09-24,44684.82,Procurement,ABC Corporation
+TXN10402,2024-09-22,8000,HR Dept,Global Supply Co.
+TXN19062,2024-09-14,2074.02,Admin Dept,Global Supplies
+TXN10852,2024-12-07,200.0,Legal Dept,ABC Corporation
+TXN10879,2024-12-03,200,Finance Dept,Global Supply Co.
+TXN10151,2024-03-28,200,Legal Dept,TechNova
+TXN19005,2024-05-17,3203.76,Admin Dept,BlueWave Media
+TXN10556,2024-11-15,7252.0,Procurement,Global Supply Co.
+TXN10017,2024-07-14,200,Finance Dept,QuickFix I.T.
+TXN10431,2024-06-13,200,HR Dept,Apex Holdings Ltd
+TXN10503,2024-06-07,200,Operations,Global Supplies Ltd
+TXN10801,2024-10-31,200,Operations,QuickFixIT
+TXN10105,2024-07-26,4400.0,IT Dept,Tech Nova
+TXN10354,2024-11-05,200,HR Dept,Apex Holdings Ltd
+TXN10949,2024-11-27,333.34,Finance Dept,Apex Holdings LLC
+TXN11128,2024-08-03,70444.72,Procurement,A.B.C. Corp
+TXN10851,2024-01-26,200,Legal Dept,TechNova Ltd
+TXN11230,2024-09-04,28516.64,Operations,Tech Nova
+TXN10786,2024-12-11,3746.11,Admin Dept,Quick Fix IT
+TXN10776,2024-12-03,777.6,Procurement,A.B.C. Corp
+TXN10515,2024-02-25,220.97,IT Dept,TechNova L.T.D.
+TXN10788,2024-06-10,200,IT Dept,Northern Trade Co
+TXN11388,2024-06-23,200.1,Operations,TechNova Ltd
+TXN11071,2024-02-26,1134.49,Operations,BlueWave Media
+TXN10529,2024-06-25,200,Finance Dept,Apex Hold.
+TXN10420,2024-08-15,8000,Procurement,Orion Consulting
+TXN10229,2024-03-19,200,Admin Dept,QuickFix I.T.
+TXN10510,2024-12-18,200,Operations,TechNova Inc
+TXN10178,2024-05-08,200,HR Dept,Global Supplies Ltd
+TXN10379,2024-08-18,4968.92,Procurement,TechNova L.T.D.
+TXN10968,2024-04-02,200,Finance Dept,Apex Holdings
+TXN10272,2024-10-27,212.83,Admin Dept,Apex Holdings LLC
+TXN10650,2024-06-10,640.76,Operations,QuickFix IT Solutions
+TXN10220,2024-07-05,1990.99,Admin Dept,TechNova
+TXN11378,2024-05-13,199.9,HR Dept,TechNova Inc
+TXN11117,2024-08-30,51033.47,Finance Dept,Tech Nova
+TXN10279,2024-05-28,4600.0,Procurement,Global Supplies Ltd
+TXN10435,2024-09-30,5634.84,Legal Dept,A.B.C. Corp
+TXN10889,2024-08-26,1097.26,Procurement,Apex Holdings Ltd
+TXN10644,2024-06-13,6486.8,Procurement,TechNova Ltd
+TXN10487,2024-02-18,1854.6,Admin Dept,Tech Nova
+TXN10104,2024-05-03,200,Operations,Global Supplies Ltd
+TXN10352,2024-04-21,200,Procurement,Global Supplies Ltd
+TXN11260,2024-05-29,9.15,HR Dept,Zenith Logistics
+TXN10896,2024-10-05,1784.31,Legal Dept,QuickFix IT
+TXN10118,2024-02-08,466.04,HR Dept,Global Supplies Ltd
+TXN19051,2024-04-30,100,HR Dept,Summit Group
+TXN10437,2024-12-15,200,IT Dept,Northern Trade Co
+TXN10488,2024-03-07,200.0,Legal Dept,Tech Nova
+TXN10869,2024-10-16,2900.0,Admin Dept,TechNova Inc
+TXN10120,2024-05-15,200,Procurement,Tech Nova
+TXN19100,2024-12-28,100,Finance Dept,ABC Corp
+TXN11324,2024-04-07,331.32,HR Dept,Delta Systems
+TXN10698,2024-06-06,2178.72,Operations,TechNova L.T.D.
+TXN10245,2024-02-04,1187.31,Admin Dept,Quick Fix IT
+TXN10700,2024-10-08,200,Legal Dept,QuickFix IT
+TXN11372,2024-07-04,201.0,Admin Dept,QuickFix I.T.
+TXN19092,2024-01-18,100,Operations,Summit Group
+TXN10750,2024-06-25,200,Legal Dept,ABC Corp.
+TXN19069,2024-09-10,100,Operations,Zenith Logistics
+TXN10600,2024-10-22,200,Admin Dept,BlueWave Media
+TXN10705,2024-12-23,200,Admin Dept,Global Supply Co.
+TXN10579,2024-04-06,200,IT Dept,BlueWave Media
+TXN10712,2024-05-04,769.42,Admin Dept,Global Supplies
+TXN11392,2024-13-01,500.0,IT Dept,TechNova
+TXN11326,2024-03-30,199.9,IT Dept,TechNova L.T.D.
+TXN10553,2024-01-11,200,Operations,Global Supply Co.
+TXN10033,2024-02-25,200,Legal Dept,Pacific Services
+TXN10686,2024-04-03,1600.84,Legal Dept,BlueWave Media
+TXN10080,2024-03-11,223.45,Admin Dept,A.B.C. Corp
+TXN10037,2024-07-13,2213.75,Finance Dept,TechNova
+TXN11023,2024-03-24,1741.53,Operations,TechNova Inc
+TXN10627,2024-03-23,200.0,IT Dept,BlueWave Media
+TXN10142,2024-07-14,1043.65,Procurement,Delta Systems
+TXN10971,2024-01-28,200,HR Dept,TechNova L.T.D.
+TXN10192,2024-10-22,200,IT Dept,ABC Corp Ltd
+TXN10934,2024-02-04,200.0,Finance Dept,Orion Consulting
+TXN11064,2024-02-20,200,HR Dept,ABC Corp
+TXN10469,2024-05-18,3224.52,Procurement,QuickFix IT
+TXN19077,2024-12-20,649.72,Admin Dept,Apex Holdings
+TXN10176,2024-10-16,200,HR Dept,Summit Group
+TXN11313,2024-06-29,1505.34,HR Dept,GlobalSupplies
+TXN10370,2024-02-17,200,Legal Dept,ABC Corporation
+TXN10194,2024-11-14,257.41,Legal Dept,Global Supplies Ltd
+TXN11001,2024-02-09,1087.31,HR Dept,TechNova Inc
+TXN10992,2024-12-23,200,Legal Dept,TechNova L.T.D.
+TXN10356,2024-02-20,230.84,Operations,QuickFixIT
+TXN10032,2024-01-28,1354.3,Legal Dept,Zenith Logistics
+TXN10646,2024-08-05,200,Legal Dept,Apex Hold.
+TXN11395,2024-06-15,,Operations,Zenith Logistics
+TXN19019,2024-04-02,772.17,Operations,QuickFix IT
+TXN10348,2024-03-14,5240.97,Legal Dept,Apex Holdings Ltd
+TXN11289,2024-03-05,7.38,Procurement,Northern Trade Co
+TXN19065,2024-11-09,100,Procurement,Global Supplies
+TXN11205,2024-07-03,49211.72,Finance Dept,TechNova L.T.D.
+TXN10550,2024-08-30,200,HR Dept,Metro Vendors
+TXN19011,2024-04-12,100,Operations,TechNova
+TXN10007,2024-07-04,3078.8,Procurement,Apex Holdings
+TXN10148,2024-02-16,200,IT Dept,Tech Nova
+TXN19052,2024-08-15,258.93,Admin Dept,Apex Holdings
+TXN10651,2024-10-26,200,Admin Dept,A.B.C. Corp
+TXN11295,2024-01-31,7.39,Admin Dept,ABC Corp Ltd
+TXN11369,2024-10-22,201.0,IT Dept,ABC Corp Ltd
+TXN11207,2024-07-06,99686.82,Legal Dept,TechNova Ltd
+TXN11222,2024-07-19,33178.89,Legal Dept,Tech Nova
+TXN10690,2024-01-01,200,Admin Dept,Global Supplies Ltd
+TXN11111,2024-09-26,77509.15,IT Dept,TechNova
+TXN11185,2024-08-21,115430.52,Operations,ABC Corporation
+TXN10906,2024-12-30,200,Procurement,QuickFix IT
+TXN10877,2024-04-15,200,Procurement,ABC Corp.
+TXN11254,2024-02-23,8.79,Admin Dept,Apex Hold.
+TXN10695,2024-06-10,200,HR Dept,Apex Holdings Ltd
+TXN10193,2024-10-11,200,Finance Dept,Quick Fix IT
+TXN10621,2024-07-30,200,HR Dept,ABC Corp.
+TXN11355,2024-04-12,532.74,Finance Dept,Quick Fix IT
+TXN10757,2024-01-12,2200.0,Finance Dept,Global Supplies Ltd
+TXN11142,2024-08-23,119544.71,IT Dept,ABC Corp Ltd
+TXN10588,2024-09-03,200,HR Dept,Apex Holdings Ltd
+TXN11245,2024-09-02,82546.16,Finance Dept,TechNova Ltd
+TXN11149,2024-07-10,65212.64,Admin Dept,ABC Corp.
+TXN10081,2024-07-27,1693.95,Finance Dept,QuickFix IT Solutions
+TXN10954,2024-01-09,200,Legal Dept,QuickFixIT
+TXN10514,2024-06-20,200,Procurement,Northern Trade Co
+TXN11057,2024-08-31,1200.0,Legal Dept,Summit Group
+TXN11104,2024-09-01,49159.06,Admin Dept,ABC Corp
+TXN10659,2024-11-26,200,Admin Dept,QuickFixIT
+TXN10365,2024-07-29,2700.0,Admin Dept,Global Supplies Ltd
+TXN10814,2024-12-22,200.0,HR Dept,Summit Group
+TXN11080,2024-10-20,200,Operations,QuickFix IT
+TXN10339,2024-06-26,5531.93,HR Dept,QuickFixIT
+TXN11318,2024-08-29,850.99,Legal Dept,Global Supplies
+TXN10958,2024-11-19,200,Finance Dept,TechNova
+TXN10523,2024-07-20,366.06,Finance Dept,ABC Corporation
+TXN10485,2024-12-30,200,HR Dept,A.B.C. Corp
+TXN10174,2024-02-01,200,Procurement,Quick Fix IT
+TXN10692,2024-12-22,2789.56,Admin Dept,Summit Group
+TXN10311,2024-05-19,200,Admin Dept,Apex Holdings Ltd
+TXN10392,2024-09-02,200,Procurement,TechNova Ltd
+TXN10317,2024-05-28,8000,Procurement,Metro Vendors
+TXN10745,2024-01-15,5626.48,Legal Dept,TechNova
+TXN10517,2024-10-22,3351.23,Legal Dept,Global Supplies
+TXN10513,2024-06-12,1140.64,HR Dept,Quick Fix IT
+TXN10231,2024-05-02,975.24,HR Dept,Global Supplies Ltd
+TXN10683,2024-01-29,200,Admin Dept,ABC Corp.
+TXN11167,2024-08-25,69673.52,HR Dept,Tech Nova
+TXN19071,2024-12-09,119.62,IT Dept,BlueWave Media
+TXN10070,2024-03-27,200,Legal Dept,Zenith Logistics
+TXN10518,2024-05-30,200.0,Legal Dept,ABC Corporation
+TXN10336,2024-07-12,8000,Operations,Pacific Services
+TXN11018,2024-04-23,205.5,Admin Dept,Global Supply Co.
+TXN11171,2024-07-24,58212.41,HR Dept,ABC Corp.
+TXN11101,2024-07-31,104071.75,Procurement,TechNova Ltd
+TXN11232,2024-08-24,92857.58,Admin Dept,ABC Corp
+TXN10399,2024-10-01,2543.65,IT Dept,Apex Holdings Ltd
+TXN10426,2024-05-01,200,Legal Dept,Summit Group
+TXN10606,2024-10-20,1403.28,Operations,QuickFixIT
+TXN10843,2024-08-18,200,Finance Dept,Apex Holdings Ltd
+TXN11339,2024-07-13,255.45,Procurement,Metro Vendors
+TXN10543,2024-03-09,2858.23,Legal Dept,Tech Nova
+TXN10463,2024-05-17,816.7,Legal Dept,Pacific Services
+TXN19060,2024-04-13,100,Finance Dept,TechNova
+TXN11048,2024-09-13,200,HR Dept,Pacific Services
+TXN11009,2024-04-03,200,Admin Dept,TechNova Inc
+TXN10306,2024-10-12,461.01,HR Dept,TechNova L.T.D.
+TXN19017,2024-01-06,100,Operations,Apex Holdings
+TXN11037,2024-09-30,727.15,IT Dept,ABC Corp Ltd
+TXN11375,2024-09-22,7999.9,HR Dept,Global Supply Co.
+TXN11016,2024-01-21,1338.68,Operations,Northern Trade Co
+TXN10091,2024-03-19,200,Finance Dept,Apex Holdings
+TXN10974,2024-03-21,2043.32,Admin Dept,TechNova
+TXN11068,2024-01-17,380.95,Finance Dept,Metro Vendors
+TXN10086,2024-09-30,2724.18,HR Dept,Apex Holdings
+TXN10453,2024-01-07,200,Finance Dept,Global Supply Co.
+TXN19025,2024-05-24,2194.47,IT Dept,Global Supplies
+TXN11252,2024-10-12,7.8,Legal Dept,Northern Trade Co
+TXN11363,2024-03-26,201.0,Finance Dept,QuickFixIT
+TXN10829,2024-04-28,560.56,Admin Dept,Tech Nova
+TXN10888,2024-03-08,200,Operations,GlobalSupplies
+TXN11257,2024-02-22,7.92,Admin Dept,Summit Group
+TXN11086,2024-08-09,200,Legal Dept,TechNova Inc
+TXN10963,2024-03-27,306.32,Legal Dept,QuickFix IT Solutions
+TXN10334,2024-02-05,200,Finance Dept,Delta Systems
+TXN11067,2024-09-08,5792.73,Procurement,Global Supplies
+TXN10857,2024-07-30,200,IT Dept,Global Supply Co.
+TXN10375,2024-12-30,200,HR Dept,BlueWave Media
+TXN10976,2024-02-26,341.91,IT Dept,Tech Nova
+TXN10810,2024-03-16,200.0,Admin Dept,Delta Systems
+TXN10340,2024-12-04,200,Finance Dept,ABC Corporation
+TXN19034,2024-07-23,646.08,HR Dept,Summit Group
+TXN10067,2024-07-13,255.44,Procurement,Metro Vendors
+TXN11198,2024-07-11,75091.48,Procurement,TechNova L.T.D.
+TXN10638,2024-04-04,307.29,Admin Dept,Tech Nova
+TXN10040,2024-09-28,200,Admin Dept,Delta Systems
+TXN11341,2024-03-12,8000.1,IT Dept,TechNova
+TXN10912,2024-05-01,200,Admin Dept,Global Supplies
+TXN10883,2024-05-25,200,Procurement,Summit Group
+TXN10824,2024-04-13,200,Admin Dept,Apex Hold.
+TXN10727,2024-07-24,1210.53,IT Dept,Quick Fix IT
+TXN10630,2024-12-22,200,HR Dept,Global Supply Co.
+TXN10734,2024-12-13,334.41,IT Dept,Pacific Services
+TXN10373,2024-05-18,200,Admin Dept,Global Supplies
+TXN10799,2024-11-04,200,Procurement,Pacific Services
+TXN11297,2024-11-29,3.86,Finance Dept,BlueWave Media
+TXN10217,2024-01-22,3462.71,Legal Dept,Zenith Logistics
+TXN11343,2024-04-19,199.99,Finance Dept,ABC Corp
+TXN10676,2024-03-30,583.49,Admin Dept,GlobalSupplies
+TXN10671,2024-11-10,200,Procurement,Tech Nova
+TXN11269,2024-08-07,4.5,HR Dept,ABC Corp.
+TXN10054,2024-02-22,200,HR Dept,Apex Hold.
+TXN10796,2024-03-29,200,Legal Dept,Global Supplies
+TXN11049,2024-01-08,200.0,Legal Dept,GlobalSupplies
+TXN11114,2024-08-08,33573.78,Legal Dept,ABC Corp Ltd
+TXN19089,2024-03-31,100,HR Dept,Apex Holdings
+TXN11051,2024-08-31,200,Legal Dept,Apex Holdings Ltd
+TXN10648,2024-06-18,200,Operations,Apex Holdings Ltd
+TXN11208,2024-08-10,32912.6,Procurement,ABC Corp.
+TXN10002,2024-04-29,200.0,Finance Dept,TechNova Ltd
+TXN11007,2024-05-13,256.73,IT Dept,TechNova
+TXN11170,2024-07-16,68487.17,Finance Dept,A.B.C. Corp
+TXN10387,2024-03-12,200,Operations,TechNova
+TXN10773,2024-08-27,1189.78,IT Dept,QuickFix IT
+TXN50001,2024-08-01,750000.0,Finance Dept,TechNova L.T.D.
+TXN11137,2024-08-25,36148.3,Procurement,TechNova L.T.D.
+TXN10933,2024-06-21,200,HR Dept,Global Supply Co.
+TXN10998,2024-09-05,3300.0,IT Dept,QuickFixIT
+TXN19036,2024-07-03,146.32,Procurement,Apex Holdings
+TXN10875,2024-09-13,200.0,Operations,Northern Trade Co
+TXN10445,2024-06-02,200,IT Dept,Quick Fix IT
+TXN10675,2024-02-22,2900.0,Procurement,QuickFix IT
+TXN19006,2024-08-24,100,Finance Dept,ABC Corp
+TXN11306,2024-07-03,6.03,Legal Dept,BlueWave Media
+TXN11180,2024-09-23,84693.89,IT Dept,TechNova Inc
+TXN10288,2024-08-28,200,Procurement,Apex Hold.
+TXN10110,2024-06-03,200,IT Dept,TechNova
+TXN10884,2024-08-15,200,IT Dept,Global Supplies Ltd
+TXN10303,2024-03-11,2872.82,Finance Dept,Apex Holdings Ltd
+TXN10270,2024-09-02,200,Procurement,Zenith Logistics
+TXN11223,2024-07-22,70028.96,Finance Dept,ABC Corporation
+TXN10048,2024-04-17,200,IT Dept,Apex Holdings
+TXN11393,2024-02-30,1200.5,Admin Dept,QuickFix IT
+TXN11272,2024-03-15,3.93,Finance Dept,QuickFixIT
+TXN10358,2024-10-26,200.0,Admin Dept,Delta Systems
+TXN10411,2024-02-02,200,Legal Dept,Apex Holdings Ltd
+TXN11021,2024-08-06,200,HR Dept,Apex Holdings Ltd
+TXN10498,2024-08-29,200,IT Dept,ABC Corporation
+TXN10551,2024-12-18,334.42,IT Dept,Zenith Logistics
+TXN10996,2024-09-01,200,Finance Dept,Apex Holdings LLC
+TXN11060,2024-10-31,200,IT Dept,TechNova Ltd
+TXN10302,2024-04-14,200,Operations,Apex Holdings Ltd
+TXN10535,2024-02-04,200,Procurement,Delta Systems
+TXN10725,2024-05-12,200,IT Dept,Apex Holdings
+TXN10036,2024-03-26,200,Legal Dept,Tech Nova
+TXN10673,2024-04-28,5900.0,Legal Dept,Global Supplies
+TXN11154,2024-08-20,72931.49,Operations,ABC Corp.
+TXN19046,2024-12-13,100,HR Dept,BlueWave Media
+TXN10719,2024-02-24,200,IT Dept,ABC Corp.
+TXN10822,2024-02-14,200,Procurement,ABC Corp.
+TXN11290,2024-04-19,5.44,Admin Dept,TechNova Inc
+TXN11083,2024-01-25,200,IT Dept,TechNova L.T.D.
+TXN11181,2024-08-27,25551.51,Finance Dept,TechNova Inc
+TXN10179,2024-05-01,200.0,Finance Dept,Quick Fix IT
+TXN11308,2024-02-01,8.36,Finance Dept,A.B.C. Corp
+TXN10819,2024-03-21,200,Operations,QuickFix I.T.
+TXN10808,2024-08-14,416.93,Legal Dept,Summit Group
+TXN19087,2024-01-11,121.81,Procurement,BlueWave Media
+TXN11202,2024-07-14,77344.46,Finance Dept,TechNova L.T.D.
+TXN11255,2024-08-22,7.2,Operations,Summit Group
+TXN10780,2024-05-11,1657.92,Procurement,GlobalSupplies
+TXN10685,2024-09-03,794.73,Admin Dept,Global Supplies
+TXN10570,2024-08-22,200,Operations,GlobalSupplies
+TXN10878,2024-06-08,5387.59,Finance Dept,ABC Corp
+TXN10031,2024-02-18,1243.0,Operations,TechNova Ltd
+TXN10388,2024-08-03,200.0,Operations,TechNova L.T.D.
+TXN10793,2024-10-10,200,Legal Dept,TechNova L.T.D.
+TXN10599,2024-01-24,200,Operations,QuickFixIT
+TXN10350,2024-07-08,220.33,Operations,Pacific Services
+TXN11216,2024-08-16,53766.0,Legal Dept,TechNova Inc
+TXN10416,2024-07-15,200,HR Dept,GlobalSupplies
+TXN10177,2024-03-16,200,HR Dept,QuickFix IT
+TXN10633,2024-04-09,675.51,Admin Dept,TechNova Ltd
+TXN11082,2024-09-11,616.66,Operations,TechNova Ltd
+TXN11141,2024-07-28,65974.32,HR Dept,TechNova Inc
+TXN10922,2024-11-05,200,Procurement,ABC Corp Ltd
+TXN10482,2024-02-24,200,Finance Dept,ABC Corp.
+TXN11311,2024-11-12,400.01,IT Dept,TechNova
+TXN10850,2024-01-04,3453.74,Admin Dept,Apex Holdings
+TXN10127,2024-10-26,200,IT Dept,TechNova
+TXN10027,2024-09-21,200,IT Dept,QuickFixIT
+TXN10991,2024-11-17,662.68,Finance Dept,Pacific Services
+TXN19009,2024-12-16,100,Procurement,BlueWave Media
+TXN19103,2024-04-21,100,Procurement,Global Supplies
+TXN11248,2024-07-05,89308.15,HR Dept,TechNova L.T.D.
+TXN10748,2024-06-26,3523.46,IT Dept,Delta Systems
+TXN10250,2024-01-22,1036.98,Legal Dept,TechNova Ltd
+TXN10848,2024-01-07,200.0,Legal Dept,TechNova L.T.D.
+TXN10825,2024-03-15,768.85,HR Dept,QuickFix IT Solutions
+TXN10618,2024-10-23,6924.37,HR Dept,Apex Holdings Ltd
+TXN10161,2024-05-31,200,Finance Dept,Delta Systems
+TXN11241,2024-08-30,104142.67,Procurement,TechNova
+TXN10184,2024-02-11,200,Finance Dept,Northern Trade Co
+TXN11325,2024-05-23,199.9,HR Dept,Apex Holdings Ltd
+TXN11315,2024-10-01,2543.75,IT Dept,Apex Holdings Ltd
+TXN10610,2024-06-18,882.53,Legal Dept,QuickFixIT
+TXN10815,2024-12-04,200,Finance Dept,QuickFix I.T.
+TXN11010,2024-03-05,200,IT Dept,GlobalSupplies
+TXN10702,2024-04-23,6925.86,Finance Dept,TechNova L.T.D.
+TXN11150,2024-08-12,34051.55,Finance Dept,ABC Corp
+TXN10398,2024-10-25,4800.0,Admin Dept,Global Supplies
+TXN11359,2024-06-27,199.9,Admin Dept,TechNova Ltd
+TXN11346,2024-02-20,230.94,Operations,QuickFixIT
+TXN19040,2024-10-18,463.35,Admin Dept,ABC Corp
+TXN10789,2024-06-14,384.49,Procurement,QuickFix IT Solutions
+TXN10635,2024-10-26,200,HR Dept,TechNova
+TXN10433,2024-09-20,200,Finance Dept,QuickFix I.T.
+TXN11186,2024-07-12,49240.57,HR Dept,TechNova Ltd
+TXN10158,2024-04-27,8000,Legal Dept,Summit Group
+TXN10918,2024-05-28,342.1,Legal Dept,TechNova Inc
+TXN19028,2024-07-28,765.66,Finance Dept,BlueWave Media
+TXN10412,2024-12-09,200,Finance Dept,TechNova L.T.D.
+TXN10269,2024-10-09,1026.28,IT Dept,QuickFixIT
+TXN10988,2024-01-09,200,Procurement,A.B.C. Corp
+TXN10995,2024-12-29,200,Finance Dept,Global Supplies Ltd
+TXN19029,2024-09-13,100,Procurement,Summit Group
+TXN11027,2024-09-08,200,IT Dept,Global Supplies Ltd
+TXN10951,2024-07-18,200,IT Dept,Apex Holdings Ltd
+TXN11238,2024-09-26,47049.8,HR Dept,TechNova Inc
+TXN10452,2024-05-02,200,Finance Dept,Summit Group
+TXN10197,2024-09-28,3069.59,Finance Dept,A.B.C. Corp
+TXN10835,2024-10-31,4720.2,Procurement,GlobalSupplies
+TXN10792,2024-04-19,200,IT Dept,Tech Nova
+TXN19033,2024-07-08,919.4,Finance Dept,Apex Holdings
+TXN10586,2024-02-24,200,IT Dept,ABC Corp Ltd
+TXN10434,2024-02-17,545.47,Admin Dept,ABC Corp
+TXN11281,2024-06-25,7.35,IT Dept,Delta Systems
+TXN11002,2024-04-14,200,HR Dept,Pacific Services
+TXN10123,2024-05-19,8000,Procurement,QuickFix I.T.
+TXN10235,2024-03-04,355.45,Legal Dept,Global Supply Co.
+TXN11246,2024-07-07,53846.93,HR Dept,TechNova L.T.D.
+TXN10533,2024-03-26,200,HR Dept,Metro Vendors
+TXN10493,2024-11-10,200,HR Dept,ABC Corporation
+TXN10113,2024-02-28,200,Legal Dept,Global Supplies
+TXN10680,2024-03-01,321.15,IT Dept,Apex Holdings
+TXN11116,2024-07-05,55132.51,Legal Dept,TechNova Ltd
+TXN19101,2024-01-13,100,IT Dept,Zenith Logistics
+TXN10078,2024-05-06,200,IT Dept,BlueWave Media
+TXN10845,2024-06-20,8000.0,HR Dept,Delta Systems
+TXN19055,2024-06-30,184.66,Procurement,ABC Corp
+TXN11239,2024-07-17,57219.53,Admin Dept,Tech Nova
+TXN11364,2024-11-23,199.99,Procurement,TechNova Inc
+TXN10100,2024-06-14,1464.87,Admin Dept,TechNova L.T.D.
+TXN10854,2024-10-14,200,Admin Dept,GlobalSupplies
+TXN10645,2024-01-04,200,Admin Dept,Global Supplies Ltd
+TXN10167,2024-12-11,558.46,IT Dept,ABC Corp Ltd
+TXN10500,2024-07-17,200,Admin Dept,Pacific Services
+TXN10730,2024-09-21,200,Legal Dept,Apex Holdings LLC
+TXN11229,2024-08-07,95022.44,Admin Dept,TechNova L.T.D.
+TXN10013,2024-06-10,6267.74,Admin Dept,Northern Trade Co
+TXN10904,2024-10-08,4847.64,Finance Dept,Quick Fix IT
+TXN11032,2024-03-02,3868.35,Operations,Apex Holdings Ltd
+TXN10747,2024-10-29,8000,Admin Dept,TechNova
+TXN10039,2024-10-04,4154.8,Finance Dept,GlobalSupplies
+TXN10944,2024-05-08,800.0,Admin Dept,Zenith Logistics
+TXN19070,2024-06-10,100,HR Dept,TechNova
+TXN10376,2024-07-18,200,Admin Dept,Orion Consulting
+TXN10936,2024-04-21,200,Admin Dept,Apex Hold.
+TXN10232,2024-10-19,2903.97,Procurement,Metro Vendors
+TXN10055,2024-03-24,2973.84,HR Dept,Pacific Services
+TXN11214,2024-09-27,41314.86,Operations,Tech Nova
+TXN11213,2024-07-02,26701.95,Operations,ABC Corporation
+TXN11073,2024-07-12,200,Operations,GlobalSupplies
+TXN10021,2024-11-23,200,Procurement,TechNova Inc
+TXN10333,2024-02-07,5300.0,HR Dept,GlobalSupplies
+TXN10044,2024-02-07,200,IT Dept,Delta Systems
+TXN10993,2024-01-29,200,IT Dept,Zenith Logistics
+TXN10617,2024-08-09,1004.34,Admin Dept,Delta Systems
+TXN10222,2024-05-25,606.59,Procurement,QuickFix I.T.
+TXN10893,2024-02-24,200,Procurement,Summit Group
+TXN10335,2024-11-24,8000,Legal Dept,ABC Corp.
+TXN10881,2024-05-19,200,Procurement,ABC Corp Ltd
+TXN10028,2024-04-27,200,Admin Dept,Global Supplies Ltd
+TXN10145,2024-08-28,200,HR Dept,A.B.C. Corp
+TXN10561,2024-05-31,268.08,Procurement,Global Supplies
+TXN10163,2024-09-03,383.05,Legal Dept,Metro Vendors
+TXN11182,2024-07-17,55866.97,Procurement,TechNova Inc
+TXN19080,2024-06-15,487.63,Admin Dept,Global Supplies
+TXN10075,2024-01-26,200,Admin Dept,QuickFixIT
+TXN10129,2024-07-24,200,IT Dept,Apex Hold.
+TXN10966,2024-12-21,200,IT Dept,QuickFix IT Solutions
+TXN10023,2024-06-06,848.86,IT Dept,Northern Trade Co
+TXN10607,2024-11-30,2447.07,Operations,Zenith Logistics
+TXN10457,2024-10-02,3423.58,Procurement,Global Supplies Ltd
+TXN11097,2024-07-27,200,Finance Dept,Northern Trade Co
+TXN10421,2024-01-17,200,HR Dept,TechNova Inc
+TXN10060,2024-05-22,200,Finance Dept,Metro Vendors
+TXN10861,2024-04-02,4519.71,Operations,Summit Group
+TXN11088,2024-04-05,200,Admin Dept,Pacific Services
+TXN10244,2024-06-29,200,Finance Dept,Apex Holdings
+TXN10213,2024-11-15,5681.13,Procurement,Apex Holdings LLC
+TXN11380,2024-07-22,200.1,Finance Dept,Metro Vendors
+TXN10090,2024-11-29,200,Procurement,A.B.C. Corp
+TXN11268,2024-09-28,6.47,HR Dept,ABC Corp.
+TXN10587,2024-12-26,200,HR Dept,Quick Fix IT
+TXN10917,2024-08-28,200.0,Operations,Global Supply Co.
+TXN11052,2024-06-30,200,HR Dept,Orion Consulting
+TXN11098,2024-04-30,200,Legal Dept,ABC Corp.
+TXN10165,2024-10-12,200,Operations,Metro Vendors
+TXN10397,2024-05-09,1672.98,IT Dept,Tech Nova
+TXN19042,2024-01-19,100,IT Dept,Summit Group
+TXN10910,2024-08-21,200,Operations,Pacific Services
+TXN11151,2024-09-16,113451.14,Operations,TechNova
+TXN11368,2024-01-26,7999.99,Procurement,BlueWave Media
+TXN11253,2024-12-19,3.04,HR Dept,Pacific Services
+TXN19000,2024-07-25,100,HR Dept,BlueWave Media
+TXN11360,2024-05-16,6803.24,Legal Dept,Tech Nova
+TXN10292,2024-06-22,200,IT Dept,Summit Group
+TXN10059,2024-04-24,6349.66,Legal Dept,Tech Nova
+TXN11085,2024-08-06,200,Admin Dept,Global Supplies
+TXN11005,2024-10-23,200,IT Dept,QuickFix IT Solutions
+TXN10264,2024-12-21,200,Admin Dept,TechNova Inc
+TXN10136,2024-08-29,850.89,Legal Dept,Global Supplies
+TXN10956,2024-10-23,6940.09,Admin Dept,ABC Corp.
+TXN10592,2024-12-12,200,IT Dept,Summit Group
+TXN11211,2024-08-03,42583.3,Procurement,TechNova Inc
+TXN10430,2024-01-31,200,Operations,Delta Systems
+TXN10972,2024-03-31,200,Operations,Global Supplies
+TXN10807,2024-10-31,1423.54,IT Dept,Quick Fix IT
+TXN10325,2024-06-06,200.0,Finance Dept,QuickFixIT
+TXN10043,2024-05-02,393.47,Procurement,QuickFix IT
+TXN11264,2024-01-04,8.55,Operations,QuickFix IT Solutions
+TXN11279,2024-07-24,8.81,IT Dept,QuickFix IT Solutions
+TXN10240,2024-08-17,1696.07,Procurement,Global Supplies
+TXN10957,2024-08-29,200,Procurement,ABC Corp
+TXN10612,2024-05-29,200,Procurement,Metro Vendors
+TXN11192,2024-08-30,43987.77,Operations,TechNova Ltd
+TXN11312,2024-04-14,199.9,Operations,Apex Holdings Ltd
+TXN10298,2024-01-14,979.68,Procurement,Apex Holdings LLC
+TXN11145,2024-09-13,67842.79,HR Dept,TechNova
+TXN10459,2024-11-25,3586.44,Procurement,Apex Hold.
+TXN11094,2024-08-11,200,Operations,Global Supplies Ltd
+TXN10779,2024-04-08,200.0,Finance Dept,Global Supplies
+TXN10932,2024-08-24,280.23,Admin Dept,QuickFix I.T.
+TXN10425,2024-06-27,200,Operations,TechNova L.T.D.
+TXN11357,2024-03-15,1896.76,IT Dept,Metro Vendors
+TXN10390,2024-07-21,200,Finance Dept,Metro Vendors
+TXN10474,2024-03-18,200,Legal Dept,Tech Nova
+TXN10528,2024-05-17,2044.62,IT Dept,Tech Nova
+TXN10887,2024-12-09,531.24,Procurement,BlueWave Media
+TXN10945,2024-01-20,200,Procurement,ABC Corp
+TXN10355,2024-07-13,5915.13,Legal Dept,TechNova Inc
+TXN10823,2024-11-05,200,Operations,TechNova Inc
+TXN19038,2024-12-06,100,Operations,Zenith Logistics
+TXN19035,2024-08-16,7418.16,Procurement,Summit Group
+TXN11033,2024-06-12,200,Finance Dept,ABC Corp.
+TXN11261,2024-09-12,7.22,Legal Dept,Global Supply Co.
+TXN10626,2024-02-24,587.75,Finance Dept,Global Supply Co.
+TXN10785,2024-04-01,200,Admin Dept,Apex Holdings LLC
+TXN10497,2024-04-02,691.27,Operations,TechNova L.T.D.
+TXN11210,2024-07-28,101744.24,IT Dept,A.B.C. Corp
+TXN10331,2024-01-29,200,Admin Dept,QuickFixIT
+TXN10408,2024-10-09,200,Admin Dept,TechNova
+TXN10761,2024-05-08,1071.38,HR Dept,Northern Trade Co
+TXN10403,2024-10-28,200,Legal Dept,Apex Hold.
+TXN11247,2024-08-15,119929.82,IT Dept,ABC Corp.
+TXN11371,2024-03-28,200.01,Legal Dept,TechNova
+TXN10818,2024-12-30,200,Admin Dept,Delta Systems
+TXN10531,2024-04-30,6965.63,Operations,GlobalSupplies
+TXN11040,2024-03-08,200,Finance Dept,Orion Consulting
+TXN10805,2024-09-25,1652.25,Admin Dept,Zenith Logistics
+TXN11140,2024-07-17,52356.39,Operations,TechNova Ltd
+TXN10794,2024-05-15,200,HR Dept,ABC Corp.
+TXN10175,2024-02-16,200,Legal Dept,QuickFixIT
+TXN11124,2024-09-19,37928.76,Operations,ABC Corp Ltd
+TXN10414,2024-06-01,2617.36,Procurement,Summit Group
+TXN10377,2024-02-10,438.38,Legal Dept,Apex Holdings Ltd
+TXN11314,2024-12-07,7998.26,Legal Dept,QuickFix IT
+TXN11173,2024-07-28,78508.5,Procurement,TechNova Inc
+TXN10011,2024-10-12,200,Procurement,Apex Holdings Ltd
+TXN11194,2024-09-17,96866.61,Legal Dept,TechNova
+TXN10444,2024-02-06,200,HR Dept,Global Supplies
+TXN11070,2024-12-27,200,IT Dept,Northern Trade Co
+TXN10766,2024-01-08,200,Operations,QuickFix IT
+TXN10330,2024-09-23,200,IT Dept,Pacific Services
+TXN10256,2024-12-04,200,Finance Dept,QuickFix IT
+TXN19018,2024-06-21,6385.94,IT Dept,BlueWave Media
+TXN10955,2024-04-18,200,Operations,ABC Corp Ltd
+TXN19007,2024-03-07,100,Operations,Summit Group
+TXN10987,2024-12-20,6495.29,Legal Dept,ABC Corp
+TXN11152,2024-09-29,114235.58,Legal Dept,TechNova Inc
+TXN10669,2024-10-03,200,Admin Dept,Northern Trade Co
+TXN10108,2024-04-04,200,Legal Dept,Apex Holdings Ltd
+TXN10287,2024-06-29,1505.44,HR Dept,GlobalSupplies
+TXN19095,2024-03-17,100,HR Dept,ABC Corp
+TXN10795,2024-07-23,200,Finance Dept,GlobalSupplies
+TXN10803,2024-02-13,2600.0,Operations,TechNova L.T.D.
+TXN10447,2024-03-18,200,Procurement,Zenith Logistics
+TXN10572,2024-10-22,200,Legal Dept,TechNova
+TXN10729,2024-03-17,200,HR Dept,ABC Corp.
+TXN11091,2024-08-10,200,Legal Dept,TechNova Inc
+TXN10315,2024-11-29,200,Legal Dept,A.B.C. Corp
+TXN11059,2024-02-22,200,Procurement,GlobalSupplies
+TXN10290,2024-07-04,500.0,Admin Dept,TechNova Ltd
+TXN10480,2024-05-13,200,HR Dept,TechNova Inc
+TXN19015,2024-03-15,877.06,HR Dept,TechNova
+TXN10903,2024-01-05,2717.79,Finance Dept,GlobalSupplies
+TXN11165,2024-07-25,85481.96,Operations,ABC Corp
+TXN10496,2024-10-05,200,IT Dept,Global Supplies
+TXN10094,2024-06-08,200,Finance Dept,Delta Systems
+TXN10020,2024-05-14,243.48,Procurement,Northern Trade Co
+TXN10242,2024-05-02,200,Finance Dept,ABC Corporation
+TXN10477,2024-05-23,200,HR Dept,Apex Holdings Ltd
+TXN10605,2024-09-16,1320.63,IT Dept,ABC Corporation
+TXN10962,2024-01-24,200,HR Dept,BlueWave Media
+TXN10367,2024-04-08,200,HR Dept,Tech Nova
+TXN10997,2024-05-16,200,IT Dept,Quick Fix IT
+TXN19050,2024-09-11,100,Procurement,BlueWave Media
+TXN10450,2024-05-25,200,Procurement,Apex Holdings
+TXN10271,2024-02-07,3800.0,IT Dept,Apex Holdings LLC
+TXN10758,2024-01-05,200,Operations,Zenith Logistics
+TXN11159,2024-07-06,38470.59,Finance Dept,TechNova
+TXN10666,2024-02-11,248.7,Procurement,Apex Holdings
+TXN11280,2024-06-04,8.91,Procurement,Global Supplies Ltd
+TXN10009,2024-07-08,7277.97,IT Dept,TechNova
+TXN10380,2024-10-26,355.3,HR Dept,Apex Hold.
+TXN19063,2024-06-23,2916.93,Finance Dept,ABC Corp
+TXN11089,2024-11-22,200,Operations,TechNova L.T.D.
+TXN10632,2024-08-14,200,Admin Dept,Pacific Services
+TXN11251,2024-06-30,5.12,IT Dept,Summit Group
+TXN10797,2024-10-22,200,Procurement,Summit Group
+TXN19081,2024-04-18,2522.0,Admin Dept,TechNova
+TXN11148,2024-09-29,62767.7,HR Dept,TechNova Ltd
+TXN11391,Not-A-Date,800.0,HR Dept,Global Supplies
+TXN10720,2024-10-04,200,Admin Dept,ABC Corp
+TXN11139,2024-08-04,46325.98,HR Dept,ABC Corp Ltd
+TXN10897,2024-09-06,200.0,Procurement,GlobalSupplies
+TXN10577,2024-01-24,200,HR Dept,A.B.C. Corp
+TXN11294,2024-06-04,2.95,Legal Dept,BlueWave Media
+TXN10366,2024-12-23,200,Admin Dept,Orion Consulting
+TXN10226,2024-07-04,200,IT Dept,ABC Corp
+TXN11310,2024-09-26,4.73,IT Dept,Apex Hold.
+TXN10417,2024-03-29,2635.5,Procurement,Delta Systems
+TXN11348,2024-11-24,200.01,IT Dept,ABC Corporation
+TXN10832,2024-07-30,200,IT Dept,Metro Vendors
+TXN10261,2024-08-15,200,IT Dept,Quick Fix IT
+TXN19073,2024-04-11,100,HR Dept,BlueWave Media
+TXN10880,2024-04-12,200,HR Dept,QuickFix IT
+TXN10160,2024-06-07,200,Procurement,ABC Corporation
+TXN10458,2024-03-20,400.0,HR Dept,Summit Group
+TXN10361,2024-03-12,8000,IT Dept,TechNova
+TXN11164,2024-09-23,97549.16,HR Dept,TechNova L.T.D.
+TXN11179,2024-08-28,27743.08,Operations,Tech Nova
+TXN11075,2024-11-16,200,Finance Dept,BlueWave Media
+TXN10083,2024-01-04,200,Operations,Global Supplies
+TXN10299,2024-10-22,396.71,Legal Dept,GlobalSupplies
+TXN10983,2024-08-24,7862.2,Operations,Orion Consulting
+TXN10596,2024-02-27,4799.9,Legal Dept,TechNova
+TXN10532,2024-10-19,200,Finance Dept,Global Supply Co.
+TXN10624,2024-02-29,200,IT Dept,Apex Holdings Ltd
+TXN11366,2024-05-20,676.68,Procurement,Tech Nova
+TXN10327,2024-07-31,200,Admin Dept,Quick Fix IT
+TXN10953,2024-07-18,200,HR Dept,Global Supplies
+TXN10386,2024-10-13,200,Finance Dept,Zenith Logistics
+TXN10684,2024-01-10,200,Admin Dept,Apex Holdings LLC
+TXN11112,2024-08-26,36595.11,Legal Dept,ABC Corp Ltd
+TXN10448,2024-03-04,8000,Finance Dept,ABC Corp.
+TXN10708,2024-05-25,200.0,Finance Dept,Global Supplies Ltd
+TXN11342,2024-10-14,200.01,Operations,Delta Systems
+TXN10389,2024-09-10,200,Procurement,Apex Holdings LLC
+TXN10225,2024-12-16,281.32,Legal Dept,Metro Vendors
+TXN10061,2024-01-15,2679.52,IT Dept,Metro Vendors
+TXN19004,2024-02-12,100,Operations,Zenith Logistics
+TXN11135,2024-08-03,63098.32,Operations,TechNova Inc
+TXN10322,2024-12-08,4826.99,Finance Dept,QuickFix I.T.
+TXN10476,2024-06-06,700.15,Legal Dept,Zenith Logistics
+TXN10216,2024-11-10,200,Legal Dept,A.B.C. Corp
+TXN11362,2024-09-13,375.51,Admin Dept,QuickFix I.T.
+TXN10215,2024-01-20,200.0,Operations,QuickFixIT
+TXN10967,2024-09-24,6692.36,Procurement,TechNova L.T.D.
+TXN10653,2024-12-04,200,Operations,QuickFix I.T.
+TXN10326,2024-11-10,200,IT Dept,Quick Fix IT
+TXN10133,2024-11-18,200,Finance Dept,ABC Corp
+TXN11146,2024-07-02,90005.37,Operations,ABC Corporation
+TXN19039,2024-02-28,2072.14,Procurement,Zenith Logistics
+TXN11120,2024-08-15,91355.81,Admin Dept,ABC Corporation
+TXN11026,2024-03-30,8000,IT Dept,QuickFix IT Solutions
+TXN10943,2024-02-24,200,Admin Dept,Apex Holdings LLC
+TXN10471,2024-05-24,200.0,Operations,Pacific Services
+TXN11224,2024-09-01,110729.46,Procurement,Tech Nova
+TXN11054,2024-05-27,200,IT Dept,Apex Holdings Ltd
+TXN10522,2024-12-22,200,HR Dept,QuickFix IT Solutions
+TXN10738,2024-04-26,4800.0,HR Dept,QuickFix IT
+TXN10139,2024-12-03,200,Admin Dept,GlobalSupplies
+TXN10713,2024-09-03,5681.59,Legal Dept,ABC Corp
+TXN10038,2024-08-04,1265.2,Operations,TechNova Inc
+TXN19078,2024-10-13,832.71,IT Dept,BlueWave Media
+TXN10560,2024-11-03,200,Legal Dept,Summit Group
+TXN10977,2024-04-22,200,HR Dept,QuickFix I.T.
+TXN11074,2024-10-29,476.65,Finance Dept,ABC Corp
+TXN10938,2024-08-27,200,IT Dept,TechNova Inc
+TXN19022,2024-07-15,100,Operations,TechNova
+TXN10867,2024-08-30,200,Procurement,Global Supplies
+TXN10516,2024-07-30,200,HR Dept,Northern Trade Co
+TXN10691,2024-09-28,7522.04,Finance Dept,Apex Holdings Ltd
+TXN11370,2024-01-12,1571.82,Procurement,TechNova Inc
+TXN11072,2024-08-31,3660.08,Admin Dept,Global Supplies
+TXN10981,2024-05-31,1458.58,IT Dept,Tech Nova
+TXN10742,2024-08-30,200,Finance Dept,Delta Systems
+TXN10401,2024-06-18,200,Procurement,QuickFix I.T.
+TXN11177,2024-08-20,89724.67,Procurement,ABC Corporation
+TXN10053,2024-06-06,358.25,HR Dept,ABC Corporation
+TXN11006,2024-10-07,248.61,Admin Dept,Orion Consulting
+TXN10237,2024-01-28,200,Finance Dept,QuickFix IT Solutions
+TXN10765,2024-01-27,200,HR Dept,Quick Fix IT
+TXN10569,2024-06-01,200,Operations,Global Supply Co.
+TXN10660,2024-10-24,367.17,HR Dept,Zenith Logistics
+TXN10870,2024-06-18,600.0,Admin Dept,Apex Hold.
+TXN10526,2024-09-07,8000,Operations,Global Supplies
+TXN19058,2024-03-30,100,Procurement,TechNova
+TXN11367,2024-08-04,366.99,Legal Dept,Apex Hold.
+TXN10243,2024-10-01,2062.81,Operations,Apex Holdings
+TXN10777,2024-03-19,8000,Legal Dept,Global Supplies Ltd
+TXN10706,2024-03-21,200,Procurement,ABC Corp
+TXN11031,2024-07-04,200,Admin Dept,Zenith Logistics
+TXN10084,2024-10-02,875.35,Legal Dept,QuickFix IT Solutions
+TXN11147,2024-09-27,69543.75,Legal Dept,TechNova
+TXN11240,2024-08-23,108901.47,Procurement,TechNova Ltd
+TXN10597,2024-10-29,200,Finance Dept,QuickFix IT Solutions
+TXN10064,2024-10-02,200,Finance Dept,Global Supply Co.
+TXN10338,2024-12-10,200,IT Dept,QuickFixIT
+TXN10914,2024-03-13,311.32,Procurement,A.B.C. Corp
+TXN10047,2024-03-09,200,Procurement,ABC Corp Ltd
+TXN10071,2024-04-30,451.55,IT Dept,A.B.C. Corp
+TXN10806,2024-10-21,200,Procurement,Delta Systems
+TXN10746,2024-10-03,200,Operations,QuickFixIT
+TXN10159,2024-12-03,421.9,IT Dept,Apex Hold.
+TXN11217,2024-08-08,90612.92,Procurement,TechNova Ltd
+TXN10589,2024-10-20,200,Finance Dept,Orion Consulting
+TXN10667,2024-11-16,200,Procurement,Northern Trade Co
+TXN10521,2024-11-06,8000,Procurement,TechNova
+TXN10798,2024-08-01,200,Legal Dept,QuickFix IT Solutions
+TXN10905,2024-05-24,200,IT Dept,ABC Corp Ltd
+TXN10014,2024-05-15,1395.63,Operations,ABC Corp.
+TXN19027,2024-11-23,1743.02,Procurement,Global Supplies
+TXN10726,2024-07-06,200,Admin Dept,QuickFix IT
+TXN10844,2024-11-09,200,Legal Dept,Global Supply Co.
+TXN10711,2024-05-11,334.0,Admin Dept,Metro Vendors
+TXN10443,2024-01-05,200,Operations,ABC Corp
+TXN10035,2024-01-26,200,Admin Dept,ABC Corp Ltd
+TXN10688,2024-09-15,1385.46,HR Dept,Global Supply Co.
+TXN10295,2024-11-11,200,HR Dept,QuickFix I.T.
+TXN10169,2024-11-28,200,Procurement,TechNova Inc
+TXN10655,2024-11-27,200,Legal Dept,Pacific Services
+TXN10941,2024-04-01,299.6,Legal Dept,TechNova L.T.D.
+TXN10826,2024-04-04,200,Procurement,ABC Corp Ltd
+TXN10699,2024-04-27,3735.78,Procurement,ABC Corp Ltd
+TXN10840,2024-10-26,2090.44,HR Dept,BlueWave Media
+TXN11195,2024-07-12,42703.8,Procurement,TechNova Ltd
+TXN10378,2024-06-23,305.37,Legal Dept,A.B.C. Corp
+TXN11163,2024-09-01,66398.66,HR Dept,TechNova
+TXN10478,2024-07-09,200,Procurement,Northern Trade Co
+TXN10608,2024-02-16,1412.34,Finance Dept,Orion Consulting
+TXN10455,2024-01-09,200,Legal Dept,A.B.C. Corp
+TXN11119,2024-07-21,65124.77,Legal Dept,ABC Corporation
+TXN10284,2024-11-11,200.0,Operations,Pacific Services
+TXN19049,2024-11-16,217.96,Finance Dept,Summit Group
+TXN11125,2024-07-15,54027.02,Admin Dept,ABC Corporation
+TXN11212,2024-09-07,107803.5,Finance Dept,TechNova Ltd
+TXN11218,2024-07-25,33325.34,HR Dept,ABC Corp
+TXN10628,2024-04-14,900.0,Legal Dept,TechNova Inc
+TXN10347,2024-04-04,469.63,IT Dept,QuickFix I.T.
+TXN19056,2024-01-18,261.03,Admin Dept,Summit Group
+TXN10341,2024-08-16,200.0,Admin Dept,ABC Corporation
+TXN19094,2024-08-17,163.45,Operations,TechNova
+TXN11036,2024-06-14,200,HR Dept,Global Supplies Ltd
+TXN10804,2024-10-13,2773.83,HR Dept,Global Supplies
+TXN10965,2024-01-04,6800.0,Operations,A.B.C. Corp
+TXN10602,2024-12-05,200,Operations,Quick Fix IT
+TXN19041,2024-07-30,100,Finance Dept,Apex Holdings
+TXN10266,2024-12-07,7997.26,Legal Dept,QuickFix IT
+TXN10891,2024-01-16,278.88,Operations,Global Supplies
+TXN19079,2024-05-19,100,HR Dept,TechNova
+TXN10353,2024-04-07,330.32,HR Dept,Delta Systems
+TXN10362,2024-01-31,5184.05,Procurement,Metro Vendors
+TXN10775,2024-04-04,3000.72,Operations,Zenith Logistics
+TXN11350,2024-07-14,200.01,Finance Dept,QuickFix I.T.
+TXN11273,2024-09-21,7.81,Procurement,Summit Group
+TXN10664,2024-08-11,200,Procurement,Apex Holdings LLC
+TXN10046,2024-12-26,200,Legal Dept,Global Supplies Ltd
+TXN11235,2024-08-27,72004.94,Procurement,TechNova
+TXN11200,2024-08-01,53537.36,HR Dept,ABC Corp.
+TXN10755,2024-07-30,528.47,Legal Dept,TechNova L.T.D.
+TXN10541,2024-01-26,200,Procurement,Tech Nova
+TXN10441,2024-07-21,200,HR Dept,ABC Corporation
+TXN19098,2024-08-04,1106.66,Finance Dept,Global Supplies
+TXN19013,2024-01-29,100,Operations,BlueWave Media
+TXN10202,2024-01-04,304.54,Admin Dept,ABC Corporation
+TXN11115,2024-09-19,44986.72,HR Dept,Tech Nova
+TXN10382,2024-07-18,200,HR Dept,Zenith Logistics
+TXN10439,2024-12-18,200.0,Operations,TechNova Ltd
+TXN10137,2024-03-10,200,Admin Dept,Zenith Logistics
+TXN10115,2024-08-01,200,Admin Dept,BlueWave Media
+TXN10168,2024-11-08,200,IT Dept,Delta Systems
+TXN11389,2024-05-01,200.01,Finance Dept,Quick Fix IT
+TXN11387,2024-02-29,372.75,Admin Dept,Global Supply Co.
+TXN10549,2024-03-04,536.84,Operations,Apex Holdings LLC
+TXN11327,2024-05-09,251.44,Admin Dept,Global Supplies
+TXN10731,2024-10-17,378.53,Admin Dept,Pacific Services
+TXN10337,2024-07-20,200,HR Dept,Global Supplies Ltd
+TXN10598,2024-01-15,3181.26,IT Dept,Apex Holdings
+TXN11092,2024-05-26,200,IT Dept,Orion Consulting
+TXN10813,2024-12-08,5623.04,Procurement,Apex Holdings Ltd
+TXN11265,2024-06-23,2.83,Legal Dept,Global Supplies
+TXN10369,2024-12-16,8000,HR Dept,TechNova Inc
+TXN11303,2024-10-20,3.2,Legal Dept,Orion Consulting
+TXN11109,2024-09-23,86312.77,Admin Dept,ABC Corp
+TXN10051,2024-10-09,200,Procurement,QuickFixIT
+TXN11183,2024-08-11,45079.85,Finance Dept,ABC Corp.
+TXN11090,2024-04-12,3934.64,Finance Dept,Global Supply Co.
+TXN11062,2024-08-31,575.63,Operations,Quick Fix IT
+TXN11099,2024-09-25,200,Legal Dept,Delta Systems
+TXN10580,2024-01-12,1019.12,HR Dept,TechNova Ltd
+TXN10214,2024-06-04,200.0,Operations,Apex Holdings LLC
+TXN19076,2024-02-06,4113.96,Operations,BlueWave Media
+TXN10774,2024-05-14,200,IT Dept,Orion Consulting
+TXN10273,2024-03-04,200,Finance Dept,Orion Consulting
+TXN10308,2024-05-27,256.05,Procurement,TechNova L.T.D.
+TXN10012,2024-01-17,200,HR Dept,Orion Consulting
+TXN10678,2024-09-06,200,Legal Dept,Quick Fix IT
+TXN10783,2024-02-06,200,Finance Dept,Zenith Logistics
+TXN10754,2024-09-21,2200.0,Procurement,Tech Nova
+TXN10345,2024-03-30,206.1,Procurement,Delta Systems
+TXN10989,2024-10-25,316.18,Admin Dept,Zenith Logistics
+TXN11189,2024-08-09,53361.93,Legal Dept,TechNova Ltd
+TXN11221,2024-07-25,47969.12,Legal Dept,TechNova L.T.D.
+TXN10900,2024-11-21,200,Admin Dept,Northern Trade Co
+TXN19091,2024-05-08,100,Procurement,BlueWave Media
+TXN19010,2024-03-14,100,HR Dept,Apex Holdings
+TXN10210,2024-06-27,200,Admin Dept,TechNova Ltd
+TXN11236,2024-08-06,91263.87,Finance Dept,A.B.C. Corp
+TXN11034,2024-11-21,200.0,IT Dept,QuickFix IT Solutions
+TXN10723,2024-12-17,6900.0,IT Dept,QuickFix I.T.
+TXN11133,2024-08-29,83140.3,HR Dept,ABC Corporation
+TXN10283,2024-03-03,200,HR Dept,QuickFixIT
+TXN10769,2024-01-31,200,Legal Dept,Apex Holdings LLC
+TXN11328,2024-12-30,199.99,HR Dept,BlueWave Media
+TXN10567,2024-10-26,242.05,IT Dept,TechNova L.T.D.
+TXN10101,2024-10-18,200,Legal Dept,QuickFixIT
+TXN11122,2024-09-21,68059.87,Finance Dept,ABC Corp
+TXN10102,2024-09-06,4336.4,IT Dept,TechNova
+TXN10834,2024-01-22,386.68,Operations,QuickFix I.T.
+TXN10771,2024-12-18,280.55,HR Dept,ABC Corp
+TXN10079,2024-05-20,676.58,Procurement,Tech Nova
+TXN10519,2024-07-11,200.0,HR Dept,Northern Trade Co
+TXN19024,2024-05-11,240.93,Procurement,Summit Group
+TXN10704,2024-08-12,200,Procurement,Global Supplies
+TXN10057,2024-05-16,6802.24,Legal Dept,Tech Nova
+TXN10188,2024-02-18,200,Operations,QuickFix IT Solutions
+TXN10760,2024-03-15,8000.0,Finance Dept,Orion Consulting
+TXN10649,2024-10-21,200,Admin Dept,A.B.C. Corp
+TXN10461,2024-12-02,200,IT Dept,Apex Hold.
+TXN11309,2024-04-19,4.53,HR Dept,Global Supplies
+TXN10052,2024-03-17,200,Procurement,Northern Trade Co
+TXN10289,2024-07-06,200,IT Dept,Zenith Logistics
+TXN11365,2024-03-12,200.01,Finance Dept,TechNova Ltd
+TXN10405,2024-06-08,200,HR Dept,Quick Fix IT
+TXN10874,2024-01-20,221.61,Finance Dept,Quick Fix IT
+TXN19083,2024-12-26,250.97,HR Dept,BlueWave Media
+TXN11379,2024-03-20,400.01,HR Dept,Summit Group
+TXN10940,2024-02-01,425.73,IT Dept,BlueWave Media
+TXN11108,2024-07-03,92988.77,Legal Dept,ABC Corp.
+TXN10872,2024-06-06,200,Admin Dept,ABC Corp Ltd
+TXN10164,2024-02-08,974.66,Finance Dept,QuickFixIT
+TXN10254,2024-07-07,7339.04,Procurement,Global Supplies
+TXN10257,2024-06-28,1602.62,Procurement,QuickFixIT
+TXN10892,2024-06-27,200,HR Dept,TechNova Inc
+TXN10509,2024-11-10,6649.18,Admin Dept,Apex Holdings Ltd
+TXN10817,2024-11-01,2508.54,IT Dept,Global Supplies
+TXN10481,2024-05-19,7700.73,IT Dept,QuickFixIT
+TXN19008,2024-09-14,100,HR Dept,QuickFix IT
+TXN10751,2024-06-02,200,Legal Dept,Global Supplies
+TXN10281,2024-06-23,200,Operations,TechNova Ltd
+TXN10909,2024-09-06,200.0,Finance Dept,ABC Corp.
+TXN10527,2024-07-14,709.11,HR Dept,Quick Fix IT
+TXN11184,2024-09-09,100823.96,Procurement,ABC Corporation
+TXN10385,2024-06-15,200,Admin Dept,Summit Group
+TXN10558,2024-05-21,329.85,Finance Dept,QuickFix IT
+TXN10042,2024-12-02,200.0,Finance Dept,QuickFix IT Solutions
+TXN10286,2024-01-12,5995.97,IT Dept,Global Supplies
+TXN10575,2024-09-28,200,Legal Dept,Orion Consulting
+TXN10106,2024-06-25,466.4,Admin Dept,Global Supply Co.
+TXN10682,2024-03-06,200,HR Dept,ABC Corporation
+TXN10571,2024-06-09,200,Procurement,TechNova
+TXN10539,2024-10-19,787.79,Procurement,Global Supplies
+TXN11004,2024-02-02,2443.86,IT Dept,TechNova Ltd
+TXN10647,2024-08-10,200,Procurement,BlueWave Media
+TXN10696,2024-10-01,200,IT Dept,TechNova L.T.D.
+TXN10454,2024-07-06,913.2,Admin Dept,QuickFix IT Solutions
+TXN10863,2024-07-30,200,Admin Dept,QuickFix IT Solutions
+TXN10724,2024-12-18,5976.51,Operations,QuickFix IT
+TXN11028,2024-08-25,200,Admin Dept,Zenith Logistics
+TXN11276,2024-12-04,1.08,Legal Dept,ABC Corporation
+TXN10507,2024-10-27,596.06,Procurement,QuickFix I.T.
+TXN10473,2024-09-09,200,IT Dept,GlobalSupplies
+TXN10146,2024-06-17,633.86,Procurement,A.B.C. Corp
+TXN10305,2024-12-14,254.63,Legal Dept,Zenith Logistics
+TXN10538,2024-05-26,200,Finance Dept,Summit Group
+TXN11063,2024-08-20,4987.52,HR Dept,BlueWave Media
+TXN10357,2024-06-09,6761.63,HR Dept,Quick Fix IT
+TXN11331,2024-09-10,201.0,Procurement,BlueWave Media
+TXN10811,2024-08-18,701.37,Finance Dept,TechNova Inc
+TXN19053,2024-01-11,100,Finance Dept,TechNova
+TXN10155,2024-09-04,945.68,Operations,Pacific Services
+TXN11293,2024-10-30,0.76,Legal Dept,Global Supplies Ltd
+TXN10140,2024-10-05,200,IT Dept,Global Supplies Ltd
+TXN10584,2024-01-05,3701.87,Procurement,Apex Holdings LLC
+TXN10629,2024-12-11,200,Admin Dept,Pacific Services
+TXN10234,2024-11-24,200,IT Dept,ABC Corporation
+TXN11162,2024-08-10,103810.97,IT Dept,TechNova L.T.D.
+TXN10191,2024-08-04,367.0,Legal Dept,Apex Hold.
+TXN10739,2024-08-15,271.04,Operations,TechNova L.T.D.
+TXN10886,2024-12-19,1178.98,Admin Dept,Apex Holdings LLC
+TXN10203,2024-03-02,200,IT Dept,QuickFix IT
+TXN10187,2024-04-20,200,Legal Dept,Global Supplies Ltd
+TXN10062,2024-02-25,200,IT Dept,ABC Corporation
+TXN10198,2024-06-15,1453.65,IT Dept,Zenith Logistics
+TXN11288,2024-07-18,1.3,Admin Dept,QuickFix IT
+TXN10153,2024-05-27,245.96,Legal Dept,QuickFixIT
+TXN10134,2024-07-27,200,Finance Dept,Global Supplies Ltd
+TXN10466,2024-05-10,200,IT Dept,TechNova
+TXN10058,2024-04-12,200.0,Operations,Tech Nova
+TXN10218,2024-02-01,200,HR Dept,Metro Vendors
+TXN10681,2024-09-02,4811.17,Operations,Apex Hold.
+TXN11225,2024-09-13,69791.47,Legal Dept,Tech Nova
+TXN11095,2024-05-22,200,Finance Dept,TechNova L.T.D.
+TXN10258,2024-01-30,261.49,Procurement,Summit Group
+TXN10674,2024-07-03,200,Admin Dept,Delta Systems
+TXN10189,2024-08-30,266.51,HR Dept,Apex Hold.
+TXN19032,2024-06-06,100,Operations,TechNova
+TXN11132,2024-09-21,26969.79,Finance Dept,TechNova L.T.D.
+TXN11143,2024-07-04,42135.14,Legal Dept,A.B.C. Corp
+TXN10524,2024-05-30,3153.59,Operations,A.B.C. Corp
+TXN10511,2024-10-17,200,Admin Dept,QuickFix I.T.
+TXN11270,2024-08-22,4.42,Operations,Northern Trade Co
+TXN19093,2024-05-28,100,Admin Dept,TechNova
+TXN11275,2024-08-10,4.31,Legal Dept,TechNova
+TXN11385,2024-08-18,4969.92,Procurement,TechNova L.T.D.
+TXN11106,2024-08-05,76845.78,Operations,ABC Corp Ltd
+TXN11166,2024-07-05,39118.98,HR Dept,A.B.C. Corp
+TXN11191,2024-09-04,88224.43,Legal Dept,TechNova
+TXN11285,2024-08-14,6.43,Admin Dept,Apex Holdings LLC
+TXN11321,2024-11-10,201.0,IT Dept,Quick Fix IT
+TXN11138,2024-07-16,98469.14,Operations,Tech Nova
+TXN11373,2024-12-22,201.0,Finance Dept,QuickFixIT
+TXN10907,2024-03-12,2435.19,HR Dept,Global Supplies
+TXN10255,2024-11-04,880.11,Finance Dept,QuickFix IT Solutions
+TXN10703,2024-12-01,200,Operations,Apex Holdings
+TXN10536,2024-01-07,1552.05,Admin Dept,QuickFixIT
+TXN10371,2024-03-28,2600.0,Finance Dept,Apex Holdings Ltd
+TXN10206,2024-12-29,200,Admin Dept,QuickFix I.T.
+TXN10665,2024-08-16,200,Operations,QuickFixIT
+TXN10999,2024-05-29,200,Legal Dept,Global Supplies Ltd
+TXN10768,2024-05-07,3688.41,Legal Dept,A.B.C. Corp
+TXN10613,2024-03-12,400.0,HR Dept,Global Supplies
+TXN19074,2024-07-13,188.98,HR Dept,Summit Group
+TXN10948,2024-03-03,200,Legal Dept,Global Supplies
+TXN10800,2024-10-16,8000,IT Dept,Global Supplies Ltd
+TXN11107,2024-08-30,108546.19,HR Dept,TechNova
+TXN10087,2024-08-07,1591.89,Finance Dept,Apex Holdings LLC
+TXN11206,2024-07-23,35823.87,Procurement,Tech Nova
+TXN10183,2024-07-24,3600.0,Operations,Pacific Services
+TXN10223,2024-06-28,200,HR Dept,Delta Systems
+TXN10868,2024-06-20,200,Legal Dept,Global Supplies Ltd
+TXN11244,2024-07-21,70874.53,HR Dept,ABC Corp Ltd
+TXN10842,2024-11-28,200,IT Dept,Apex Holdings Ltd
+TXN10501,2024-12-23,200,Legal Dept,Zenith Logistics
+TXN10393,2024-09-08,2968.73,Procurement,Apex Holdings LLC
+TXN10895,2024-06-23,200,Operations,A.B.C. Corp
+TXN10866,2024-11-11,200,Procurement,GlobalSupplies
+TXN10383,2024-05-18,200,Operations,Quick Fix IT
+TXN11020,2024-11-04,200,Operations,QuickFix IT
+TXN10919,2024-08-30,200,Finance Dept,Apex Holdings LLC
+TXN10679,2024-02-09,200,HR Dept,Tech Nova
+TXN10601,2024-09-24,200,IT Dept,Global Supply Co.
+TXN11012,2024-06-03,200,HR Dept,Global Supplies Ltd
+TXN11338,2024-03-04,356.45,Legal Dept,Global Supply Co.
+TXN10349,2024-03-09,200,Admin Dept,Global Supply Co.
+TXN10639,2024-04-23,200,Finance Dept,Quick Fix IT
+TXN10740,2024-03-26,674.79,Operations,QuickFix IT Solutions
+TXN10552,2024-04-19,200,Admin Dept,BlueWave Media
+TXN10395,2024-10-08,200,Procurement,BlueWave Media
+TXN11160,2024-08-16,117959.08,Operations,ABC Corp.
+TXN10263,2024-10-14,200,Operations,Delta Systems
+TXN10504,2024-09-26,200,HR Dept,ABC Corp
+TXN10166,2024-12-10,2013.92,Operations,Quick Fix IT
+TXN10593,2024-03-11,200,Finance Dept,ABC Corp
+TXN10195,2024-01-15,200,Procurement,TechNova L.T.D.
+TXN10346,2024-11-25,4600.0,IT Dept,Metro Vendors
+TXN10121,2024-05-16,200,Procurement,ABC Corp.
+TXN10407,2024-06-24,200,Finance Dept,ABC Corp
+TXN10778,2024-12-03,440.98,Finance Dept,Global Supply Co.
+TXN10697,2024-04-14,261.19,Operations,BlueWave Media
+TXN10180,2024-09-26,200.0,Procurement,QuickFix IT Solutions
+TXN10141,2024-07-15,286.96,HR Dept,GlobalSupplies
+TXN10980,2024-05-23,200.0,Admin Dept,ABC Corporation
+TXN10069,2024-08-26,200,Procurement,QuickFix IT
+TXN10662,2024-06-05,200,Admin Dept,Apex Hold.
+TXN11118,2024-09-30,95009.49,Legal Dept,TechNova
+TXN11081,2024-09-14,1100.06,IT Dept,Global Supplies
+TXN10762,2024-08-14,200,HR Dept,QuickFix I.T.
+TXN10400,2024-03-26,200,Procurement,Quick Fix IT
+TXN10573,2024-08-10,5785.21,HR Dept,Apex Holdings
+TXN19001,2024-05-08,100,Operations,Global Supplies
+TXN10065,2024-06-18,200.0,Procurement,Delta Systems
+TXN11361,2024-02-25,200.01,IT Dept,ABC Corporation
+TXN11157,2024-07-17,71819.78,IT Dept,Tech Nova
+TXN10475,2024-12-21,1023.91,Procurement,Orion Consulting
+TXN11250,2024-07-29,83668.48,Finance Dept,TechNova L.T.D.
+TXN10656,2024-01-03,200,Finance Dept,ABC Corporation
+TXN10787,2024-07-24,2882.82,HR Dept,Global Supplies Ltd
+TXN11039,2024-04-06,200,HR Dept,Orion Consulting
+TXN10964,2024-02-21,200,Finance Dept,ABC Corp.
+TXN10812,2024-09-24,220.9,HR Dept,Global Supplies Ltd
+TXN11127,2024-08-27,90146.57,Legal Dept,TechNova
+TXN11015,2024-12-07,5895.98,Legal Dept,GlobalSupplies
+TXN10456,2024-07-22,200.0,Finance Dept,Metro Vendors
+TXN10460,2024-02-14,1729.96,Finance Dept,Tech Nova
+TXN19031,2024-08-27,320.03,Finance Dept,BlueWave Media
+TXN10916,2024-11-09,200,Admin Dept,TechNova Inc
+TXN10978,2024-11-08,1054.34,HR Dept,Delta Systems
+TXN10001,2024-02-22,200,HR Dept,Zenith Logistics
+TXN10839,2024-03-13,2294.42,Procurement,Global Supply Co.
+TXN11286,2024-11-28,7.12,Legal Dept,Summit Group
+TXN10764,2024-11-18,8000,IT Dept,TechNova
+TXN11242,2024-09-18,100976.73,Legal Dept,A.B.C. Corp
+TXN10074,2024-02-24,2243.98,Finance Dept,Northern Trade Co
+TXN11000,2024-02-03,279.99,Legal Dept,Metro Vendors
+TXN19068,2024-09-25,100,Admin Dept,ABC Corp
+TXN10937,2024-03-07,200,Legal Dept,Apex Holdings
+TXN11215,2024-09-01,63483.7,Procurement,TechNova Inc
+TXN10410,2024-10-30,1395.58,HR Dept,QuickFixIT
+TXN10428,2024-09-29,200,Admin Dept,Quick Fix IT
+TXN10802,2024-03-08,200,Operations,ABC Corp.
+TXN10721,2024-05-20,8000,Admin Dept,Pacific Services
+TXN10241,2024-11-07,200,HR Dept,Global Supplies Ltd
+TXN19020,2024-04-27,100,IT Dept,BlueWave Media
+TXN11197,2024-09-02,46301.87,Procurement,A.B.C. Corp
+TXN10923,2024-12-24,200,HR Dept,TechNova L.T.D.
+TXN11175,2024-09-02,42154.04,Finance Dept,ABC Corp Ltd
+TXN10274,2024-06-26,316.47,Procurement,Tech Nova
+TXN10718,2024-05-15,200,Procurement,Tech Nova
+TXN10076,2024-10-13,200,Procurement,Global Supply Co.
+TXN10859,2024-05-27,8000,Legal Dept,Apex Holdings Ltd
+TXN10173,2024-04-30,203.27,Operations,QuickFixIT
+TXN10099,2024-11-29,4707.31,Procurement,Global Supply Co.
+TXN10499,2024-05-16,200,Procurement,Tech Nova
+TXN10614,2024-07-20,6106.96,HR Dept,ABC Corp Ltd
+TXN11035,2024-02-09,804.87,Procurement,Delta Systems
+TXN11065,2024-11-05,200.0,HR Dept,QuickFix I.T.
+TXN10185,2024-10-07,200,Procurement,GlobalSupplies
+TXN10502,2024-03-13,200,Admin Dept,GlobalSupplies
+TXN11199,2024-08-31,52616.79,Operations,ABC Corporation
+TXN10942,2024-11-26,2979.42,Operations,TechNova
+TXN11233,2024-08-04,79758.32,Admin Dept,ABC Corporation
+TXN10172,2024-11-11,200,Legal Dept,Global Supplies
+TXN10252,2024-12-01,200,Finance Dept,Pacific Services
+TXN10182,2024-12-03,200.0,Legal Dept,Delta Systems
+TXN10008,2024-04-29,200,IT Dept,A.B.C. Corp
+TXN10939,2024-08-06,200,IT Dept,BlueWave Media
+TXN10858,2024-09-27,200,Procurement,Apex Holdings LLC
+TXN11121,2024-08-11,64982.7,Procurement,TechNova L.T.D.
+TXN11302,2024-06-02,8.51,HR Dept,Quick Fix IT
+TXN10251,2024-05-09,251.54,Admin Dept,Global Supplies
+TXN10663,2024-08-07,200,IT Dept,Metro Vendors
+TXN11353,2024-12-17,2266.01,HR Dept,Summit Group
+TXN10073,2024-12-22,200,Admin Dept,TechNova Ltd
+TXN19026,2024-06-25,169.43,HR Dept,Summit Group
+TXN10749,2024-05-13,200,IT Dept,QuickFix IT Solutions
+TXN10672,2024-03-15,200,Admin Dept,Apex Hold.
+TXN11038,2024-09-05,200,IT Dept,BlueWave Media
+TXN10791,2024-11-01,8000.0,Finance Dept,TechNova Inc
+TXN10616,2024-09-15,200,Procurement,GlobalSupplies
+TXN10505,2024-03-31,391.79,HR Dept,QuickFix IT
+TXN10049,2024-05-08,200,Admin Dept,Global Supplies
+TXN10344,2024-04-23,223.69,Procurement,Global Supply Co.
+TXN11156,2024-09-03,80146.26,IT Dept,A.B.C. Corp
+TXN10423,2024-07-06,200,Admin Dept,Orion Consulting
+TXN10294,2024-08-21,200,Operations,Global Supply Co.
+TXN11188,2024-07-16,99051.79,IT Dept,A.B.C. Corp
+TXN11351,2024-05-18,199.99,Operations,Quick Fix IT
+TXN10089,2024-02-11,2278.26,Operations,TechNova L.T.D.
+TXN10351,2024-01-21,200,Admin Dept,Apex Holdings
+TXN10026,2024-12-19,3964.36,Legal Dept,Zenith Logistics
+TXN10016,2024-02-26,200,Finance Dept,Pacific Services
+TXN10265,2024-03-29,8000,Finance Dept,QuickFixIT
+TXN10846,2024-01-27,200,Legal Dept,Apex Holdings Ltd
+TXN11030,2024-05-05,241.72,Procurement,Apex Holdings LLC
+TXN11262,2024-11-27,7.45,Finance Dept,ABC Corp.
+TXN10625,2024-12-11,5582.81,Procurement,QuickFix IT Solutions
+TXN10591,2024-01-26,200,IT Dept,QuickFixIT
+TXN10833,2024-11-11,200.0,Operations,Pacific Services
+TXN11336,2024-03-10,1980.72,HR Dept,Summit Group
+TXN19067,2024-04-30,100,Operations,Apex Holdings
+TXN10837,2024-10-12,200,Procurement,ABC Corporation
+TXN11228,2024-09-02,105524.81,Operations,TechNova Ltd
+TXN10199,2024-01-26,200,Legal Dept,Apex Holdings
+TXN11087,2024-08-20,420.01,Admin Dept,Global Supply Co.
+TXN11278,2024-12-04,1.05,Procurement,Apex Holdings Ltd
+TXN11296,2024-09-16,8.49,IT Dept,Apex Holdings LLC
+TXN10171,2024-10-03,200,Procurement,Apex Holdings Ltd
+TXN11231,2024-07-30,81148.73,Admin Dept,Tech Nova
+TXN10267,2024-03-21,200,IT Dept,Pacific Services
+TXN10462,2024-09-11,200,Finance Dept,TechNova
+TXN10483,2024-04-16,1314.03,IT Dept,Metro Vendors
+TXN11259,2024-04-15,2.09,Finance Dept,Pacific Services
+TXN10472,2024-04-12,532.73,Finance Dept,Quick Fix IT
+TXN11304,2024-09-23,6.88,Procurement,QuickFix I.T.
+TXN10969,2024-01-03,200,IT Dept,QuickFix IT Solutions
+TXN11307,2024-08-05,4.81,HR Dept,Apex Holdings Ltd
+TXN11329,2024-05-16,200.1,Procurement,Tech Nova
+TXN10024,2024-09-05,200,Finance Dept,Zenith Logistics
+TXN10484,2024-12-17,2265.01,HR Dept,Summit Group
+TXN11292,2024-01-12,3.73,Procurement,TechNova
+TXN10716,2024-06-24,200,Procurement,Orion Consulting
+TXN10741,2024-12-24,200,IT Dept,Metro Vendors
+TXN10117,2024-04-16,1000.0,Procurement,ABC Corp Ltd
+TXN11384,2024-08-15,8000.01,Procurement,Orion Consulting
+TXN11204,2024-08-15,87781.25,Admin Dept,ABC Corp.
+TXN10930,2024-01-22,1382.0,Admin Dept,Apex Hold.
+TXN10125,2024-10-21,200,Legal Dept,Pacific Services
+TXN10603,2024-01-06,4148.65,Admin Dept,ABC Corporation
+TXN10657,2024-06-25,3537.15,IT Dept,TechNova Ltd
+TXN10092,2024-12-24,1669.46,HR Dept,QuickFixIT
+TXN10717,2024-04-03,200,Admin Dept,TechNova L.T.D.
+TXN11044,2024-01-22,200,Legal Dept,QuickFix IT Solutions
+TXN11103,2024-08-22,41639.65,IT Dept,Tech Nova
+TXN19043,2024-08-12,1229.6,HR Dept,BlueWave Media
+TXN19012,2024-10-06,100,Procurement,QuickFix IT
+TXN11174,2024-09-12,80437.0,Finance Dept,TechNova L.T.D.
+TXN10131,2024-04-06,200,Operations,ABC Corporation
+TXN11287,2024-06-03,4.34,HR Dept,Northern Trade Co
+TXN10374,2024-12-02,200,Admin Dept,GlobalSupplies
+TXN10221,2024-01-27,238.74,Procurement,Apex Holdings
+TXN10391,2024-11-29,2804.08,IT Dept,QuickFix IT Solutions
+TXN10098,2024-07-04,200,Finance Dept,QuickFix IT Solutions
+TXN19064,2024-09-14,1208.4,Finance Dept,Apex Holdings
+TXN10464,2024-05-19,200.0,Legal Dept,QuickFix IT Solutions
+TXN10693,2024-02-12,3133.88,HR Dept,Delta Systems
+TXN10743,2024-05-14,200,Finance Dept,ABC Corp Ltd
+TXN10156,2024-01-12,1571.92,Procurement,TechNova Inc
+TXN10530,2024-07-17,6970.71,Admin Dept,ABC Corporation
+TXN10784,2024-04-28,200,Finance Dept,ABC Corp Ltd
+TXN11282,2024-09-27,0.57,IT Dept,Northern Trade Co
+TXN19044,2024-09-05,165.68,Finance Dept,Global Supplies
+TXN10277,2024-10-15,200,Admin Dept,QuickFix IT
+TXN11168,2024-08-26,36022.28,Operations,ABC Corp
+TXN10253,2024-08-13,200,Operations,Zenith Logistics
+TXN19086,2024-11-20,1192.37,Procurement,Zenith Logistics
+TXN10714,2024-12-25,200,HR Dept,Apex Hold.
+TXN10005,2024-02-17,215.55,IT Dept,ABC Corp Ltd
+TXN10238,2024-01-15,223.58,IT Dept,Tech Nova
+TXN10668,2024-10-24,200,Procurement,ABC Corp
+TXN10068,2024-01-01,200,Admin Dept,Orion Consulting
+TXN11153,2024-08-02,96082.97,Finance Dept,ABC Corp
+TXN10752,2024-10-07,1797.96,Legal Dept,ABC Corp
+TXN10207,2024-11-12,400.0,IT Dept,TechNova
+TXN10926,2024-06-25,1726.0,Admin Dept,Zenith Logistics
+TXN19084,2024-05-26,100,IT Dept,QuickFix IT
+TXN10309,2024-03-15,1895.76,IT Dept,Metro Vendors
+TXN10248,2024-11-25,413.34,IT Dept,Orion Consulting
+TXN10278,2024-05-15,200,Legal Dept,GlobalSupplies
+TXN10508,2024-08-11,200,Procurement,Metro Vendors
+TXN11227,2024-09-19,29837.61,Finance Dept,ABC Corporation
+TXN11169,2024-09-01,58869.41,Procurement,TechNova L.T.D.
+TXN10950,2024-11-27,200,Legal Dept,TechNova Inc
+TXN10211,2024-11-04,200,HR Dept,TechNova
+TXN11263,2024-03-03,3.95,Legal Dept,ABC Corp.
+TXN11383,2024-06-08,199.9,Finance Dept,Delta Systems
+TXN10744,2024-05-06,200,IT Dept,Tech Nova
+TXN11267,2024-07-03,4.03,Legal Dept,QuickFix IT Solutions
+TXN10144,2024-08-21,200,Admin Dept,Delta Systems
+TXN10147,2024-10-04,7954.14,Legal Dept,Global Supplies
+TXN10841,2024-08-20,200,Finance Dept,TechNova
+TXN10396,2024-12-20,1942.97,Legal Dept,TechNova Inc
+TXN10364,2024-08-21,200,HR Dept,Global Supply Co.
+TXN10582,2024-12-04,777.12,Admin Dept,ABC Corporation
+TXN11025,2024-02-03,200,Admin Dept,QuickFix IT
+TXN10763,2024-12-06,200,Finance Dept,Global Supply Co.
+TXN11008,2024-06-29,200,Finance Dept,ABC Corp.
+TXN11113,2024-08-08,61904.75,Operations,ABC Corp.
+TXN19099,2024-02-15,519.17,HR Dept,TechNova
+TXN10873,2024-05-01,570.98,Finance Dept,Global Supplies
+TXN10830,2024-11-05,407.95,HR Dept,Global Supply Co.
+TXN11347,2024-11-01,1277.5,Legal Dept,Global Supply Co.
+TXN10534,2024-04-13,200,Procurement,QuickFix IT Solutions
+TXN11330,2024-06-04,200.01,Operations,Apex Holdings LLC
+TXN10111,2024-12-23,200,Admin Dept,TechNova Inc
+TXN10427,2024-11-11,200,Operations,TechNova
+TXN10947,2024-02-05,3478.14,Procurement,BlueWave Media
+TXN11271,2024-12-15,9.53,Admin Dept,Summit Group
+TXN10291,2024-11-15,200,Admin Dept,TechNova L.T.D.
+TXN10959,2024-10-29,200,Admin Dept,TechNova
+TXN11298,2024-10-20,9.43,Operations,TechNova Inc
+TXN10710,2024-02-24,2574.91,Operations,Global Supply Co.
+TXN10363,2024-07-30,200,Legal Dept,ABC Corp
+TXN10578,2024-08-10,200,Admin Dept,QuickFix IT
+TXN11013,2024-08-22,200,HR Dept,Metro Vendors
+TXN10143,2024-10-29,200.0,Admin Dept,Metro Vendors
+TXN10249,2024-03-10,1980.82,HR Dept,Summit Group
+TXN10831,2024-03-24,218.4,Operations,ABC Corp.
+TXN11317,2024-03-18,199.9,Procurement,Zenith Logistics
+TXN10767,2024-01-22,200,HR Dept,ABC Corp
+TXN10615,2024-11-20,200,Operations,ABC Corporation
+TXN10555,2024-07-11,200,IT Dept,QuickFix IT Solutions
+TXN10908,2024-05-27,1843.33,Operations,ABC Corp.
+TXN11377,2024-05-15,200.01,Admin Dept,TechNova
+TXN11283,2024-07-25,6.29,HR Dept,Apex Holdings Ltd
+TXN10034,2024-08-24,200,HR Dept,TechNova L.T.D.
+TXN10537,2024-10-25,6112.52,Admin Dept,GlobalSupplies
+TXN10096,2024-11-03,200,Legal Dept,Apex Hold.
+TXN10010,2024-11-21,270.18,Finance Dept,Apex Holdings
+TXN10066,2024-07-28,200,IT Dept,Apex Hold.
+TXN19097,2024-06-21,5580.72,Finance Dept,Zenith Logistics
+TXN10658,2024-04-09,200,Legal Dept,TechNova L.T.D.
+TXN10631,2024-06-09,200,Legal Dept,Apex Hold.
+TXN10323,2024-07-15,200,Finance Dept,TechNova L.T.D.
+TXN10828,2024-01-14,215.2,HR Dept,TechNova
+TXN10975,2024-08-15,6500.0,HR Dept,Zenith Logistics
+TXN10990,2024-04-04,1463.76,Procurement,QuickFix I.T.
+TXN11144,2024-09-18,52568.33,IT Dept,ABC Corp Ltd
+TXN10230,2024-05-01,200.0,IT Dept,Apex Hold.
+TXN10360,2024-09-07,6550.64,IT Dept,TechNova L.T.D.
+TXN10149,2024-03-26,200,Finance Dept,QuickFixIT
+TXN11374,2024-12-22,200.1,Admin Dept,TechNova Ltd
+TXN10006,2024-08-23,284.75,Legal Dept,ABC Corporation
+TXN10913,2024-01-20,541.08,IT Dept,ABC Corporation
+TXN11123,2024-09-21,85951.29,Procurement,Tech Nova
+TXN11053,2024-06-09,8000,Finance Dept,BlueWave Media
+TXN10984,2024-10-23,1736.18,IT Dept,QuickFix IT Solutions
+TXN10898,2024-06-06,1325.38,Operations,TechNova
+TXN10285,2024-04-07,200,Procurement,QuickFix IT
+TXN10595,2024-07-16,218.29,Operations,TechNova L.T.D.
+TXN10562,2024-10-19,1404.6,Admin Dept,Apex Holdings Ltd
+TXN10636,2024-03-19,200,HR Dept,ABC Corporation
+TXN19045,2024-10-13,165.26,Admin Dept,BlueWave Media
+TXN11196,2024-09-25,28841.62,IT Dept,Tech Nova
+TXN10406,2024-12-22,200,Finance Dept,QuickFixIT
+TXN10604,2024-03-25,200,Operations,Pacific Services
+TXN11069,2024-08-23,200,Operations,QuickFixIT
+TXN11349,2024-10-01,2063.81,Operations,Apex Holdings
+TXN10332,2024-06-06,2500.0,Operations,Apex Hold.
+TXN10542,2024-06-04,600.0,Legal Dept,Summit Group
+TXN10590,2024-02-21,200,Finance Dept,Zenith Logistics
+TXN10275,2024-10-09,884.59,Procurement,Metro Vendors
+TXN10233,2024-08-02,8000,Admin Dept,Global Supply Co.
+TXN10438,2024-03-04,200,Operations,ABC Corp
+TXN10568,2024-11-13,200,Admin Dept,GlobalSupplies
+TXN10204,2024-09-13,1175.69,Procurement,Tech Nova
+TXN11333,2024-02-24,2243.88,Finance Dept,Northern Trade Co
+TXN10170,2024-02-19,200.0,Operations,ABC Corp Ltd
+TXN10894,2024-07-30,200,Operations,GlobalSupplies
+TXN10545,2024-09-05,200,Operations,Zenith Logistics
+TXN10694,2024-01-04,1300.0,Procurement,Summit Group
+TXN11126,2024-09-15,39993.13,Admin Dept,A.B.C. Corp
+TXN10015,2024-07-04,200,Admin Dept,QuickFix I.T.
+TXN11332,2024-10-02,876.35,Legal Dept,QuickFix IT Solutions
+TXN11043,2024-02-10,200,HR Dept,ABC Corp.
+TXN10422,2024-09-10,200,Procurement,BlueWave Media
+TXN10864,2024-04-13,200,Finance Dept,Apex Holdings LLC
+TXN10413,2024-06-27,759.7,Admin Dept,ABC Corp Ltd
+TXN11291,2024-09-23,1.38,Admin Dept,TechNova Inc
+TXN10004,2024-12-23,200.0,Legal Dept,TechNova
+TXN10440,2024-12-01,815.9,IT Dept,A.B.C. Corp
+TXN10661,2024-05-25,335.71,HR Dept,ABC Corp Ltd
+TXN11187,2024-08-19,26948.64,HR Dept,A.B.C. Corp
+TXN11335,2024-07-28,199.99,IT Dept,Apex Hold.
+TXN10321,2024-03-30,200,Legal Dept,TechNova Ltd
+TXN10512,2024-10-16,200,HR Dept,Apex Holdings LLC
+TXN19102,2024-08-14,447.95,Admin Dept,ABC Corp
+TXN11014,2024-11-27,200,Admin Dept,QuickFix IT
+TXN10296,2024-09-07,559.37,Admin Dept,Global Supplies Ltd
+TXN10128,2024-06-13,2969.06,Operations,QuickFix IT
+TXN10722,2024-09-26,339.79,HR Dept,ABC Corporation
+TXN19002,2024-08-03,100,IT Dept,Apex Holdings
+TXN10228,2024-09-26,200,Legal Dept,Global Supplies Ltd
+TXN10314,2024-11-29,200,Operations,Global Supplies
+TXN10915,2024-05-05,500.0,Admin Dept,A.B.C. Corp
+TXN11003,2024-03-08,200,Admin Dept,Delta Systems
+TXN10860,2024-03-07,225.97,Admin Dept,Quick Fix IT
+TXN10820,2024-02-01,200,Admin Dept,TechNova L.T.D.
+TXN10239,2024-03-11,200,Legal Dept,ABC Corp.
+TXN10495,2024-05-07,1137.24,Legal Dept,Global Supply Co.
+TXN19037,2024-04-04,6572.8,Procurement,QuickFix IT
+TXN11340,2024-10-05,199.9,IT Dept,Global Supplies
+TXN19048,2024-11-10,100,Finance Dept,ABC Corp
+TXN10122,2024-10-18,200,Admin Dept,Zenith Logistics
+TXN10544,2024-11-05,1774.03,Procurement,QuickFix IT Solutions
+TXN10479,2024-07-20,200,Procurement,Orion Consulting
+TXN10689,2024-01-20,200,Admin Dept,Apex Holdings
+TXN19016,2024-03-01,718.6,Finance Dept,TechNova
+TXN10994,2024-11-12,388.8,IT Dept,QuickFixIT
+TXN10072,2024-08-31,200,Finance Dept,Tech Nova
+TXN10324,2024-01-06,200,Procurement,GlobalSupplies
+TXN10085,2024-07-18,200,Operations,ABC Corp
+TXN11129,2024-08-06,41480.51,Admin Dept,TechNova
+TXN10276,2024-10-30,200,Procurement,TechNova
+TXN10594,2024-02-17,200,Admin Dept,TechNova L.T.D.
+TXN11320,2024-12-04,199.9,Finance Dept,QuickFix IT
+TXN11382,2024-12-23,199.99,Admin Dept,TechNova Inc
+TXN10116,2024-10-28,200,Operations,TechNova Inc
+TXN10093,2024-02-28,200,Procurement,Apex Holdings Ltd
+TXN10862,2024-01-13,200,Finance Dept,ABC Corp Ltd
+TXN10212,2024-10-15,200,Operations,QuickFixIT
+TXN10583,2024-03-04,200,Operations,QuickFix I.T.
+TXN10282,2024-07-23,486.15,Legal Dept,Quick Fix IT
+TXN19061,2024-04-03,3148.85,Procurement,Zenith Logistics
+TXN11226,2024-08-20,48049.82,IT Dept,TechNova Inc
+TXN10310,2024-05-11,200.0,Operations,Apex Holdings LLC
+TXN10559,2024-04-06,426.11,Procurement,TechNova Inc
+TXN10902,2024-12-13,200,IT Dept,GlobalSupplies
+TXN11258,2024-02-23,8.32,Finance Dept,Global Supply Co.
+TXN10546,2024-06-08,582.1,HR Dept,A.B.C. Corp
+TXN10838,2024-05-26,200,IT Dept,BlueWave Media
+TXN10467,2024-01-07,200,Finance Dept,Pacific Services
+TXN11356,2024-03-07,201.0,Legal Dept,Tech Nova
+TXN10342,2024-10-03,200.0,Operations,Tech Nova
+TXN10152,2024-04-28,1619.71,Admin Dept,ABC Corp.
+TXN10890,2024-07-05,200,IT Dept,Delta Systems
+TXN10847,2024-04-02,273.02,IT Dept,Apex Holdings LLC
+TXN11022,2024-10-14,201.22,IT Dept,QuickFixIT
+TXN10637,2024-06-03,200,Legal Dept,Apex Hold.
+TXN10961,2024-07-24,6337.34,Procurement,Apex Hold.
+TXN11394,,300.0,Finance Dept,ABC Corp
+TXN10409,2024-04-04,1958.46,Operations,Apex Holdings LLC
+TXN10114,2024-03-18,6491.75,Procurement,ABC Corporation
+TXN11190,2024-08-15,110854.76,Admin Dept,A.B.C. Corp
+TXN11055,2024-08-21,200,Operations,TechNova Inc
+TXN11284,2024-10-05,4.73,HR Dept,Northern Trade Co
+TXN10782,2024-07-31,200,IT Dept,Global Supplies Ltd
+TXN10236,2024-08-11,200,HR Dept,Orion Consulting
+TXN10821,2024-10-11,4890.4,Finance Dept,Metro Vendors
+TXN10359,2024-10-18,3295.19,HR Dept,QuickFix I.T.
+TXN10088,2024-08-20,1181.73,IT Dept,TechNova Ltd
+TXN11155,2024-07-06,88769.89,HR Dept,TechNova L.T.D.
+TXN10753,2024-11-26,2882.16,HR Dept,TechNova
+TXN11019,2024-12-12,619.57,Legal Dept,QuickFixIT
+TXN11316,2024-03-02,201.0,IT Dept,QuickFix IT
+TXN10208,2024-10-28,208.81,HR Dept,QuickFix IT Solutions
+TXN10470,2024-04-24,611.94,Finance Dept,TechNova
+TXN10634,2024-09-20,200.0,HR Dept,Zenith Logistics
+TXN10707,2024-10-27,200,Operations,QuickFix I.T.
+TXN10247,2024-12-02,200.0,HR Dept,Zenith Logistics
+TXN11237,2024-08-26,93989.87,Operations,TechNova
+TXN10609,2024-08-21,689.01,Procurement,Apex Hold.
+TXN10640,2024-09-28,733.11,Legal Dept,Apex Holdings
+TXN19072,2024-03-22,100,Admin Dept,TechNova
+TXN11344,2024-02-07,3800.01,IT Dept,Apex Holdings LLC
+TXN10109,2024-11-01,1276.5,Legal Dept,Global Supply Co.
+TXN11209,2024-09-18,80784.8,Operations,Tech Nova
+TXN10126,2024-01-21,200,IT Dept,GlobalSupplies
+TXN10196,2024-03-14,200,HR Dept,Pacific Services
+TXN10319,2024-05-19,8000,Admin Dept,QuickFixIT
+TXN10313,2024-03-11,200,Finance Dept,Apex Hold.
+TXN19003,2024-12-15,1660.57,Admin Dept,ABC Corp
+TXN10911,2024-08-18,7623.25,Operations,Global Supplies Ltd
+TXN10029,2024-01-17,200,HR Dept,A.B.C. Corp
+TXN10280,2024-06-01,448.29,Procurement,QuickFix I.T.
+TXN10307,2024-09-07,200,Procurement,Apex Holdings Ltd
+TXN11390,2024-01-26,200.01,Admin Dept,ABC Corp Ltd
+TXN10468,2024-01-19,1363.98,HR Dept,Delta Systems
+TXN11299,2024-04-30,7.49,Operations,QuickFix IT
+TXN10931,2024-05-19,200,Procurement,Pacific Services
+TXN10304,2024-03-29,399.81,Operations,QuickFix IT
+TXN11078,2024-01-20,200,Admin Dept,QuickFix IT
+TXN10419,2024-07-15,200,HR Dept,Orion Consulting
+TXN10979,2024-07-02,2373.49,HR Dept,Apex Holdings LLC
+TXN10259,2024-01-16,1363.31,Procurement,TechNova
+TXN19047,2024-01-17,5166.56,Procurement,Global Supplies
+TXN10097,2024-09-16,200,IT Dept,A.B.C. Corp
+TXN11041,2024-08-14,8000,HR Dept,Orion Consulting
+TXN10563,2024-08-31,672.65,Admin Dept,Apex Holdings LLC
+TXN10465,2024-08-21,371.23,Finance Dept,Global Supplies
+TXN10882,2024-02-22,200,Admin Dept,Global Supply Co.
+TXN10920,2024-01-14,200,Procurement,Apex Holdings
+TXN11076,2024-01-29,200,Operations,Quick Fix IT
+TXN10871,2024-06-22,606.62,Legal Dept,ABC Corp
+TXN10935,2024-05-25,200,IT Dept,Tech Nova
+TXN11047,2024-01-15,200,Procurement,Quick Fix IT
+TXN10619,2024-06-13,200,Admin Dept,Northern Trade Co
+TXN11322,2024-01-22,3462.7,Legal Dept,Zenith Logistics
+TXN10574,2024-09-30,4429.03,Finance Dept,ABC Corporation
+TXN11386,2024-04-29,200.1,Finance Dept,TechNova Ltd
+TXN10928,2024-07-13,2746.15,Admin Dept,Tech Nova
+TXN10973,2024-05-08,200,HR Dept,QuickFix IT Solutions
+TXN10316,2024-01-19,200,Legal Dept,TechNova
+TXN11274,2024-06-10,9.46,Finance Dept,QuickFix IT
+TXN19088,2024-01-07,918.32,HR Dept,TechNova
+TXN10018,2024-01-06,3529.11,Legal Dept,Metro Vendors
+TXN11345,2024-01-15,2680.52,IT Dept,Metro Vendors
+TXN11220,2024-09-22,44876.8,Procurement,A.B.C. Corp
+TXN19066,2024-03-29,616.78,Admin Dept,BlueWave Media
+TXN11079,2024-12-22,2568.05,IT Dept,ABC Corp
+TXN10227,2024-03-11,200,HR Dept,Tech Nova
+TXN11011,2024-06-11,218.45,Finance Dept,Apex Hold.
+TXN10124,2024-06-14,3437.76,Operations,Zenith Logistics
+TXN10827,2024-07-29,200,Operations,Metro Vendors
+TXN10300,2024-11-13,200,Procurement,Zenith Logistics
+TXN10759,2024-09-12,200,Operations,TechNova Inc
+TXN10849,2024-04-21,2500.0,Operations,Tech Nova
+TXN11337,2024-07-29,2700.1,Admin Dept,Global Supplies Ltd
+TXN10077,2024-10-07,3612.65,Admin Dept,QuickFix IT Solutions
+TXN19059,2024-03-24,100,Admin Dept,Zenith Logistics
+TXN10045,2024-06-27,200,IT Dept,ABC Corp.
+TXN10809,2024-07-10,4044.88,HR Dept,Apex Hold.
+TXN10756,2024-11-12,200,Procurement,QuickFixIT
+TXN10003,2024-08-02,200,Procurement,Global Supplies Ltd
+TXN11381,2024-06-17,633.76,Procurement,A.B.C. Corp
+TXN11084,2024-10-23,1804.6,Finance Dept,Apex Holdings Ltd
+TXN11130,2024-07-24,43873.05,Operations,TechNova
+TXN10301,2024-12-24,5147.78,Finance Dept,GlobalSupplies
+TXN11096,2024-01-11,200.0,Procurement,Global Supplies
+TXN11029,2024-11-21,200,Procurement,Orion Consulting
+TXN19057,2024-12-21,473.89,Operations,Global Supplies
+TXN10525,2024-05-29,6200.0,HR Dept,Apex Holdings LLC
+TXN10372,2024-09-27,1644.91,Legal Dept,ABC Corp Ltd
+TXN11354,2024-03-07,201.0,Procurement,Quick Fix IT
+TXN19021,2024-12-18,100,Procurement,Global Supplies
+TXN10970,2024-07-04,200,Finance Dept,Apex Holdings
+TXN10623,2024-12-10,200,Procurement,Quick Fix IT
+TXN10446,2024-10-15,200,Finance Dept,Global Supply Co.
+TXN10130,2024-07-25,200,IT Dept,ABC Corp Ltd
+TXN10451,2024-09-22,200,IT Dept,TechNova Ltd
+TXN11178,2024-07-20,60488.04,Finance Dept,TechNova
+TXN10985,2024-01-21,200,Operations,ABC Corporation
+TXN10320,2024-04-05,200,Procurement,TechNova L.T.D.
+TXN11136,2024-09-11,39178.86,IT Dept,A.B.C. Corp
+TXN11172,2024-08-04,104320.6,Procurement,TechNova L.T.D.
+TXN10095,2024-12-19,3396.65,Finance Dept,GlobalSupplies
+TXN11352,2024-07-27,1694.95,Finance Dept,QuickFix IT Solutions
+TXN10246,2024-07-10,200,Procurement,QuickFix I.T.
+TXN11105,2024-08-10,75679.65,Procurement,ABC Corporation
+TXN10737,2024-11-19,200,IT Dept,QuickFix IT Solutions
+TXN10732,2024-08-31,200.0,Legal Dept,TechNova L.T.D.
+TXN10816,2024-11-28,200.0,Legal Dept,Northern Trade Co
+TXN19054,2024-10-11,100,Finance Dept,Zenith Logistics
+TXN10670,2024-05-28,200,Legal Dept,GlobalSupplies
+TXN10654,2024-10-06,200,Operations,Summit Group
+TXN10162,2024-07-06,2175.64,Admin Dept,Northern Trade Co
+TXN10876,2024-06-16,200,Admin Dept,TechNova Inc
+TXN19082,2024-02-09,100,IT Dept,QuickFix IT
+TXN10262,2024-05-07,200,Procurement,TechNova L.T.D.
+TXN11061,2024-05-22,6122.76,Procurement,Global Supplies
+TXN11102,2024-07-14,113872.51,HR Dept,A.B.C. Corp
+TXN10622,2024-10-10,484.31,IT Dept,Apex Holdings Ltd
+TXN10687,2024-10-29,416.77,Operations,Apex Holdings
+TXN10205,2024-01-10,307.21,Finance Dept,QuickFix IT Solutions
+TXN10728,2024-02-21,200,Procurement,Tech Nova
+TXN10490,2024-03-06,200.0,Procurement,QuickFixIT
+TXN11193,2024-07-12,50505.54,Admin Dept,TechNova Ltd
+TXN10442,2024-04-19,200,Finance Dept,ABC Corp
+TXN10652,2024-12-17,200,IT Dept,Summit Group
+TXN10960,2024-02-02,200,Admin Dept,Tech Nova
+TXN10790,2024-07-03,200,Procurement,TechNova L.T.D.
+TXN10491,2024-10-20,200,Finance Dept,TechNova
+TXN10494,2024-02-01,200,Admin Dept,Global Supplies
+TXN10946,2024-01-02,415.16,Operations,GlobalSupplies
+TXN10368,2024-07-10,481.52,Operations,A.B.C. Corp
+TXN10856,2024-02-03,2820.26,Legal Dept,Global Supplies Ltd
+TXN10200,2024-07-31,444.31,Admin Dept,QuickFixIT
+TXN11042,2024-03-01,717.22,Procurement,Orion Consulting
+TXN10576,2024-06-25,200,Procurement,Northern Trade Co
+TXN11017,2024-08-16,200,Legal Dept,Tech Nova
+TXN19030,2024-09-18,6933.09,IT Dept,Apex Holdings
+TXN10921,2024-05-09,200.0,Legal Dept,TechNova L.T.D.
+TXN19085,2024-09-07,100,Finance Dept,BlueWave Media
+TXN11300,2024-12-31,8.14,Admin Dept,GlobalSupplies
+TXN10268,2024-03-12,200,Finance Dept,TechNova Ltd
+TXN10132,2024-10-08,3625.41,HR Dept,TechNova L.T.D.
+TXN11066,2024-12-04,200,Legal Dept,A.B.C. Corp
+TXN10709,2024-04-09,534.75,HR Dept,Apex Holdings
+TXN11110,2024-08-02,100899.43,Finance Dept,ABC Corp Ltd
+TXN11134,2024-07-07,43835.29,Procurement,A.B.C. Corp
+TXN11301,2024-09-30,8.99,Procurement,Apex Hold.
+TXN10030,2024-10-03,200,Operations,TechNova Ltd
+TXN10548,2024-07-03,200,Operations,ABC Corporation
+TXN10329,2024-10-15,200,IT Dept,A.B.C. Corp
+TXN10293,2024-09-13,375.5,Admin Dept,QuickFix I.T.
+TXN11058,2024-02-23,817.93,Operations,Apex Hold.
+TXN10566,2024-04-23,200,Procurement,A.B.C. Corp
+TXN10343,2024-10-21,200,HR Dept,Orion Consulting
+TXN11158,2024-08-25,33516.56,Procurement,TechNova L.T.D.
+TXN10715,2024-12-24,200,Admin Dept,ABC Corp
+TXN10924,2024-03-15,200,IT Dept,A.B.C. Corp
+TXN10022,2024-09-28,200,Admin Dept,Metro Vendors
+TXN10929,2024-01-07,4474.59,Legal Dept,QuickFix IT Solutions
+TXN10224,2024-10-13,2128.95,Finance Dept,TechNova Inc
+TXN10557,2024-07-10,200,Legal Dept,Orion Consulting
+TXN10540,2024-12-14,200,Admin Dept,Apex Holdings
+TXN10547,2024-03-29,5135.65,Admin Dept,ABC Corp
+TXN10885,2024-01-28,200,Finance Dept,QuickFix I.T.
+TXN10260,2024-07-06,1000.0,Legal Dept,Apex Holdings LLC
+TXN10063,2024-02-29,372.85,Admin Dept,Global Supply Co.
+TXN10154,2024-11-23,200,Admin Dept,TechNova Inc
+TXN11046,2024-03-04,200,Legal Dept,ABC Corp Ltd
+TXN11219,2024-07-04,35631.69,Finance Dept,ABC Corp Ltd
+TXN10138,2024-09-16,777.27,IT Dept,Delta Systems
+TXN10925,2024-07-15,200,Operations,BlueWave Media
+TXN10107,2024-04-28,235.18,IT Dept,TechNova L.T.D.
+TXN11305,2024-09-21,7.5,Finance Dept,QuickFix IT
+TXN10853,2024-04-01,333.11,Finance Dept,QuickFix IT Solutions
+TXN10209,2024-06-19,200,IT Dept,Tech Nova
+TXN10025,2024-05-15,200,Admin Dept,TechNova
+TXN19014,2024-02-19,117.41,HR Dept,Apex Holdings
+TXN19023,2024-02-05,378.82,Admin Dept,Summit Group
+TXN11024,2024-11-02,6728.61,Legal Dept,GlobalSupplies
+TXN10642,2024-02-28,200,IT Dept,QuickFix I.T.
+TXN10581,2024-07-11,200,Legal Dept,ABC Corporation
+TXN11077,2024-12-18,200,Finance Dept,Delta Systems
+TXN10901,2024-11-11,200,IT Dept,QuickFix I.T.
+TXN10150,2024-07-10,200,IT Dept,Quick Fix IT
+TXN10056,2024-06-19,200.0,Procurement,Delta Systems
+TXN11045,2024-03-01,200,Finance Dept,Global Supplies
+TXN19090,2024-07-16,100,Admin Dept,TechNova
+TXN11249,2024-07-15,101647.48,IT Dept,TechNova Ltd
+TXN10082,2024-10-26,2415.77,Operations,QuickFix I.T.
+TXN10486,2024-03-30,200.0,IT Dept,TechNova L.T.D.
+TXN11234,2024-07-15,109823.33,Operations,Tech Nova
+TXN10781,2024-09-08,200.0,HR Dept,Apex Holdings LLC
+TXN10735,2024-05-25,200,Admin Dept,TechNova
+TXN11131,2024-07-29,62381.95,Operations,TechNova Inc
+TXN11266,2024-05-16,3.22,HR Dept,A.B.C. Corp
+TXN11203,2024-08-29,73511.9,Operations,ABC Corporation
+TXN10424,2024-02-22,200,HR Dept,QuickFix IT Solutions
+TXN10394,2024-07-05,200,Legal Dept,QuickFix I.T.
+TXN10986,2024-12-22,200,Legal Dept,Summit Group
+TXN11277,2024-10-21,9.25,HR Dept,Northern Trade Co
+TXN10836,2024-01-22,200,Legal Dept,Northern Trade Co
+TXN10899,2024-07-13,200,Admin Dept,BlueWave Media
+TXN10312,2024-11-22,200,Admin Dept,Tech Nova
+TXN10733,2024-10-13,200,IT Dept,Quick Fix IT
+TXN11319,2024-11-13,199.9,Procurement,Zenith Logistics
+TXN10677,2024-09-21,2365.3,Legal Dept,A.B.C. Corp
+TXN19075,2024-02-07,100,IT Dept,TechNova
+TXN10564,2024-10-12,850.73,Legal Dept,Apex Hold.
+TXN10041,2024-04-30,200.0,Finance Dept,Apex Hold.
+TXN10297,2024-02-26,500.0,IT Dept,Apex Hold.
+TXN10432,2024-07-31,6489.46,IT Dept,Apex Holdings LLC
+TXN10643,2024-09-20,202.47,Legal Dept,Quick Fix IT

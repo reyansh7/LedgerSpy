@@ -173,8 +173,28 @@ def run_full_analysis(raw_df: pd.DataFrame, filename: str) -> dict[str, Any]:
 
     benford_profiler = BenfordProfiler()
     benford_result = benford_profiler.analyze(clean_df, weighted=False)
+    
+    # Use tiered formula for Benford risk scoring based on chi-square deviation
+    # Thresholds:
+    #   - Compliant (ratio < 1): Use MAD scaling for nuanced differentiation
+    #   - Moderate fraud (1 < ratio < 90): Use linear scaling for moderate deviations
+    #   - Severe fraud (ratio >= 90): Use sqrt scaling that saturates at 100%
     chi_square = float(benford_result.get("chi_square_stat", 0.0))
-    benford_risk = min((chi_square / benford_profiler.threshold) * 100.0, 100.0)
+    mad = float(benford_result.get("mad", 0.0)) / 100.0  # Convert from % to decimal
+    threshold = float(benford_profiler.threshold)
+    
+    ratio = chi_square / threshold
+    
+    if ratio < 2:
+        # Compliant or near-compliant: Use MAD-based scaling (0-20% range)
+        benford_risk = round(min(mad * 100 * 2, 100.0), 2)
+    elif ratio < 90:
+        # Moderate fraud: Linear scaling of ratio (20-80% range)
+        benford_risk = round(min(ratio / 3, 100.0), 2)
+    else:
+        # Severe fraud: Sqrt scaling saturates near 100% (90-100% range)
+        import math
+        benford_risk = round(min(math.sqrt(ratio) * 10, 100.0), 2)
 
     entity_matcher = EntityMatcher(default_threshold=85)
     fuzzy_matches = entity_matcher.find_ghost_vendors(clean_df["destination_entity"].tolist())
