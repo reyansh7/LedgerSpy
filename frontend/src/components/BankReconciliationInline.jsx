@@ -47,9 +47,9 @@ const BankReconciliationInline = () => {
   }
 
   const getFilteredResults = () => {
-    if (!results?.reconciliation_results) return []
+    if (!results?.results) return []
 
-    let filtered = results.reconciliation_results
+    let filtered = results.results
 
     if (filter !== 'all') {
       filtered = filtered.filter((item) => item.status.toLowerCase() === filter.toLowerCase())
@@ -59,25 +59,37 @@ const BankReconciliationInline = () => {
       const term = searchTerm.toLowerCase()
       filtered = filtered.filter(
         (item) =>
-          item.voucher_id?.toLowerCase().includes(term) ||
-          item.reference?.toLowerCase().includes(term) ||
-          item.vendor_name?.toLowerCase().includes(term)
+          item.id?.toLowerCase().includes(term) ||
+          item.date?.toLowerCase().includes(term) ||
+          item.ledger_vendor?.toLowerCase().includes(term) ||
+          item.bank_vendor?.toLowerCase().includes(term)
       )
     }
 
     return filtered
   }
 
-  const filteredData = getFilteredResults()
-  const statusCounts = {
-    matched: results?.reconciliation_results?.filter((r) => r.status === 'matched').length || 0,
-    missing: results?.reconciliation_results?.filter((r) => r.status === 'missing').length || 0,
-    partial: results?.reconciliation_results?.filter((r) => r.status === 'partial').length || 0,
+  const getRowBackgroundColor = (status) => {
+    switch (status) {
+      case 'MISSING':
+        return 'rgba(239, 68, 68, 0.1)' // Red background for MISSING
+      case 'PARTIAL':
+        return 'rgba(245, 134, 11, 0.1)' // Yellow/Orange background for PARTIAL
+      default:
+        return 'transparent' // Default background for MATCHED
+    }
   }
 
-  const matchRate = results?.reconciliation_results
+  const filteredData = getFilteredResults()
+  const statusCounts = {
+    matched: results?.results?.filter((r) => r.status === 'MATCHED').length || 0,
+    missing: results?.results?.filter((r) => r.status === 'MISSING').length || 0,
+    partial: results?.results?.filter((r) => r.status === 'PARTIAL').length || 0,
+  }
+
+  const matchRate = results?.results
     ? (
-        (statusCounts.matched / results.reconciliation_results.length) *
+        (statusCounts.matched / results.results.length) *
         100
       ).toFixed(1)
     : 0
@@ -135,11 +147,9 @@ const BankReconciliationInline = () => {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
             <thead>
               <tr style="background: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
-                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Voucher</th>
-                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Reference</th>
-                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Vendor</th>
+                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Transaction ID</th>
+                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Date</th>
                 <th style="padding: 12px 8px; text-align: right; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Ledger Amount</th>
-                <th style="padding: 12px 8px; text-align: left; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Bank TXN</th>
                 <th style="padding: 12px 8px; text-align: right; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Bank Amount</th>
                 <th style="padding: 12px 8px; text-align: right; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Difference</th>
                 <th style="padding: 12px 8px; text-align: center; font-weight: 700; color: #475569; border: 1px solid #e2e8f0;">Status</th>
@@ -148,27 +158,28 @@ const BankReconciliationInline = () => {
             <tbody>
               ${filteredData.map((item, idx) => {
                 const bgColor = idx % 2 === 0 ? '#ffffff' : '#f8fafc'
+                const difference = item.bank_amount !== null && item.bank_amount !== undefined
+                  ? item.ledger_amount - item.bank_amount
+                  : item.ledger_amount
                 let statusColor = '#22c55e'
                 let statusBg = '#f0fdf4'
-                if (item.status === 'missing') {
+                if (item.status === 'MISSING') {
                   statusColor = '#ef4444'
                   statusBg = '#fef2f2'
-                } else if (item.status === 'partial') {
+                } else if (item.status === 'PARTIAL') {
                   statusColor = '#f5860b'
                   statusBg = '#fffbeb'
                 }
                 return `
                   <tr style="background: ${bgColor}; border-bottom: 1px solid #e2e8f0;">
-                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.voucher_id || '-'}</td>
-                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.reference || '-'}</td>
-                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.vendor_name || '-'}</td>
-                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500;">$${parseFloat(item.ledger_amount || 0).toFixed(2)}</td>
-                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.bank_transaction_id || '-'}</td>
-                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500;">$${parseFloat(item.bank_amount || 0).toFixed(2)}</td>
-                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500; color: ${parseFloat(item.difference) !== 0 ? '#ef4444' : '#22c55e'};">$${parseFloat(item.difference || 0).toFixed(2)}</td>
+                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.id || '-'}</td>
+                    <td style="padding: 10px 8px; border: 1px solid #e2e8f0;">${item.date ? new Date(item.date).toLocaleDateString() : '-'}</td>
+                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500;">₹${parseFloat(item.ledger_amount || 0).toFixed(2)}</td>
+                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500;">₹${parseFloat(item.bank_amount || 0).toFixed(2)}</td>
+                    <td style="padding: 10px 8px; text-align: right; border: 1px solid #e2e8f0; font-weight: 500; color: ${difference !== 0 ? '#ef4444' : '#22c55e'};">₹${parseFloat(difference || 0).toFixed(2)}</td>
                     <td style="padding: 10px 8px; text-align: center; border: 1px solid #e2e8f0;">
                       <span style="display: inline-block; padding: 4px 8px; background: ${statusBg}; color: ${statusColor}; border-radius: 4px; font-weight: 600; font-size: 11px;">
-                        ${item.status.charAt(0).toUpperCase() + item.status.slice(1)}
+                        ${item.status}
                       </span>
                     </td>
                   </tr>
@@ -340,35 +351,41 @@ const BankReconciliationInline = () => {
                 <table className="reconciliation-inline__table">
                   <thead>
                     <tr>
-                      <th>VOUCHER</th>
-                      <th>REFERENCE</th>
-                      <th>VENDOR</th>
+                      <th>TRANSACTION ID</th>
+                      <th>DATE</th>
                       <th>LEDGER AMOUNT</th>
-                      <th>BANK TXN</th>
                       <th>BANK AMOUNT</th>
                       <th>DIFFERENCE</th>
                       <th>STATUS</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredData.slice(0, 10).map((item, idx) => (
-                      <tr key={idx}>
-                        <td>{item.voucher_id || '-'}</td>
-                        <td>{item.reference || '-'}</td>
-                        <td>{item.vendor_name || '-'}</td>
-                        <td>${parseFloat(item.ledger_amount || 0).toFixed(2)}</td>
-                        <td>{item.bank_transaction_id || '-'}</td>
-                        <td>${parseFloat(item.bank_amount || 0).toFixed(2)}</td>
-                        <td>${parseFloat(item.difference || 0).toFixed(2)}</td>
-                        <td>
-                          <span
-                            className={`reconciliation-inline__status reconciliation-inline__status--${item.status}`}
-                          >
-                            {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
+                    {filteredData.slice(0, 10).map((item, idx) => {
+                      const difference = item.bank_amount !== null && item.bank_amount !== undefined
+                        ? item.ledger_amount - item.bank_amount
+                        : item.ledger_amount
+                      return (
+                        <tr 
+                          key={idx}
+                          style={{
+                            backgroundColor: getRowBackgroundColor(item.status),
+                          }}
+                        >
+                          <td>{item.id || '-'}</td>
+                          <td>{item.date ? new Date(item.date).toLocaleDateString() : '-'}</td>
+                          <td>${parseFloat(item.ledger_amount || 0).toFixed(2)}</td>
+                          <td>${parseFloat(item.bank_amount || 0).toFixed(2)}</td>
+                          <td>${parseFloat(difference || 0).toFixed(2)}</td>
+                          <td>
+                            <span
+                              className={`reconciliation-inline__status reconciliation-inline__status--${item.status.toLowerCase()}`}
+                            >
+                              {item.status}
+                            </span>
+                          </td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -689,7 +706,15 @@ const BankReconciliationInline = () => {
         }
 
         .reconciliation-inline__table tbody tr:hover {
-          background: rgba(99, 102, 241, 0.05);
+          background: rgba(99, 102, 241, 0.05) !important;
+        }
+
+        .reconciliation-inline__table tbody tr[style*="rgba(239, 68, 68"]]:hover {
+          background: rgba(239, 68, 68, 0.15) !important;
+        }
+
+        .reconciliation-inline__table tbody tr[style*="rgba(245, 134, 11"]]:hover {
+          background: rgba(245, 134, 11, 0.15) !important;
         }
 
         .reconciliation-inline__status {

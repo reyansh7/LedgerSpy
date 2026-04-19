@@ -28,16 +28,16 @@ class BankStatementGenerator:
         Generate synthetic bank statement with realistic variations.
         
         Variations introduced:
-        - ~10-15% rows removed (missing bank entries)
-        - ~10-15% amounts modified slightly (±5-10%)
-        - ~10-15% timestamps shifted (±1 day)
+        - ~5% rows removed (missing bank entries - simulating transactions that never hit the bank)
+        - ~3% amounts modified slightly (±2-5% for fees/errors)
         - Shuffled order
         
         Args:
             ledger_df: Ledger transactions DataFrame
             
         Returns:
-            Generated bank statement DataFrame
+            Generated bank statement DataFrame with columns:
+            bank_txn_id, date, amount, from_account, to_account, bank_ref
         """
         bank_df = ledger_df.copy()
         
@@ -51,44 +51,35 @@ class BankStatementGenerator:
         
         total_rows = len(bank_df)
         
-        # 1. Remove ~12% of transactions (missing in bank)
-        missing_pct = 0.12
+        # 1. Remove ~5% of transactions (missing in bank - transactions that never hit the bank)
+        missing_pct = 0.05
         missing_count = max(1, int(total_rows * missing_pct))
         missing_indices = np.random.choice(total_rows, missing_count, replace=False)
         bank_df = bank_df.drop(missing_indices).reset_index(drop=True)
         
         remaining_rows = len(bank_df)
         
-        # 2. Modify ~12% of remaining amounts (±5-10% variation)
+        # 2. Modify ~3% of remaining amounts (bank fees or errors: ±2-5% variation)
         if remaining_rows > 0:
-            amount_modification_pct = 0.12
+            amount_modification_pct = 0.03
             amount_modify_count = max(1, int(remaining_rows * amount_modification_pct))
             amount_modify_indices = np.random.choice(remaining_rows, amount_modify_count, replace=False)
             
             for idx in amount_modify_indices:
-                variation = np.random.uniform(-0.10, 0.10)  # ±10%
+                # Small variation to simulate bank fees: ±2-5%
+                variation = np.random.uniform(-0.05, 0.05)
                 bank_df.loc[idx, 'amount'] = round(
                     bank_df.loc[idx, 'amount'] * (1 + variation), 2
                 )
         
-        # 3. Modify ~8% of timestamps (±1 day variation)
-        if remaining_rows > 0:
-            date_modification_pct = 0.08
-            date_modify_count = max(1, int(remaining_rows * date_modification_pct))
-            date_modify_indices = np.random.choice(remaining_rows, date_modify_count, replace=False)
-            
-            for idx in date_modify_indices:
-                days_offset = np.random.randint(-1, 2)  # -1, 0, or +1 day
-                bank_df.loc[idx, 'date'] = bank_df.loc[idx, 'date'] + timedelta(days=days_offset)
-        
-        # 4. Shuffle order
+        # 3. Shuffle order to randomize sequence
         bank_df = bank_df.sample(frac=1).reset_index(drop=True)
         
-        # Add bank reference columns
+        # Add bank reference columns for tracking
         bank_df['bank_ref'] = [f"BANK-{i:06d}" for i in range(len(bank_df))]
         
         logger.info(f"Generated bank statement: {len(bank_df)} transactions from {total_rows} ledger entries")
-        logger.info(f"Missing: {missing_count}, Amount modified: {amount_modify_count}, Date modified: {date_modify_count}")
+        logger.info(f"Missing (5%): {missing_count} rows | Amount modified (3%): {amount_modify_count} rows")
         
         return bank_df
 
@@ -173,76 +164,76 @@ class TransactionReconciler:
                     best_match = bank_row
                     best_bank_idx = bank_idx
             
-            # Classify transaction
+            # Classify transaction based on match quality
             if best_match is not None:
                 amount_diff_pct = abs(ledger_row['amount'] - best_match['amount']) / ledger_row['amount'] * 100 if ledger_row['amount'] != 0 else 0
                 
+                # Determine status
                 if amount_diff_pct < 1:
-                    status = "Matched"
-                    color = "green"
+                    status = "MATCHED"
                 else:
-                    status = "Partial Match"
-                    color = "yellow"
+                    status = "PARTIAL"
                 
                 matched_bank_ids.add(best_bank_idx)
                 date_diff = abs((ledger_date - best_match['date']).days)
                 
                 results.append({
-                    'transaction_id': ledger_row['transaction_id'],
-                    'ledger_date': ledger_row['timestamp'],
+                    'id': ledger_row['transaction_id'],
+                    'date': ledger_row['timestamp'].isoformat() if pd.notna(ledger_row['timestamp']) else None,
                     'ledger_amount': float(ledger_row['amount']),
+                    'bank_amount': float(best_match['amount']),
+                    'status': status,
                     'ledger_vendor': ledger_row['destination_entity'],
+                    'bank_vendor': best_match['to_account'],
                     'bank_txn_id': best_match['bank_txn_id'],
                     'bank_date': best_match['date'].isoformat(),
-                    'bank_amount': float(best_match['amount']),
-                    'bank_vendor': best_match['to_account'],
-                    'status': status,
-                    'color': color,
                     'vendor_match_score': round(best_score, 1),
                     'amount_diff_pct': round(amount_diff_pct, 2),
                     'date_diff_days': date_diff,
                 })
             else:
+                # No match found - transaction is MISSING from bank statement
                 results.append({
-                    'transaction_id': ledger_row['transaction_id'],
-                    'ledger_date': ledger_row['timestamp'],
+                    'id': ledger_row['transaction_id'],
+                    'date': ledger_row['timestamp'].isoformat() if pd.notna(ledger_row['timestamp']) else None,
                     'ledger_amount': float(ledger_row['amount']),
+                    'bank_amount': None,  # Null to indicate missing
+                    'status': "MISSING",
                     'ledger_vendor': ledger_row['destination_entity'],
+                    'bank_vendor': None,
                     'bank_txn_id': None,
                     'bank_date': None,
-                    'bank_amount': None,
-                    'bank_vendor': None,
-                    'status': 'Missing',
-                    'color': 'red',
                     'vendor_match_score': 0,
                     'amount_diff_pct': None,
                     'date_diff_days': None,
                 })
         
-        # Add extra bank transactions (not matched)
-        for bank_idx, bank_row in bank_df.iterrows():
-            if bank_idx not in matched_bank_ids:
-                results.append({
-                    'transaction_id': None,
-                    'ledger_date': None,
-                    'ledger_amount': None,
-                    'ledger_vendor': None,
-                    'bank_txn_id': bank_row['bank_txn_id'],
-                    'bank_date': bank_row['date'].isoformat(),
-                    'bank_amount': float(bank_row['amount']),
-                    'bank_vendor': bank_row['to_account'],
-                    'status': 'Extra in Bank',
-                    'color': 'red',
-                    'vendor_match_score': 0,
-                    'amount_diff_pct': None,
-                    'date_diff_days': None,
-                })
+        # Add extra bank transactions (not matched) - optional, can be included or filtered
+        # Note: These are transactions in bank but not in ledger (rare, usually data quality issues)
+        # Uncomment to include unmatched bank transactions in results
+        # for bank_idx, bank_row in bank_df.iterrows():
+        #     if bank_idx not in matched_bank_ids:
+        #         results.append({
+        #             'id': None,
+        #             'date': None,
+        #             'ledger_amount': None,
+        #             'bank_amount': float(bank_row['amount']),
+        #             'status': 'EXTRA_IN_BANK',
+        #             'ledger_vendor': None,
+        #             'bank_vendor': bank_row['to_account'],
+        #             'bank_txn_id': bank_row['bank_txn_id'],
+        #             'bank_date': bank_row['date'].isoformat(),
+        #             'vendor_match_score': 0,
+        #             'amount_diff_pct': None,
+        #             'date_diff_days': None,
+        #         })
+        
         
         # Calculate summary
         total = len(results)
-        matched = len([r for r in results if r['status'] == 'Matched'])
-        partial = len([r for r in results if r['status'] == 'Partial Match'])
-        missing = len([r for r in results if r['status'] in ['Missing', 'Extra in Bank']])
+        matched = len([r for r in results if r['status'] == 'MATCHED'])
+        partial = len([r for r in results if r['status'] == 'PARTIAL'])
+        missing = len([r for r in results if r['status'] in ['MISSING', 'EXTRA_IN_BANK']])
         
         summary = {
             'total_transactions': total,
