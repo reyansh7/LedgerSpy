@@ -90,23 +90,66 @@ async def get_vendor_matches():
 async def get_going_concern_sample():
     """
     Return sample going concern analysis for demonstration.
+    Uses realistic inflows/outflows with entity classification.
     """
     try:
         import pandas as pd
+        import numpy as np
         from ledgerspy_engine.going_concern import GoingConcernAnalyzer
         
-        # Create sample transactions
-        sample_data = {
-            'timestamp': pd.date_range('2023-01-01', periods=100, freq='D'),        
-            'amount': pd.Series([1000 + i % 5000 for i in range(100)])
-        }
-        df = pd.DataFrame(sample_data)
+        # Create realistic sample transactions with inflows and outflows
+        dates = pd.date_range('2023-01-01', periods=365, freq='D')
+        
+        # 70% inflow, 30% outflow
+        num_transactions = 365
+        num_inflows = int(num_transactions * 0.7)
+        
+        # Create realistic amounts (inflows positive, outflows negative)
+        inflow_amounts = np.random.gamma(shape=2, scale=1500, size=num_inflows)
+        outflow_amounts = -np.random.gamma(shape=2, scale=1000, size=num_transactions - num_inflows)
+        amounts = np.concatenate([inflow_amounts, outflow_amounts])
+        np.random.shuffle(amounts)
+        
+        # Create entity pairs for classification
+        sources = np.random.choice(
+            ['Finance Dept', 'Operations', 'Vendor A', 'Vendor B', 'Vendor C', 'Client X', 'Client Y'], 
+            num_transactions
+        )
+        destinations = np.random.choice(
+            ['Finance Dept', 'Operations', 'Vendor A', 'Vendor B', 'Vendor C', 'Client X', 'Client Y'], 
+            num_transactions
+        )
+        
+        df = pd.DataFrame({
+            'timestamp': dates,
+            'amount': amounts,
+            'source_entity': sources,
+            'destination_entity': destinations
+        })
+        
+        # Calculate dynamic expense ratio from data
+        company_departments = {'Finance Dept', 'Operations'}
+        source_counts = df['source_entity'].value_counts()
+        dest_counts = df['destination_entity'].value_counts()
+        top_sources = set(source_counts.head(3).index)
+        top_dests = set(dest_counts.head(3).index)
+        company_entities = top_sources | top_dests | company_departments
+        
+        df['is_outflow'] = df['source_entity'].isin(company_entities) & ~df['destination_entity'].isin(company_entities)
+        total_inflow = df[~df['is_outflow']]['amount'].sum()
+        total_outflow = abs(df[df['is_outflow']]['amount'].sum())
+        
+        if total_inflow > 0:
+            expense_ratio = max(0.01, min(total_outflow / total_inflow, 0.5))
+        else:
+            expense_ratio = 0.1
 
-        analyzer = GoingConcernAnalyzer(num_simulations=100, forecast_months=12)   
+        analyzer = GoingConcernAnalyzer(num_simulations=1000, forecast_months=12)   
         result = analyzer.analyze_cash_flow(
             df,
             starting_balance=100000,
-            min_required_balance=10000
+            min_required_balance=10000,
+            expense_ratio=expense_ratio
         )
         result['recommendation'] = analyzer.get_recommendation(result)
         
@@ -126,10 +169,11 @@ async def get_going_concern_analysis(file_id: str):
     Uses cached results if available, otherwise runs Monte Carlo simulation.
     
     Returns:
-        - survival_probability: % chance of maintaining liquidity
+        - survival_probability: % chance of maintaining liquidity (0-100)
         - risk_level: SAFE, MODERATE, AT_RISK, or CRITICAL
         - scenario_bands: probability distribution breakdown
-        - metrics: statistical summary
+        - ending_balance_stats: P5, P25, P50, P75, P95 percentiles
+        - minimum_balance_stats: same percentiles for min balance during period
     """
     try:
         # Retrieve cached analysis result
@@ -155,13 +199,49 @@ async def get_going_concern_analysis(file_id: str):
         
         df = pd.DataFrame(transactions)
         
+        # Validate required columns
+        required_cols = ['timestamp', 'amount']
+        missing_cols = [col for col in required_cols if col not in df.columns]
+        if missing_cols:
+            raise HTTPException(status_code=400, detail=f"Missing required columns: {missing_cols}")
+        
+        # Add source/destination if missing (for backward compatibility)
+        if 'source_entity' not in df.columns:
+            df['source_entity'] = 'Unknown_Source'
+        if 'destination_entity' not in df.columns:
+            df['destination_entity'] = 'Unknown_Destination'
+        
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df['amount'] = pd.to_numeric(df['amount'], errors='coerce')
+        
+        # Identify company entities for expense ratio calculation
+        company_departments = {'Finance Dept', 'Operations', 'Admin Dept', 'Sales', 'HR', 'Legal'}
+        source_counts = df['source_entity'].value_counts()
+        dest_counts = df['destination_entity'].value_counts()
+        top_sources = set(source_counts.head(3).index)
+        top_dests = set(dest_counts.head(3).index)
+        company_entities = top_sources | top_dests | company_departments
+        
+        # Calculate outflows (company paying out) and inflows (company receiving)
+        df['is_outflow'] = df['source_entity'].isin(company_entities) & ~df['destination_entity'].isin(company_entities)
+        total_inflow = df[~df['is_outflow']]['amount'].sum()
+        total_outflow = df[df['is_outflow']]['amount'].sum()
+        
+        # Dynamic expense ratio based on outflows
+        # If outflows are significant, use them; otherwise use modest burn rate
+        if total_inflow > 0:
+            expense_ratio = max(0.01, min(total_outflow / total_inflow, 0.5))  # 1% to 50%
+        else:
+            expense_ratio = 0.1  # 10% default if no clear inflows
+        
         # Run going concern analysis with reduced scenarios for speed (1000 instead of 5000)
         # Full analysis is done during full_analysis call
         analyzer = GoingConcernAnalyzer(num_simulations=1000, forecast_months=12)
         analysis = analyzer.analyze_cash_flow(
             df,
             starting_balance=100000,
-            min_required_balance=10000
+            min_required_balance=10000,
+            expense_ratio=expense_ratio
         )
         
         # Add recommendation
