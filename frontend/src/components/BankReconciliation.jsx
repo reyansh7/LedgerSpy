@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const GlassCard = ({ children, style }) => (
@@ -28,8 +28,13 @@ const GlassCard = ({ children, style }) => (
 )
 
 export default function BankReconciliation({ anomalies, totalRecords, reconciliationResults }) {
+  const [filter, setFilter] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [sortBy, setSortBy] = useState('id')
+  
   // If reconciliation results are provided, use those; otherwise use defaults
   let matchedCount, missingCount, partialCount, matchPercentage, ledgerTotal, bankTotal
+  let transactions = []
   
   if (reconciliationResults?.summary) {
     // Use actual reconciliation data if provided
@@ -39,6 +44,7 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
     ledgerTotal = reconciliationResults.summary.total_transactions || 0
     bankTotal = ledgerTotal - missingCount // Bank statement has 5% fewer rows
     matchPercentage = reconciliationResults.summary.reconciliation_rate || 0
+    transactions = reconciliationResults.results || []
   } else {
     // Default realistic simulation: 5% missing, 3% partial, 92% matched
     ledgerTotal = totalRecords || 10000
@@ -47,6 +53,56 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
     matchedCount = ledgerTotal - missingCount - partialCount // ~92% matched
     bankTotal = ledgerTotal - missingCount // Bank has the missing rows removed
     matchPercentage = ((matchedCount / ledgerTotal) * 100).toFixed(1)
+  }
+  
+  // Filter transactions
+  const filteredTransactions = transactions.filter(t => {
+    let statusMatch = true
+    if (filter === 'matched') statusMatch = t.status === 'MATCHED'
+    if (filter === 'partial') statusMatch = t.status === 'PARTIAL'
+    if (filter === 'missing') statusMatch = t.status === 'MISSING' || t.status === 'MISSING'
+    
+    let searchMatch = true
+    if (searchTerm) {
+      searchMatch =
+        (t.id?.toString().includes(searchTerm)) ||
+        (t.transaction_id?.toString().includes(searchTerm)) ||
+        (t.ledger_vendor?.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (t.bank_vendor?.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (t.bank_txn_id?.toString().includes(searchTerm))
+    }
+    
+    return statusMatch && searchMatch
+  })
+  
+  // Sort transactions
+  const sortedTransactions = [...filteredTransactions].sort((a, b) => {
+    if (sortBy === 'id') return (a.id || a.transaction_id) > (b.id || b.transaction_id) ? 1 : -1
+    if (sortBy === 'amount') return (a.ledger_amount || 0) - (b.ledger_amount || 0)
+    if (sortBy === 'status') return a.status.localeCompare(b.status)
+    return 0
+  })
+  
+  const getStatusBadge = (status) => {
+    const statusMap = {
+      'MATCHED': { label: 'Matched', color: '#22c55e', bgColor: 'rgba(34, 197, 94, 0.15)' },
+      'PARTIAL': { label: 'Partial Match', color: '#f59e0b', bgColor: 'rgba(245, 158, 11, 0.15)' },
+      'MISSING': { label: 'Missing', color: '#ef4444', bgColor: 'rgba(239, 68, 68, 0.15)' },
+    }
+    const s = statusMap[status] || { label: status, color: '#6B7280', bgColor: 'rgba(107, 114, 128, 0.15)' }
+    return (
+      <span style={{
+        padding: '4px 10px',
+        borderRadius: '6px',
+        fontSize: '0.7rem',
+        fontWeight: 700,
+        backgroundColor: s.bgColor,
+        color: s.color,
+        textTransform: 'uppercase',
+      }}>
+        {s.label}
+      </span>
+    )
   }
   
   // Calculate percentages
@@ -409,6 +465,200 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
           ))}
         </div>
       </motion.div>
+
+      {/* Data Table Section */}
+      {transactions.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          style={{
+            marginBottom: '20px',
+            borderRadius: '14px',
+            background: 'rgba(0,0,0,0.15)',
+            border: '1px solid rgba(255,255,255,0.05)',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Table Header */}
+          <div style={{
+            padding: '16px 20px',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+          }}>
+            <p style={{
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              color: '#E5E7EB',
+              margin: '0 0 12px 0',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
+            }}>
+              📋 Detailed Reconciliation Data
+            </p>
+
+            {/* Filter & Search Bar */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '12px',
+            }}>
+              {/* Search Input */}
+              <input
+                type="text"
+                placeholder="Search by ID, vendor, or amount..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{
+                  flex: '1 1 250px',
+                  minWidth: '200px',
+                  padding: '8px 12px',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(0,0,0,0.3)',
+                  color: '#E5E7EB',
+                  fontSize: '0.8rem',
+                  outline: 'none',
+                }}
+              />
+
+              {/* Filter Buttons */}
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {['all', 'matched', 'partial', 'missing'].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    style={{
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      background: filter === f ? 'rgba(34, 197, 94, 0.2)' : 'rgba(0,0,0,0.3)',
+                      color: filter === f ? '#4ade80' : '#9CA3AF',
+                      cursor: 'pointer',
+                      fontSize: '0.7rem',
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      transition: 'all 200ms ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (filter !== f) {
+                        e.target.style.borderColor = 'rgba(255,255,255,0.15)'
+                        e.target.style.background = 'rgba(0,0,0,0.4)'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (filter !== f) {
+                        e.target.style.borderColor = 'rgba(255,255,255,0.1)'
+                        e.target.style.background = 'rgba(0,0,0,0.3)'
+                      }
+                    }}
+                  >
+                    {f.charAt(0).toUpperCase() + f.slice(1)}
+                  </button>
+                ))}
+              </div>
+
+              {/* Sort Dropdown */}
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                style={{
+                  padding: '6px 10px',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(0,0,0,0.3)',
+                  color: '#E5E7EB',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                <option value="id">Sort: ID</option>
+                <option value="amount">Sort: Amount</option>
+                <option value="status">Sort: Status</option>
+              </select>
+            </div>
+
+            <p style={{
+              fontSize: '0.7rem',
+              color: '#6B7280',
+              margin: '0',
+            }}>
+              Showing {sortedTransactions.length} of {transactions.length} transactions
+            </p>
+          </div>
+
+          {/* Scrollable Table */}
+          <div style={{
+            overflowX: 'auto',
+            maxHeight: '600px',
+            overflowY: 'auto',
+          }}>
+            <table style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              fontSize: '0.75rem',
+            }}>
+              <thead style={{
+                position: 'sticky',
+                top: 0,
+                background: 'rgba(0,0,0,0.4)',
+                borderBottom: '1px solid rgba(255,255,255,0.1)',
+              }}>
+                <tr>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Status</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Ledger ID</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Date</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Ledger Amt</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Ledger Vendor</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Bank ID</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Bank Date</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Bank Amt</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'left', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Bank Vendor</th>
+                  <th style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', fontSize: '0.65rem' }}>Diff %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedTransactions.length > 0 ? (
+                  sortedTransactions.map((txn, idx) => (
+                    <tr
+                      key={idx}
+                      style={{
+                        borderBottom: '1px solid rgba(255,255,255,0.03)',
+                        background: txn.status === 'MATCHED' ? 'transparent' : txn.status === 'PARTIAL' ? 'rgba(245, 158, 11, 0.08)' : 'rgba(239, 68, 68, 0.08)',
+                        transition: 'background 200ms ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = txn.status === 'MATCHED' ? 'rgba(255,255,255,0.03)' : txn.status === 'PARTIAL' ? 'rgba(245, 158, 11, 0.12)' : 'rgba(239, 68, 68, 0.12)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = txn.status === 'MATCHED' ? 'transparent' : txn.status === 'PARTIAL' ? 'rgba(245, 158, 11, 0.08)' : 'rgba(239, 68, 68, 0.08)'
+                      }}
+                    >
+                      <td style={{ padding: '12px 14px' }}>{getStatusBadge(txn.status)}</td>
+                      <td style={{ padding: '12px 14px', color: '#E5E7EB', fontFamily: 'monospace' }}>{txn.id || txn.transaction_id}</td>
+                      <td style={{ padding: '12px 14px', color: '#9CA3AF' }}>{txn.date?.split('T')[0] || txn.ledger_date?.split('T')[0] || '—'}</td>
+                      <td style={{ padding: '12px 14px', textAlign: 'right', color: '#4ade80', fontWeight: 600 }}>₹{txn.ledger_amount?.toFixed(2) || '—'}</td>
+                      <td style={{ padding: '12px 14px', color: '#9CA3AF', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{txn.ledger_vendor || '—'}</td>
+                      <td style={{ padding: '12px 14px', color: '#E5E7EB', fontFamily: 'monospace' }}>{txn.bank_txn_id || '—'}</td>
+                      <td style={{ padding: '12px 14px', color: '#9CA3AF' }}>{txn.bank_date?.split('T')[0] || '—'}</td>
+                      <td style={{ padding: '12px 14px', textAlign: 'right', color: txn.bank_amount ? '#22c55e' : '#6B7280', fontWeight: 600 }}>{txn.bank_amount ? `₹${txn.bank_amount.toFixed(2)}` : '—'}</td>
+                      <td style={{ padding: '12px 14px', color: '#9CA3AF', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{txn.bank_vendor || '—'}</td>
+                      <td style={{ padding: '12px 14px', textAlign: 'right', color: txn.amount_diff_pct ? (txn.amount_diff_pct > 5 ? '#ef4444' : '#f59e0b') : '#6B7280', fontWeight: 600 }}>{txn.amount_diff_pct ? `${txn.amount_diff_pct.toFixed(2)}%` : '—'}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="10" style={{ padding: '40px 20px', textAlign: 'center', color: '#6B7280' }}>
+                      No transactions found matching your filter
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      )}
 
       {/* Status Banner */}
       <motion.div
