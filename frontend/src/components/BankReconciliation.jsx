@@ -29,28 +29,36 @@ const GlassCard = ({ children, style }) => (
 
 export default function BankReconciliation({ anomalies, totalRecords, reconciliationResults }) {
   // If reconciliation results are provided, use those; otherwise use defaults
-  let matchedCount, missingCount, partialCount, matchPercentage
+  let matchedCount, missingCount, partialCount, matchPercentage, ledgerTotal, bankTotal
   
   if (reconciliationResults?.summary) {
     // Use actual reconciliation data if provided
     matchedCount = reconciliationResults.summary.matched || 0
     partialCount = reconciliationResults.summary.partial_match || 0
     missingCount = reconciliationResults.summary.missing_or_extra || 0
+    ledgerTotal = reconciliationResults.summary.total_transactions || 0
+    bankTotal = ledgerTotal - missingCount // Bank statement has 5% fewer rows
     matchPercentage = reconciliationResults.summary.reconciliation_rate || 0
   } else {
     // Default realistic simulation: 5% missing, 3% partial, 92% matched
-    const total = totalRecords || 10000
-    missingCount = Math.floor(total * 0.05) // 5% missing rows
-    partialCount = Math.floor(total * 0.03) // 3% amount mismatches
-    matchedCount = total - missingCount - partialCount // ~92% matched
-    matchPercentage = ((matchedCount / total) * 100).toFixed(1)
+    ledgerTotal = totalRecords || 10000
+    missingCount = Math.floor(ledgerTotal * 0.05) // 5% missing rows
+    partialCount = Math.floor(ledgerTotal * 0.03) // 3% amount mismatches
+    matchedCount = ledgerTotal - missingCount - partialCount // ~92% matched
+    bankTotal = ledgerTotal - missingCount // Bank has the missing rows removed
+    matchPercentage = ((matchedCount / ledgerTotal) * 100).toFixed(1)
   }
+  
+  // Calculate percentages
+  const matchedPct = ledgerTotal ? ((matchedCount / ledgerTotal) * 100).toFixed(1) : 0
+  const partialPct = ledgerTotal ? ((partialCount / ledgerTotal) * 100).toFixed(1) : 0
+  const missingPct = ledgerTotal ? ((missingCount / ledgerTotal) * 100).toFixed(1) : 0
 
   const reconciliationData = [
     {
       status: 'Matched',
       count: matchedCount,
-      percentage: totalRecords ? ((matchedCount / totalRecords) * 100).toFixed(1) : matchPercentage,
+      percentage: matchedPct,
       icon: '✅',
       color: '#22c55e',
       gradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.03))',
@@ -66,7 +74,7 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
     {
       status: 'Missing',
       count: missingCount,
-      percentage: totalRecords ? ((missingCount / totalRecords) * 100).toFixed(1) : 0,
+      percentage: missingPct,
       icon: '❌',
       color: '#ef4444',
       gradient: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.03))',
@@ -82,7 +90,7 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
     {
       status: 'Partial Match',
       count: partialCount,
-      percentage: totalRecords ? ((partialCount / totalRecords) * 100).toFixed(1) : 0,
+      percentage: partialPct,
       icon: '⚠️',
       color: '#f59e0b',
       gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.03))',
@@ -164,6 +172,103 @@ export default function BankReconciliation({ anomalies, totalRecords, reconcilia
           </span>
         </div>
       </div>
+
+      {/* Side-by-Side Comparison */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '16px',
+          marginBottom: '20px',
+          padding: '16px',
+          borderRadius: '12px',
+          background: 'rgba(0,0,0,0.2)',
+          border: '1px solid rgba(255,255,255,0.05)',
+        }}
+      >
+        {/* Ledger Column */}
+        <div style={{ textAlign: 'center' }}>
+          <p style={{
+            fontSize: '0.7rem',
+            color: '#6B7280',
+            textTransform: 'uppercase',
+            letterSpacing: '0.8px',
+            fontWeight: 600,
+            margin: '0 0 12px 0',
+          }}>
+            📊 Ledger Dataset
+          </p>
+          <div style={{
+            fontSize: '2rem',
+            fontWeight: 800,
+            fontFamily: "'Poppins', sans-serif",
+            color: '#60a5fa',
+            marginBottom: '4px',
+          }}>
+            {ledgerTotal.toLocaleString('en-IN')}
+          </div>
+          <p style={{ fontSize: '0.72rem', color: '#9CA3AF', margin: 0 }}>Total transactions</p>
+        </div>
+
+        {/* Bank Statement Column */}
+        <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
+          <p style={{
+            fontSize: '0.7rem',
+            color: '#6B7280',
+            textTransform: 'uppercase',
+            letterSpacing: '0.8px',
+            fontWeight: 600,
+            margin: '0 0 12px 0',
+          }}>
+            🏦 Bank Statement
+          </p>
+          <div style={{
+            fontSize: '2rem',
+            fontWeight: 800,
+            fontFamily: "'Poppins', sans-serif",
+            color: '#22c55e',
+            marginBottom: '4px',
+          }}>
+            {bankTotal.toLocaleString('en-IN')}
+          </div>
+          <p style={{ fontSize: '0.72rem', color: '#9CA3AF', margin: 0 }}>Received transactions</p>
+        </div>
+      </motion.div>
+
+      {/* Difference Summary */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        style={{
+          padding: '14px 16px',
+          borderRadius: '10px',
+          background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(239, 68, 68, 0.02))',
+          border: '1px solid rgba(239, 68, 68, 0.15)',
+          marginBottom: '20px',
+          textAlign: 'center',
+        }}
+      >
+        <p style={{ fontSize: '0.7rem', color: '#6B7280', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 6px 0' }}>
+          Difference
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <span style={{
+            fontSize: '1.5rem',
+            fontWeight: 800,
+            color: '#ef4444',
+            fontFamily: "'Poppins', sans-serif",
+          }}>
+            {missingCount.toLocaleString('en-IN')}
+          </span>
+          <span style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>
+            ({missingPct}%) missing from bank statement
+          </span>
+        </div>
+      </motion.div>
 
       {/* Stat Cards Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '20px' }}>
