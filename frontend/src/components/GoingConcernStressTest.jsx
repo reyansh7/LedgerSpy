@@ -125,10 +125,10 @@ const GoingConcernStressTest = ({ data }) => {
   };
 
   const getSurvivalCategory = (probability) => {
-    if (probability >= 75) return 'High';
+    if (probability >= 75) return 'Low';
     if (probability >= 50) return 'Medium';
-    if (probability >= 25) return 'Low';
-    return 'No';
+    if (probability >= 25) return 'High';
+    return 'Critical';
   };
 
   // Convert scenario bands to pie chart format
