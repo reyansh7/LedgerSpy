@@ -124,11 +124,11 @@ const GoingConcernStressTest = ({ data }) => {
     return '#ef4444'; // red
   };
 
-  const getRiskLabel = (probability) => {
-    if (probability >= 95) return 'SAFE';
-    if (probability >= 80) return 'MODERATE';
-    if (probability >= 60) return 'AT RISK';
-    return 'CRITICAL';
+  const getSurvivalCategory = (probability) => {
+    if (probability >= 75) return 'High';
+    if (probability >= 50) return 'Medium';
+    if (probability >= 25) return 'Low';
+    return 'No';
   };
 
   // Convert scenario bands to pie chart format
@@ -148,7 +148,7 @@ const GoingConcernStressTest = ({ data }) => {
   ];
 
   const survivalColor = getSurvivalColor(data.survival_probability);
-  const riskLabel = getRiskLabel(data.survival_probability);
+  const survivalCategory = getSurvivalCategory(data.survival_probability);
 
   return (
     <motion.div
@@ -222,7 +222,7 @@ const GoingConcernStressTest = ({ data }) => {
               textTransform: 'uppercase',
               letterSpacing: '1px',
             }}>
-              {riskLabel}
+              {survivalCategory}
             </div>
           </div>
         </div>
