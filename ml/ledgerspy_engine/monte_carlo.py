@@ -76,9 +76,9 @@ def calculate_monthly_totals(transactions_df: pd.DataFrame) -> Tuple[np.ndarray,
         outflow = month_df[month_df['is_outflow']]['amount'].sum()
         total_outflow_amount += outflow
         
-        # For synthetic data: generate synthetic INFLOWS (~90-110% of outflows)
-        # This represents realistic business revenue that covers most expenses
-        inflow_ratio = np.random.uniform(0.90, 1.10)
+        # For synthetic data: generate synthetic INFLOWS to ensure positive cash flow
+        # Inflows = 100-115% of outflows means net is +0% to +15% (company covers costs + small profit)
+        inflow_ratio = np.random.uniform(1.00, 1.15)
         inflow = outflow * inflow_ratio
         
         net = inflow - outflow
@@ -86,8 +86,9 @@ def calculate_monthly_totals(transactions_df: pd.DataFrame) -> Tuple[np.ndarray,
     
     net_flows = np.array(net_flows)
     
-    # Add volatility to make flows more realistic (±5-15%)
-    volatility = np.abs(net_flows) * np.random.uniform(0.05, 0.15, len(net_flows))
+    # Add small volatility to make flows realistic (±2-8% of net)
+    # Keep it small so we don't swing back to negative
+    volatility = np.abs(net_flows) * np.random.uniform(0.02, 0.08, len(net_flows))
     volatility_direction = np.random.choice([-1, 1], len(net_flows))
     net_flows = net_flows + (volatility * volatility_direction)
     
