@@ -43,7 +43,14 @@ RISK_COLORS = {
 def calculate_monthly_totals(transactions_df: pd.DataFrame) -> Tuple[np.ndarray, Dict]:
     """
     Extract monthly INFLOWS and OUTFLOWS, calculate net cash flow.
-    For synthetic/ledger-only data (no natural inflows), generate synthetic revenue.
+    CRITICAL: Detects when company has ZERO real inflows (honest but bankrupt scenario).
+    
+    LOGIC:
+    1. Calculate REAL outflows (from company account)
+    2. Calculate REAL inflows (to company account, excluding from company)
+    3. If REAL inflows exist: use them as-is (data-driven)
+    4. If NO REAL inflows: use 0 inflows + flag as risky (honest but bankrupt)
+    5. Do NOT fabricate inflows; let survival % reflect true financial health
     
     Args:
         transactions_df: DataFrame with 'timestamp', 'source_entity', 'destination_entity', 'amount' columns
@@ -63,34 +70,53 @@ def calculate_monthly_totals(transactions_df: pd.DataFrame) -> Tuple[np.ndarray,
     source_counts = df['source_entity'].value_counts()
     top_source = source_counts.idxmax()  # The main account
     
-    # Classify: outflows are transactions FROM the company account
+    # Classify transactions:
+    # OUTFLOW: from company account TO somewhere else (company spending money)
+    # INFLOW: from somewhere else TO company account (company receiving money)
     df['is_outflow'] = df['source_entity'] == top_source
+    df['is_inflow'] = df['destination_entity'] == top_source
     
-    # Calculate monthly outflows
+    # Calculate totals across ALL months
+    total_outflow_amount = df[df['is_outflow']]['amount'].sum()
+    total_inflow_amount = df[df['is_inflow']]['amount'].sum()
+    
+    # CRITICAL CHECK: Does the company have ANY real inflows?
+    has_real_inflows = total_inflow_amount > 0
+    
+    # Calculate monthly net flows
     all_months = sorted(df['year_month'].unique())
     net_flows = []
-    total_outflow_amount = 0
     
     for month in all_months:
         month_df = df[df['year_month'] == month]
-        outflow = month_df[month_df['is_outflow']]['amount'].sum()
-        total_outflow_amount += outflow
         
-        # For synthetic data: generate synthetic INFLOWS to ensure positive cash flow
-        # Inflows = 100-115% of outflows means net is +0% to +15% (company covers costs + small profit)
-        inflow_ratio = np.random.uniform(1.00, 1.15)
-        inflow = outflow * inflow_ratio
+        # Real outflows from company account
+        real_outflow = month_df[month_df['is_outflow']]['amount'].sum()
         
-        net = inflow - outflow
+        # Real inflows TO company account
+        real_inflow = month_df[month_df['is_inflow']]['amount'].sum()
+        
+        # Use REAL flows if available; otherwise 0
+        if has_real_inflows:
+            # Company has revenue streams; use realistic inflows
+            inflow = real_inflow
+        else:
+            # Company has NO real inflows (honest but bankrupt scenario)
+            # Do NOT fabricate revenue; let survival % reflect true financial health
+            inflow = 0.0
+        
+        # Net = inflow - outflow (can be negative if spending > revenue)
+        net = inflow - real_outflow
         net_flows.append(net)
     
     net_flows = np.array(net_flows)
     
-    # Add small volatility to make flows realistic (±2-8% of net)
-    # Keep it small so we don't swing back to negative
-    volatility = np.abs(net_flows) * np.random.uniform(0.02, 0.08, len(net_flows))
-    volatility_direction = np.random.choice([-1, 1], len(net_flows))
-    net_flows = net_flows + (volatility * volatility_direction)
+    # Add small volatility ONLY if flows are non-zero (preserve bankruptcy signal)
+    # If company has no revenue, don't add noise to hide it
+    if np.mean(np.abs(net_flows)) > 0:
+        volatility = np.abs(net_flows) * np.random.uniform(0.02, 0.08, len(net_flows))
+        volatility_direction = np.random.choice([-1, 1], len(net_flows))
+        net_flows = net_flows + (volatility * volatility_direction)
     
     metadata = {
         'total_transactions': len(df),
@@ -98,14 +124,18 @@ def calculate_monthly_totals(transactions_df: pd.DataFrame) -> Tuple[np.ndarray,
             'start': df['timestamp'].min().isoformat(),
             'end': df['timestamp'].max().isoformat(),
         },
-        'total_outflow': df[df['is_outflow']]['amount'].sum(),
-        'total_synthetic_inflow': df[~df['is_outflow']]['amount'].sum(),  # Note: synthetic for ledger-only data
+        'total_real_outflow': total_outflow_amount,
+        'total_real_inflow': total_inflow_amount,
+        'has_real_inflows': has_real_inflows,
         'num_months_observed': len(net_flows),
         'net_cash_flow_mean': float(np.mean(net_flows)),
         'net_cash_flow_std': float(np.std(net_flows)),
         'net_cash_flow_min': float(np.min(net_flows)),
         'net_cash_flow_max': float(np.max(net_flows)),
-        'note': 'Inflows synthesized as 90-110% of observed outflows for realistic cash flow modeling'
+        'data_quality_note': (
+            'REAL inflows used (company has revenue)' if has_real_inflows 
+            else '⚠️ NO REAL INFLOWS DETECTED - Company has zero revenue; survival % reflects bankruptcy risk'
+        )
     }
     
     return net_flows, metadata
