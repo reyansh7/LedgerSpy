@@ -352,10 +352,10 @@ class GoingConcernAnalyzer:
         chi_squared = float(np.sum(((observed - expected_freqs) ** 2) / expected_freqs) * n)
         mad = float(np.mean(np.abs(observed - expected_freqs)))
 
-        is_compliant = (
-            chi_squared < BENFORD_CONFIG['CHI_SQUARED_THRESHOLD'] and
-            mad < BENFORD_CONFIG['MAD_THRESHOLD']
-        )
+        # Compliance: Only chi-squared matters for overall assessment.
+        # Chi-squared is the primary statistical test; MAD is secondary/informational.
+        # This aligns with the Dashboard Benford Risk calculation.
+        is_compliant = chi_squared < BENFORD_CONFIG['CHI_SQUARED_THRESHOLD']
 
         return {
             'chi_squared':            round(chi_squared, 2),

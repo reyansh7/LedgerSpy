@@ -21,6 +21,7 @@ MONTE_CARLO_CONFIG = {
     'DEFAULT_STARTING_BALANCE': 100000,
     'DEFAULT_MIN_REQUIRED': 10000,
     'DEFAULT_EXPENSE_RATIO': 0.0,  # 0% default monthly burn
+    'BENFORD_CONFIDENCE_PENALTY': 5.0,  # Max penalty in percentage points for Benford non-compliance
 }
 
 # Benford's Law thresholds
